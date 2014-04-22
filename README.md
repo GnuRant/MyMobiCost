@@ -1,5 +1,6 @@
 MyMobiCost
 ==========
+Calcola il costo della vita.
 
 # Backend
 
