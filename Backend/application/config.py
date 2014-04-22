@@ -12,6 +12,4 @@ class Config(object):
 """
 class DevelopmentConfig(Config):
 	DEBUG = True
-	HOST = "0.0.0.0"
-	PORT = "5001"
 		
