@@ -1,6 +1,6 @@
 MyMobiCost
 ==========
-Calcola il costo della vita.
+Calcola il costo della vita nella provincia di Belluno
 
 # Backend
 
@@ -17,7 +17,7 @@ Calcola il costo della vita.
 ```
 ###Avviare il server 
 ```
-  python server.py
+  python run.py
 ```
 ####Pagina test
 ```
