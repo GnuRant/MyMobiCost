@@ -12,4 +12,16 @@ class Config(object):
 """
 class DevelopmentConfig(Config):
 	DEBUG = True
+
+"""
+	CLasse per la gestione dei dati di configurazione 
+	del database in fase di sviluppo
+"""
+class DevelopmentDBConfig(object):
+	HOST = "localhost"
+	USERNAME = "test"
+	PASSWORD = "1234"
+	DATABASE = "MyMobiCost"
+
+
 		

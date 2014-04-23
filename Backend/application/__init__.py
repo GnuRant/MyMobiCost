@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, g
+from database import *
 from config import *
 
 app = Flask(__name__)
