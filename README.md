@@ -14,7 +14,7 @@ Calcola il costo della vita nella provincia di Belluno
 ###Installazione flask e psycopg2
 ```
   pip install Flask
-  pip install psycopg2
+  pip install pg8000
 ```
 ###Avviare il server 
 ```
