@@ -29,5 +29,6 @@ def db_status():
 	if connection is None:
 		return False
 	else:
+		#se la connessione va a buon fine, la chiudo
 		connection.close()
 		return True

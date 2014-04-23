@@ -28,7 +28,7 @@ def status():
 	stato del server e della connessione con il DB
 	{
 		"server" : "OK",
-		"database" : "OK|Connection error"	
+		"database" : "true|false"	
 	}
 	"""
 	data = {
