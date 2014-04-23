@@ -24,7 +24,10 @@ def db_status():
 	"""
 		Metodo che ritorna lo stato del database
 	"""
-	if db_connection() is None:
-		return "Connection error"
+	connection = db_connection()
+
+	if connection is None:
+		return False
 	else:
-		return "OK"
+		connection.close()
+		return True

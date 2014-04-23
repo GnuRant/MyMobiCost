@@ -14,6 +14,7 @@ class DevelopmentConfig(Config):
 	DEBUG = True
 
 """
+	ATTENZIONE: NON UTILIZZARE IN PRODUZIONE
 	CLasse per la gestione dei dati di configurazione 
 	del database in fase di sviluppo
 """
