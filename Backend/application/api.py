@@ -62,7 +62,8 @@ def zone(comune):
 		{
 			"zone" : [
 				{
-					"zone" : "LANTA"
+					"zone" : "LANTA",
+					"code" : "B1" 
 				}
 			]
 		}

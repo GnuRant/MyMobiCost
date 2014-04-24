@@ -59,7 +59,7 @@ def get_zone(connection, comune):
 		determinato comune
 	"""
 	data = []
-	query = ("""SELECT DISTINCT qi_92_1_20122_zone.zona_descr
+	query = ("""SELECT qi_92_1_20122_zone.zona_descr, qi_92_1_20122_zone.zona
 				FROM qi_92_1_20122_zone
 				WHERE qi_92_1_20122_zone.comune_descrizione = %s""") % ('\''+comune+'\'')
 	cursor = connection.cursor()
@@ -70,7 +70,7 @@ def get_zone(connection, comune):
 		#splitto ogni stringa in modo da ottenere ogni songola zona
 		zone = re.split("-|,", row[0])
 		for zona in zone:
-			data.append({"zona" : zona})
+			data.append({"zona" : zona, "code" : row[1]})
 
 	return data
 
