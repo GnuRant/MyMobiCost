@@ -1,6 +1,6 @@
 from pg8000 import DBAPI
-import re
 from config import DevelopmentDBConfig as DB
+import re
 
 SCHEMA = "SET search_path TO public"
 
@@ -74,5 +74,18 @@ def get_zone(connection, comune):
 
 	return data
 
+def get_tipologie(connection, comune, zona):
+	data = []
+	query = ("""SELECT qi_92_1_20122_valori.descr_tipologia
+				FROM qi_92_1_20122_valori
+				WHERE qi_92_1_20122_valori.comune_descrizione = %s AND 
+				qi_92_1_20122_valori.zona = %s """) % ('\''+comune+'\'', '\''+zona+'\'')
+	cursor = connection.cursor()
+	cursor.execute(SCHEMA)
+	cursor.execute(query)
 
+	for row in cursor:
+		data.append({"tipologia": row[0]})
+
+	return data
 

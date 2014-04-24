@@ -54,7 +54,7 @@ def comuni():
 	"""
 	return jsonify(comuni=get_comuni(g.db))
 
-@app.route("/zone/<comune>", methods=["GET"])
+@app.route("/zone/comune=<comune>", methods=["GET"])
 def zone(comune):
 	"""
 		URL per ricevere la lista delle zone di un certo comune,
@@ -69,3 +69,7 @@ def zone(comune):
 		}
 	"""
 	return jsonify(zone=get_zone(g.db, comune))
+
+@app.route("/tipologie/comune=<comune>&zona=<zona>", methods=["GET"])
+def tipologie(comune, zona):
+	return jsonify(tipologie=get_tipologie(g.db,comune, zona))
