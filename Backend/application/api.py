@@ -1,4 +1,4 @@
-from flask import jsonify, g
+from flask import jsonify, g, request
 from application import app
 from database import *
 
@@ -20,7 +20,7 @@ def after_request(response):
 	return response
 
 
-@app.route("/status")
+@app.route("/status", methods=["GET"])
 def status():
 	"""
 	URL per il test dello stato del sistema.
@@ -32,7 +32,7 @@ def status():
 	}
 	"""
 	data = {
-		"server" : "OK",
+		"server" : True,
 		"database" : db_status()
 	}
 

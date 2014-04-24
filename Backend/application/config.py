@@ -25,4 +25,4 @@ class DevelopmentDBConfig(object):
 	DATABASE = "MyMobiCost"
 
 
-		
+	
