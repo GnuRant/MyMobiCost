@@ -1,0 +1,230 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "abbonamenti": {
+      "type": "array",
+      "id": "http://jsonschema.net/abbonamenti",
+      "required": false,
+      "items": {
+        "type": "object",
+        "id": "http://jsonschema.net/abbonamenti/0",
+        "required": false,
+        "properties": {
+          "abbonamento_nome": {
+            "type": "string",
+            "id": "http://jsonschema.net/abbonamenti/0/abbonamento_nome",
+            "required": false
+          },
+          "costo": {
+            "type": "number",
+            "id": "http://jsonschema.net/abbonamenti/0/costo",
+            "required": false
+          },
+          "tipo": {
+            "type": "string",
+            "id": "http://jsonschema.net/abbonamenti/0/tipo",
+            "required": false
+          }
+        }
+      }
+    },
+    "abitazione": {
+      "type": "object",
+      "id": "http://jsonschema.net/abitazione",
+      "required": false,
+      "properties": {
+        "categoria_edilizia": {
+          "type": "string",
+          "id": "http://jsonschema.net/abitazione/categoria_edilizia",
+          "required": false
+        },
+        "comune": {
+          "type": "string",
+          "id": "http://jsonschema.net/abitazione/comune",
+          "required": false
+        },
+        "costo_max": {
+          "type": "number",
+          "id": "http://jsonschema.net/abitazione/costo_max",
+          "required": false
+        },
+        "costo_min": {
+          "type": "number",
+          "id": "http://jsonschema.net/abitazione/costo_min",
+          "required": false
+        },
+        "costo": {
+          "type": "number",
+          "id": "http://jsonschema.net/abitazione/costo",
+          "required": false
+        },
+        "provincia": {
+          "type": "string",
+          "id": "http://jsonschema.net/abitazione/provincia",
+          "required": false
+        },
+        "zona_abitativa": {
+          "type": "string",
+          "id": "http://jsonschema.net/abitazione/zona_abitativa",
+          "required": false
+        }
+      }
+    },
+    "automobili": {
+      "type": "array",
+      "id": "http://jsonschema.net/automobili",
+      "required": false,
+      "items": {
+        "type": "object",
+        "id": "http://jsonschema.net/automobili/0",
+        "required": false,
+        "properties": {
+          "abbonamento_parcheggio": {
+            "type": "number",
+            "id": "http://jsonschema.net/automobili/0/abbonamento_parcheggio",
+            "required": false
+          },
+          "alimentazione": {
+            "type": "string",
+            "id": "http://jsonschema.net/automobili/0/alimentazione",
+            "required": false
+          },
+          "assicurazione": {
+            "type": "number",
+            "id": "http://jsonschema.net/automobili/0/assicurazione",
+            "required": false
+          },
+          "auto_nome": {
+            "type": "string",
+            "id": "http://jsonschema.net/automobili/0/auto_nome",
+            "required": false
+          },
+          "classe": {
+            "type": "string",
+            "id": "http://jsonschema.net/automobili/0/classe",
+            "required": false
+          },
+          "costo_ACI": {
+            "type": "number",
+            "id": "http://jsonschema.net/automobili/0/costo_ACI",
+            "required": false
+          },
+          "pedaggio_autostradale": {
+            "type": "number",
+            "id": "http://jsonschema.net/automobili/0/pedaggio_autostradale",
+            "required": false
+          },
+          "percorrenza_annua": {
+            "type": "number",
+            "id": "http://jsonschema.net/automobili/0/percorrenza_annua",
+            "required": false
+          }
+        }
+      }
+    },
+    "data": {
+      "type": "string",
+      "id": "http://jsonschema.net/data",
+      "required": false
+    },
+    "famiglia": {
+      "type": "object",
+      "id": "http://jsonschema.net/famiglia",
+      "required": false,
+      "properties": {
+        "adulti": {
+          "type": "number",
+          "id": "http://jsonschema.net/famiglia/adulti",
+          "required": false
+        },
+        "bambini": {
+          "type": "number",
+          "id": "http://jsonschema.net/famiglia/bambini",
+          "required": false
+        }
+      }
+    },
+    "id": {
+      "type": "number",
+      "id": "http://jsonschema.net/id",
+      "required": false
+    },
+    "risultati": {
+      "type": "object",
+      "id": "http://jsonschema.net/risultati",
+      "required": false,
+      "properties": {
+        "costo_auto": {
+          "type": "number",
+          "id": "http://jsonschema.net/risultati/costo_auto",
+          "required": false
+        },
+        "costo_residenza": {
+          "type": "number",
+          "id": "http://jsonschema.net/risultati/costo_residenza",
+          "required": false
+        },
+        "costo_trasporto_pubblico": {
+          "type": "number",
+          "id": "http://jsonschema.net/risultati/costo_trasporto_pubblico",
+          "required": false
+        },
+        "tempo_speso": {
+          "type": "number",
+          "id": "http://jsonschema.net/risultati/tempo_speso",
+          "required": false
+        },
+        "totale": {
+          "type": "number",
+          "id": "http://jsonschema.net/risultati/totale",
+          "required": false
+        }
+      }
+    },
+    "spostamenti": {
+      "type": "array",
+      "id": "http://jsonschema.net/spostamenti",
+      "required": false,
+      "items": {
+        "type": "object",
+        "id": "http://jsonschema.net/spostamenti/0",
+        "required": false,
+        "properties": {
+          "categoria": {
+            "type": "string",
+            "id": "http://jsonschema.net/spostamenti/0/categoria",
+            "required": false
+          },
+          "distanza": {
+            "type": "number",
+            "id": "http://jsonschema.net/spostamenti/0/distanza",
+            "required": false
+          },
+          "mezzo": {
+            "type": "string",
+            "id": "http://jsonschema.net/spostamenti/0/mezzo",
+            "required": false
+          },
+          "percorrenze": {
+            "type": "number",
+            "id": "http://jsonschema.net/spostamenti/0/percorrenze",
+            "required": false
+          },
+          "tempo": {
+            "type": "number",
+            "id": "http://jsonschema.net/spostamenti/0/tempo",
+            "required": false
+          }
+        }
+      }
+    },
+    "version": {
+      "type": "number",
+      "id": "http://jsonschema.net/version",
+      "required": false
+    }
+  }
+}
