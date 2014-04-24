@@ -54,4 +54,17 @@ def comuni():
 	"""
 	return jsonify(comuni=get_comuni(g.db))
 
-
+@app.route("/zone/<comune>", methods=["GET"])
+def zone(comune):
+	"""
+		URL per ricevere la lista delle zone di un certo comune,
+		ritirna un JSON array formattato nel seguente modo
+		{
+			"zone" : [
+				{
+					"zone" : "LANTA"
+				}
+			]
+		}
+	"""
+	return jsonify(zone=get_zone(g.db, comune))

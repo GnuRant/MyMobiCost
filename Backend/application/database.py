@@ -1,4 +1,5 @@
 from pg8000 import DBAPI
+import re
 from config import DevelopmentDBConfig as DB
 
 SCHEMA = "SET search_path TO public"
@@ -51,3 +52,23 @@ def get_comuni(connection):
 		data.append({"comune" : row[0]})
 
 	return data
+
+def get_zone(connection, comune):
+	data = []
+	query = ("""SELECT DISTINCT qi_92_1_20122_zone.zona_descr
+				FROM qi_92_1_20122_zone
+				WHERE qi_92_1_20122_zone.comune_descrizione = %s""") % ('\''+comune+'\'')
+	cursor = connection.cursor()
+	cursor.execute(SCHEMA)
+	cursor.execute(query)
+
+	for row in cursor:
+		#splitto ogni stringa in modo da ottenere ogni songola zona
+		zone = re.split("-|,", row[0])
+		for zona in zone:
+			data.append({"zona" : zona})
+
+	return data
+
+
+
