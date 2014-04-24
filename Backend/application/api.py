@@ -9,12 +9,14 @@ def before_request():
 		#questa connessione
 		g.db = db_connection()
 	else:
+		#in caso di errore salvo un oggetto nullo
 		g.db = None
 
 @app.after_request
 def after_request(response):
+	#controllo che la connessione sia stata creata con successo
    	if g.db is not None:
-   		#una volta terminata la la richiesta chiudo la connessione con il DB
+   		#una volta terminata la richiesta chiudo la connessione con il DB
    		g.db.close()
 
 	return response
@@ -27,7 +29,7 @@ def status():
 	Ritorna una JSON contentente le infromazioni sullo
 	stato del server e della connessione con il DB
 	{
-		"server" : "OK",
+		"server" : "true",
 		"database" : "true|false"	
 	}
 	"""
