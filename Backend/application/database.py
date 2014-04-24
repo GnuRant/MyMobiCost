@@ -54,6 +54,10 @@ def get_comuni(connection):
 	return data
 
 def get_zone(connection, comune):
+	"""
+		Metodo che ritorna del DB la lista di tutte le zone per un 
+		determinato comune
+	"""
 	data = []
 	query = ("""SELECT DISTINCT qi_92_1_20122_zone.zona_descr
 				FROM qi_92_1_20122_zone
