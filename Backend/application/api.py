@@ -4,7 +4,7 @@ from database import *
 
 @app.before_request
 def before_request():
-	if db_status == True:
+	if db_status() == True:
 		#salvo in g (variabile interna di flask) l'istanza del db per
 		#questa connessione
 		g.db = db_connection()
@@ -40,4 +40,18 @@ def status():
 
 	return jsonify(status=data)
 
-	
+@app.route("/comuni", methods=["GET"])
+def comuni():
+	"""
+		URL per ricavare dal DB la lista dei comuni disponibili,
+		ritorna un JSON array formattato nel seguente modo
+		{"comuni" :[
+				{
+					"comune" : "BELLUNO"		
+				}
+			]
+		}
+	"""
+	return jsonify(comuni=get_comuni(g.db))
+
+
