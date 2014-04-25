@@ -70,6 +70,8 @@ def get_zone(connection, comune):
 		#splitto ogni stringa in modo da ottenere ogni songola zona
 		zone = re.split("-|,", row[0])
 		for zona in zone:
+			#elimino gli spazi bianchi
+			zona = zona.replace(" ", "")
 			data.append({"zona" : zona, "code" : row[1]})
 
 	return data
