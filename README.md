@@ -5,14 +5,14 @@ Calcola il costo della vita nella provincia di Belluno
 # Backend
 
 ###Installazione pip
-```
+```bash
   curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py > get-pip.py
 ```
-```
+```bash
   python  get-pip.py
 ```
 ###Installazione flask e pg8000
-```
+```bash
   pip install Flask
   pip install pg8000
 ```
@@ -32,7 +32,7 @@ http://0.0.0.0:5000/status
 http://nomeserver.it:5000/abitazione/comuni
 ```
 ####Esempio risultato:
-```
+```json
 {
   "comuni": [
     {
@@ -47,7 +47,7 @@ http://nomeserver.it:5000/abitazione/comuni
 http://nomeserver.it:5000/abitazione/zone/comune=<comune>
 ```
 ####Esempio risultato:
-```
+```json
 {
   "zone": [
     {
@@ -63,7 +63,7 @@ http://nomeserver.it:5000/abitazione/zone/comune=<comune>
 http://nomeserver.it:5000/abitazione/tipologie/comune=<comune>&zona=<zona>
 ```
 ####Esempio risultato:
-```
+```json
 {
   "tipologie": [
     {
