@@ -72,3 +72,20 @@ http://nomeserver.it:5000/abitazione/tipologie/comune=<comune>&zona=<zona>
   ]
 }
 ```
+
+###Ottenere il costo di una tipologia edilizia di un zona di un comune 
+```
+http://nomeserver:5000/abitazione/costi/comune=<comune>&zona=<zona>&tipologia=<tipologia>
+```
+####Esempio risultato:
+```json
+{
+  "costi": [
+    {
+      "cost_max": 7.0,
+      "cost_med": 5.75,
+      "cost_min": 4.5
+    }
+  ]
+}
+```
