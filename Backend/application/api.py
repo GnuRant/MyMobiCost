@@ -72,9 +72,39 @@ def zone(comune):
 
 @app.route("/abitazione/tipologie/comune=<comune>&zona=<zona>", methods=["GET"])
 def tipologie(comune, zona):
+	"""
+		URL per rivecere la lista delle tipologie edeilizie di uno specifico
+		comune di una specifica zona, ritorna yn JSON array formattato nel
+		sequente modo
+		{
+			"tipologie"	: [
+    				{
+      					"code": "20", 
+      					"tipologia": "Abitazioni civili"
+    				}
+    		]
+    	}
+
+	"""
 	return jsonify(tipologie=get_tipologie(g.db,comune, zona))
 
 
 @app.route("/abitazione/costi/comune=<comune>&zona=<zona>&tipologia=<tipologia>", methods=["GET"])
 def costi(comune, zona, tipologia):
+	"""
+		URL per ricevere i costi minimi, massimo, medi di una categoria edilizia
+		in una certa zona in un certo comune, restituisce un JSON formattato nel 
+		seguente modo
+		{
+ 			"costi": [
+    			{
+     			 "cost_max": 7.0, 
+      			 "cost_med": 5.75, 
+      			 "cost_min": 4.5
+    			}
+  			]
+		}
+	"""
 	return jsonify(costi=get_costi(g.db, comune, zona, tipologia))
+
+

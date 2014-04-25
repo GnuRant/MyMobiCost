@@ -104,6 +104,6 @@ def get_costi(connection, comune, zona, tipologia):
 	for row in cursor:
 		data.append({"cost_min": row[0], 
 					 "cost_max": row[1], 
-					 "cost_med":row[2]})
+					 "cost_med": row[2]})
 
 	return data
