@@ -73,3 +73,8 @@ def zone(comune):
 @app.route("/abitazione/tipologie/comune=<comune>&zona=<zona>", methods=["GET"])
 def tipologie(comune, zona):
 	return jsonify(tipologie=get_tipologie(g.db,comune, zona))
+
+
+@app.route("/abitazione/costi/comune=<comune>&zona=<zona>&tipologia=<tipologia>", methods=["GET"])
+def costi(comune, zona, tipologia):
+	return jsonify(costi=get_costi(g.db, comune, zona, tipologia))
