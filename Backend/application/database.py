@@ -61,10 +61,10 @@ def get_abitazione_zone(connection, comune):
 	data = []
 	query = ("""SELECT qi_92_1_20122_zone.zona_descr, qi_92_1_20122_zone.zona
 				FROM qi_92_1_20122_zone
-				WHERE qi_92_1_20122_zone.comune_descrizione = %s""") % ('\''+comune+'\'')
+				WHERE qi_92_1_20122_zone.comune_descrizione = %s""")
 	cursor = connection.cursor()
 	cursor.execute(SCHEMA)
-	cursor.execute(query)
+	cursor.execute(query,[comune])
 
 	for row in cursor:
 		#splitto ogni stringa in modo da ottenere ogni songola zona
@@ -83,10 +83,10 @@ def get_abitazione_tipologie(connection, comune, zona):
 				FROM qi_92_1_20122_valori
 				WHERE qi_92_1_20122_valori.comune_descrizione = %s AND 
 				qi_92_1_20122_valori.zona = %s AND
-				qi_92_1_20122_valori.cod_tip in ('1', '19', '20', '21', '22') """) % ('\''+comune+'\'', '\''+zona+'\'')
+				qi_92_1_20122_valori.cod_tip in ('1', '19', '20', '21', '22') """)
 	cursor = connection.cursor()
 	cursor.execute(SCHEMA)
-	cursor.execute(query)
+	cursor.execute(query, [comune, zona])
 
 	for row in cursor:
 		data.append({"tipologia": row[0], "code": row[1]})
@@ -102,17 +102,21 @@ def get_abitazione_costi(connection, comune, zona, tipologia):
 					FROM qi_92_1_20122_valori
 					WHERE qi_92_1_20122_valori.comune_descrizione = %s AND 
 					qi_92_1_20122_valori.zona = %s AND 
-					qi_92_1_20122_valori.cod_tip = %s""") % ('\''+comune+'\'', '\''+zona+'\'', '\''+tipologia+'\'')
+					qi_92_1_20122_valori.cod_tip = %s""") 
 	else:
 		query = ("""SELECT AVG(qi_92_1_20122_valori.loc_min), 
 						   AVG(qi_92_1_20122_valori.loc_max)
 					FROM qi_92_1_20122_valori
 					WHERE qi_92_1_20122_valori.comune_descrizione = %s AND 
-						  qi_92_1_20122_valori.cod_tip in ('1', '19', '20', '21', '22')""") % ('\''+comune+'\'')
+						  qi_92_1_20122_valori.cod_tip in ('1', '19', '20', '21', '22')""")
 
 	cursor = connection.cursor()
 	cursor.execute(SCHEMA)
-	cursor.execute(query)
+	if zona is not None and tipologia is not None:
+		cursor.execute(query, [comune, zona, tipologia])
+	else:
+		cursor.execute(query, [comune])
+		
 	for row in cursor:
 		data.append({"cost_min": row[0], 
 					 "cost_max": row[1], 
@@ -138,11 +142,11 @@ def get_auto_alimentazioni(connection, categoria):
 	data = []
 	query = ("""SELECT DISTINCT costi_auto.alimentazione
 				FROM costi_auto
-				WHERE costi_auto.cl_auto = %s""") % '\''+categoria+'\''
+				WHERE costi_auto.cl_auto = %s""")
 
 	cursor = connection.cursor()
 	cursor.execute(SCHEMA)
-	cursor.execute(query)
+	cursor.execute(query, [categoria])
 
 	for row in cursor:
 		data.append({"alimentazioni" : row[0]})
@@ -156,11 +160,11 @@ def get_auto_costi(connection, categoria, alimentazione):
        				   AVG(costi_auto.fissi_altro::numeric::float8) 
 				FROM costi_auto
 				WHERE costi_auto.cl_auto = %s AND 
-				costi_auto.alimentazione = %s """) % ('\''+categoria+'\'', '\''+alimentazione+'\'')
+				costi_auto.alimentazione = %s """)
 
 	cursor = connection.cursor()
 	cursor.execute(SCHEMA)
-	cursor.execute(query)
+	cursor.execute(query, [categoria, alimentazione])
 
 	for row in cursor:
 		data.append({"costo_km" : row[0],
