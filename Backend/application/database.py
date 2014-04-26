@@ -68,7 +68,8 @@ def get_zone(connection, comune):
 
 	for row in cursor:
 		#splitto ogni stringa in modo da ottenere ogni songola zona
-		zone = re.split("-|,", row[0])
+		zone = re.compile("[^\w.\s]").split(row[0])
+		#zone = re.split("-|,", row[0])
 		for zona in zone:
 			#elimino gli spazi bianchi
 			zona = zona.replace(" ", "")
