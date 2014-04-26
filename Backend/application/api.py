@@ -90,7 +90,7 @@ def tipologie(comune, zona):
 
 @app.route("/abitazione/costi/comune=<comune>", methods=["GET"])
 @app.route("/abitazione/costi/comune=<comune>&zona=<zona>&tipologia=<tipologia>", methods=["GET"])
-def costi(comune, zona = "", tipologia = ""):
+def costi(comune, zona = None, tipologia = None):
 	"""
 		URL per ricevere i costi minimi, massimo, medi di una categoria edilizia
 		in una certa zona in un certo comune, restituisce un JSON formattato nel 

@@ -96,7 +96,7 @@ def get_tipologie(connection, comune, zona):
 def get_costi(connection, comune, zona, tipologia):
 	data = []
 	query = ""
-	if zona != "" and tipologia != "":
+	if zona is not None and tipologia is not None:
 		query = ("""SELECT qi_92_1_20122_valori.loc_min, 
 						   qi_92_1_20122_valori.loc_max
 					FROM qi_92_1_20122_valori
