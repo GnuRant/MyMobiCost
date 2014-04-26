@@ -72,8 +72,7 @@ def get_zone(connection, comune):
 		#zone = re.split("-|,", row[0])
 		for zona in zone:
 			#elimino gli spazi bianchi
-			zona = zona.replace(" ", "")
-
+			zona = zona.lstrip(" ").rstrip(" ")
 			data.append({"zona" : zona, "code" : row[1]})
 
 	return data
