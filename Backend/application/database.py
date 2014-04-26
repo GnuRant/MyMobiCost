@@ -72,6 +72,7 @@ def get_zone(connection, comune):
 		for zona in zone:
 			#elimino gli spazi bianchi
 			zona = zona.replace(" ", "")
+
 			data.append({"zona" : zona, "code" : row[1]})
 
 	return data
@@ -81,7 +82,8 @@ def get_tipologie(connection, comune, zona):
 	query = ("""SELECT qi_92_1_20122_valori.descr_tipologia, qi_92_1_20122_valori.cod_tip
 				FROM qi_92_1_20122_valori
 				WHERE qi_92_1_20122_valori.comune_descrizione = %s AND 
-				qi_92_1_20122_valori.zona = %s """) % ('\''+comune+'\'', '\''+zona+'\'')
+				qi_92_1_20122_valori.zona = %s AND
+				qi_92_1_20122_valori.cod_tip in ('1', '19', '20', '21', '22') """) % ('\''+comune+'\'', '\''+zona+'\'')
 	cursor = connection.cursor()
 	cursor.execute(SCHEMA)
 	cursor.execute(query)
