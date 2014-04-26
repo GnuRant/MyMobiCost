@@ -119,3 +119,32 @@ def get_costi(connection, comune, zona, tipologia):
 					 "cost_med": (row[0]+row[1])/2})
 
 	return data
+
+def get_categorie(connection):
+	data = []
+	query = ("""SELECT DISTINCT costi_auto.cl_auto
+				FROM costi_auto """)
+
+	cursor = connection.cursor()
+	cursor.execute(SCHEMA)
+	cursor.execute(query)
+
+	for row in cursor:
+		data.append({"classe" : row[0]})
+
+	return data
+
+def get_alimentazioni(connection, categoria):
+	data = []
+	query = ("""SELECT DISTINCT costi_auto.alimentazione
+				FROM costi_auto
+				WHERE costi_auto.cl_auto = %s""") % '\''+categoria+'\''
+
+	cursor = connection.cursor()
+	cursor.execute(SCHEMA)
+	cursor.execute(query)
+
+	for row in cursor:
+		data.append({"alimentazioni" : row[0]})
+
+	return data

@@ -107,4 +107,11 @@ def costi(comune, zona = None, tipologia = None):
 	"""
 	return jsonify(costi=get_costi(g.db, comune, zona, tipologia))
 
+@app.route("/auto/categorie", methods=["GET"])
+def categorie():
+	return jsonify(categorie=get_categorie(g.db))
+
+@app.route("/auto/alimentazione/categoria=<categoria>", methods=["GET"])
+def alimentazioni(categoria):
+	return jsonify(categorie=get_alimentazioni(g.db, categoria))
 
