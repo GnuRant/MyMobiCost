@@ -95,19 +95,27 @@ def get_tipologie(connection, comune, zona):
 
 def get_costi(connection, comune, zona, tipologia):
 	data = []
-	query = ("""SELECT qi_92_1_20122_valori.loc_min, 
-					   qi_92_1_20122_valori.loc_max, 
-					   qi_92_1_20122_valori.loc_med
-				FROM qi_92_1_20122_valori
-				WHERE qi_92_1_20122_valori.comune_descrizione = %s AND 
-				qi_92_1_20122_valori.zona = %s AND 
-				qi_92_1_20122_valori.cod_tip = %s""") % ('\''+comune+'\'', '\''+zona+'\'', '\''+tipologia+'\'')
+	query = ""
+	if zona != "" and tipologia != "":
+		query = ("""SELECT qi_92_1_20122_valori.loc_min, 
+						   qi_92_1_20122_valori.loc_max
+					FROM qi_92_1_20122_valori
+					WHERE qi_92_1_20122_valori.comune_descrizione = %s AND 
+					qi_92_1_20122_valori.zona = %s AND 
+					qi_92_1_20122_valori.cod_tip = %s""") % ('\''+comune+'\'', '\''+zona+'\'', '\''+tipologia+'\'')
+	else:
+		query = ("""SELECT AVG(qi_92_1_20122_valori.loc_min), 
+						   AVG(qi_92_1_20122_valori.loc_max)
+					FROM qi_92_1_20122_valori
+					WHERE qi_92_1_20122_valori.comune_descrizione = %s AND 
+						  qi_92_1_20122_valori.cod_tip in ('1', '19', '20', '21', '22')""") % ('\''+comune+'\'')
+
 	cursor = connection.cursor()
 	cursor.execute(SCHEMA)
 	cursor.execute(query)
 	for row in cursor:
 		data.append({"cost_min": row[0], 
 					 "cost_max": row[1], 
-					 "cost_med": row[2]})
+					 "cost_med": (row[0]+row[1])/2})
 
 	return data
