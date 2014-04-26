@@ -36,7 +36,7 @@ def db_status():
 		connection.close()
 		return True
 
-def get_comuni(connection):
+def get_abitazione_comuni(connection):
 	"""
 		Metodo che ricava dal DB la lista dei comuni disponibili
 	"""
@@ -53,7 +53,7 @@ def get_comuni(connection):
 
 	return data
 
-def get_zone(connection, comune):
+def get_abitazione_zone(connection, comune):
 	"""
 		Metodo che ritorna del DB la lista di tutte le zone per un 
 		determinato comune
@@ -77,7 +77,7 @@ def get_zone(connection, comune):
 
 	return data
 
-def get_tipologie(connection, comune, zona):
+def get_abitazione_tipologie(connection, comune, zona):
 	data = []
 	query = ("""SELECT qi_92_1_20122_valori.descr_tipologia, qi_92_1_20122_valori.cod_tip
 				FROM qi_92_1_20122_valori
@@ -93,7 +93,7 @@ def get_tipologie(connection, comune, zona):
 
 	return data
 
-def get_costi(connection, comune, zona, tipologia):
+def get_abitazione_costi(connection, comune, zona, tipologia):
 	data = []
 	query = ""
 	if zona is not None and tipologia is not None:
@@ -120,7 +120,7 @@ def get_costi(connection, comune, zona, tipologia):
 
 	return data
 
-def get_categorie(connection):
+def get_auto_categorie(connection):
 	data = []
 	query = ("""SELECT DISTINCT costi_auto.cl_auto
 				FROM costi_auto """)
@@ -134,7 +134,7 @@ def get_categorie(connection):
 
 	return data
 
-def get_alimentazioni(connection, categoria):
+def get_auto_alimentazioni(connection, categoria):
 	data = []
 	query = ("""SELECT DISTINCT costi_auto.alimentazione
 				FROM costi_auto
@@ -146,5 +146,25 @@ def get_alimentazioni(connection, categoria):
 
 	for row in cursor:
 		data.append({"alimentazioni" : row[0]})
+
+	return data
+
+def get_auto_costi(connection, categoria, alimentazione):
+	data = []
+	query = ("""SELECT AVG(costi_auto.km_cost::numeric::float8), 
+       				   AVG(costi_auto.fissi_ass::numeric::float8), 
+       				   AVG(costi_auto.fissi_altro::numeric::float8) 
+				FROM costi_auto
+				WHERE costi_auto.cl_auto = %s AND 
+				costi_auto.alimentazione = %s """) % ('\''+categoria+'\'', '\''+alimentazione+'\'')
+
+	cursor = connection.cursor()
+	cursor.execute(SCHEMA)
+	cursor.execute(query)
+
+	for row in cursor:
+		data.append({"costo_km" : row[0],
+					 "assicurazione" : row[1],
+					 "costo_fisso_altro" : row[2]})
 
 	return data

@@ -41,7 +41,7 @@ def status():
 	return jsonify(status=data)
 
 @app.route("/abitazione/comuni", methods=["GET"])
-def comuni():
+def abitazione_comuni():
 	"""
 		URL per ricavare dal DB la lista dei comuni disponibili,
 		ritorna un JSON array formattato nel seguente modo
@@ -52,10 +52,10 @@ def comuni():
 			]
 		}
 	"""
-	return jsonify(comuni=get_comuni(g.db))
+	return jsonify(comuni=get_abitazione_comuni(g.db))
 
 @app.route("/abitazione/zone/comune=<comune>", methods=["GET"])
-def zone(comune):
+def abitazione_zone(comune):
 	"""
 		URL per ricevere la lista delle zone di un certo comune,
 		ritirna un JSON array formattato nel seguente modo
@@ -68,10 +68,10 @@ def zone(comune):
 			]
 		}
 	"""
-	return jsonify(zone=get_zone(g.db, comune))
+	return jsonify(zone=get_abitazione_zone(g.db, comune))
 
 @app.route("/abitazione/tipologie/comune=<comune>&zona=<zona>", methods=["GET"])
-def tipologie(comune, zona):
+def abitazione_tipologie(comune, zona):
 	"""
 		URL per rivecere la lista delle tipologie edeilizie di uno specifico
 		comune di una specifica zona, ritorna yn JSON array formattato nel
@@ -86,11 +86,11 @@ def tipologie(comune, zona):
     	}
 
 	"""
-	return jsonify(tipologie=get_tipologie(g.db,comune, zona))
+	return jsonify(tipologie=get_abitazione_tipologie(g.db,comune, zona))
 
 @app.route("/abitazione/costi/comune=<comune>", methods=["GET"])
 @app.route("/abitazione/costi/comune=<comune>&zona=<zona>&tipologia=<tipologia>", methods=["GET"])
-def costi(comune, zona = None, tipologia = None):
+def abitazione_costi(comune, zona = None, tipologia = None):
 	"""
 		URL per ricevere i costi minimi, massimo, medi di una categoria edilizia
 		in una certa zona in un certo comune, restituisce un JSON formattato nel 
@@ -105,13 +105,17 @@ def costi(comune, zona = None, tipologia = None):
   			]
 		}
 	"""
-	return jsonify(costi=get_costi(g.db, comune, zona, tipologia))
+	return jsonify(costi=get_abitazione_costi(g.db, comune, zona, tipologia))
 
 @app.route("/auto/categorie", methods=["GET"])
-def categorie():
-	return jsonify(categorie=get_categorie(g.db))
+def auto_categorie():
+	return jsonify(categorie=get_auto_categorie(g.db))
 
 @app.route("/auto/alimentazione/categoria=<categoria>", methods=["GET"])
-def alimentazioni(categoria):
-	return jsonify(categorie=get_alimentazioni(g.db, categoria))
+def auto_alimentazioni(categoria):
+	return jsonify(categorie=get_auto_alimentazioni(g.db, categoria))
+
+@app.route("/auto/costi/categoria=<categoria>&alimentazione=<alimentazione>")
+def auto_costi(categoria, alimentazione):
+	return jsonify(costi=get_auto_costi(g.db, categoria, alimentazione))
 
