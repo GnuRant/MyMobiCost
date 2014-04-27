@@ -11,20 +11,23 @@
     "comune": "Sedico",
     "zona_abitativa": "centro",
     "categoria_edilizia": "appartamento",
+    "grandezza": 123,
     "costo_min": 12,
     "costo_max": 123,
     "costo": 123
   },
   "automobili": [
     {
+      "id_auto" : 1,
       "auto_nome": "Giulietta",
       "classe": "Berlina",
       "alimentazione": "Benzina",
-      "costo_ACI": 123,
       "percorrenza_annua": 123,
       "abbonamento_parcheggio": 123,
       "pedaggio_autostradale": 123,
-      "assicurazione": 123
+      "assicurazione": 123,
+      "costo_km" : 123,
+      "costo_fisso" : 123,
     }
   ],
   "abbonamenti": [
@@ -36,11 +39,13 @@
   ],
   "spostamenti": [
     {
-      "categoria": "Lavoro",
-      "percorrenze": 123,
+      "motivo": "Lavoro",
+      "descrizione": "descrizione spostamento",
       "distanza": 123,
       "tempo": 1,
-      "mezzo": "Giulietta"
+      "percorrenze": 12,
+      "id_auto" : 1
+      "mezzo" : "Giulietta"
     }
   ],
   "risultati": {
