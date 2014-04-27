@@ -24,3 +24,5 @@ Calcola il costo della vita nella provincia di Belluno
 ```
 http://0.0.0.0:5000/status
 ```
+
+##[API](https://github.com/GnuRant/MyMobiCost/wiki)
