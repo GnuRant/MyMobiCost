@@ -11,6 +11,7 @@ def before_request():
 	else:
 		#in caso di errore salvo un oggetto nullo
 		g.db = None
+		return status()
 
 @app.after_request
 def after_request(response):
