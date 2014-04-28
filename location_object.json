@@ -18,7 +18,7 @@
   },
   "automobili": [
     {
-      "id_auto" : 1,
+      "id_auto": 1,
       "auto_nome": "Giulietta",
       "classe": "Berlina",
       "alimentazione": "Benzina",
@@ -26,8 +26,8 @@
       "abbonamento_parcheggio": 123,
       "pedaggio_autostradale": 123,
       "assicurazione": 123,
-      "costo_km" : 123,
-      "costo_fisso" : 123,
+      "costo_km": 123,
+      "costo_fisso": 123
     }
   ],
   "abbonamenti": [
@@ -44,8 +44,8 @@
       "distanza": 123,
       "tempo": 1,
       "percorrenze": 12,
-      "id_auto" : 1
-      "mezzo" : "Giulietta"
+      "id_auto": 1,
+      "mezzo": "Giulietta"
     }
   ],
   "risultati": {

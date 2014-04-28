@@ -9,8 +9,9 @@ def before_request():
 		#questa connessione
 		g.db = db_connection()
 	else:
-		#in caso di errore salvo un oggetto nullo
+		#in caso errore salvo un oggetto nullo
 		g.db = None
+		#ritono la pagina con lo stato del sistema al posto di quella chiamata
 		return status()
 
 @app.after_request
