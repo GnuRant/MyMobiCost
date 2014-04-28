@@ -112,23 +112,70 @@ def abitazione_costi(comune, zona = None, tipologia = None):
 
 @app.route("/auto/categorie", methods=["GET"])
 def auto_categorie():
+	"""
+		URL che restituisce tutte le categorie di autovetture presenti 
+		all'interno del DB, restituisce un JSON fromattato nel seguente modo:
+		{
+  			"categorie": [
+    			{
+      				"classe": "berlina"
+    			}, 
+    			{
+      				"classe": "utilitaria"
+    			}
+  			]
+		}
+
+	"""
 	return jsonify(categorie=get_auto_categorie(g.db))
 
 @app.route("/auto/alimentazione/categoria=<categoria>", methods=["GET"])
 def auto_alimentazioni(categoria):
+	"""
+		URL che restituisce data una categoria di auto tutte le alimentazioni 
+		diponibili (per quella categoria), la risposta e formatta nel seguente 
+		modo:
+		{
+		  "categorie": [
+		    {
+		      "alimentazioni": "diesel"
+		    },
+		    {
+		      "alimentazioni": "benzina"
+		    }
+		  ]
+		}
+
+	"""
 	return jsonify(categorie=get_auto_alimentazioni(g.db, categoria))
 
 @app.route("/auto/costi/categoria=<categoria>&alimentazione=<alimentazione>")
 def auto_costi(categoria, alimentazione):
+	"""
+		URL che restituisce data una categoria ed un alimentazione, tutti i dati
+		di costo legati a quel tipo di alimentazione, risposta formattata come segue:
+		{
+		  "costi": [
+		    {
+		      "assicurazione": 2554.0,
+		      "costo_fisso_altro": 0.125,
+		      "costo_km": 0.10500000000000001
+		    }
+		  ]
+		}		
+	"""
 	return jsonify(costi=get_auto_costi(g.db, categoria, alimentazione))
 
 @app.route("/calcolocosti", methods=["POST"])
 def calcolo_costi():
 	return_json = json.loads(request.data)
 	data = return_json["data"]
-	#esempio di output
-	return "%i" % data["famiglia"]["bambini"]
+	return "Test"
 
+def trova_auto_id(list, id):
+	for auto in list:
+		if auto["id_auto"] == id:
+			return auto
 
 
 
