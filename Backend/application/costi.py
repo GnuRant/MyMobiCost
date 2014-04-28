@@ -1,3 +1,5 @@
+import datetime
+
 def calcolo_abitazione_costi(data):
 	#il dato puo' essere quello inserito dall'utente come
 	#costo dell'affitto, o quello calcolato come costo m^2*numero_m^2
@@ -57,17 +59,27 @@ def calcolo_spostamento_mezzi_costi(data):
 	abbonamenti = data["abbonamenti"]
 	#prendo tutti gli abbomanti e calcolo in costo portando il dato in forma mensile
 	for abbonamento in abbonamenti:
-		if abbonamento == "mensile":
+		if abbonamento["tipo"] == "mensile":
 			costo += abbonamento["costo"]
-		elif abbonamento == "settimanale":
-			costo += abbonamento["costo"]*4
-		elif abbonamento == "semestrale":
-			costo += abbonamento["costo"]/6
-		elif abbonamento == "annumale":
-			costo += abbonamento["costo"]/12
+		elif abbonamento["tipo"] == "settimanale":
+			costo += abbonamento["costo"]*4.0
+		elif abbonamento["tipo"] == "semestrale":
+			costo += abbonamento["costo"]/6.0
+		elif abbonamento["tipo"] == "annuale":
+			costo += abbonamento["costo"]/12.0
 
 	return costo
 
+def calcolo_tempo_spostamenti(data):
+	spostamenti = data["spostamenti"]
+	tempo  = 0
+	#prendo tutti gli spostamenti, visto che il tempo e'
+	#di solo andata lo mpltiplico per 2
+	for spostamento in spostamenti:
+		#calcolo in minuti
+		tempo += 4*(2*spostamento["tempo"]*spostamento["percorrenze"])
+	#converto nel formato hh:mm
+	return str(datetime.timedelta(minutes=tempo))
 
 
 

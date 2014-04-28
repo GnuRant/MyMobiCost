@@ -169,15 +169,16 @@ def auto_costi(categoria, alimentazione):
 
 @app.route("/calcolocosti", methods=["POST"])
 def calcolo_costi():
-	return_json = json.loads(request.data)
-	data = return_json["data"]
-	return "Test"
+	request_json = json.loads(request.data)
+	data = request_json["data"]
+	return_data = {}
+	#calcolo e aggiungo i dati al json di ritorno
+	return_data["costo_residenza"] = calcolo_abitazione_costi(data)
+	#aggiungo il costo legato all'auto
+	return_data["costo_auto"] = calcolo_spostamenti_auto_costi(data)
+	#aggiungo i costi legati al trasporto pubblico
+	return_data["costo_trasporto_pubblico"] = calcolo_spostamento_mezzi_costi(data)	
+	#aggiungo il tempo legato a tutti gli spostamenti
+	return_data["tempo_speso"] = calcolo_tempo_spostamenti(data)
 
-def trova_auto_id(list, id):
-	for auto in list:
-		if auto["id_auto"] == id:
-			return auto
-
-
-
-
+	return jsonify(risultati=return_data)
