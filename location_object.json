@@ -12,10 +12,10 @@
       "comune": "Sedico",
       "zona_abitativa": "centro",
       "categoria_edilizia": "appartamento",
-      "grandezza": 123,
-      "costo_min": 12,
-      "costo_max": 123,
-      "costo": 123
+      "grandezza": 0,
+      "costo_min": 0,
+      "costo_max": 0,
+      "costo": 600
     },
     "automobili": [
       {
@@ -34,27 +34,27 @@
     "abbonamenti": [
       {
         "abbonamento_nome": "AutoBus",
-        "tipo": "Annuale",
-        "costo": 123
+        "tipo": "annuale",
+        "costo": 200
       }
     ],
     "spostamenti": [
       {
         "motivo": "Lavoro",
         "descrizione": "descrizione spostamento",
-        "distanza": 123,
-        "tempo": 1,
-        "percorrenze": 12,
+        "distanza": 20,
+        "tempo": 20,
+        "percorrenze": 5,
         "id_auto": 1,
         "mezzo": "Giulietta"
       }
     ],
     "risultati": {
-      "costo_residenza": 123,
-      "costo_auto": 123,
-      "costo_trasporto_pubblico": 123,
-      "tempo_speso": 123,
-      "totale": 1234
+      "costo_residenza": 0,
+      "costo_auto": 0,
+      "costo_trasporto_pubblico": 0,
+      "tempo_speso": 0,
+      "totale": 0
     }
   }
 }

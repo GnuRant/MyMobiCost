@@ -1,12 +1,12 @@
 def calcolo_abitazione_costi(data):
-	#il dato può essere quello inserito dall'utente come
+	#il dato puo' essere quello inserito dall'utente come
 	#costo dell'affitto, o quello calcolato come costo m^2*numero_m^2
 	return data["abitazione"]["costo"]
 
 def calcolo_spostamenti_auto_costi(data):
 	costo = 0
 	automobili = data["automobili"]
-	#itero tu tutte su tutti gli spostamenti, se è uno spostamento effettuato
+	#itero tu tutte su tutti gli spostamenti, se e' uno spostamento effettuato
 	#con l'auto allora calcolo il suo costo, altrimenti non lo considero
 	spostamenti = data["spostamenti"]
 	for spostamento in spostamenti:
@@ -20,7 +20,7 @@ def calcolo_spostamenti_auto_costi(data):
 	#aggiungo il costo legato alle assicurazioni, mensile
 	costo += calcola_assicurazione_costo(automobili)
 	#aggiungo i costi acessori (parcheggio, autostrada su base mensile)
-	costo + = calcolo_costi_acessori_costo(automobili)
+	costo += calcolo_costi_acessori_costo(automobili)
 	return costo
 
 def calcola_assicurazione_costo(automobili):
@@ -57,13 +57,13 @@ def calcolo_spostamento_mezzi_costi(data):
 	abbonamenti = data["abbonamenti"]
 	#prendo tutti gli abbomanti e calcolo in costo portando il dato in forma mensile
 	for abbonamento in abbonamenti:
-		if abbonamento == "mensile"
+		if abbonamento == "mensile":
 			costo += abbonamento["costo"]
-		else if abbonamento == "settimanale":
+		elif abbonamento == "settimanale":
 			costo += abbonamento["costo"]*4
-		else if abbonamento == "semestrale":
+		elif abbonamento == "semestrale":
 			costo += abbonamento["costo"]/6
-		else if abbonamento == "annumale":
+		elif abbonamento == "annumale":
 			costo += abbonamento["costo"]/12
 
 	return costo
