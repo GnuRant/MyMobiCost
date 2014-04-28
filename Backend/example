@@ -1,0 +1,59 @@
+{
+  "data": {
+    "abbonamenti": [
+      {
+        "abbonamento_nome": "AutoBus", 
+        "costo": 200, 
+        "tipo": "annuale"
+      }
+    ], 
+    "abitazione": {
+      "categoria_edilizia": "appartamento", 
+      "comune": "Sedico", 
+      "costo": 600, 
+      "costo_max": 0, 
+      "costo_min": 0, 
+      "grandezza": 0, 
+      "provincia": "BL", 
+      "zona_abitativa": "centro"
+    }, 
+    "automobili": [
+      {
+        "abbonamento_parcheggio": 235, 
+        "alimentazione": "Benzina", 
+        "assicurazione": 634, 
+        "auto_nome": "Giulietta", 
+        "classe": "Berlina", 
+        "costo_fisso": 0.12, 
+        "costo_km": 0.12, 
+        "id_auto": 1, 
+        "pedaggio_autostradale": 100, 
+        "percorrenza_annua": 20000
+      }
+    ], 
+    "data": "21/07/2014", 
+    "famiglia": {
+      "adulti": 2, 
+      "bambini": 2
+    }, 
+    "id": 12345, 
+    "risultati": {
+      "costo_auto": 175.0, 
+      "costo_residenza": 600, 
+      "costo_trasporto_pubblico": 16.666666666666668, 
+      "tempo_speso": "13:20:00"
+    }, 
+    "spostamenti": [
+      {
+        "descrizione": "descrizione spostamento", 
+        "distanza": 20, 
+        "id_auto": 1, 
+        "mezzo": "Giulietta", 
+        "motivo": "Lavoro", 
+        "percorrenze": 5, 
+        "tempo": 20
+      }
+    ], 
+    "version": 0.1
+  }
+}
