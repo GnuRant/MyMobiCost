@@ -1,6 +1,7 @@
 from flask import jsonify, g, request
 from application import app
 from database import *
+import json
 
 @app.before_request
 def before_request():
@@ -120,4 +121,15 @@ def auto_alimentazioni(categoria):
 @app.route("/auto/costi/categoria=<categoria>&alimentazione=<alimentazione>")
 def auto_costi(categoria, alimentazione):
 	return jsonify(costi=get_auto_costi(g.db, categoria, alimentazione))
+
+@app.route("/calcolocosti", methods=["POST"])
+def calcolo_costi():
+	return_json = json.loads(request.data)
+	data = return_json["data"]
+	#esempio di output
+	return "%i" % data["famiglia"]["bambini"]
+
+
+
+
 
