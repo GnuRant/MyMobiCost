@@ -16,31 +16,22 @@ def calcolo_spostamenti_auto_costi(data):
 		if id_auto != 0:
 			auto = trova_auto_id(automobili, id_auto)
 			costo_km = auto["costo_km"]
-			#calcolo su base mensile, andata e ritorno
-			costo += 4*(2*(spostamento["distanza"]*spostamento["percorrenze"])*costo_km)
+			#calcolo su base annua
+			costo += 52*(2*(spostamento["distanza"]*spostamento["percorrenze"])*costo_km)
 
-	#aggiungo il costo legato alle assicurazioni, mensile
-	costo += calcola_assicurazione_costo(automobili)
-	#aggiungo i costi acessori (parcheggio, autostrada su base mensile)
-	costo += calcolo_costi_acessori_costo(automobili)
 	return costo
 
-def calcola_assicurazione_costo(automobili):
-	#ritorna un dato su base mensile
-	assicurazione_costo  = 0
-	for auto in automobili:
-		assicurazione_costo += auto["assicurazione"]
-
-	return assicurazione_costo/12
-
-def calcolo_costi_acessori_costo(automobili):
-	#il costo del autostrada e del parceggio su base mensile
+def calcolo_costi_acessori_costo(data):
+	#il costo del autostrada e del parceggio assicurazione e costi fissi
 	costo = 0
+	automobili = data["automobili"]
 	for auto in automobili:
 		costo += auto["abbonamento_parcheggio"]
 		costo += auto["pedaggio_autostradale"]
+		costo += auto["assicurazione"]
+		costo += auto["costo_fisso"]
 
-	return costo/12
+	return costo
 
 
 def trova_auto_id(automobili, id):
@@ -60,13 +51,13 @@ def calcolo_spostamento_mezzi_costi(data):
 	#prendo tutti gli abbomanti e calcolo in costo portando il dato in forma mensile
 	for abbonamento in abbonamenti:
 		if abbonamento["tipo"] == "mensile":
-			costo += abbonamento["costo"]
+			costo += abbonamento["costo"]*12
 		elif abbonamento["tipo"] == "settimanale":
-			costo += abbonamento["costo"]*4.0
+			costo += abbonamento["costo"]*52
 		elif abbonamento["tipo"] == "semestrale":
-			costo += abbonamento["costo"]/6.0
+			costo += abbonamento["costo"]*2
 		elif abbonamento["tipo"] == "annuale":
-			costo += abbonamento["costo"]/12.0
+			costo += abbonamento["costo"]
 
 	return costo
 
