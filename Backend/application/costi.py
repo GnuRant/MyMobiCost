@@ -73,13 +73,3 @@ def calcolo_tempo_spostamenti(data):
 		tempo += NUMERO_SETTIMANE*(2*spostamento["tempo"]*spostamento["percorrenze"])
 	#converto nel formato hh:mm
 	return str(datetime.timedelta(minutes=tempo))
-
-
-
-
-
-
-
-
-
-
