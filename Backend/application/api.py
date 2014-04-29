@@ -1,4 +1,5 @@
 from flask import jsonify, g, request
+from flask.ext.cors import cross_origin
 from application import app
 from database import *
 from costi import *
@@ -45,6 +46,7 @@ def status():
 	return jsonify(status=data)
 
 @app.route("/abitazione/comuni", methods=["GET"])
+@cross_origin()
 def abitazione_comuni():
 	"""
 		URL per ricavare dal DB la lista dei comuni disponibili,
@@ -59,6 +61,7 @@ def abitazione_comuni():
 	return jsonify(comuni=get_abitazione_comuni(g.db))
 
 @app.route("/abitazione/zone/comune=<comune>", methods=["GET"])
+@cross_origin()
 def abitazione_zone(comune):
 	"""
 		URL per ricevere la lista delle zone di un certo comune,
@@ -75,6 +78,7 @@ def abitazione_zone(comune):
 	return jsonify(zone=get_abitazione_zone(g.db, comune))
 
 @app.route("/abitazione/tipologie/comune=<comune>&zona=<zona>", methods=["GET"])
+@cross_origin()
 def abitazione_tipologie(comune, zona):
 	"""
 		URL per rivecere la lista delle tipologie edeilizie di uno specifico
@@ -94,6 +98,7 @@ def abitazione_tipologie(comune, zona):
 
 @app.route("/abitazione/costi/comune=<comune>", methods=["GET"])
 @app.route("/abitazione/costi/comune=<comune>&zona=<zona>&tipologia=<tipologia>", methods=["GET"])
+@cross_origin()
 def abitazione_costi(comune, zona = None, tipologia = None):
 	"""
 		URL per ricevere i costi minimi, massimo, medi di una categoria edilizia
@@ -112,6 +117,7 @@ def abitazione_costi(comune, zona = None, tipologia = None):
 	return jsonify(costi=get_abitazione_costi(g.db, comune, zona, tipologia))
 
 @app.route("/auto/categorie", methods=["GET"])
+@cross_origin()
 def auto_categorie():
 	"""
 		URL che restituisce tutte le categorie di autovetture presenti 
@@ -131,6 +137,7 @@ def auto_categorie():
 	return jsonify(categorie=get_auto_categorie(g.db))
 
 @app.route("/auto/alimentazione/categoria=<categoria>", methods=["GET"])
+@cross_origin()
 def auto_alimentazioni(categoria):
 	"""
 		URL che restituisce data una categoria di auto tutte le alimentazioni 
@@ -151,6 +158,7 @@ def auto_alimentazioni(categoria):
 	return jsonify(categorie=get_auto_alimentazioni(g.db, categoria))
 
 @app.route("/auto/costi/categoria=<categoria>&alimentazione=<alimentazione>")
+@cross_origin()
 def auto_costi(categoria, alimentazione):
 	"""
 		URL che restituisce data una categoria ed un alimentazione, tutti i dati
@@ -168,6 +176,7 @@ def auto_costi(categoria, alimentazione):
 	return jsonify(costi=get_auto_costi(g.db, categoria, alimentazione))
 
 @app.route("/calcolocosti", methods=["POST"])
+@cross_origin()
 def calcolo_costi():
 	request_json = json.loads(request.data)
 	data = request_json["data"]
