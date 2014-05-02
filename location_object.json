@@ -1,53 +1,60 @@
 {
-  "version": 0.1,
-  "data": "21/07/2014",
-  "id": 12345,
-  "famiglia": {
-    "bambini": 2,
-    "adulti": 2
-  },
-  "abitazione": {
-    "provincia": "BL",
-    "comune": "Sedico",
-    "zona_abitativa": "centro",
-    "categoria_edilizia": "appartamento",
-    "costo_min": 12,
-    "costo_max": 123,
-    "costo": 123
-  },
-  "automobili": [
-    {
-      "auto_nome": "Giulietta",
-      "classe": "Berlina",
-      "alimentazione": "Benzina",
-      "costo_ACI": 123,
-      "percorrenza_annua": 123,
-      "abbonamento_parcheggio": 123,
-      "pedaggio_autostradale": 123,
-      "assicurazione": 123
+  "data": {
+    "version": 0.1,
+    "data": "21/07/2014",
+    "id": 12345,
+    "famiglia": {
+      "bambini": 2,
+      "adulti": 2
+    },
+    "abitazione": {
+      "provincia": "BL",
+      "comune": "Sedico",
+      "zona_abitativa": "centro",
+      "categoria_edilizia": "appartamento",
+      "grandezza": 0,
+      "costo_min": 0,
+      "costo_max": 0,
+      "costo": 600
+    },
+    "automobili": [
+      {
+        "id_auto": 1,
+        "auto_nome": "Giulietta",
+        "classe": "Berlina",
+        "alimentazione": "Benzina",
+        "percorrenza_annua": 20000,
+        "abbonamento_parcheggio": 235,
+        "pedaggio_autostradale": 100,
+        "assicurazione": 634,
+        "costo_km": 0.12,
+        "costo_fisso": 0.12
+      }
+    ],
+    "abbonamenti": [
+      {
+        "abbonamento_nome": "AutoBus",
+        "tipo": "annuale",
+        "costo": 200
+      }
+    ],
+    "spostamenti": [
+      {
+        "motivo": "Lavoro",
+        "descrizione": "descrizione spostamento",
+        "distanza": 20,
+        "tempo": 20,
+        "percorrenze": 5,
+        "id_auto": 1,
+        "mezzo": "Giulietta"
+      }
+    ],
+    "risultati": {
+      "costo_residenza": 0,
+      "costo_auto": 0,
+      "costo_trasporto_pubblico": 0,
+      "tempo_speso": 0,
+      "totale": 0
     }
-  ],
-  "abbonamenti": [
-    {
-      "abbonamento_nome": "AutoBus",
-      "tipo": "Annuale",
-      "costo": 123
-    }
-  ],
-  "spostamenti": [
-    {
-      "categoria": "Lavoro",
-      "percorrenze": 123,
-      "distanza": 123,
-      "tempo": 1,
-      "mezzo": "Giulietta"
-    }
-  ],
-  "risultati": {
-    "costo_residenza": 123,
-    "costo_auto": 123,
-    "costo_trasporto_pubblico": 123,
-    "tempo_speso": 123,
-    "totale": 1234
   }
 }

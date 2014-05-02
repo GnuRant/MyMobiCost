@@ -36,7 +36,7 @@ def db_status():
 		connection.close()
 		return True
 
-def get_comuni(connection):
+def get_abitazione_comuni(connection):
 	"""
 		Metodo che ricava dal DB la lista dei comuni disponibili
 	"""
@@ -53,7 +53,7 @@ def get_comuni(connection):
 
 	return data
 
-def get_zone(connection, comune):
+def get_abitazione_zone(connection, comune):
 	"""
 		Metodo che ritorna del DB la lista di tutte le zone per un 
 		determinato comune
@@ -61,51 +61,114 @@ def get_zone(connection, comune):
 	data = []
 	query = ("""SELECT qi_92_1_20122_zone.zona_descr, qi_92_1_20122_zone.zona
 				FROM qi_92_1_20122_zone
-				WHERE qi_92_1_20122_zone.comune_descrizione = %s""") % ('\''+comune+'\'')
+				WHERE qi_92_1_20122_zone.comune_descrizione = %s""")
 	cursor = connection.cursor()
 	cursor.execute(SCHEMA)
-	cursor.execute(query)
+	cursor.execute(query,[comune])
 
 	for row in cursor:
 		#splitto ogni stringa in modo da ottenere ogni songola zona
-		zone = re.split("-|,", row[0])
+		zone = re.compile("[^\w.\s]").split(row[0])
+		#zone = re.split("-|,", row[0])
 		for zona in zone:
 			#elimino gli spazi bianchi
-			zona = zona.replace(" ", "")
+			zona = zona.lstrip(" ").rstrip(" ")
 			data.append({"zona" : zona, "code" : row[1]})
 
 	return data
 
-def get_tipologie(connection, comune, zona):
+def get_abitazione_tipologie(connection, comune, zona):
 	data = []
 	query = ("""SELECT qi_92_1_20122_valori.descr_tipologia, qi_92_1_20122_valori.cod_tip
 				FROM qi_92_1_20122_valori
 				WHERE qi_92_1_20122_valori.comune_descrizione = %s AND 
-				qi_92_1_20122_valori.zona = %s """) % ('\''+comune+'\'', '\''+zona+'\'')
+				qi_92_1_20122_valori.zona = %s AND
+				qi_92_1_20122_valori.cod_tip in ('1', '19', '20', '21', '22') """)
 	cursor = connection.cursor()
 	cursor.execute(SCHEMA)
-	cursor.execute(query)
+	cursor.execute(query, [comune, zona])
 
 	for row in cursor:
 		data.append({"tipologia": row[0], "code": row[1]})
 
 	return data
 
-def get_costi(connection, comune, zona, tipologia):
+def get_abitazione_costi(connection, comune, zona, tipologia):
 	data = []
-	query = ("""SELECT qi_92_1_20122_valori.loc_min, 
-					   qi_92_1_20122_valori.loc_max, 
-					   qi_92_1_20122_valori.loc_med
-				FROM qi_92_1_20122_valori
-				WHERE qi_92_1_20122_valori.comune_descrizione = %s AND 
-				qi_92_1_20122_valori.zona = %s AND 
-				qi_92_1_20122_valori.cod_tip = %s""") % ('\''+comune+'\'', '\''+zona+'\'', '\''+tipologia+'\'')
+	query = ""
+	if zona is not None and tipologia is not None:
+		query = ("""SELECT qi_92_1_20122_valori.loc_min, 
+						   qi_92_1_20122_valori.loc_max
+					FROM qi_92_1_20122_valori
+					WHERE qi_92_1_20122_valori.comune_descrizione = %s AND 
+					qi_92_1_20122_valori.zona = %s AND 
+					qi_92_1_20122_valori.cod_tip = %s""") 
+	else:
+		query = ("""SELECT AVG(qi_92_1_20122_valori.loc_min), 
+						   AVG(qi_92_1_20122_valori.loc_max)
+					FROM qi_92_1_20122_valori
+					WHERE qi_92_1_20122_valori.comune_descrizione = %s AND 
+						  qi_92_1_20122_valori.cod_tip in ('1', '19', '20', '21', '22')""")
+
 	cursor = connection.cursor()
 	cursor.execute(SCHEMA)
-	cursor.execute(query)
+	if zona is not None and tipologia is not None:
+		cursor.execute(query, [comune, zona, tipologia])
+	else:
+		cursor.execute(query, [comune])
+		
 	for row in cursor:
 		data.append({"cost_min": row[0], 
 					 "cost_max": row[1], 
-					 "cost_med": row[2]})
+					 "cost_med": (row[0]+row[1])/2})
+
+	return data
+
+def get_auto_categorie(connection):
+	data = []
+	query = ("""SELECT DISTINCT costi_auto.cl_auto
+				FROM costi_auto """)
+
+	cursor = connection.cursor()
+	cursor.execute(SCHEMA)
+	cursor.execute(query)
+
+	for row in cursor:
+		data.append({"classe" : row[0]})
+
+	return data
+
+def get_auto_alimentazioni(connection, categoria):
+	data = []
+	query = ("""SELECT DISTINCT costi_auto.alimentazione
+				FROM costi_auto
+				WHERE costi_auto.cl_auto = %s""")
+
+	cursor = connection.cursor()
+	cursor.execute(SCHEMA)
+	cursor.execute(query, [categoria])
+
+	for row in cursor:
+		data.append({"alimentazioni" : row[0]})
+
+	return data
+
+def get_auto_costi(connection, categoria, alimentazione):
+	data = []
+	query = ("""SELECT AVG(costi_auto.km_cost::numeric::float8), 
+       				   AVG(costi_auto.fissi_ass::numeric::float8), 
+       				   AVG(costi_auto.fissi_altro::numeric::float8) 
+				FROM costi_auto
+				WHERE costi_auto.cl_auto = %s AND 
+				costi_auto.alimentazione = %s """)
+
+	cursor = connection.cursor()
+	cursor.execute(SCHEMA)
+	cursor.execute(query, [categoria, alimentazione])
+
+	for row in cursor:
+		data.append({"costo_km" : row[0],
+					 "assicurazione" : row[1],
+					 "costo_fisso_altro" : row[2]})
 
 	return data
