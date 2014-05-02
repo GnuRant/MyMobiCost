@@ -39,6 +39,7 @@
         animation: shake .3s ease 1;
 
     p
+      cursor pointer
       font-size 7em
       color white
       font-weight 300
@@ -61,17 +62,33 @@
 
 // welcome screen
 #welcome
-  larg = 400px
+  larg = 500px
 
   position absolute
   top 20%
-  background green
   width larg
-  left calc(50% \- 200px)
-
+  left calc(50% \- 250px)
   h1
+    background black
     color white
     font-weight bold
     margin 0
     text-align center
-    font-size 1.5em
+    font-size 40px
+    border-radius 5px 5px 0 0 
+    padding .2em 0
+    img
+      height 40px
+      position absolute
+      left 10px
+  p
+    background green
+    color white
+    padding 1em 4em
+    text-align center
+    line-height 1.2em
+    border-radius 0 0 5px 5px
+    button
+      text-align center
+      display block
+      margin 1em auto 0
