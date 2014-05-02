@@ -123,6 +123,18 @@
     transform: rotate(4deg);
   }
 }
+.btn-primary {
+  background: #79b31f;
+}
+.btn-primary:hover {
+  background: #82c021;
+}
+.btn-primary:active {
+  background: #79b31f;
+}
+.btn-primary:focus {
+  background: #70a61d;
+}
 #left-sidebar {
   position: absolute;
   height: 100%;
@@ -209,6 +221,12 @@
   transition: 0.3s;
   border-left: 5px #79b31f solid;
 }
+#avanti {
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
 #sponsor-sidebar {
   position: absolute;
   right: 0;
@@ -259,6 +277,60 @@
   display: block;
   margin: 1em auto 0;
 }
+.form-horizontal .control-label {
+  text-align: left;
+  padding-top: 0;
+}
+.tagsinput-add,
+.tagsinput-remove {
+  background: none;
+  border: 2px #2980b9 solid;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  color: #2980b9;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 7px 9px;
+  vertical-align: top;
+  -webkit-transition: 0.25s linear;
+  -webkit-transition: 0.25s linear;
+  -moz-transition: 0.25s linear;
+  -o-transition: 0.25s linear;
+  -ms-transition: 0.25s linear;
+  transition: 0.25s linear;
+}
+.tagsinput-add:hover,
+.tagsinput-remove:hover {
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  background: none;
+}
+.tagsinput-add:active,
+.tagsinput-remove:active {
+  -webkit-transition: 0.1s ease;
+  -moz-transition: 0.1s ease;
+  -o-transition: 0.1s ease;
+  -ms-transition: 0.1s ease;
+  transition: 0.1s ease;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+.tagsinput-add {
+  margin-left: 10px;
+}
+.tagsinput-remove:before {
+  content: "\e600";
+  font-family: "Flat-UI-Icons";
+}
+.form-group {
+  margin-bottom: 10px;
+}
 #form {
   position: absolute;
   width: 500px;
@@ -272,6 +344,17 @@
   color: #fff;
   margin: 0;
   font-size: 35px;
-  padding: 10px;
+  padding: 10px 36px;
   font-weight: regular;
+}
+#form .form-campi {
+  padding: 36px;
+}
+#form .form-campi label {
+  font-size: 18px;
+}
+.famiglia-input {
+  width: 65%;
+  display: block;
+  float: left;
 }

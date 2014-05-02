@@ -61,22 +61,36 @@
 
     <div id="form">
         <h1>Famiglia</h1>
-        <div>
+        <div class="form-campi">
             <form class="form-horizontal" role="form">
               <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Adulti</label>
-                <div class="col-sm-10">
-                  <input type="adulti" class="form-control flat" placeholder="1">
+                <label for="adulti" class="col-sm-4 control-label">Adulti</label>
+                <div class="col-sm-8">
+                  <input type="adulti" class="form-control flat famiglia-input" placeholder="1">
+
+                  <div class="tagsinput-add"></div>
+                  <div class="tagsinput-remove"></div>
+
                 </div>
               </div>
               <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Bambini</label>
-                <div class="col-sm-10">
-                  <input type="bambini" class="form-control flat" placeholder="0">
+                <label for="bambini" class="col-sm-4 control-label">Bambini</label>
+                <div class="col-sm-8">
+                  <input type="bambini" class="form-control flat famiglia-input" placeholder="0">
+
+                  <div class="tagsinput-add"></div>
+                  <div class="tagsinput-remove"></div>
+
                 </div>
               </div>
             </form>
         </div>
+        <div id="avanti">
+            <button class="btn btn-embossed btn-primary btn-wide">
+                Avanti
+            </button>
+        </div>  
+
     </div>
     <!-- /.container -->
 

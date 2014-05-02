@@ -5,6 +5,9 @@
 @import "colors"
 @import "animations"
 
+//cose overridate da flatui in maniera definitiva
+@import "flat-ui-overrides"
+
 
 #left-sidebar
   position absolute
@@ -62,6 +65,13 @@
       transition .3s
       border-left 5px green solid
 
+//tasto avanti
+#avanti
+  position absolute
+  bottom 10px
+  text-align center
+  width 100%
+
 //barra sponsor
 #sponsor-sidebar
   position absolute
@@ -111,6 +121,43 @@
       margin 1em auto 0
 
 //form
+.form-horizontal .control-label {
+  text-align: left;
+  padding-top 0
+}
+
+.tagsinput-add, .tagsinput-remove
+  background none
+  border: 2px blue solid;
+  border-radius: 3px;
+  color: blue;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1;
+  margin-top 5px
+  margin-bottom 5px
+  padding: 7px 9px;
+  vertical-align: top;
+  -webkit-transition: 0.25s linear;
+  transition: 0.25s linear;
+  &:hover
+    opacity .5
+    background none
+  &:active
+    transition .1s ease
+    opacity 1
+
+.tagsinput-add
+  margin-left 10px
+
+.tagsinput-remove:before
+  content "\e600"
+  font-family "Flat-UI-Icons"
+
+.form-group
+  margin-bottom 10px
+
 #form
   position absolute
   width 500px
@@ -118,10 +165,22 @@
   border-right 1px #acacac solid
   margin-left 100px
   height 100%
+  
   h1
     background green
     color white
     margin 0
     font-size 35px
-    padding 10px
+    padding 10px 36px
     font-weight regular
+
+  .form-campi
+    padding 36px
+
+    label
+      font-size 18px
+
+.famiglia-input
+  width 65%
+  display block
+  float left
