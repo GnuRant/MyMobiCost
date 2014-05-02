@@ -1,4 +1,5 @@
 @import "colors"
+@import "animations"
 
 #left-sidebar
   position fixed
@@ -27,15 +28,15 @@
       background light-black
       transition .3s
       p
-        transition .3s
-        rotation = 180deg
-        transform: rotate(rotation);
-        -webkit-transform: rotate(rotation);
-        -moz-transform: rotate(rotation);
-        -ms-transform: rotate(rotation);
+
+        -webkit-animation: shake .5s linear infinite;
+        animation: shake .5s linear infinite;
     
     p
-      transition .3s
+      -webkit-animation: shake .5s linear infinite;
+      animation: shake .5s linear infinite;
+
+      display inline-block
       font-size 8em
       color white
       font-weight 300
@@ -48,3 +49,7 @@
   right 0
   height 100%
   background light-grey
+  padding-top .5em
+
+  img
+    padding .5em 0 0

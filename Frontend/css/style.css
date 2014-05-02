@@ -1,3 +1,107 @@
+@-webkit-keyframes shake {
+  33% {
+    -webkit-transform: rotate(90deg);
+  }
+
+  66% {
+    -webkit-transform: rotate(-90deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(90deg);
+  }
+}
+@-moz-keyframes shake {
+  33% {
+    -moz-transform: rotate(90deg);
+  }
+
+  66% {
+    -moz-transform: rotate(-90deg);
+  }
+
+  100% {
+    -moz-transform: rotate(90deg);
+  }
+}
+@-o-keyframes shake {
+  33% {
+    -o-transform: rotate(90deg);
+  }
+
+  66% {
+    -o-transform: rotate(-90deg);
+  }
+
+  100% {
+    -o-transform: rotate(90deg);
+  }
+}
+@-moz-keyframes shake {
+  33% {
+    transform: rotate(90deg);
+  }
+
+  66% {
+    transform: rotate(-90deg);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
+}
+@-webkit-keyframes shake {
+  33% {
+    transform: rotate(90deg);
+  }
+
+  66% {
+    transform: rotate(-90deg);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
+}
+@-o-keyframes shake {
+  33% {
+    transform: rotate(90deg);
+  }
+
+  66% {
+    transform: rotate(-90deg);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
+}
+@-ms-keyframes shake {
+  33% {
+    transform: rotate(90deg);
+  }
+
+  66% {
+    transform: rotate(-90deg);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
+}
+@keyframes shake {
+  33% {
+    transform: rotate(90deg);
+  }
+
+  66% {
+    transform: rotate(-90deg);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
+}
 #left-sidebar {
   position: fixed;
   height: 100%;
@@ -28,14 +132,13 @@
   transition: 0.3s;
 }
 #left-sidebar #new-session:hover p {
-  transition: 0.3s;
-  transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
+  -webkit-animation: shake 0.5s linear infinite;
+  animation: shake 0.5s linear infinite;
 }
 #left-sidebar #new-session p {
-  transition: 0.3s;
+  -webkit-animation: shake 0.5s linear infinite;
+  animation: shake 0.5s linear infinite;
+  display: inline-block;
   font-size: 8em;
   color: #fff;
   font-weight: 300;
@@ -48,4 +151,8 @@
   right: 0;
   height: 100%;
   background: #ecf0f1;
+  padding-top: 0.5em;
+}
+#sponsor-sidebar img {
+  padding: 0.5em 0 0;
 }
