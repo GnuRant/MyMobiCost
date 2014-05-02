@@ -124,7 +124,7 @@
   }
 }
 #left-sidebar {
-  position: fixed;
+  position: absolute;
   height: 100%;
   width: 100px;
   background: #313131;
@@ -184,6 +184,7 @@
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s;
+  cursor: pointer;
 }
 #left-sidebar .categoria #famiglia,
 #left-sidebar .categoria #abitazione,
@@ -206,6 +207,7 @@
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s;
+  border-left: 5px #79b31f solid;
 }
 #sponsor-sidebar {
   position: absolute;
@@ -256,4 +258,20 @@
   text-align: center;
   display: block;
   margin: 1em auto 0;
+}
+#form {
+  position: absolute;
+  width: 500px;
+  background: #ecf0f1;
+  border-right: 1px #acacac solid;
+  margin-left: 100px;
+  height: 100%;
+}
+#form h1 {
+  background: #79b31f;
+  color: #fff;
+  margin: 0;
+  font-size: 35px;
+  padding: 10px;
+  font-weight: regular;
 }

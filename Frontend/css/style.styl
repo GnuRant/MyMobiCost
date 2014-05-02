@@ -7,7 +7,7 @@
 
 
 #left-sidebar
-  position fixed
+  position absolute
   height 100%
   width 100px
   background black
@@ -49,6 +49,7 @@
 
   .categoria
     transition .3s
+    cursor pointer
 
     #famiglia, #abitazione, #trasporti, #spostamenti
       height 60px
@@ -59,7 +60,9 @@
     &:hover
       background light-black
       transition .3s
+      border-left 5px green solid
 
+//barra sponsor
 #sponsor-sidebar
   position absolute
   right 0
@@ -106,3 +109,19 @@
       text-align center
       display block
       margin 1em auto 0
+
+//form
+#form
+  position absolute
+  width 500px
+  background light-grey
+  border-right 1px #acacac solid
+  margin-left 100px
+  height 100%
+  h1
+    background green
+    color white
+    margin 0
+    font-size 35px
+    padding 10px
+    font-weight regular
