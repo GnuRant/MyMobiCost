@@ -93,31 +93,61 @@
 
     </div>
 
-
+    <!-- form abitazione -->
     <div id="abitazione" class="form">
         <h1>Abitazione</h1>
         <div class="form-campi">
             <form class="form-horizontal" role="form">
-              <div class="form-group">
-                <label for="adulti" class="col-sm-4 control-label">Adulti</label>
-                <div class="col-sm-8">
-                  <input type="adulti" class="form-control flat famiglia-input" placeholder="1">
-
-                  <div class="tagsinput-add"></div>
-                  <div class="tagsinput-remove"></div>
-
+              
+                <div class="form-group">
+                    <label for="adulti" class="col-sm-4 control-label">Conosci già il costo mensile?</label>
+                    <div class="col-sm-8">
+                        <div class="switch switch-square"
+                          data-on-label="Si"
+                          data-off-label="No">
+                          <input type="checkbox" />
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="bambini" class="col-sm-4 control-label">Bambini</label>
-                <div class="col-sm-8">
-                  <input type="bambini" class="form-control flat famiglia-input" placeholder="0">
 
-                  <div class="tagsinput-add"></div>
-                  <div class="tagsinput-remove"></div>
-
+                <div class="form-group">
+                    <label for="Metri quadri" class="col-sm-4 control-label">Metri quadri</label>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control flat" placeholder="0" />
+                                <span class="input-group-addon">mq</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+
+                <div class="form-group">
+                    <label for="Metri quadri" class="col-sm-4 control-label">Provincia</label>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <div class="input">
+                                <input type="text" placeholder="Belluno" class="form-control" disabled/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Comune" class="col-sm-4 control-label">Comune</label>
+                    <div class="col-sm-8">
+                        <div class="dropdown">
+                          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="selected">Comune</span><span class="caret"></span></button>
+                          <span class="dropdown-arrow dropdown-arrow-inverse"></span>
+                          <ul class="dropdown-menu dropdown-inverse">
+                            <li><a href="#fakelink">Sub Menu Element</a></li>
+                            <li><a href="#fakelink">Sub Menu Element</a></li>
+                            <li><a href="#fakelink">Sub Menu Element</a></li>
+                          </u>
+                        </div>
+                    </div>
+                </div>
+
             </form>
         </div>
     </div>
