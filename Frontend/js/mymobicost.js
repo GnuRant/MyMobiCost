@@ -14,6 +14,10 @@ $(document).ready(function(){
 	}
 });
 
+//===============================================================
+//======================  LOCALSTORAGE ==========================
+//===============================================================
+
 /**
 	Funzione che controlla che in localStorage, alla chiave
 	MMCUserData sono presenti dati
