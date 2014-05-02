@@ -8,7 +8,7 @@ $(document).ready(function(){
 		//di default nascosto
 		if ($("#welcome").css("display") == "none") {
 			$("#welcome").show();
-		};
+		}
 	}else{
 		//Carico i dati dell'utente
 	}
@@ -25,7 +25,7 @@ function start_new_location () {
 
 var userKey = {
 	"key" : "MMCUserData"
-}
+};
 
 /**
 	Funzione che controlla che in localStorage, alla chiave
@@ -33,7 +33,7 @@ var userKey = {
 	@return true ci sono dati, false altrimenti
 */
 function check_user_local_storage () {
-	if (localStorage[userKey["key"]] != null) {
+	if (localStorage[userKey.key] !== null) {
 		return true;
 	}else{
 		return false;
@@ -48,11 +48,11 @@ function load_user_data () {
 	var data;
 	if (check_user_local_storage()) {
 		try{
-			data = JSON.parse(localStorage[userKey["key"]]);
+			data = JSON.parse(localStorage[userKey.key]);
 		}catch(ex){
 			console.log("Errore nel parsing dei dati utente");
 		}
-	};
+	}
 
 	return data;
 }
@@ -62,5 +62,5 @@ function load_user_data () {
 	@data: dati da salvare 
 */
 function save_user_data (data) {
-	localStorage[userKey["key"]] = JSON.stringify(data);
+	localStorage[userKey.key] = JSON.stringify(data);
 }
