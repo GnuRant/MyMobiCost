@@ -178,6 +178,35 @@
   text-align: center;
   margin: 0;
 }
+#left-sidebar .categoria {
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+#left-sidebar .categoria #famiglia,
+#left-sidebar .categoria #abitazione,
+#left-sidebar .categoria #trasporti,
+#left-sidebar .categoria #spostamenti {
+  height: 60px;
+  display: block;
+  margin: 0 auto;
+  padding: 0.6em;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+#left-sidebar .categoria:hover {
+  background: #404040;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
 #sponsor-sidebar {
   position: absolute;
   right: 0;
@@ -192,6 +221,7 @@
   margin: 0 auto;
 }
 #welcome {
+  display: none;
   position: absolute;
   top: 20%;
   width: 500px;

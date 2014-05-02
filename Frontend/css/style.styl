@@ -47,6 +47,19 @@
       text-align center
       margin 0
 
+  .categoria
+    transition .3s
+
+    #famiglia, #abitazione, #trasporti, #spostamenti
+      height 60px
+      display block
+      margin 0 auto
+      padding .6em
+      transition .3s
+    &:hover
+      background light-black
+      transition .3s
+
 #sponsor-sidebar
   position absolute
   right 0
@@ -64,6 +77,7 @@
 #welcome
   larg = 500px
 
+  display none
   position absolute
   top 20%
   width larg
