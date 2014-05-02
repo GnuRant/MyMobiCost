@@ -176,7 +176,7 @@ def auto_costi(categoria, alimentazione):
 	return jsonify(costi=get_auto_costi(g.db, categoria, alimentazione))
 
 @app.route("/calcolocosti", methods=["POST"])
-@cross_origin()
+@cross_origin(headers=['Content-Type'])	#abilito il passaggio di json
 def calcolo_costi():
 	request_json = json.loads(request.data)
 	data = request_json["data"]
