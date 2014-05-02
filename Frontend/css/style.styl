@@ -1,0 +1,50 @@
+@import "colors"
+
+#left-sidebar
+  position fixed
+  height 100%
+  width 100px
+  background black
+
+  #logo
+    background light-black
+    padding-top .1em
+
+    #moreco-logo 
+      width 80%
+      display block
+      margin .5em auto 0 auto
+    #moreco-caption
+      color white
+      text-align center
+      margin-top 0
+      margin-bottom 0
+
+  #new-session
+    transition .3s
+    padding .5em
+    &:hover
+      background light-black
+      transition .3s
+      p
+        transition .3s
+        rotation = 180deg
+        transform: rotate(rotation);
+        -webkit-transform: rotate(rotation);
+        -moz-transform: rotate(rotation);
+        -ms-transform: rotate(rotation);
+    
+    p
+      transition .3s
+      font-size 8em
+      color white
+      font-weight 300
+      line-height 75px
+      text-align center
+      margin-bottom 0
+
+#sponsor-sidebar
+  position absolute
+  right 0
+  height 100%
+  background light-grey

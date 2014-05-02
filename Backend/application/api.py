@@ -197,4 +197,4 @@ def calcolo_costi():
 
 
 
-
+@app.route("/Frontend/jsontest", methods=["GET"])

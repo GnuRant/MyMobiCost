@@ -11,10 +11,12 @@ Calcola il costo della vita nella provincia di Belluno
 ```bash
   python  get-pip.py
 ```
-###Installazione flask e pg8000
+###Installazione flask e pg8000 Flask-CORS
+
 ```bash
   pip install Flask
   pip install pg8000
+  pip install flask-cors
 ```
 ###Avviare il server 
 ```
