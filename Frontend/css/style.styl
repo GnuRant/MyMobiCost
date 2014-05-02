@@ -67,10 +67,15 @@
 
 //tasto avanti
 #avanti
+  padding .5em 0
   position absolute
-  bottom 10px
+  bottom 0px
+  left 100px
   text-align center
-  width 100%
+  width 500px
+  background light-grey
+  border-right bordino 1px solid
+  border-top bordino 1px solid
 
 //barra sponsor
 #sponsor-sidebar
@@ -158,13 +163,14 @@
 .form-group
   margin-bottom 10px
 
-#form
+.form
   position absolute
   width 500px
   background light-grey
-  border-right 1px #acacac solid
+  border-right 1px bordino solid
   margin-left 100px
-  height 100%
+  height calc(100% \- 41px)
+  overflow scroll
   
   h1
     background green
@@ -180,7 +186,14 @@
     label
       font-size 18px
 
+
+// ## FAMIGLIA ##
+#famiglia
+  display none
+
 .famiglia-input
   width 65%
   display block
   float left
+
+// ## ABITAZIONE ##

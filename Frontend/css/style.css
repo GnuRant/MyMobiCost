@@ -228,10 +228,15 @@
   border-left: 5px #79b31f solid;
 }
 #avanti {
+  padding: 0.5em 0;
   position: absolute;
-  bottom: 10px;
+  bottom: 0px;
+  left: 100px;
   text-align: center;
-  width: 100%;
+  width: 500px;
+  background: #ecf0f1;
+  border-right: #acacac 1px solid;
+  border-top: #acacac 1px solid;
 }
 #sponsor-sidebar {
   position: absolute;
@@ -337,15 +342,16 @@
 .form-group {
   margin-bottom: 10px;
 }
-#form {
+.form {
   position: absolute;
   width: 500px;
   background: #ecf0f1;
   border-right: 1px #acacac solid;
   margin-left: 100px;
-  height: 100%;
+  height: calc(100% - 41px);
+  overflow: scroll;
 }
-#form h1 {
+.form h1 {
   background: #79b31f;
   color: #fff;
   margin: 0;
@@ -353,11 +359,14 @@
   padding: 10px 36px;
   font-weight: regular;
 }
-#form .form-campi {
+.form .form-campi {
   padding: 36px;
 }
-#form .form-campi label {
+.form .form-campi label {
   font-size: 18px;
+}
+#famiglia {
+  display: none;
 }
 .famiglia-input {
   width: 65%;
