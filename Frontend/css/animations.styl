@@ -1,23 +1,7 @@
-rotation = 90deg
-reverse-rotation = -90deg
+rotation = 4deg
 
-@-webkit-keyframes shake {
-  33%  { -webkit-transform: rotate(rotation); }
-  66%  { -webkit-transform: rotate(reverse-rotation); }
-  100% { -webkit-transform: rotate(rotation); }
-}
-@-moz-keyframes shake {
-  33%  { -moz-transform: rotate(rotation); }
-  66%  { -moz-transform: rotate(reverse-rotation); }
-  100% { -moz-transform: rotate(rotation); }
-}
-@-o-keyframes shake {
-  33%  { -o-transform: rotate(rotation); }
-  66%  { -o-transform: rotate(reverse-rotation); }
-  100% { -o-transform: rotate(rotation); }
-}
 @keyframes shake {
   33%  { transform: rotate(rotation); }
-  66%  { transform: rotate(reverse-rotation); }
+  66%  { transform: rotate(-2*rotation); }
   100% { transform: rotate(rotation); }
 }
