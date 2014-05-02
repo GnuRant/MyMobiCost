@@ -27,6 +27,10 @@ function check_user_local_storage () {
 	}
 }
 
+/**
+	Funzione che carica da localstorage i dati salvati dall'utente
+	@return Object che contiene i dati.
+*/
 function load_user_data () {
 	var data;
 	if (check_user_local_storage()) {
@@ -40,6 +44,10 @@ function load_user_data () {
 	return data;
 }
 
+/**
+	Funzione che salva i dati dell'utente in localStorage 
+	@data: dati da salvare 
+*/
 function save_user_data (data) {
 	localStorage["MMCUserData"] = JSON.stringify(data);
 }
