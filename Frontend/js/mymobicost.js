@@ -39,3 +39,7 @@ function load_user_data () {
 
 	return data;
 }
+
+function save_user_data (data) {
+	localStorage["MMCUserData"] = JSON.stringify(data);
+}
