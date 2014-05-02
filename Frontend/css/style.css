@@ -1,0 +1,51 @@
+#left-sidebar {
+  position: fixed;
+  height: 100%;
+  width: 100px;
+  background: #313131;
+}
+#left-sidebar #logo {
+  background: #404040;
+  padding-top: 0.1em;
+}
+#left-sidebar #logo #moreco-logo {
+  width: 80%;
+  display: block;
+  margin: 0.5em auto 0 auto;
+}
+#left-sidebar #logo #moreco-caption {
+  color: #fff;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#left-sidebar #new-session {
+  transition: 0.3s;
+  padding: 0.5em;
+}
+#left-sidebar #new-session:hover {
+  background: #404040;
+  transition: 0.3s;
+}
+#left-sidebar #new-session:hover p {
+  transition: 0.3s;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+}
+#left-sidebar #new-session p {
+  transition: 0.3s;
+  font-size: 8em;
+  color: #fff;
+  font-weight: 300;
+  line-height: 75px;
+  text-align: center;
+  margin-bottom: 0;
+}
+#sponsor-sidebar {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  background: #ecf0f1;
+}

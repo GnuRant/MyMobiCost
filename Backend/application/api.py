@@ -107,4 +107,4 @@ def costi(comune, zona, tipologia):
 	"""
 	return jsonify(costi=get_costi(g.db, comune, zona, tipologia))
 
-
+@app.route("/Frontend/jsontest", methods=["GET"])
