@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="6px" height="7px" viewBox="0 0 6 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.1 (7597) - http://www.bohemiancoding.com/sketch -->
+    <title>Oval</title>
+    <description>Created with Sketch.</description>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Medium-screen" sketch:type="MSArtboardGroup" transform="translate(-43.000000, -206.000000)" fill="#FFFFFF">
+            <g id="Top-bar" sketch:type="MSLayerGroup">
+                <g id="family-tile" transform="translate(28.000000, 206.000000)" sketch:type="MSShapeGroup">
+                    <g id="family">
+                        <circle id="Oval" cx="18" cy="3" r="3"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
