@@ -1,5 +1,6 @@
 $(document).ready(function(){
-	/*Constrollo se è la prima visita dell'utente o se ci sono
+	/*
+		Constrollo se è la prima visita dell'utente o se ci sono
 		già i dati salvati in localstorage 
 	*/
 	if (!check_user_local_storage()) {
@@ -24,4 +25,17 @@ function check_user_local_storage () {
 	}else{
 		return false;
 	}
+}
+
+function load_user_data () {
+	var data;
+	if (check_user_local_storage()) {
+		try{
+			data = JSON.parse(localStorage["MMCUserData"]);
+		}catch(ex){
+			console.log("Errore nel parsing dei dati utente");
+		}
+	};
+
+	return data;
 }
