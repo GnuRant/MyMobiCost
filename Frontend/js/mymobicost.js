@@ -18,13 +18,17 @@ $(document).ready(function(){
 //======================  LOCALSTORAGE ==========================
 //===============================================================
 
+var userKey = {
+	"key" : "MMCUserData"
+}
+
 /**
 	Funzione che controlla che in localStorage, alla chiave
 	MMCUserData sono presenti dati
 	@return true ci sono dati, false altrimenti
 */
 function check_user_local_storage () {
-	if (localStorage["MMCUserData"] != null) {
+	if (localStorage[userKey["key"]] != null) {
 		return true;
 	}else{
 		return false;
@@ -39,7 +43,7 @@ function load_user_data () {
 	var data;
 	if (check_user_local_storage()) {
 		try{
-			data = JSON.parse(localStorage["MMCUserData"]);
+			data = JSON.parse(localStorage[userKey["key"]]);
 		}catch(ex){
 			console.log("Errore nel parsing dei dati utente");
 		}
@@ -53,5 +57,5 @@ function load_user_data () {
 	@data: dati da salvare 
 */
 function save_user_data (data) {
-	localStorage["MMCUserData"] = JSON.stringify(data);
+	localStorage[userKey["key"]] = JSON.stringify(data);
 }
