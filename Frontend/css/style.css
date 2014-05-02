@@ -170,6 +170,7 @@
   animation: shake 0.3s ease 1;
 }
 #left-sidebar #new-session p {
+  cursor: pointer;
   font-size: 7em;
   color: #fff;
   font-weight: 300;
@@ -193,14 +194,36 @@
 #welcome {
   position: absolute;
   top: 20%;
-  background: #79b31f;
-  width: 400px;
-  left: calc(50% - 200px);
+  width: 500px;
+  left: calc(50% - 250px);
 }
 #welcome h1 {
+  background: #313131;
   color: #fff;
   font-weight: bold;
   margin: 0;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 40px;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  padding: 0.2em 0;
+}
+#welcome h1 img {
+  height: 40px;
+  position: absolute;
+  left: 10px;
+}
+#welcome p {
+  background: #79b31f;
+  color: #fff;
+  padding: 1em 4em;
+  text-align: center;
+  line-height: 1.2em;
+  -webkit-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+}
+#welcome p button {
+  text-align: center;
+  display: block;
+  margin: 1em auto 0;
 }
