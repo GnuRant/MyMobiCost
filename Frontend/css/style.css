@@ -135,6 +135,12 @@
 .btn-primary:focus {
   background: #70a61d;
 }
+.form-control {
+  height: 35px;
+}
+.control-label {
+  line-height: 35px;
+}
 #left-sidebar {
   position: absolute;
   height: 100%;
@@ -292,8 +298,8 @@
   display: inline-block;
   font-size: 14px;
   line-height: 1;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 1px;
+  margin-bottom: 1px;
   padding: 7px 9px;
   vertical-align: top;
   -webkit-transition: 0.25s linear;
