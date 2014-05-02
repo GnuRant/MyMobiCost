@@ -1,5 +1,10 @@
+// vendor prefixes
+@import 'nib/index'
+
+//varie ed eventuali
 @import "colors"
 @import "animations"
+
 
 #left-sidebar
   position fixed
@@ -24,25 +29,22 @@
   #new-session
     transition .3s
     padding .5em
+    line-height 65px
+    height 83px
+
     &:hover
       background light-black
       transition .3s
       p
+        animation: shake .3s ease 1;
 
-        -webkit-animation: shake .5s linear infinite;
-        animation: shake .5s linear infinite;
-    
     p
-      -webkit-animation: shake .5s linear infinite;
-      animation: shake .5s linear infinite;
-
-      display inline-block
-      font-size 8em
+      font-size 7em
       color white
       font-weight 300
-      line-height 75px
+      line-height 65px
       text-align center
-      margin-bottom 0
+      margin 0
 
 #sponsor-sidebar
   position absolute
@@ -52,4 +54,24 @@
   padding-top .5em
 
   img
-    padding .5em 0 0
+    padding 1em 0 0
+    width 90%
+    display block
+    margin 0 auto
+
+// welcome screen
+#welcome
+  larg = 400px
+
+  position absolute
+  top 20%
+  background green
+  width larg
+  left calc(50% \- 200px)
+
+  h1
+    color white
+    font-weight bold
+    margin 0
+    text-align center
+    font-size 1.5em
