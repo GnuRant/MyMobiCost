@@ -16,6 +16,10 @@ $(document).ready(function(){
   $('#bottone-aggiungi-auto').click(function () {
     $('#aggiungi-auto').fadeToggle();
   });
+  //aggiungi nuovo mezzo
+  $('#bottone-aggiungi-mezzo').click(function () {
+    $('#aggiungi-mezzo').fadeToggle();
+  });
 
 
 	/*
