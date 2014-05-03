@@ -123,6 +123,13 @@
     transform: rotate(4deg);
   }
 }
+body {
+  height: 100%;
+}
+hr {
+  border-bottom: 1px #acacac solid;
+  margin-right: -15px;
+}
 .btn-primary {
   background: #79b31f;
 }
@@ -272,7 +279,8 @@
   border-left: 5px #79b31f solid;
 }
 #abitazione-avanti,
-#famiglia-avanti {
+#famiglia-avanti,
+#trasporti-avanti {
   padding: 0.5em 0;
   position: fixed;
   bottom: 0px;
@@ -404,7 +412,7 @@
   padding: 36px 36px 80px;
 }
 .form .form-campi label {
-  font-size: 18px;
+  font-size: 16px;
 }
 #famiglia-form {
   display: none;
@@ -413,4 +421,21 @@
   width: 65%;
   display: block;
   float: left;
+}
+#abitazione-form {
+  display: none;
+}
+#costo-conosciuto {
+  display: none;
+}
+#titolo-auto {
+  font-size: 2em;
+}
+#titolo-auto .tagsinput-add {
+  color: #79b31f;
+  border-color: #79b31f;
+  font-size: 0.3em;
+}
+#aggiungi-auto {
+  display: none;
 }

@@ -105,100 +105,115 @@
                         <div class="switch switch-square"
                           data-on-label="Si"
                           data-off-label="No">
-                          <input type="checkbox" />
+                          <input id="checkbox-abitazione" type="checkbox" />
                         </div>
                     </div>
                 </div>
 
                 <hr>
 
-                <div class="form-group">
-                    <label for="Metri quadri" class="col-sm-4 control-label">Metri quadri</label>
-                    <div class="col-sm-8">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="0" />
-                                <span class="input-group-addon">mq</span>
+                <div id="costo-sconosciuto">
+                    <div class="form-group">
+                        <label for="Metri quadri" class="col-sm-4 control-label">Metri quadri</label>
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control flat" placeholder="0" />
+                                    <span class="input-group-addon">mq</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="Metri quadri" class="col-sm-4 control-label">Provincia</label>
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <div class="input">
+                                    <input type="text" placeholder="Belluno" class="form-control" disabled/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="Comune" class="col-sm-4 control-label">Comune</label>
+                        <div class="col-sm-8">
+                            <select>
+                              <option value="0">Belluno</option>
+                              <option value="1">Sedico</option>
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="Comune" class="col-sm-4 control-label">Zona</label>
+                        <div class="col-sm-8">
+                            <select>
+                              <option value="0">Belluno</option>
+                              <option value="1">Sedico</option>
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="Comune" class="col-sm-4 control-label">Categoria</label>
+                        <div class="col-sm-8">
+                            <select>
+                              <option value="0">Belluno</option>
+                              <option value="1">Sedico</option>
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="Metri quadri" class="col-sm-4 control-label">Valore min.</label>
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <div class="input">
+                                    <input type="text" placeholder="400" class="form-control" disabled/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="Metri quadri" class="col-sm-4 control-label">Valore max.</label>
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <div class="input">
+                                    <input type="text" placeholder="1200" class="form-control" disabled/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="Metri quadri" class="col-sm-4 control-label">Valore medio</label>
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control flat" placeholder="0" />
+                                    <span class="input-group-addon">€</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="Metri quadri" class="col-sm-4 control-label">Provincia</label>
-                    <div class="col-sm-8">
-                        <div class="form-group">
-                            <div class="input">
-                                <input type="text" placeholder="Belluno" class="form-control" disabled/>
+                <div id="costo-conosciuto">
+                    <div class="form-group">
+                        <label for="Metri quadri" class="col-sm-4 control-label">Costo mensile</label>
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control flat" placeholder="0" />
+                                    <span class="input-group-addon">€</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="Comune" class="col-sm-4 control-label">Comune</label>
-                    <div class="col-sm-8">
-                        <select>
-                          <option value="0">Belluno</option>
-                          <option value="1">Sedico</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="Comune" class="col-sm-4 control-label">Zona</label>
-                    <div class="col-sm-8">
-                        <select>
-                          <option value="0">Belluno</option>
-                          <option value="1">Sedico</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="Comune" class="col-sm-4 control-label">Categoria</label>
-                    <div class="col-sm-8">
-                        <select>
-                          <option value="0">Belluno</option>
-                          <option value="1">Sedico</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="Metri quadri" class="col-sm-4 control-label">Valore min.</label>
-                    <div class="col-sm-8">
-                        <div class="form-group">
-                            <div class="input">
-                                <input type="text" placeholder="400" class="form-control" disabled/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="Metri quadri" class="col-sm-4 control-label">Valore max.</label>
-                    <div class="col-sm-8">
-                        <div class="form-group">
-                            <div class="input">
-                                <input type="text" placeholder="1200" class="form-control" disabled/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="Metri quadri" class="col-sm-4 control-label">Valore medio</label>
-                    <div class="col-sm-8">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="0" />
-                                <span class="input-group-addon">€</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </form>
         </div>
 
@@ -211,6 +226,150 @@
 
     </div>
 
+    <!-- form trasporti -->
+    <div id="trasporti-form" class="form">
+        <h1>Trasporti</h1>
+        <div class="form-campi">
+            <form class="form-horizontal" role="form">
+              
+                <div class="form-group">
+                    //tabella
+                </div>
+
+
+                <h2 id="titolo-auto">Auto <div id="bottone-aggiungi-auto" class="tagsinput-add"></div></h2>
+                <div id="aggiungi-auto">
+                    <div id="costo-sconosciuto">
+                        <div class="form-group">
+                            <label for="Metri quadri" class="col-sm-4 control-label">Nome</label>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <div class="input">
+                                        <input type="text" placeholder="Belluno" class="flat form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="Comune" class="col-sm-4 control-label">Classe</label>
+                            <div class="col-sm-8">
+                                <select>
+                                  <option value="0">Berlina</option>
+                                  <option value="1">Utilitaria</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Comune" class="col-sm-4 control-label">Alimentazione</label>
+                            <div class="col-sm-8">
+                                <select>
+                                  <option value="0">Benzina</option>
+                                  <option value="1">Diesel</option>
+                                </select>
+                            </div>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="Metri quadri" class="col-sm-4 control-label">Percorrenza annua</label>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control flat" placeholder="0" />
+                                        <span class="input-group-addon">km</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Metri quadri" class="col-sm-4 control-label">Costo parcheggio</label>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control flat" placeholder="0" />
+                                        <span class="input-group-addon">€</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Metri quadri" class="col-sm-4 control-label">Pedaggi autostradali</label>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control flat" placeholder="0" />
+                                        <span class="input-group-addon">€</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Metri quadri" class="col-sm-4 control-label">Assicurazione</label>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control flat" placeholder="0" />
+                                        <span class="input-group-addon">€</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="Metri quadri" class="col-sm-4 control-label">Costo al km</label>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control flat" placeholder="molti soldi" disabled/>
+                                        <span class="input-group-addon">€</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="Metri quadri" class="col-sm-4 control-label">Costo fisso</label>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control flat" placeholder="millemila" disabled/>
+                                        <span class="input-group-addon">€</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+
+                    <div id="costo-conosciuto">
+                        <div class="form-group">
+                            <label for="Metri quadri" class="col-sm-4 control-label">Costo mensile</label>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control flat" placeholder="0" />
+                                        <span class="input-group-addon">€</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div id="trasporti-avanti">
+            <button class="btn btn-primary btn-wide">
+                Avanti
+            </button>
+        </div> 
+
+    </div>
 
 
     <div id="welcome">
@@ -235,13 +394,5 @@
     <script src="js/jquery.tagsinput.js"></script>
     <script src="js/jquery.placeholder.js"></script>
     <script src="js/mymobicost.js"></script>
-
-    <!-- trasforma i select in cose belle -->
-    <script type="text/javascript">
-        $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
-        $("button.dropdown-toggle").css({
-            'background':'#404040'
-        });
-    </script>
   </body>
 </html>

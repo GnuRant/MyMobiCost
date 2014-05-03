@@ -1,7 +1,25 @@
 "use strict";
 $(document).ready(function(){
+	// rende i select meravigliosi colorati e hipster
+	$("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+  $("button.dropdown-toggle").css({
+      'background':'#404040'
+  });
+
+  // switch costo abitazione (conosciuto o no)
+  $('#checkbox-abitazione').change(function () {
+    $('#costo-sconosciuto').fadeToggle();
+    $('#costo-conosciuto').fadeToggle();
+  });
+
+  //aggiungi nuova auto
+  $('#bottone-aggiungi-auto').click(function () {
+    $('#aggiungi-auto').fadeToggle();
+  });
+
+
 	/*
-		Constrollo se è la prima visita dell'utente o se ci sono
+		Controllo se è la prima visita dell'utente o se ci sono
 		già i dati salvati in localstorage 
 	*/
 	if (!check_user_local_storage()) {
