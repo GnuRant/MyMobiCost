@@ -68,13 +68,11 @@
 //tasto avanti
 #abitazione-avanti, #famiglia-avanti
   padding .5em 0
-  position absolute
+  position fixed
   bottom 0px
-  left 100px
   text-align center
-  width 500px
+  width 499px
   background light-grey
-  border-right bordino 1px solid
   border-top bordino 1px solid
 
 //barra sponsor
@@ -166,7 +164,7 @@
   background light-grey
   border-right 1px bordino solid
   margin-left 100px
-  height calc(100% \- 41px)
+  height 100%
   overflow scroll
   
   h1
@@ -178,14 +176,14 @@
     font-weight regular
 
   .form-campi
-    padding 36px
+    padding 36px 36px 80px
 
     label
       font-size 18px
 
 
 // ## FAMIGLIA ##
-#famiglia
+#famiglia-form
   display none
 
 .famiglia-input
@@ -194,3 +192,5 @@
   float left
 
 // ## ABITAZIONE ##
+// #abitazione-form
+//   display none

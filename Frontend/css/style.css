@@ -182,6 +182,9 @@
 .form-group {
   margin-bottom: 5px;
 }
+.btn-selector {
+  background: #404040;
+}
 #left-sidebar {
   position: absolute;
   height: 100%;
@@ -271,13 +274,11 @@
 #abitazione-avanti,
 #famiglia-avanti {
   padding: 0.5em 0;
-  position: absolute;
+  position: fixed;
   bottom: 0px;
-  left: 100px;
   text-align: center;
-  width: 500px;
+  width: 499px;
   background: #ecf0f1;
-  border-right: #acacac 1px solid;
   border-top: #acacac 1px solid;
 }
 #sponsor-sidebar {
@@ -388,7 +389,7 @@
   background: #ecf0f1;
   border-right: 1px #acacac solid;
   margin-left: 100px;
-  height: calc(100% - 41px);
+  height: 100%;
   overflow: scroll;
 }
 .form h1 {
@@ -400,12 +401,12 @@
   font-weight: regular;
 }
 .form .form-campi {
-  padding: 36px;
+  padding: 36px 36px 80px;
 }
 .form .form-campi label {
   font-size: 18px;
 }
-#famiglia {
+#famiglia-form {
   display: none;
 }
 .famiglia-input {
