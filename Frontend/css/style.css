@@ -179,28 +179,28 @@
   top: 0;
   line-height: 26px;
 }
-.left-sidebar {
+#left-sidebar {
   position: absolute;
   height: 100%;
   width: 100px;
   background: #313131;
 }
-.left-sidebar #logo {
+#left-sidebar #logo {
   background: #404040;
   padding-top: 0.1em;
 }
-.left-sidebar #logo #moreco-logo {
+#left-sidebar #logo #moreco-logo {
   width: 80%;
   display: block;
   margin: 0.5em auto 0 auto;
 }
-.left-sidebar #logo #moreco-caption {
+#left-sidebar #logo #moreco-caption {
   color: #fff;
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
 }
-.left-sidebar #new-session {
+#left-sidebar #new-session {
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -o-transition: 0.3s;
@@ -210,7 +210,7 @@
   line-height: 65px;
   height: 83px;
 }
-.left-sidebar #new-session:hover {
+#left-sidebar #new-session:hover {
   background: #404040;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
@@ -218,14 +218,14 @@
   -ms-transition: 0.3s;
   transition: 0.3s;
 }
-.left-sidebar #new-session:hover p {
+#left-sidebar #new-session:hover p {
   -webkit-animation: shake 0.3s ease 1;
   -moz-animation: shake 0.3s ease 1;
   -o-animation: shake 0.3s ease 1;
   -ms-animation: shake 0.3s ease 1;
   animation: shake 0.3s ease 1;
 }
-.left-sidebar #new-session p {
+#left-sidebar #new-session p {
   cursor: pointer;
   font-size: 7em;
   color: #fff;
@@ -234,7 +234,7 @@
   text-align: center;
   margin: 0;
 }
-.left-sidebar .categoria {
+#left-sidebar .categoria {
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -o-transition: 0.3s;
@@ -242,10 +242,10 @@
   transition: 0.3s;
   cursor: pointer;
 }
-.left-sidebar .categoria #famiglia,
-.left-sidebar .categoria #abitazione,
-.left-sidebar .categoria #trasporti,
-.left-sidebar .categoria #spostamenti {
+#left-sidebar .categoria #menu-famiglia,
+#left-sidebar .categoria #menu-abitazione,
+#left-sidebar .categoria #menu-trasporti,
+#left-sidebar .categoria #menu-spostamenti {
   height: 60px;
   display: block;
   margin: 0 auto;
@@ -256,7 +256,7 @@
   -ms-transition: 0.3s;
   transition: 0.3s;
 }
-.left-sidebar .categoria:hover {
+#left-sidebar .categoria:hover {
   background: #404040;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
