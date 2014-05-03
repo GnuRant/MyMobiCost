@@ -2,7 +2,6 @@
 $(document).ready(function(){
 	// rende i select meravigliosi colorati e hipster
 	$("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
-<<<<<<< HEAD
   $("button.dropdown-toggle").css({
       'background':'#404040'
   });
@@ -21,22 +20,7 @@ $(document).ready(function(){
   $('#bottone-aggiungi-mezzo').click(function () {
     $('#aggiungi-mezzo').fadeToggle();
   });
-=======
-  	$("button.dropdown-toggle").css({
-  	    'background':'#404040'
-  	});
-	
-  	// switch costo abitazione (conosciuto o no)
-  	$('#checkbox-abitazione').change(function () {
-  	  $('#costo-sconosciuto').fadeToggle();
-  	  $('#costo-conosciuto').fadeToggle();
-  	});
-	
-  	//aggiungi nuova auto
-  	$('#bottone-aggiungi-auto').click(function () {
-  	  $('#aggiungi-auto').fadeToggle();
-  	});
->>>>>>> fd1305071af5301f70997fb2c305e420df3d5dea
+
 
 
 	/*
