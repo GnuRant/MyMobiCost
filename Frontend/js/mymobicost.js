@@ -1,5 +1,9 @@
 "use strict";
 $(document).ready(function(){
+	//===============================================================
+	//==========================  UI ================================
+	//===============================================================
+
 	// rende i select meravigliosi colorati e hipster
 	$("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   	$("button.dropdown-toggle").css({
@@ -19,6 +23,22 @@ $(document).ready(function(){
   	//aggiungi nuovo mezzo
   	$('#bottone-aggiungi-mezzo').click(function () {
   	  $('#aggiungi-mezzo').fadeToggle();
+  	});
+
+  	$("#menu-trasporti").click(function() {
+  		show_side_menu("#trasporti");
+  	});
+
+  	$("#menu-abitazione").click(function() {
+  		show_side_menu("#abitazione");
+  	});
+
+  	$("#menu-famiglia").click(function() {
+  		show_side_menu("#famiglia");
+  	});
+
+  	$("#menu-spostamenti").click(function() {
+  		show_side_menu("#spostamenti");
   	});
 
 
@@ -43,11 +63,11 @@ function start_new_location () {
 	$("#welcome").hide();
 }
 
-function switch_views(id_hide, id_show){
-	//Nascondo la view
-	$(id_hide+"-form").css({"left" : "-600px"});
-	//Mostro la nuova view
-	$(id_show+"-form").css({"left":"0px"});
+function show_side_menu(id_categorie){
+	//Nascondo tutti i from
+	$(".form").css({"left" : "-600px"});
+	//Mostro solo il menu indicato
+	$(id_categorie+"-form").css({"left":"0px"});
 }
 
 //===============================================================
