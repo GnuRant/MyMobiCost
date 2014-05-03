@@ -289,6 +289,19 @@ hr {
   background: #ecf0f1;
   border-top: #acacac 1px solid;
 }
+#trasporti-form,
+#casa-form,
+#famiglia-form {
+  padding-top: 50px;
+}
+#trasporti-form h1,
+#casa-form h1,
+#famiglia-form h1 {
+  position: fixed;
+  top: 0;
+  width: 499px;
+  z-index: 1;
+}
 #sponsor-sidebar {
   position: absolute;
   right: 0;
