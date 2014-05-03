@@ -265,7 +265,8 @@
   transition: 0.3s;
   border-left: 5px #79b31f solid;
 }
-#avanti {
+#abitazione-avanti,
+#famiglia-avanti {
   padding: 0.5em 0;
   position: absolute;
   bottom: 0px;
