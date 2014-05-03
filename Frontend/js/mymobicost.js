@@ -1,3 +1,4 @@
+"use strict";
 $(document).ready(function(){
 	/*
 		Constrollo se è la prima visita dell'utente o se ci sono
