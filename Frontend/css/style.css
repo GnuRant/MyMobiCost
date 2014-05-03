@@ -171,13 +171,16 @@
   margin-left: -15px;
   margin-right: -15px;
 }
-.select .btn {
+.select .btn.btn-hg {
   width: 100%;
 }
-.select .btn .filter-option {
+.select .btn.btn-hg .filter-option {
   font-size: 14px;
   top: 0;
-  line-height: 26px;
+  line-height: 35px;
+}
+.form-group {
+  margin-bottom: 5px;
 }
 #left-sidebar {
   position: absolute;
@@ -378,9 +381,6 @@
 .tagsinput-remove:before {
   content: "\e600";
   font-family: "Flat-UI-Icons";
-}
-.form-group {
-  margin-bottom: 10px;
 }
 .form {
   position: absolute;
