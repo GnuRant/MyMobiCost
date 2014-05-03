@@ -43,6 +43,13 @@ function start_new_location () {
 	$("#welcome").hide();
 }
 
+function switch_views(id_hide, id_show){
+	//Nascondo la view
+	$(id_hide+"-form").css({"left" : "-600px"});
+	//Mostro la nuova view
+	$(id_show+"-form").css({"left":"0px"});
+}
+
 //===============================================================
 //======================  LOCALSTORAGE ==========================
 //===============================================================
