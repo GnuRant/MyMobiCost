@@ -59,7 +59,7 @@
 
 
     <!-- form-famiglia -->
-    <div id="famiglia" class="form">
+    <div id="famiglia-form" class="form">
         <h1>Famiglia</h1>
         <div class="form-campi">
             <form class="form-horizontal" role="form">
@@ -94,7 +94,7 @@
     </div>
 
     <!-- form abitazione -->
-    <div id="abitazione" class="form">
+    <div id="abitazione-form" class="form">
         <h1>Abitazione</h1>
         <div class="form-campi">
             <form class="form-horizontal" role="form">
@@ -136,15 +136,10 @@
                 <div class="form-group">
                     <label for="Comune" class="col-sm-4 control-label">Comune</label>
                     <div class="col-sm-8">
-                        <div class="dropdown">
-                          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="selected">Comune</span><span class="caret"></span></button>
-                          <span class="dropdown-arrow dropdown-arrow-inverse"></span>
-                          <ul class="dropdown-menu dropdown-inverse">
-                            <li><a href="#fakelink">Sub Menu Element</a></li>
-                            <li><a href="#fakelink">Sub Menu Element</a></li>
-                            <li><a href="#fakelink">Sub Menu Element</a></li>
-                          </u>
-                        </div>
+                        <select>
+                          <option value="0">Belluno</option>
+                          <option value="1">Sedico</option>
+                        </select>
                     </div>
                 </div>
 
@@ -152,7 +147,7 @@
         </div>
     </div>
     <div id="avanti">
-        <button class="btn btn-embossed btn-primary btn-wide">
+        <button class="btn btn-primary btn-wide">
             Avanti
         </button>
     </div>  
@@ -162,7 +157,7 @@
         <h1><img src="img/moreco.svg" alt="logo Moreco">Benvenuto!</h1>
         <p>
             Calcola in pochi passi i costi dei tuoi spostamenti
-            <button class="btn btn-info btn-wide" onclick="start_new_location()">
+            <button class="btn btn-info btn-wide">
               Inizia
             </button>
         </p>
@@ -180,5 +175,10 @@
     <script src="js/jquery.tagsinput.js"></script>
     <script src="js/jquery.placeholder.js"></script>
     <script src="js/mymobicost.js"></script>
+
+    <!-- trasforma i select in cose belle -->
+    <script type="text/javascript">
+        $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+    </script>
   </body>
 </html>
