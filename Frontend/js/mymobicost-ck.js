@@ -1,1 +1,106 @@
-"use strict";function start_new_location(){$("#welcome").hide()}function check_user_local_storage(){return localStorage[userKey.key]!==null?!0:!1}function load_user_data(){var e;if(check_user_local_storage())try{e=JSON.parse(localStorage[userKey.key])}catch(t){console.log("Errore nel parsing dei dati utente")}return e}function save_user_data(e){localStorage[userKey.key]=JSON.stringify(e)}$(document).ready(function(){$("select").selectpicker({style:"btn-hg btn-primary",menuStyle:"dropdown-inverse"});$("button.dropdown-toggle").css({background:"#404040"});$("#checkbox-abitazione").change(function(){$("#costo-sconosciuto").fadeToggle();$("#costo-conosciuto").fadeToggle()});$("#bottone-aggiungi-auto").click(function(){$("#aggiungi-auto").fadeToggle()});$("#bottone-aggiungi-mezzo").click(function(){$("#aggiungi-mezzo").fadeToggle()});check_user_local_storage()||$("#welcome").css("display")=="none"&&$("#welcome").show()});var userKey={key:"MMCUserData"};
+"use strict";
+$(document).ready(function(){
+	// rende i select meravigliosi colorati e hipster
+	$("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+<<<<<<< HEAD
+  $("button.dropdown-toggle").css({
+      'background':'#404040'
+  });
+
+  // switch costo abitazione (conosciuto o no)
+  $('#checkbox-abitazione').change(function () {
+    $('#costo-sconosciuto').fadeToggle();
+    $('#costo-conosciuto').fadeToggle();
+  });
+
+  //aggiungi nuova auto
+  $('#bottone-aggiungi-auto').click(function () {
+    $('#aggiungi-auto').fadeToggle();
+  });
+  //aggiungi nuovo mezzo
+  $('#bottone-aggiungi-mezzo').click(function () {
+    $('#aggiungi-mezzo').fadeToggle();
+  });
+=======
+  	$("button.dropdown-toggle").css({
+  	    'background':'#404040'
+  	});
+	
+  	// switch costo abitazione (conosciuto o no)
+  	$('#checkbox-abitazione').change(function () {
+  	  $('#costo-sconosciuto').fadeToggle();
+  	  $('#costo-conosciuto').fadeToggle();
+  	});
+	
+  	//aggiungi nuova auto
+  	$('#bottone-aggiungi-auto').click(function () {
+  	  $('#aggiungi-auto').fadeToggle();
+  	});
+>>>>>>> fd1305071af5301f70997fb2c305e420df3d5dea
+
+
+	/*
+		Controllo se è la prima visita dell'utente o se ci sono
+		già i dati salvati in localstorage 
+	*/
+	if (!check_user_local_storage()) {
+		//Se e la prima visita carico il menu di benvenuto,
+		//di default nascosto
+		if ($("#welcome").css("display") == "none") {
+			$("#welcome").show();
+		}
+	}else{
+		//Carico i dati dell'utente
+	}
+});
+
+function start_new_location () {
+	//Nascondo il messaggio di benvenuto
+	$("#welcome").hide();
+}
+
+//===============================================================
+//======================  LOCALSTORAGE ==========================
+//===============================================================
+
+var userKey = {
+	"key" : "MMCUserData"
+};
+
+/**
+	Funzione che controlla che in localStorage, alla chiave
+	MMCUserData sono presenti dati
+	@return true ci sono dati, false altrimenti
+*/
+function check_user_local_storage () {
+	if (localStorage[userKey.key] !== null) {
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**
+	Funzione che carica da localstorage i dati salvati dall'utente
+	@return Object che contiene i dati.
+*/
+function load_user_data () {
+	var data;
+	if (check_user_local_storage()) {
+		try{
+			data = JSON.parse(localStorage[userKey.key]);
+		}catch(ex){
+			console.log("Errore nel parsing dei dati utente");
+		}
+	}
+
+	return data;
+}
+
+/**
+	Funzione che salva i dati dell'utente in localStorage 
+	@data: dati da salvare 
+*/
+function save_user_data (data) {
+	localStorage[userKey.key] = JSON.stringify(data);
+}

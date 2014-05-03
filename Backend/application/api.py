@@ -194,7 +194,3 @@ def calcolo_costi():
 
 	data["risultati"] = return_data
 	return jsonify(data=data)
-
-
-
-@app.route("/Frontend/jsontest", methods=["GET"])
