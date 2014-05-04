@@ -1,35 +1,50 @@
 "use strict";
+
+var user_data;
+var user_new_data = {};
+
 $(document).ready(function(){
-	
+
+	//===============================================================
+	//==========================  UI ================================
+	//===============================================================
+
 	// rende i select meravigliosi colorati e hipster
 	$("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
-  $("button.dropdown-toggle").css({
-      'background':'#404040'
-  });
+  	$("button.dropdown-toggle").css({
+  	    'background':'#404040'
+  	});
+	
+  	// switch costo abitazione (conosciuto o no)
+  	$('#checkbox-abitazione').change(function () {
+  	  $('#costo-sconosciuto').fadeToggle();
+  	  $('#costo-conosciuto').fadeToggle();
+  	});
+	
+  	//aggiungi nuova auto
+  	$('#bottone-aggiungi-auto').click(function () {
+  	  $('#aggiungi-auto').fadeToggle();
+  	});
+  	//aggiungi nuovo mezzo
+  	$('#bottone-aggiungi-mezzo').click(function () {
+  	  $('#aggiungi-mezzo').fadeToggle();
+  	});
 
-  // switch costo abitazione (conosciuto o no)
-  $('#checkbox-abitazione').change(function () {
-    $('#costo-sconosciuto').fadeToggle();
-    $('#costo-conosciuto').fadeToggle();
-  });
+  	$("#menu-trasporti").click(function() {
+  		show_side_menu("#trasporti");
+  	});
 
-  //aggiungi nuova auto
-  $('#bottone-aggiungi-auto').click(function () {
-    $('#aggiungi-auto').fadeToggle();
-  });
-  //aggiungi nuovo mezzo
-  $('#bottone-aggiungi-mezzo').click(function () {
-    $('#aggiungi-mezzo').fadeToggle();
-  });
+  	$("#menu-abitazione").click(function() {
+  		show_side_menu("#abitazione");
+  	});
 
-  // // anima i form
-  // function hideForm(hide) {
-  // 	$(hide).css( 'margin-left', '-600px' );
-  // }
+  	$("#menu-famiglia").click(function() {
+  		show_side_menu("#famiglia");
+  	});
 
-  // $('#famiglia-avanti').click(function () {
-  //   hideForm('#famiglia-form', "#casa-form");
-  // });
+  	$("#menu-spostamenti").click(function() {
+  		show_side_menu("#spostamenti");
+  	});
 
 	/*
 		Controllo se è la prima visita dell'utente o se ci sono
@@ -42,13 +57,21 @@ $(document).ready(function(){
 			$("#welcome").show();
 		}
 	}else{
-		//Carico i dati dell'utente
+		//Carico i dati dell'utente nella variabile globalr
+		user_data = load_user_data();
 	}
 });
 
 function start_new_location () {
 	//Nascondo il messaggio di benvenuto
 	$("#welcome").hide();
+}
+
+function show_side_menu(id_categorie){
+	//Nascondo tutti i from
+	$(".form").css({"left" : "-600px"});
+	//Mostro solo il menu indicato
+	$(id_categorie+"-form").css({"left":"0px"});
 }
 
 //===============================================================

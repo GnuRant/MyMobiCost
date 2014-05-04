@@ -178,8 +178,11 @@ def auto_costi(categoria, alimentazione):
 @app.route("/calcolocosti", methods=["POST"])
 @cross_origin(headers=['Content-Type'])	#abilito il passaggio di json
 def calcolo_costi():
-	request_json = json.loads(request.data)
-	data = request_json["data"]
+	#Passaggio oggetto data
+	#request_json = json.loads(request.data)
+	#data = request_json["data"]
+	#Passaggio diretto dell'oggetto
+	data = json.loads(request.data)
 	return_data = {}
 	#calcolo e aggiungo i dati al json di ritorno
 	return_data["costo_residenza"] = calcolo_abitazione_costi(data)
