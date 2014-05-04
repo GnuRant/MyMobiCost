@@ -1,4 +1,8 @@
 "use strict";
+
+var user_data;
+var user_new_data = {};
+
 $(document).ready(function(){
 	//===============================================================
 	//==========================  UI ================================
@@ -54,7 +58,8 @@ $(document).ready(function(){
 			$("#welcome").show();
 		}
 	}else{
-		//Carico i dati dell'utente
+		//Carico i dati dell'utente nella variabile globalr
+		user_data = load_user_data();
 	}
 });
 
