@@ -197,6 +197,7 @@ hr {
   height: 100%;
   width: 100px;
   background: #313131;
+  z-index: 255;
 }
 #left-sidebar #logo {
   background: #404040;
@@ -291,17 +292,36 @@ hr {
   border-top: #acacac 1px solid;
 }
 #trasporti-form,
-#casa-form,
-#famiglia-form {
+#abitazione-form,
+#famiglia-form,
+#spostamenti-form {
+  -webkit-transition: 1s ease-in-out;
+  -moz-transition: 1s ease-in-out;
+  -o-transition: 1s ease-in-out;
+  -ms-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
   padding-top: 50px;
 }
 #trasporti-form h1,
-#casa-form h1,
-#famiglia-form h1 {
+#abitazione-form h1,
+#famiglia-form h1,
+#spostamenti-form h1 {
   position: fixed;
   top: 0;
   width: 499px;
   z-index: 1;
+}
+#famiglia-form {
+  z-index: 5;
+}
+#abitazione-form {
+  z-index: 4;
+}
+#trasporti-form {
+  z-index: 3;
+}
+#spostamenti-form {
+  z-index: 2;
 }
 #sponsor-sidebar {
   position: absolute;
@@ -429,21 +449,12 @@ hr {
   font-size: 16px;
   font-weight: bold;
 }
-#famiglia-form {
-  display: none;
-}
 .famiglia-input {
-  width: 65%;
+  width: 100px;
   display: block;
   float: left;
 }
-#abitazione-form {
-  display: none;
-}
 #costo-conosciuto {
-  display: none;
-}
-#trasporti-form {
   display: none;
 }
 #titolo-auto,

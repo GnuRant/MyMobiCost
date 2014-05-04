@@ -1,6 +1,6 @@
 .dropdown-arrow-inverse {
-  border-bottom-color: #34495e !important;
-  border-top-color: #34495e !important;
+  border-bottom-color: #404040 !important;
+  border-top-color: #404040 !important;
 }
 .prettyprint {
   overflow: auto;
@@ -12,7 +12,7 @@
   word-wrap: break-word;
 }
 .demo-headline {
-  color: #1abc9c;
+  color: #79b31f;
   font: 700 118px/1.1 "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   margin-bottom: 50px;
   margin-top: 2px;
@@ -29,10 +29,8 @@
 .demo-row:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 .demo-row:after {
   clear: both;
@@ -46,7 +44,7 @@
   left: 0;
   font-size: 13px;
   line-height: 13px;
-  color: #c0c1c2;
+  color: #bebebe;
   font-weight: 400;
 }
 .demo-row .demo-text-note {
@@ -100,10 +98,8 @@
 .demo-content-wide:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 .demo-content-wide:after {
   clear: both;
@@ -130,7 +126,7 @@
   font-size: 24.5px !important;
 }
 .demo-title small {
-  color: #c0c1c2;
+  color: #bebebe;
   font-size: 13px;
   font-weight: 400;
 }
@@ -190,7 +186,7 @@
 }
 .demo-icons-tooltip {
   bottom: 0;
-  color: #c2c8cf;
+  color: #c6c6c6;
   font-size: 12px;
   left: 100%;
   margin-left: 0 !important;
@@ -240,7 +236,7 @@
   width: 300px;
 }
 .static-modal-backdrop {
-  background-color: #243342;
+  background-color: #2d2d2d;
   padding: 62px 14px;
   margin-bottom: 50px;
   width: 100%;
@@ -289,7 +285,7 @@
   padding: 0;
   width: 150px;
   z-index: 10000;
-  background-color: #f3f4f5;
+  background-color: #f4f4f4;
   -webkit-backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
 }

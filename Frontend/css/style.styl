@@ -14,6 +14,7 @@
   height 100%
   width 100px
   background black
+  z-index 255
 
   #logo
     background light-black
@@ -76,13 +77,24 @@
   border-top bordino 1px solid
 
 //titolo fermo
-#trasporti-form, #casa-form, #famiglia-form
+#trasporti-form, #abitazione-form, #famiglia-form, #spostamenti-form
+  transition 1s ease-in-out;
   padding-top 50px
   h1
     position fixed
     top 0
     width 499px
     z-index 1
+
+#famiglia-form
+  z-index 5
+#abitazione-form
+  z-index 4
+#trasporti-form
+  z-index 3
+#spostamenti-form
+  z-index 2
+  
 
 //barra sponsor
 #sponsor-sidebar
@@ -192,23 +204,26 @@
       font-weight bold
 
 // ## FAMIGLIA ##
-#famiglia-form
-  display none
+// #famiglia-form
+//   display none
 
 .famiglia-input
-  width 65%
+  width 100px
   display block
   float left
 
 // ## ABITAZIONE ##
-#abitazione-form
-  display none
+// #abitazione-form
+//   display none
+
 #costo-conosciuto
   display none
 
 // ## Trasporti & Spostamenti ##
-#trasporti-form
-  display none
+// #trasporti-form
+//   display none
+// #spostamenti-form
+//   display none
 
 #titolo-auto, #titolo-mezzi, #titolo-spostamento
   font-size 1.6em

@@ -1,5 +1,6 @@
 "use strict";
 $(document).ready(function(){
+	
 	// rende i select meravigliosi colorati e hipster
 	$("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $("button.dropdown-toggle").css({
@@ -21,7 +22,14 @@ $(document).ready(function(){
     $('#aggiungi-mezzo').fadeToggle();
   });
 
+  // // anima i form
+  // function hideForm(hide) {
+  // 	$(hide).css( 'margin-left', '-600px' );
+  // }
 
+  // $('#famiglia-avanti').click(function () {
+  //   hideForm('#famiglia-form', "#casa-form");
+  // });
 
 	/*
 		Controllo se è la prima visita dell'utente o se ci sono
@@ -30,7 +38,7 @@ $(document).ready(function(){
 	if (!check_user_local_storage()) {
 		//Se e la prima visita carico il menu di benvenuto,
 		//di default nascosto
-		if ($("#welcome").css("display") == "none") {
+		if ($("#welcome").css("display") === "none") {
 			$("#welcome").show();
 		}
 	}else{

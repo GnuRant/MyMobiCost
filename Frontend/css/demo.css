@@ -1,6 +1,6 @@
 .dropdown-arrow-inverse {
-  border-bottom-color: #34495e !important;
-  border-top-color: #34495e !important;
+  border-bottom-color: #404040 !important;
+  border-top-color: #404040 !important;
 }
 .container {
   width: 970px !important;
@@ -24,7 +24,7 @@
   width: 236px;
 }
 .demo-logo small {
-  color: rgba(52, 73, 94, 0.30000000000000004);
+  color: rgba(64, 64, 64, 0.30000000000000004);
   display: block;
   font-size: 22px;
   font-weight: 700;
@@ -43,7 +43,7 @@
   left: 0;
   font-size: 13px;
   line-height: 13px;
-  color: #c0c1c2;
+  color: #bebebe;
   font-weight: 400;
 }
 .demo-row .demo-text-note {
@@ -70,7 +70,7 @@
   font: bold 23px/40px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .demo-panel-title small {
-  color: #798795;
+  color: #818181;
   font-size: inherit;
   font-weight: 400;
 }
@@ -111,7 +111,7 @@
 }
 .demo-icons-tooltip {
   bottom: 0;
-  color: #c2c8cf;
+  color: #c6c6c6;
   font-size: 12px;
   left: 100%;
   margin-left: 0 !important;
@@ -126,10 +126,8 @@
 .demo-illustrations .demo-content:after {
   content: " ";
   /* 1 */
-
   display: table;
   /* 2 */
-
 }
 .demo-illustrations .demo-content:after {
   clear: both;
@@ -165,7 +163,7 @@
   margin: 3px 0 -3px;
 }
 .demo-download {
-  background-color: #ebedef;
+  background-color: #ececec;
   height: 190px;
   margin: 0 auto 32px;
   padding: 40px 28px 30px 32px;
@@ -183,10 +181,10 @@
   text-align: center;
 }
 .demo-text-box a:hover {
-  color: #1abc9c;
+  color: #79b31f;
 }
 .demo-browser {
-  background: #2c3e50 url(../images/demo/browser.png) 0 0 no-repeat;
+  background: #363636 url(../images/demo/browser.png) 0 0 no-repeat;
   background-size: 659px 42px;
   color: #ffffff;
   margin: 0 41px 140px 0;
@@ -242,7 +240,7 @@
   -webkit-font-smoothing: antialiased;
 }
 .demo-browser-content {
-  background-color: #34495e;
+  background-color: #404040;
   overflow: hidden;
   padding: 21px 0 0 20px;
   border-radius: 0 0 6px;
