@@ -2,7 +2,7 @@
 
 var user_data;
 var user_new_data = {};
-
+$( document ).ready(function (){
 	/*
 		Controllo se è la prima visita dell'utente o se ci sono
 		già i dati salvati in localstorage 
@@ -22,13 +22,6 @@ var user_new_data = {};
 function start_new_location () {
 	//Nascondo il messaggio di benvenuto
 	$("#welcome").hide();
-}
-
-function show_side_menu(id_categorie){
-	//Nascondo tutti i from
-	$(".form").css({"left" : "-600px"});
-	//Mostro solo il menu indicato
-	$(id_categorie+"-form").css({"left":"0px"});
 }
 
 //===============================================================
