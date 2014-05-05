@@ -135,6 +135,21 @@ function from_trasporti(){
 
 }
 
+//===============================================================
+//===================== form SPOSTAMENTI ========================
+//===============================================================
+$("#menu-spostamenti-button").click(function (){
+  load_form_spostamenti();
+});
 
+function load_form_spostamenti (){
+  toggle_active_menu("#menu-spostamenti-button");
+  load_partial("partials/spostamenti.html", "#form-container", function(){
+    form_spostamenti();
+  });
+}
 
+function form_spostamenti (){
+
+}
 
