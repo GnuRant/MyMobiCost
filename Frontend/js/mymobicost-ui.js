@@ -83,12 +83,21 @@ function decrement_input_value (){
 //======================= NEW SESSION ===========================
 //===============================================================
 $('#new-session').click(function () {
-    load_partial("partials/famiglia.html", "#form-container", from_famiglia())
+  load_from_famiglia();
+});
+
+$("#welcome-avanti").click(function() {
+  load_from_famiglia();
+  $("#welcome").hide();
 });
 
 //===============================================================
 //====================== FROM FAMIGLIA ==========================
 //===============================================================
+
+function load_from_famiglia() {
+  load_partial("partials/famiglia.html", "#form-container", from_famiglia());
+}
 
 function from_famiglia(){
   //Collego i bottono +,-
@@ -97,7 +106,7 @@ function from_famiglia(){
 
   $("#famiglia-avanti").click(function() {
     var data = {};
-    $.each($('#famiglia-caller').serializeArray(), function (i, el){
+    $.each($('#famiglia-caller').serializeArray(), function (i, el){ 
       data[el.name] = el.value;
     });
     user_new_data.famiglia = data;
