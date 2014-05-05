@@ -2,7 +2,7 @@
 
 var user_data;
 var user_new_data = {};
-
+$( document ).ready(function (){
 	/*
 		Controllo se è la prima visita dell'utente o se ci sono
 		già i dati salvati in localstorage 
