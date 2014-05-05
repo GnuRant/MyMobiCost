@@ -263,6 +263,7 @@ hr {
   -ms-transition: 0.3s;
   transition: 0.3s;
   cursor: pointer;
+  display: none;
 }
 #left-sidebar .categoria #menu-famiglia,
 #left-sidebar .categoria #menu-abitazione,
