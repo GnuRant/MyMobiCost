@@ -1,0 +1,132 @@
+<!-- form abitazione -->
+<div id="abitazione-form" class="form">
+    <h1>Abitazione</h1>
+    <div class="form-campi">
+        <form class="form-horizontal" role="form">
+          
+            <div class="form-group">
+                <label for="adulti" class="col-sm-6 control-label">Conosci già il costo mensile?</label>
+                <div class="col-sm-6">
+                    <div class="switch"
+                      data-on-label="Sì"
+                      data-off-label="No">
+                      <input id="checkbox-abitazione" type="checkbox" name="costo" />
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div id="costo-sconosciuto">
+                <div class="form-group">
+                    <label for="Metri quadri" class="col-sm-6 control-label">Metri quadri</label>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control flat" placeholder="0" name="grandezza" />
+                                <span class="input-group-addon">mq</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Metri quadri" class="col-sm-6 control-label">Provincia</label>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="input">
+                                <input type="text" placeholder="Belluno" class="form-control" name="provincia" disabled/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Comune" class="col-sm-6 control-label">Comune</label>
+                    <div class="col-sm-6">
+                        <select name="comune">
+                          <option value="0">Belluno</option>
+                          <option value="1">Sedico</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Comune" class="col-sm-6 control-label">Zona</label>
+                    <div class="col-sm-6">
+                        <select name="zona_abitativa">
+                          <option value="0">Belluno</option>
+                          <option value="1">Sedico</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Comune" class="col-sm-6 control-label">Categoria</label>
+                    <div class="col-sm-6">
+                        <select name="categoria_edilizia">
+                          <option value="0">Belluno</option>
+                          <option value="1">Sedico</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Valore minimo" class="col-sm-6 control-label">Valore min.</label>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="input">
+                                <input type="text" placeholder="400" class="form-control" name="costo_min" disabled/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Metri quadri" class="col-sm-6 control-label">Valore max.</label>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="input">
+                                <input type="text" placeholder="1200" class="form-control" name="costo_max" disabled/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Metri quadri" class="col-sm-6 control-label">Valore medio</label>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control flat" placeholder="0" name="costo" />
+                                <span class="input-group-addon">€</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="costo-conosciuto">
+                <div class="form-group">
+                    <label for="Metri quadri" class="col-sm-6 control-label">Costo mensile</label>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control flat" placeholder="0" name="costo" />
+                                <span class="input-group-addon">€</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div id="famiglia-avanti">
+        <button class="btn btn-primary btn-wide">
+            Avanti
+        </button>
+    </div> 
+
+</div>
