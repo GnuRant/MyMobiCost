@@ -117,8 +117,23 @@ function form_abitazione (){
 }
 
 
+//===============================================================
+//======================= form TRASPORTI ========================
+//===============================================================
+$("#menu-trasporti-button").click(function() {
+  load_form_trasporti();
+});
 
+function load_form_trasporti(){
+  toggle_active_menu("#menu-trasporti-button");
+  load_partial("partials/trasporti.html", "#form-container", function(){
+    from_trasporti();
+  });
+}
 
+function from_trasporti(){
+
+}
 
 
 
