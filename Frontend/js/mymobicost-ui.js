@@ -114,8 +114,32 @@ function form_abitazione (){
   // selettori belli bellissimi
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
+  //Carico i dati del dropdown dei comuni
+
+  get_comuni(function (data){
+    //Chiamata alla api asincrona
+    $.each(data, function(i, el) {
+      $("select[name=comune]").append("<option>"+el+"</option>");
+    });
+  }); 
+
+  //Aggiungo ascoltatore per quando l'utente seleziona un valore
+  $("select[name=comune]").on("change", function (){
+    // prendo il valore dei costi medi di tutte le zone
+    get_costi_med_comuni($("select[name=comune]").val(), function (data){
+      console.log("Costo"+data.cost_min.toFixed(2));
+      set_input_costi(data);
+    });
+  });
 }
 
+function set_input_costi (data){
+  var grandezza = $("input[name=grandezza").val();
+  //Imposto i valori moltiplicando per la grandezza
+  $("input[name=costo_min]").val(grandezza*data.cost_min.toFixed(2));
+  $("input[name=costo_max]").val(grandezza*data.cost_max.toFixed(2));
+  $("input[name=costo]").val((grandezza*data.cost_med).toFixed(2));
+}
 
 //===============================================================
 //======================= form TRASPORTI ========================
