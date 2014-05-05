@@ -31,10 +31,6 @@
     show_side_menu("#abitazione");
   });
 
-  $("#menu-famiglia").click(function() {
-    show_side_menu("#famiglia");
-  });
-
   $("#menu-spostamenti").click(function() {
     show_side_menu("#spostamenti");
   });
@@ -94,6 +90,10 @@ $("#welcome-avanti").click(function() {
 //===============================================================
 //====================== FROM FAMIGLIA ==========================
 //===============================================================
+
+$("#menu-famiglia-button").click(function() {
+  load_from_famiglia();
+});
 
 function load_from_famiglia() {
   load_partial("partials/famiglia.html", "#form-container", from_famiglia());
