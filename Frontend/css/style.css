@@ -340,8 +340,6 @@ hr {
   margin: 0 auto;
 }
 #welcome {
-  display: none !important;
-  display: none;
   position: absolute;
   top: 20%;
   width: 500px;
