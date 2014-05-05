@@ -201,6 +201,9 @@ hr {
   background: #313131;
   z-index: 255;
 }
+#left-sidebar .logo-deactive {
+  background: none;
+}
 #left-sidebar #logo {
   background: #404040;
   padding-top: 0.1em;
@@ -216,6 +219,30 @@ hr {
   margin-top: 0;
   margin-bottom: 0;
 }
+#left-sidebar .new-session-active {
+  background: #404040;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+#left-sidebar .new-session-active:after {
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+  height: 0;
+  width: 0;
+  content: " ";
+  position: absolute;
+  bottom: -10px;
+  left: 39px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #404040;
+}
 #left-sidebar #new-session {
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
@@ -226,6 +253,7 @@ hr {
   line-height: 65px;
   height: 83px;
   position: relative;
+  margin-bottom: 20px;
 }
 #left-sidebar #new-session:hover {
   background: #404040;
@@ -267,6 +295,15 @@ hr {
   text-align: center;
   margin: 0;
 }
+#left-sidebar .active {
+  background: #404040;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+  border-left: 5px #79b31f solid;
+}
 #left-sidebar .categoria {
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
@@ -290,19 +327,7 @@ hr {
   -ms-transition: 0.3s;
   transition: 0.3s;
 }
-#left-sidebar .categoria #menu-famiglia .active,
-#left-sidebar .categoria #menu-abitazione .active,
-#left-sidebar .categoria #menu-trasporti .active,
-#left-sidebar .categoria #menu-spostamenti .active {
-  background: #404040;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -o-transition: 0.3s;
-  -ms-transition: 0.3s;
-  transition: 0.3s;
-  border-left: 5px #79b31f solidh;
-}
-#left-sidebar .categoria:over {
+#left-sidebar .categoria:hover {
   background: #404040;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;

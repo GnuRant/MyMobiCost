@@ -19,6 +19,9 @@
   background black
   z-index 255
 
+  .logo-deactive
+    background none
+
   #logo
     background light-black
     padding-top .1em
@@ -33,12 +36,29 @@
       margin-top 0
       margin-bottom 0
 
+  .new-session-active
+    background light-black
+    transition .3s
+
+    &:after
+      transition .3s
+      height 0
+      width 0
+      content " "
+      position absolute
+      bottom -10px
+      left 39px
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid light-black;
+
   #new-session
     transition .3s
     padding .5em
     line-height 65px
     height 83px
     position relative
+    margin-bottom 20px
 
     &:hover
       background light-black
@@ -68,6 +88,11 @@
       text-align center
       margin 0
 
+  .active
+    background light-black
+    transition .3s
+    border-left 5px green solid
+
   .categoria
     transition .3s
     cursor pointer
@@ -80,12 +105,7 @@
       padding .6em
       transition .3s
 
-      .active
-        background light-black
-        transition .3s
-        border-left 5px green solidh
-
-    &:over
+    &:hover
       background light-black
       transition .3s
       border-left 5px green solid
