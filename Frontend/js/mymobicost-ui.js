@@ -79,13 +79,18 @@ function decrement_input_value (){
 //======================= NEW SESSION ===========================
 //===============================================================
 $('#new-session').click(function () {
-  load_from_famiglia();
+  new_session();
 });
 
 $("#welcome-avanti").click(function() {
-  load_from_famiglia();
-  $("#welcome").hide();
+  new_session();
 });
+
+function new_session (){
+  $("#welcome").hide();
+  $(".categoria").show();
+  load_from_famiglia();
+}
 
 //===============================================================
 //====================== FROM FAMIGLIA ==========================
