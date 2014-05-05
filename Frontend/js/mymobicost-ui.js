@@ -91,8 +91,17 @@ $('#new-session').click(function () {
 //===============================================================
 
 function from_famiglia(){
+  //Collego i bottono +,-
   increment_inpunt_value();
   decrement_input_value();
+
+  $("#famiglia-avanti").click(function() {
+    var data = {};
+    $.each($('#famiglia-caller').serializeArray(), function (i, el){
+      data[el.name] = el.value;
+    });
+    user_new_data.famiglia = data;
+  });
 }
 
 
