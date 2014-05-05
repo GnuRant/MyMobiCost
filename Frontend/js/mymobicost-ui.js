@@ -2,42 +2,38 @@
 //==========================  UI ================================
 //===============================================================
 
-  // rende i select meravigliosi colorati e hipster
-  $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
-    $("button.dropdown-toggle").css({
-        'background':'#404040'
-    });
-  
-  // switch costo abitazione (conosciuto o no)
-  $('#checkbox-abitazione').change(function () {
-    $('#costo-sconosciuto').fadeToggle();
-    $('#costo-conosciuto').fadeToggle();
+// rende i select meravigliosi colorati e hipster
+$("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+  $("button.dropdown-toggle").css({
+      'background':'#404040'
   });
 
-  //aggiungi nuova auto
-  $('#bottone-aggiungi-auto').click(function () {
-    $('#aggiungi-auto').fadeToggle();
-  });
-  //aggiungi nuovo mezzo
-  $('#bottone-aggiungi-mezzo').click(function () {
-    $('#aggiungi-mezzo').fadeToggle();
-  });
+// switch costo abitazione (conosciuto o no)
+$('#checkbox-abitazione').change(function () {
+  $('#costo-sconosciuto').fadeToggle();
+  $('#costo-conosciuto').fadeToggle();
+});
 
-  $("#menu-trasporti").click(function() {
-    show_side_menu("#trasporti");
-  });
+//aggiungi nuova auto
+$('#bottone-aggiungi-auto').click(function () {
+  $('#aggiungi-auto').fadeToggle();
+});
+//aggiungi nuovo mezzo
+$('#bottone-aggiungi-mezzo').click(function () {
+  $('#aggiungi-mezzo').fadeToggle();
+});
 
-  $("#menu-abitazione").click(function() {
-    show_side_menu("#abitazione");
-  });
+$("#menu-trasporti").click(function() {
+  show_side_menu("#trasporti");
+});
 
-  $("#menu-famiglia").click(function() {
-    show_side_menu("#famiglia");
-  });
+$("#menu-abitazione").click(function() {
+  show_side_menu("#abitazione");
+});
 
-  $("#menu-spostamenti").click(function() {
-    show_side_menu("#spostamenti");
-  });
+$("#menu-spostamenti").click(function() {
+  show_side_menu("#spostamenti");
+});
 
 //===============================================================
 //========================= UTILITY =============================
@@ -83,17 +79,26 @@ function decrement_input_value (){
 //======================= NEW SESSION ===========================
 //===============================================================
 $('#new-session').click(function () {
-  load_from_famiglia();
+  new_session();
 });
 
 $("#welcome-avanti").click(function() {
-  load_from_famiglia();
-  $("#welcome").hide();
+  new_session();
 });
+
+function new_session (){
+  $("#welcome").hide();
+  $(".categoria").show();
+  load_from_famiglia();
+}
 
 //===============================================================
 //====================== FROM FAMIGLIA ==========================
 //===============================================================
+
+$("#menu-famiglia-button").click(function() {
+  load_from_famiglia();
+});
 
 function load_from_famiglia() {
   load_partial("partials/famiglia.html", "#form-container", from_famiglia());
