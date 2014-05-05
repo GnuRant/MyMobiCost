@@ -7,6 +7,11 @@
 //========================= UTILITY =============================
 //===============================================================
 
+function toggle_active_menu(element){
+  $(".active").toggleClass('active');
+  $(element).toggleClass('active');
+}
+
 function load_partial(page, container_id, on_complete) {
   $.get(page, function (data){
     $(container_id).html(data).ready(on_complete());
@@ -58,7 +63,7 @@ function new_session (){
   $("#welcome").hide();
   $(".categoria").show();
   $("#logo").addClass('logo-deactive');
-  $("#new-session").addClass('active');
+  $("#new-session").addClass('new-session-active');
   load_form_famiglia();
 }
 
@@ -71,7 +76,7 @@ $("#menu-famiglia-button").click(function() {
 });
 
 function load_form_famiglia() {
-  $("#menu-famiglia-button").addClass('active');
+  toggle_active_menu("#menu-famiglia-button");
   load_partial("partials/famiglia.html", "#form-container", function(){
     form_famiglia();
   });
@@ -95,10 +100,11 @@ function form_famiglia(){
 //====================== form ABITAZIONE ========================
 //===============================================================
 $("#menu-abitazione-button").click(function() {
-  load_form_abitazione();
+  load_form_abitazione("#menu-abitazione-button");
 });
 
 function load_form_abitazione (){
+  toggle_active_menu("#menu-abitazione-button");
   load_partial("partials/abitazione.html", "#form-container", function (){
     form_abitazione();
   });
