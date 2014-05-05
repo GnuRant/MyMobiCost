@@ -57,6 +57,8 @@ $("#welcome-avanti").click(function() {
 function new_session (){
   $("#welcome").hide();
   $(".categoria").show();
+  $("#logo").addClass('logo-deactive');
+  $("#new-session").addClass('active');
   load_form_famiglia();
 }
 
@@ -69,6 +71,7 @@ $("#menu-famiglia-button").click(function() {
 });
 
 function load_form_famiglia() {
+  $("#menu-famiglia-button").addClass('active');
   load_partial("partials/famiglia.html", "#form-container", function(){
     form_famiglia();
   });
