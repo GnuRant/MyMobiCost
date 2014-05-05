@@ -1,3 +1,10 @@
+//appunti: cose di tia
+obj = {}
+$.each($('#bla').serializeArray(), function (i, el){
+  obj[el.name] = el.value;
+})
+
+
 "use strict";
 
 var user_data;

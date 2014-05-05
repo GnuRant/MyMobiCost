@@ -295,11 +295,6 @@ hr {
 #abitazione-form,
 #famiglia-form,
 #spostamenti-form {
-  -webkit-transition: 1s ease-in-out;
-  -moz-transition: 1s ease-in-out;
-  -o-transition: 1s ease-in-out;
-  -ms-transition: 1s ease-in-out;
-  transition: 1s ease-in-out;
   padding-top: 50px;
 }
 #trasporti-form h1,
