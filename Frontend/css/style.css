@@ -202,7 +202,7 @@ hr {
   z-index: 255;
 }
 #left-sidebar .logo-deactive {
-  background: none;
+  background: none !important;
 }
 #left-sidebar #logo {
   background: #404040;
@@ -219,7 +219,7 @@ hr {
   margin-top: 0;
   margin-bottom: 0;
 }
-#left-sidebar .new-session-active {
+#left-sidebar .active {
   background: #404040;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
@@ -227,7 +227,7 @@ hr {
   -ms-transition: 0.3s;
   transition: 0.3s;
 }
-#left-sidebar .new-session-active:after {
+#left-sidebar .active:after {
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -o-transition: 0.3s;
