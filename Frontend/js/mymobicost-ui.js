@@ -2,34 +2,6 @@
 //==========================  UI ================================
 //===============================================================
 
-// rende i select meravigliosi colorati e hipster
-$("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
-  $("button.dropdown-toggle").css({
-      'background':'#404040'
-  });
-
-// switch costo abitazione (conosciuto o no)
-$('#checkbox-abitazione').change(function () {
-  $('#costo-sconosciuto').fadeToggle();
-  $('#costo-conosciuto').fadeToggle();
-});
-
-//aggiungi nuova auto
-$('#bottone-aggiungi-auto').click(function () {
-  $('#aggiungi-auto').fadeToggle();
-});
-//aggiungi nuovo mezzo
-$('#bottone-aggiungi-mezzo').click(function () {
-  $('#aggiungi-mezzo').fadeToggle();
-});
-
-$("#menu-trasporti").click(function() {
-  show_side_menu("#trasporti");
-});
-
-$("#menu-spostamenti").click(function() {
-  show_side_menu("#spostamenti");
-});
 
 //===============================================================
 //========================= UTILITY =============================
@@ -124,23 +96,12 @@ $("#menu-abitazione-button").click(function() {
 });
 
 function load_form_abitazione (){
-
   load_partial("partials/abitazione.html", "#form-container", function (){
     form_abitazione();
   });
 }
 
 function form_abitazione (){
-
-  $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
-  $("button.dropdown-toggle").css({
-      'background':'#404040'
-  });
-
-  $('#checkbox-abitazione').change(function () {
-    $('#costo-sconosciuto').fadeToggle();
-    $('#costo-conosciuto').fadeToggle();
-  });
 
 }
 
