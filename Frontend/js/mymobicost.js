@@ -24,13 +24,6 @@ function start_new_location () {
 	$("#welcome").hide();
 }
 
-function show_side_menu(id_categorie){
-	//Nascondo tutti i from
-	$(".form").css({"left" : "-600px"});
-	//Mostro solo il menu indicato
-	$(id_categorie+"-form").css({"left":"0px"});
-}
-
 //===============================================================
 //======================  LOCALSTORAGE ==========================
 //===============================================================

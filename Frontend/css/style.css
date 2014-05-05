@@ -1,3 +1,5 @@
+@import '../bootstrap/css/bootstrap.css';
+@import 'flat-ui.css';
 @-moz-keyframes shake {
   33% {
     -webkit-transform: rotate(4deg);
@@ -247,6 +249,12 @@ hr {
   line-height: 65px;
   text-align: center;
   margin: 0;
+}
+#left-sidebar #new-session:after {
+  background: #f00;
+  height: 10px;
+  width: 10px;
+  content: " ";
 }
 #left-sidebar .categoria {
   -webkit-transition: 0.3s;
