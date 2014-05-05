@@ -219,7 +219,7 @@ hr {
   margin-top: 0;
   margin-bottom: 0;
 }
-#left-sidebar .active {
+#left-sidebar .new-session-active {
   background: #404040;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
@@ -227,7 +227,7 @@ hr {
   -ms-transition: 0.3s;
   transition: 0.3s;
 }
-#left-sidebar .active:after {
+#left-sidebar .new-session-active:after {
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -o-transition: 0.3s;
@@ -334,7 +334,6 @@ hr {
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s;
-  border-left: 5px #79b31f solid;
 }
 #abitazione-avanti,
 #famiglia-avanti,
