@@ -27,10 +27,6 @@ $("#menu-trasporti").click(function() {
   show_side_menu("#trasporti");
 });
 
-$("#menu-abitazione").click(function() {
-  show_side_menu("#abitazione");
-});
-
 $("#menu-spostamenti").click(function() {
   show_side_menu("#spostamenti");
 });
@@ -39,9 +35,9 @@ $("#menu-spostamenti").click(function() {
 //========================= UTILITY =============================
 //===============================================================
 
-function load_partial(page, container_id, on_complate) {
+function load_partial(page, container_id, on_complete) {
   $.get(page, function (data){
-    $(container_id).html(data).ready(from_famiglia());
+    $(container_id).html(data).ready(on_complete());
   });
 }
 
@@ -89,23 +85,25 @@ $("#welcome-avanti").click(function() {
 function new_session (){
   $("#welcome").hide();
   $(".categoria").show();
-  load_from_famiglia();
+  load_form_famiglia();
 }
 
 //===============================================================
-//====================== FROM FAMIGLIA ==========================
+//====================== form FAMIGLIA ==========================
 //===============================================================
 
 $("#menu-famiglia-button").click(function() {
-  load_from_famiglia();
+  load_form_famiglia();
 });
 
-function load_from_famiglia() {
-  load_partial("partials/famiglia.html", "#form-container", from_famiglia());
+function load_form_famiglia() {
+  load_partial("partials/famiglia.html", "#form-container", function(){
+    form_famiglia();
+  });
 }
 
-function from_famiglia(){
-  //Collego i bottono +,-
+function form_famiglia(){
+  //Collego i bottoni +,-
   increment_inpunt_value();
   decrement_input_value();
 
@@ -117,5 +115,39 @@ function from_famiglia(){
     user_new_data.famiglia = data;
   });
 }
+
+//===============================================================
+//====================== form ABITAZIONE ========================
+//===============================================================
+$("#menu-abitazione-button").click(function() {
+  load_form_abitazione();
+});
+
+function load_form_abitazione (){
+
+  load_partial("partials/abitazione.html", "#form-container", function (){
+    form_abitazione();
+  });
+}
+
+function form_abitazione (){
+
+  $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+  $("button.dropdown-toggle").css({
+      'background':'#404040'
+  });
+
+  $('#checkbox-abitazione').change(function () {
+    $('#costo-sconosciuto').fadeToggle();
+    $('#costo-conosciuto').fadeToggle();
+  });
+
+}
+
+
+
+
+
+
 
 
