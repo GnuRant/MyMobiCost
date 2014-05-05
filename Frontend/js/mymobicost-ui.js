@@ -104,6 +104,7 @@ function load_form_abitazione (){
 function form_abitazione (){
   // selettori belli bellissimi
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+  $('.switch')['bootstrapSwitch']();
 }
 
 
