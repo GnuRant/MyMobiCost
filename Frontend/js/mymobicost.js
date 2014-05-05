@@ -10,12 +10,13 @@ $( document ).ready(function (){
 	if (!check_user_local_storage()) {
 		//Se e la prima visita carico il menu di benvenuto,
 		//di default nascosto
-		if ($("#welcome").css("display") === "none") {
-			$("#welcome").show();
-		}
+		$("#welcome").show();
 	}else{
+        console.log("Carico i dati dell'utente");
 		//Carico i dati dell'utente nella variabile globalr
+        //$("#welcome").hide();
 		user_data = load_user_data();
+        $("#welcome").hide();
 	}
 });
 
@@ -33,7 +34,7 @@ var userKey = {
 	@return true ci sono dati, false altrimenti
 */
 function check_user_local_storage () {
-	if (localStorage[userKey.key] !== null) {
+	if (localStorage[userKey.key] != null) {
 		return true;
 	}else{
 		return false;

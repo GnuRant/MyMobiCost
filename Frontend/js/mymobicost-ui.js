@@ -2,38 +2,38 @@
 //==========================  UI ================================
 //===============================================================
 
-  // rende i select meravigliosi colorati e hipster
-  $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
-    $("button.dropdown-toggle").css({
-        'background':'#404040'
-    });
-  
-  // switch costo abitazione (conosciuto o no)
-  $('#checkbox-abitazione').change(function () {
-    $('#costo-sconosciuto').fadeToggle();
-    $('#costo-conosciuto').fadeToggle();
+// rende i select meravigliosi colorati e hipster
+$("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+  $("button.dropdown-toggle").css({
+      'background':'#404040'
   });
 
-  //aggiungi nuova auto
-  $('#bottone-aggiungi-auto').click(function () {
-    $('#aggiungi-auto').fadeToggle();
-  });
-  //aggiungi nuovo mezzo
-  $('#bottone-aggiungi-mezzo').click(function () {
-    $('#aggiungi-mezzo').fadeToggle();
-  });
+// switch costo abitazione (conosciuto o no)
+$('#checkbox-abitazione').change(function () {
+  $('#costo-sconosciuto').fadeToggle();
+  $('#costo-conosciuto').fadeToggle();
+});
 
-  $("#menu-trasporti").click(function() {
-    show_side_menu("#trasporti");
-  });
+//aggiungi nuova auto
+$('#bottone-aggiungi-auto').click(function () {
+  $('#aggiungi-auto').fadeToggle();
+});
+//aggiungi nuovo mezzo
+$('#bottone-aggiungi-mezzo').click(function () {
+  $('#aggiungi-mezzo').fadeToggle();
+});
 
-  $("#menu-abitazione").click(function() {
-    show_side_menu("#abitazione");
-  });
+$("#menu-trasporti").click(function() {
+  show_side_menu("#trasporti");
+});
 
-  $("#menu-spostamenti").click(function() {
-    show_side_menu("#spostamenti");
-  });
+$("#menu-abitazione").click(function() {
+  show_side_menu("#abitazione");
+});
+
+$("#menu-spostamenti").click(function() {
+  show_side_menu("#spostamenti");
+});
 
 //===============================================================
 //========================= UTILITY =============================
