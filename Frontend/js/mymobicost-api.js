@@ -38,3 +38,15 @@ function get_zone(comune, on_complete) {
 			}
 	});
 }
+
+function get_categoria_edilizia(comune, zona, on_complete) {
+	var data_array = [];
+	$.ajax({
+		url: API_SERVER_URL + "/abitazione/tipologie/comune="+comune+"&zona="+zona,
+		async: false,
+		success : function (data){
+			data_array = data.tipologie;
+			on_complete(data_array);
+		}
+	});
+}

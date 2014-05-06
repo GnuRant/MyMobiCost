@@ -115,6 +115,8 @@ function load_famiglia_data() {
 //===============================================================
 //====================== form ABITAZIONE ========================
 //===============================================================
+var comune = "";
+var zona = "";
 var costo_min = 0;
 var costo_max = 0;
 var costo = 0;
@@ -158,19 +160,30 @@ function form_abitazione (){
   //Aggiungo ascoltatore per quando l'utente seleziona un valore
   // per il capo comune
   $("select[name=comune]").change(function (){
+    comune = $("select[name=comune]").val();
     // prendo il valore dei costi medi di tutte le zone
-    get_zone($("select[name=comune]").val(), function (data){
+    get_zone(comune, function (data){
       $.each(data, function(i, el) {
         $("select[name=zona_abitativa]").append("<option value="+el.code+">"+el.zona+"</option>");
-        console.log(el.zona);
       });
     });
+    //Carico i costi di quel comune
     get_costi_med_comuni($("select[name=comune]").val(), function (data){
       //Aggiorno i valori nelle varabili globali poi aggiorno i campi
       costo_min = data.cost_min;
       costo_max = data.cost_max;
       costo = data.cost_med;
       set_input_costi();
+    });
+  });
+
+  //Dopo aver caricato le zone carico le categorie edilizie ed aggiorno 
+  $("select[name=zona_abitativa]").change(function (){
+    zona = $("select[name=zona_abitativa]").val();
+    get_categoria_edilizia(comune, zona, function (data) {
+        $.each(data, function(i, el) {
+          $("select[name=categoria_edilizia]").append("<option value="+el.code+">"+el.tipologia+"</option>")
+        });
     });
   });
 }
