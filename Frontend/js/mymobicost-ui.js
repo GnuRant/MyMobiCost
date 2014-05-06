@@ -106,6 +106,7 @@ function load_famiglia_data() {
   var famiglia = user_new_data.famiglia;
   //Controllo che i dati siano effettivamente presenti
   if (!$.isEmptyObject(famiglia)) {
+    //Se non ho dati vuol dire che sono in fase di aggiunta
     $("input[name=adulti]").val(famiglia.adulti);
     $("input[name=bambini]").val(famiglia.bambini);
   };
@@ -134,6 +135,10 @@ function form_abitazione (){
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
 
+  if (edit_mode) {
+    load_abitazione_data();
+  };
+
   //Imposto evento per il cabio di valore nel capo input 
   $("input[name=grandezza]").change(function() {
     //Controllo che il valore passato sia un numero
@@ -154,6 +159,12 @@ function form_abitazione (){
   // per il capo comune
   $("select[name=comune]").change(function (){
     // prendo il valore dei costi medi di tutte le zone
+    get_zone($("select[name=comune]").val(), function (data){
+      $.each(data, function(i, el) {
+        $("select[name=zona_abitativa]").append("<option value="+el.code+">"+el.zona+"</option>");
+        console.log(el.zona);
+      });
+    });
     get_costi_med_comuni($("select[name=comune]").val(), function (data){
       //Aggiorno i valori nelle varabili globali poi aggiorno i campi
       costo_min = data.cost_min;
@@ -170,6 +181,10 @@ function set_input_costi (){
   $("input[name=costo_min]").val((grandezza*costo_min).toFixed(2));
   $("input[name=costo_max]").val((grandezza*costo_max).toFixed(2));
   $("input[name=costo]").val((grandezza*costo).toFixed(2));
+}
+
+function load_abitazione_data(){
+
 }
 
 //===============================================================

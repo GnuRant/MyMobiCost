@@ -26,3 +26,15 @@ function get_costi_med_comuni (comune, on_complete) {
 		}
 	});
 }
+
+function get_zone(comune, on_complete) {
+	var data_array = [];
+	$.ajax({
+		url: API_SERVER_URL+"/abitazione/zone/comune="+comune,
+		async: true,
+		success : function (data){
+				data_array = data.zone;
+				on_complete(data_array);
+			}
+	});
+}
