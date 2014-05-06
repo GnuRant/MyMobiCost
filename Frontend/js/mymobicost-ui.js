@@ -99,6 +99,8 @@ function form_famiglia(){
       data[el.name] = el.value;
     });
     user_new_data.famiglia = data;
+    //Carica il prossimo from
+    load_form_abitazione();
   });
 }
 
@@ -203,6 +205,8 @@ function form_abitazione (){
       data[el.name] = el.value;
     });
     user_new_data.abitazione = data;
+    //Carica il prossimo from
+    load_form_trasporti();
   });
 }
 
