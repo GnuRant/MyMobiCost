@@ -65,6 +65,7 @@ function new_session (){
   $("#logo").addClass('logo-deactive');
   $("#new-session").addClass('new-session-active');
   load_form_famiglia();
+  edit_mode = true;
 }
 
 //===============================================================
@@ -87,6 +88,11 @@ function form_famiglia(){
   increment_inpunt_value();
   decrement_input_value();
 
+  //Carico i dati dell'utente se sono in edit mode
+  if (edit_mode) {
+    load_famiglia_data();
+  };
+
   $("#famiglia-avanti").click(function() {
     var data = {};
     $.each($('#famiglia-caller').serializeArray(), function (i, el){ 
@@ -94,6 +100,15 @@ function form_famiglia(){
     });
     user_new_data.famiglia = data;
   });
+}
+
+function load_famiglia_data() {
+  var famiglia = user_new_data.famiglia;
+  //Controllo che i dati siano effettivamente presenti
+  if (!$.isEmptyObject(famiglia)) {
+    $("input[name=adulti]").val(famiglia.adulti);
+    $("input[name=bambini]").val(famiglia.bambini);
+  };
 }
 
 //===============================================================
@@ -136,7 +151,8 @@ function form_abitazione (){
   }); 
 
   //Aggiungo ascoltatore per quando l'utente seleziona un valore
-  $("select[name=comune]").on("change", function (){
+  // per il capo comune
+  $("select[name=comune]").change(function (){
     // prendo il valore dei costi medi di tutte le zone
     get_costi_med_comuni($("select[name=comune]").val(), function (data){
       //Aggiorno i valori nelle varabili globali poi aggiorno i campi
