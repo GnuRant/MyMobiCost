@@ -189,7 +189,7 @@ function form_abitazione (){
 }
 
 function set_input_costi (){
-  var grandezza = $("input[name=grandezza").val();
+  var grandezza = $("input[name=grandezza]").val();
   //Imposto i valori moltiplicando per la grandezza
   $("input[name=costo_min]").val((grandezza*costo_min).toFixed(2));
   $("input[name=costo_max]").val((grandezza*costo_max).toFixed(2));
