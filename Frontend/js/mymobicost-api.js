@@ -46,11 +46,24 @@ function get_categoria_edilizia(comune, zona, on_complete) {
 	var data_array = [];
 	$.ajax({
 		url: API_SERVER_URL + "/abitazione/tipologie/comune="+comune+"&zona="+zona,
-		async: false,
+		async: true,
 		type: "GET",
 		success : function (data){
 			data_array = data.tipologie;
 			on_complete(data_array);
+		}
+	});
+}
+
+function get_costi_totali(comune, zona, categoria, on_complete) {
+	var data_array = [];
+	$.ajax({
+		url: API_SERVER_URL+"/abitazione/costi/comune="+comune+"&zona="+zona+"&tipologia="+categoria,
+		async: true,
+		type: "GET",
+		success : function (data){
+			data_array = data.costi[0];
+			on_complete (data_array);
 		}
 	});
 }

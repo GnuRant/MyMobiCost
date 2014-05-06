@@ -117,6 +117,7 @@ function load_famiglia_data() {
 //===============================================================
 var comune = "";
 var zona = "";
+var categoria = "";
 var costo_min = 0;
 var costo_max = 0;
 var costo = 0;
@@ -170,9 +171,7 @@ function form_abitazione (){
     //Carico i costi di quel comune
     get_costi_med_comuni($("select[name=comune]").val(), function (data){
       //Aggiorno i valori nelle varabili globali poi aggiorno i campi
-      costo_min = data.cost_min;
-      costo_max = data.cost_max;
-      costo = data.cost_med;
+      update_values_costi(data);
       set_input_costi();
     });
   });
@@ -186,6 +185,23 @@ function form_abitazione (){
         });
     });
   });
+
+  //Ecento al cambiamento della categoria edilizia
+  $("select[name=categoria_edilizia]").change(function() {
+    categoria = $("select[name=categoria_edilizia]").val();
+    console.log(categoria);
+    //Aggiorno i costi con i nuovi dati
+    get_costi_totali(comune, zona, categoria, function (data){
+      update_values_costi(data);
+      set_input_costi();
+    });
+  });
+}
+
+function update_values_costi (data){
+  costo_min = data.cost_min;
+  costo_max = data.cost_max;
+  costo = data.cost_med;
 }
 
 function set_input_costi (){
