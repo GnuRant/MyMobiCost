@@ -176,6 +176,9 @@ function form_abitazione (){
       update_values_costi(data);
       set_input_costi();
     });
+    //Re-imposto il valore di default per i from sottostanti
+    $("select[name=zona_abitativa]").prop('selectedIndex',0);
+    $("select[name=categoria_edilizia]").prop('selectedIndex',0);
   });
 
   //Dopo aver caricato le zone carico le categorie edilizie ed aggiorno 
@@ -186,6 +189,7 @@ function form_abitazione (){
           $("select[name=categoria_edilizia]").append("<option value="+el.code+">"+el.tipologia+"</option>")
         });
     });
+    $("select[name=categoria_edilizia]").prop('selectedIndex',0);
   });
 
   //Ecento al cambiamento della categoria edilizia
@@ -225,7 +229,7 @@ function set_input_costi (){
 }
 
 function load_abitazione_data(){
-
+  var abitazione = user_new_data.abitazione;
 }
 
 //===============================================================
