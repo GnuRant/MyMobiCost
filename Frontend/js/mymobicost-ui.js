@@ -189,12 +189,20 @@ function form_abitazione (){
   //Ecento al cambiamento della categoria edilizia
   $("select[name=categoria_edilizia]").change(function() {
     categoria = $("select[name=categoria_edilizia]").val();
-    console.log(categoria);
     //Aggiorno i costi con i nuovi dati
     get_costi_totali(comune, zona, categoria, function (data){
       update_values_costi(data);
       set_input_costi();
     });
+  });
+
+  //Bottone avanti, salvo i dati inseriti dall'utente
+  $("#abitazione-avanti").click(function() {
+    var data = {};
+    $.each($('#abitazione-caller').serializeArray(), function (i, el){ 
+      data[el.name] = el.value;
+    });
+    user_new_data.abitazione = data;
   });
 }
 
