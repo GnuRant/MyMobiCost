@@ -189,6 +189,7 @@ function form_abitazione (){
           $("select[name=categoria_edilizia]").append("<option value="+el.code+">"+el.tipologia+"</option>")
         });
     });
+    //Reset dei capi sottostanti
     $("select[name=categoria_edilizia]").prop('selectedIndex',0);
   });
 
@@ -229,7 +230,17 @@ function set_input_costi (){
 }
 
 function load_abitazione_data(){
-  var abitazione = user_new_data.abitazione;
+  var abitazione;
+  if(!$.isEmptyObject(user_new_data.abitazione)){
+    abitazione = user_new_data.abitazione;
+    //Carico i dati utente, se vi è contenuta l'indicazione del comune
+    //Carico il form completo altrimenti carico quello parziale
+    if (!$.isEmptyObject(abitazione.comune)) {
+      //Carico tutti i dati e genero il form completo
+    }else{
+      //Carico solo il costo inserito dall'utente
+    };
+  };
 }
 
 //===============================================================
