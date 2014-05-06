@@ -194,8 +194,11 @@ hr {
 .btn-selector {
   background: #404040;
 }
-.form-control[disabled] {
-  color: #404040;
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled],
+input {
+  color: #313131;
   opacity: 1;
   -ms-filter: none;
   filter: none;
