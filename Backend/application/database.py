@@ -79,7 +79,7 @@ def get_abitazione_zone(connection, comune):
 
 def get_abitazione_tipologie(connection, comune, zona):
 	data = []
-	query = ("""SELECT qi_92_1_20122_valori.descr_tipologia, qi_92_1_20122_valori.cod_tip
+	query = ("""SELECT DISTINCT qi_92_1_20122_valori.descr_tipologia, qi_92_1_20122_valori.cod_tip
 				FROM qi_92_1_20122_valori
 				WHERE qi_92_1_20122_valori.comune_descrizione = %s AND 
 				qi_92_1_20122_valori.zona = %s AND
