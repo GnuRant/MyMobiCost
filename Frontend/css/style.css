@@ -203,6 +203,12 @@ input {
   -ms-filter: none;
   filter: none;
 }
+.btn[disabled] {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  color: #fff;
+}
 #left-sidebar {
   position: absolute;
   height: 100%;
