@@ -24,7 +24,7 @@ function increment_inpunt_value (){
     var input = button.parent().find('input');
     var old_value = input.val();
 
-    if (old_value == "") {
+    if (old_value === "") {
       old_value = 0;
     };
     //Incremento il valore e salvo
