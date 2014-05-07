@@ -174,7 +174,6 @@ function form_abitazione (){
     get_costi_med_comuni($("select[name=comune]").val(), function (data){
       //Aggiorno i valori nelle varabili globali poi aggiorno i campi
       update_values_costi(data);
-      set_input_costi();
     });
     //Re-imposto il valore di default per i from sottostanti
     $("select[name=zona_abitativa]").prop('selectedIndex',0);
@@ -186,7 +185,7 @@ function form_abitazione (){
     zona = $("select[name=zona_abitativa]").val();
     get_categoria_edilizia(comune, zona, function (data) {
         $.each(data, function(i, el) {
-          $("select[name=categoria_edilizia]").append("<option value="+el.code+">"+el.tipologia+"</option>")
+          $("select[name=categoria_edilizia]").append("<option value="+el.code+">"+el.tipologia+"</option>");
         });
     });
     //Reset dei capi sottostanti
@@ -199,7 +198,6 @@ function form_abitazione (){
     //Aggiorno i costi con i nuovi dati
     get_costi_totali(comune, zona, categoria, function (data){
       update_values_costi(data);
-      set_input_costi();
     });
   });
 
@@ -219,6 +217,7 @@ function update_values_costi (data){
   costo_min = data.cost_min;
   costo_max = data.cost_max;
   costo = data.cost_med;
+  set_input_costi();
 }
 
 function set_input_costi (){
@@ -237,6 +236,36 @@ function load_abitazione_data(){
     //Carico il form completo altrimenti carico quello parziale
     if (!$.isEmptyObject(abitazione.comune)) {
       //Carico tutti i dati e genero il form completo
+      comune = abitazione.comune;
+      zona = abitazione.zona_abitativa;
+      categoria = abitazione.categoria_edilizia;
+      //Imposto la grandezza
+      $("input[name=grandezza]").val(abitazione.grandezza);
+      //Ricarico i dati presi dal server
+      //Comune
+      get_comuni(function (data){
+      $.each(data, function(i, el) {
+          $("select[name=comune]").append("<option>"+el+"</option>");
+          $("select[name=comune]").val(comune);
+        });
+      });
+      //Zona
+      get_zone(comune, function (data){
+        $.each(data, function(i, el) {
+          $("select[name=zona_abitativa]").append("<option value="+el.code+">"+el.zona+"</option>");
+        });
+        $("select[name=zona_abitativa]").val(zona);
+      });
+      //Categoria edilizia
+      get_categoria_edilizia(comune, zona, function (data) {
+        $.each(data, function(i, el) {
+          $("select[name=categoria_edilizia]").append("<option value="+el.code+">"+el.tipologia+"</option>");
+        });
+        $("select[name=categoria_edilizia]").val(categoria);
+      });
+      //Imposto i valori nei capi di testo
+      console.log(abitazione);
+      set_input_costi();
     }else{
       //Carico solo il costo inserito dall'utente
     };
