@@ -99,6 +99,8 @@ function form_famiglia(){
       data[el.name] = el.value;
     });
     user_new_data.famiglia = data;
+    //Carica il prossimo from
+    load_form_abitazione();
   });
 }
 
@@ -117,6 +119,7 @@ function load_famiglia_data() {
 //===============================================================
 var comune = "";
 var zona = "";
+var categoria = "";
 var costo_min = 0;
 var costo_max = 0;
 var costo = 0;
@@ -170,11 +173,12 @@ function form_abitazione (){
     //Carico i costi di quel comune
     get_costi_med_comuni($("select[name=comune]").val(), function (data){
       //Aggiorno i valori nelle varabili globali poi aggiorno i campi
-      costo_min = data.cost_min;
-      costo_max = data.cost_max;
-      costo = data.cost_med;
+      update_values_costi(data);
       set_input_costi();
     });
+    //Re-imposto il valore di default per i from sottostanti
+    $("select[name=zona_abitativa]").prop('selectedIndex',0);
+    $("select[name=categoria_edilizia]").prop('selectedIndex',0);
   });
 
   //Dopo aver caricato le zone carico le categorie edilizie ed aggiorno 
@@ -185,7 +189,36 @@ function form_abitazione (){
           $("select[name=categoria_edilizia]").append("<option value="+el.code+">"+el.tipologia+"</option>")
         });
     });
+    //Reset dei capi sottostanti
+    $("select[name=categoria_edilizia]").prop('selectedIndex',0);
   });
+
+  //Ecento al cambiamento della categoria edilizia
+  $("select[name=categoria_edilizia]").change(function() {
+    categoria = $("select[name=categoria_edilizia]").val();
+    //Aggiorno i costi con i nuovi dati
+    get_costi_totali(comune, zona, categoria, function (data){
+      update_values_costi(data);
+      set_input_costi();
+    });
+  });
+
+  //Bottone avanti, salvo i dati inseriti dall'utente
+  $("#abitazione-avanti").click(function() {
+    var data = {};
+    $.each($('#abitazione-caller').serializeArray(), function (i, el){ 
+      data[el.name] = el.value;
+    });
+    user_new_data.abitazione = data;
+    //Carica il prossimo from
+    load_form_trasporti();
+  });
+}
+
+function update_values_costi (data){
+  costo_min = data.cost_min;
+  costo_max = data.cost_max;
+  costo = data.cost_med;
 }
 
 function set_input_costi (){
@@ -197,7 +230,17 @@ function set_input_costi (){
 }
 
 function load_abitazione_data(){
-
+  var abitazione;
+  if(!$.isEmptyObject(user_new_data.abitazione)){
+    abitazione = user_new_data.abitazione;
+    //Carico i dati utente, se vi è contenuta l'indicazione del comune
+    //Carico il form completo altrimenti carico quello parziale
+    if (!$.isEmptyObject(abitazione.comune)) {
+      //Carico tutti i dati e genero il form completo
+    }else{
+      //Carico solo il costo inserito dall'utente
+    };
+  };
 }
 
 //===============================================================
