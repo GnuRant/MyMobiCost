@@ -242,6 +242,13 @@ input {
   -ms-transition: 0.3s;
   transition: 0.3s;
 }
+#left-sidebar .new-session-active p {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
 #left-sidebar .new-session-active:after {
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
@@ -302,6 +309,11 @@ input {
   animation: shake 0.3s ease 1;
 }
 #left-sidebar #new-session p {
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
   cursor: pointer;
   font-size: 7em;
   color: #fff;

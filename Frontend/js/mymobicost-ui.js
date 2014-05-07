@@ -315,9 +315,9 @@ function from_trasporti(){
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
 
-  // $('btn').click(function(){
-  //   console.log("panino");
-  // });
+  $('.btn').click(function(){
+    console.log("panino");
+  });
 
   //Tasto che rende visibile il form auto
   $('#bottone-aggiungi-auto').click(function () {
