@@ -216,6 +216,7 @@ function form_abitazione (){
       data[el.name] = el.value;
     });
     user_new_data.abitazione = data;
+    console.log(data);
     //Carica il prossimo from
     load_form_trasporti();
   });
@@ -272,11 +273,11 @@ function load_abitazione_data(){
         $("select[name=categoria_edilizia]").val(categoria);
       });
       //Imposto i valori nei capi di testo
-      console.log(abitazione);
       set_input_costi();
     }else{
-      //Carico solo il costo inserito dall'utente
-    };
+      $(".switch").bootstrapSwitch('setState' , true);
+      $("input[name=costo]").val(abitazione.costo);
+    }
   };
 }
 
