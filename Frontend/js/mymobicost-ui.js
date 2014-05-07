@@ -88,6 +88,9 @@ function form_famiglia(){
   increment_inpunt_value();
   decrement_input_value();
 
+  //attivo i tooltip
+  $('label').tooltip();
+
   //Carico i dati dell'utente se sono in edit mode
   if (edit_mode) {
     load_famiglia_data();
@@ -136,6 +139,10 @@ function load_form_abitazione (){
 }
 
 function form_abitazione (){
+
+  //attivo i tooltip
+  $('label').tooltip();
+
   // selettori belli bellissimi
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
@@ -301,24 +308,26 @@ function load_form_trasporti(){
 
 function from_trasporti(){
 
+  //attivo i tooltip
+  $('label').tooltip();
+
   // selettori belli bellissimi
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
 
-  //disabilita i bottomi sui form
-  $('btn').submit(function(){
-    $(this).children('input[type=submit]').prop('disabled', true);
+  $('.btn').click(function(){
+    console.log("panino");
   });
 
   //Tasto che rende visibile il form auto
   $('#bottone-aggiungi-auto').click(function () {
     $('#aggiungi-auto').show();
   });
-  //tasto annulla form auto
-  $('#cancel-auto').click(function () {
-    $('#aggiungi-auto').hide();
-  });
 
+  $('#cancel-auto').submit(function () {
+   sendContactForm();
+   return false;
+  });
 
   //Tasto che rende visibile il form mezzi pubblici
   $('#bottone-aggiungi-mezzo').click(function () {
@@ -342,6 +351,13 @@ function load_form_spostamenti (){
 }
 
 function form_spostamenti (){
+
+  //attivo i tooltip
+  $('label').tooltip();
+
+  // selettori belli bellissimi
+  $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+  $('.switch')['bootstrapSwitch']();
 
 }
 

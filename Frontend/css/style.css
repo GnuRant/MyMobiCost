@@ -203,6 +203,12 @@ input {
   -ms-filter: none;
   filter: none;
 }
+.btn[disabled] {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  color: #fff;
+}
 #left-sidebar {
   position: absolute;
   height: 100%;
@@ -235,6 +241,13 @@ input {
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s;
+}
+#left-sidebar .new-session-active p {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 #left-sidebar .new-session-active:after {
   -webkit-transition: 0.3s;
@@ -296,6 +309,11 @@ input {
   animation: shake 0.3s ease 1;
 }
 #left-sidebar #new-session p {
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
   cursor: pointer;
   font-size: 7em;
   color: #fff;
@@ -535,4 +553,37 @@ input {
 .conferma-trasporti {
   margin-top: 20px;
   margin-bottom: 50px;
+}
+.tabella-auto,
+.tabella-mezzo {
+  margin-right: 15px;
+  margin-left: 75px;
+}
+.nome-auto,
+.nome-mezzo {
+  font-size: 1.1em;
+  margin: 0;
+  position: relative;
+}
+.nome-auto::before {
+  background: #808080;
+  content: " ";
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  top: 0;
+  left: -60px;
+}
+.nome-mezzo::before {
+  background: #808080;
+  content: " ";
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  top: 0;
+  left: -60px;
 }
