@@ -11,7 +11,7 @@
       "abitazione": {
         "categoria_edilizia": "appartamento",
         "comune": "Sedico",
-        "costo": 600,
+        "cost_med": 600,
         "costo_max": 0,
         "costo_min": 0,
         "grandezza": 0,

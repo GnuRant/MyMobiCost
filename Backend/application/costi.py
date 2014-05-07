@@ -5,7 +5,7 @@ NUMERO_SETTIMANE = 52
 def calcolo_abitazione_costi(data):
 	#il dato puo' essere quello inserito dall'utente come
 	#costo dell'affitto, o quello calcolato come costo m^2*numero_m^2
-	return data["abitazione"]["costo"]
+	return data["abitazione"]["cost_med"]
 
 def calcolo_spostamenti_auto_costi(data):
 	costo = 0

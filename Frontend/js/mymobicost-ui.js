@@ -189,7 +189,6 @@ function form_abitazione (){
     get_costi_med_comuni($("select[name=comune]").val(), function (data){
       //Aggiorno i valori nelle varabili globali poi aggiorno i campi
       update_values_costi(data);
-      set_input_costi();
     });
     //Re-imposto il valore di default per i from sottostanti
     $("select[name=zona_abitativa]").prop('selectedIndex',0);
@@ -201,7 +200,7 @@ function form_abitazione (){
     zona = $("select[name=zona_abitativa]").val();
     get_categoria_edilizia(comune, zona, function (data) {
         $.each(data, function(i, el) {
-          $("select[name=categoria_edilizia]").append("<option value="+el.code+">"+el.tipologia+"</option>")
+          $("select[name=categoria_edilizia]").append("<option value="+el.code+">"+el.tipologia+"</option>");
         });
     });
     //Reset dei capi sottostanti
@@ -214,7 +213,6 @@ function form_abitazione (){
     //Aggiorno i costi con i nuovi dati
     get_costi_totali(comune, zona, categoria, function (data){
       update_values_costi(data);
-      set_input_costi();
     });
   });
 
@@ -224,6 +222,8 @@ function form_abitazione (){
     $.each($('#abitazione-caller').serializeArray(), function (i, el){ 
       data[el.name] = el.value;
     });
+    data.state = $("#checkbox-abitazione").is(':checked');
+    //Elimino i dati vecchi
     user_new_data.abitazione = data;
     //Carica il prossimo from
     load_form_trasporti();
@@ -231,9 +231,11 @@ function form_abitazione (){
 }
 
 function update_values_costi (data){
+  //dati dal JSON che ricevo dal server
   costo_min = data.cost_min;
   costo_max = data.cost_max;
   costo = data.cost_med;
+  set_input_costi();
 }
 
 function set_input_costi (){
@@ -241,7 +243,7 @@ function set_input_costi (){
   //Imposto i valori moltiplicando per la grandezza
   $("input[name=costo_min]").val((grandezza*costo_min).toFixed(2));
   $("input[name=costo_max]").val((grandezza*costo_max).toFixed(2));
-  $("input[name=costo]").val((grandezza*costo).toFixed(2));
+  $("input[name=cost_med]").val((grandezza*costo).toFixed(2));
 }
 
 function load_abitazione_data(){
@@ -250,11 +252,43 @@ function load_abitazione_data(){
     abitazione = user_new_data.abitazione;
     //Carico i dati utente, se vi è contenuta l'indicazione del comune
     //Carico il form completo altrimenti carico quello parziale
-    if (!$.isEmptyObject(abitazione.comune)) {
+    if (abitazione.state == false) {
       //Carico tutti i dati e genero il form completo
+      comune = abitazione.comune;
+      zona = abitazione.zona_abitativa;
+      categoria = abitazione.categoria_edilizia;
+      //Imposto la grandezza
+      $("input[name=grandezza]").val(abitazione.grandezza);
+      //Ricarico i dati presi dal server
+      //Comune
+      get_comuni(function (data){
+      $.each(data, function(i, el) {
+          $("select[name=comune]").append("<option>"+el+"</option>");
+          $("select[name=comune]").val(comune);
+        });
+      });
+      //Zona
+      get_zone(comune, function (data){
+        $.each(data, function(i, el) {
+          $("select[name=zona_abitativa]").append("<option value="+el.code+">"+el.zona+"</option>");
+        });
+        $("select[name=zona_abitativa]").val(zona);
+      });
+      //Categoria edilizia
+      get_categoria_edilizia(comune, zona, function (data) {
+        $.each(data, function(i, el) {
+          $("select[name=categoria_edilizia]").append("<option value="+el.code+">"+el.tipologia+"</option>");
+        });
+        $("select[name=categoria_edilizia]").val(categoria);
+      });
+      //Imposto i valori nei capi di testo, dati dal JSON che invio al server
+      $("input[name=cost_med]").val(abitazione.cost_med);
+      $("input[name=costo_min]").val(abitazione.costo_min);
+      $("input[name=costo_max]").val(abitazione.costo_max);
     }else{
-      //Carico solo il costo inserito dall'utente
-    };
+      $(".switch").bootstrapSwitch('setState' , true);
+      $("input[name=cost_med]").val(abitazione.cost_med);
+    }
   };
 }
 
