@@ -216,6 +216,8 @@ function form_abitazione (){
       data[el.name] = el.value;
     });
     //Elimino i dati vecchi
+    user_new_data = null;
+    user_new_data = {};
     user_new_data.abitazione = data;
     //Carica il prossimo from
     load_form_trasporti();
@@ -223,7 +225,7 @@ function form_abitazione (){
 }
 
 function update_values_costi (data){
-  dati dal JSON che ricevo dal server
+  //dati dal JSON che ricevo dal server
   costo_min = data.cost_min;
   costo_max = data.cost_max;
   costo = data.cost_med;
