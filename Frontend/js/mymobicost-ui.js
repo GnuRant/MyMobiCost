@@ -215,14 +215,15 @@ function form_abitazione (){
     $.each($('#abitazione-caller').serializeArray(), function (i, el){ 
       data[el.name] = el.value;
     });
+    //Elimino i dati vecchi
     user_new_data.abitazione = data;
-    console.log(data);
     //Carica il prossimo from
     load_form_trasporti();
   });
 }
 
 function update_values_costi (data){
+  dati dal JSON che ricevo dal server
   costo_min = data.cost_min;
   costo_max = data.cost_max;
   costo = data.cost_med;
@@ -234,7 +235,7 @@ function set_input_costi (){
   //Imposto i valori moltiplicando per la grandezza
   $("input[name=costo_min]").val((grandezza*costo_min).toFixed(2));
   $("input[name=costo_max]").val((grandezza*costo_max).toFixed(2));
-  $("input[name=costo]").val((grandezza*costo).toFixed(2));
+  $("input[name=cost_med]").val((grandezza*costo).toFixed(2));
 }
 
 function load_abitazione_data(){
@@ -272,11 +273,13 @@ function load_abitazione_data(){
         });
         $("select[name=categoria_edilizia]").val(categoria);
       });
-      //Imposto i valori nei capi di testo
-      set_input_costi();
+      //Imposto i valori nei capi di testo, dati dal JSON che invio al server
+      $("input[name=cost_med]").val(abitazione.cost_med);
+      $("input[name=costo_min]").val(abitazione.costo_min);
+      $("input[name=costo_max]").val(abitazione.costo_max);
     }else{
       $(".switch").bootstrapSwitch('setState' , true);
-      $("input[name=costo]").val(abitazione.costo);
+      $("input[name=cost_med]").val(abitazione.cost_med);
     }
   };
 }
