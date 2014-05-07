@@ -140,14 +140,13 @@ function form_abitazione (){
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
 
-  //visibilità sullo switch di costo mensile
+  // toggle visibility of "costo mensile"
   $(function () {
-    $('#checkbox-abitazione').change(function () {                
+    $('#checkbox-abitazione').change(function () {
        $('#costo-sconosciuto').toggle(!this.checked);
-       $('#costo-conosciuto').toggle(this.checked);       
+       $('#costo-conosciuto').toggle(!this.checked);
     }).change(); //ensure visible state matches initially
   });
-
 
   if (edit_mode) {
     load_abitazione_data();
@@ -296,6 +295,25 @@ function load_form_trasporti(){
 }
 
 function from_trasporti(){
+
+  $('form').submit(function(){
+    $(this).children('input[type=submit]').prop('disabled', true);
+  });
+
+  //Tasto che rende visibile il form auto
+  $('#bottone-aggiungi-auto').click(function () {
+    $('#aggiungi-auto').show();
+  });
+  //tasto annulla form auto
+  $('#cancel-auto').click(function () {
+    $('#aggiungi-auto').hide();
+  });
+
+
+  //Tasto che rende visibile il form mezzi pubblici
+  $('#bottone-aggiungi-mezzo').click(function () {
+    $('#aggiungi-mezzo').show();
+  });
 
 }
 
