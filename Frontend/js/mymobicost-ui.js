@@ -323,12 +323,11 @@ function from_trasporti(){
   $('#bottone-aggiungi-auto').click(function () {
     $('#aggiungi-auto').show();
   });
-  //tasto annulla form auto
-  $('#cancel-auto').click(function () {
-    $('#aggiungi-auto').hide();
-    console.log("hello");
-  });
 
+  $('#cancel-auto').submit(function () {
+   sendContactForm();
+   return false;
+  });
 
   //Tasto che rende visibile il form mezzi pubblici
   $('#bottone-aggiungi-mezzo').click(function () {
@@ -355,6 +354,10 @@ function form_spostamenti (){
 
   //attivo i tooltip
   $('label').tooltip();
+
+  // selettori belli bellissimi
+  $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+  $('.switch')['bootstrapSwitch']();
 
 }
 

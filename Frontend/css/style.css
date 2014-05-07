@@ -554,3 +554,36 @@ input {
   margin-top: 20px;
   margin-bottom: 50px;
 }
+.tabella-auto,
+.tabella-mezzo {
+  margin-right: 15px;
+  margin-left: 75px;
+}
+.nome-auto,
+.nome-mezzo {
+  font-size: 1.1em;
+  margin: 0;
+  position: relative;
+}
+.nome-auto::before {
+  background: #808080;
+  content: " ";
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  top: 0;
+  left: -60px;
+}
+.nome-mezzo::before {
+  background: #808080;
+  content: " ";
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  top: 0;
+  left: -60px;
+}
