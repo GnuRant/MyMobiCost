@@ -140,6 +140,15 @@ function form_abitazione (){
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
 
+  //visibilità sullo switch di costo mensile
+  $(function () {
+    $('#checkbox-abitazione').change(function () {                
+       $('#costo-sconosciuto').toggle(!this.checked);
+       $('#costo-conosciuto').toggle(this.checked);       
+    }).change(); //ensure visible state matches initially
+  });
+
+
   if (edit_mode) {
     load_abitazione_data();
   };
