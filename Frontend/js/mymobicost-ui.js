@@ -144,7 +144,7 @@ function form_abitazione (){
   $(function () {
     $('#checkbox-abitazione').change(function () {
        $('#costo-sconosciuto').toggle(!this.checked);
-      $('#costo-sconosciuto').toggle(!this.checked);
+       $('#costo-conosciuto').toggle(!this.checked);
     }).change(); //ensure visible state matches initially
   });
 
