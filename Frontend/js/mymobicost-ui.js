@@ -144,7 +144,7 @@ function form_abitazione (){
   $(function () {
     $('#checkbox-abitazione').change(function () {
        $('#costo-sconosciuto').toggle(!this.checked);
-       $('#costo-conosciuto').toggle(!this.checked);
+       $('#costo-conosciuto').toggle(this.checked);
     }).change(); //ensure visible state matches initially
   });
 
@@ -267,7 +267,12 @@ function load_form_trasporti(){
 
 function from_trasporti(){
 
-  $('form').submit(function(){
+  // selettori belli bellissimi
+  $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+  $('.switch')['bootstrapSwitch']();
+
+  //disabilita i bottomi sui form
+  $('btn').submit(function(){
     $(this).children('input[type=submit]').prop('disabled', true);
   });
 
