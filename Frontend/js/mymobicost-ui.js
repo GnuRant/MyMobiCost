@@ -215,9 +215,8 @@ function form_abitazione (){
     $.each($('#abitazione-caller').serializeArray(), function (i, el){ 
       data[el.name] = el.value;
     });
+    data.state = $("#checkbox-abitazione").is(':checked');
     //Elimino i dati vecchi
-    user_new_data = null;
-    user_new_data = {};
     user_new_data.abitazione = data;
     //Carica il prossimo from
     load_form_trasporti();
@@ -246,7 +245,7 @@ function load_abitazione_data(){
     abitazione = user_new_data.abitazione;
     //Carico i dati utente, se vi è contenuta l'indicazione del comune
     //Carico il form completo altrimenti carico quello parziale
-    if (!$.isEmptyObject(abitazione.comune)) {
+    if (abitazione.state == false) {
       //Carico tutti i dati e genero il form completo
       comune = abitazione.comune;
       zona = abitazione.zona_abitativa;
