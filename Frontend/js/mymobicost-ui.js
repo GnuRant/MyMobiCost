@@ -334,6 +334,11 @@ function form_trasporti(){
     $('#aggiungi-mezzo').show();
   });
 
+  //Controllo se ci sono dati da caricare 
+  if (edit_mode) {
+    load_automobili_data();
+  };
+
   //Carico i dati delle categorie delle auto
   get_auto_categorie(function (data){
     $.each(data, function(i, el) {
@@ -381,6 +386,13 @@ function form_trasporti(){
     $("#aggiungi-auto").hide();
     reset_form("#auto-caller");
   });
+
+
+  //Collego il bottone per salvare tutti i dati inseriti dall
+  //utente
+  $("#trasporti-avanti").click(function() {
+    user_new_data.automobili = array_auto;
+  });
 }
 
 function add_automobile(auto){
@@ -411,6 +423,15 @@ function add_automobile(auto){
        }
     });
   });
+}
+
+function load_automobili_data(){
+  if (!$.isEmptyObject(user_new_data.automobili)) {
+    array_auto = user_new_data.automobili;
+    $.each(array_auto, function(i, el) {
+      add_automobile(el);
+   });
+  }; 
 }
 
 //Funzione per resettare il form auto
