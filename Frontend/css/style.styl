@@ -288,12 +288,13 @@
     display inline-block
 
 .tabella-auto, .tabella-mezzo
+  position relative
   margin-right 15px
   margin-left 15px
   margin-bottom 20px
   margin-top 10px
   padding-left 60px
-  padding-bottom 10px
+  padding-bottom 5px
   border-bottom 2px bordino solid
   p
     margin-bottom 0
@@ -303,22 +304,27 @@
   margin 0
   position relative
   
-.nome-auto::before
-  background grey
-  content " "
+.icon-auto, .icon-mezzo
   border-radius 50%
   height 45px
   width 45px
   position absolute
-  top 0
-  left -60px
+  left 15px
+  
+.modifica-auto, .modifica-mezzo
+  position absolute
+  right 15px
+  line-height 52px
+  top 0px
+  .fui-cross
+    color red
+  span
+    padding-left 10px
+    &:hover
+      opacity .6
 
-.nome-mezzo::before
-  background grey
-  content " "
-  border-radius 50%
-  height 45px
-  width 45px
-  position absolute
-  top 0
-  left -60px
+.icon-auto
+  content url('../img/tabella_auto.svg')
+
+.icon-mezzo
+  content url('../img/tabella_bus.svg')

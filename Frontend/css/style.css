@@ -559,12 +559,13 @@ input {
 }
 .tabella-auto,
 .tabella-mezzo {
+  position: relative;
   margin-right: 15px;
   margin-left: 15px;
   margin-bottom: 20px;
   margin-top: 10px;
   padding-left: 60px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   border-bottom: 2px #acacac solid;
 }
 .tabella-auto p,
@@ -577,25 +578,39 @@ input {
   margin: 0;
   position: relative;
 }
-.nome-auto::before {
-  background: #808080;
-  content: " ";
+.icon-auto,
+.icon-mezzo {
   -webkit-border-radius: 50%;
   border-radius: 50%;
   height: 45px;
   width: 45px;
   position: absolute;
-  top: 0;
-  left: -60px;
+  left: 15px;
 }
-.nome-mezzo::before {
-  background: #808080;
-  content: " ";
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  height: 45px;
-  width: 45px;
+.modifica-auto,
+.modifica-mezzo {
   position: absolute;
-  top: 0;
-  left: -60px;
+  right: 15px;
+  line-height: 52px;
+  top: 0px;
+}
+.modifica-auto .fui-cross,
+.modifica-mezzo .fui-cross {
+  color: #c0392b;
+}
+.modifica-auto span,
+.modifica-mezzo span {
+  padding-left: 10px;
+}
+.modifica-auto span:hover,
+.modifica-mezzo span:hover {
+  opacity: 0.6;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+  filter: alpha(opacity=60);
+}
+.icon-auto {
+  content: url("../img/tabella_auto.svg");
+}
+.icon-mezzo {
+  content: url("../img/tabella_bus.svg");
 }
