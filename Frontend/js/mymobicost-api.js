@@ -97,3 +97,17 @@ function get_auto_alimentazione(categoria, on_complete) {
 		}
 	});
 }
+
+
+function get_auto_costi(categoria, alimentazione, on_complete){
+	var data_object = [];
+	$.ajax({
+		url: API_SERVER_URL+"/auto/costi/categoria="+categoria+"&alimentazione="+alimentazione,
+		async: true,
+		type: "GET",
+		success: function (data) {
+			data_object = data.costi[0];
+			on_complete (data_object);
+		}
+	});
+}
