@@ -204,8 +204,8 @@ function form_abitazione (){
       update_values_costi(data);
     });
     //Re-imposto il valore di default per i form sottostanti
-    $("select[name=zona_abitativa]").prop('selectedIndex',0);
-    $("select[name=categoria_edilizia]").prop('selectedIndex',0);
+    reset_drop_down("select[name=zona_abitativa]");
+    reset_drop_down("select[name=categoria_edilizia]");
   });
 
   //Dopo aver caricato le zone carico le categorie edilizie ed aggiorno 
@@ -217,7 +217,7 @@ function form_abitazione (){
         });
     });
     //Reset dei capi sottostanti
-    $("select[name=categoria_edilizia]").prop('selectedIndex',0);
+    reset_drop_down("select[name=categoria_edilizia]");
   });
 
   //Ecento al cambiamento della categoria edilizia
