@@ -102,7 +102,7 @@ function form_famiglia(){
       data[el.name] = el.value;
     });
     user_new_data.famiglia = data;
-    //Carica il prossimo from
+    //Carica il prossimo form
     load_form_abitazione();
   });
 }
@@ -190,7 +190,7 @@ function form_abitazione (){
       //Aggiorno i valori nelle varabili globali poi aggiorno i campi
       update_values_costi(data);
     });
-    //Re-imposto il valore di default per i from sottostanti
+    //Re-imposto il valore di default per i form sottostanti
     $("select[name=zona_abitativa]").prop('selectedIndex',0);
     $("select[name=categoria_edilizia]").prop('selectedIndex',0);
   });
@@ -225,7 +225,7 @@ function form_abitazione (){
     data.state = $("#checkbox-abitazione").is(':checked');
     //Elimino i dati vecchi
     user_new_data.abitazione = data;
-    //Carica il prossimo from
+    //Carica il prossimo form
     load_form_trasporti();
   });
 }
@@ -305,7 +305,7 @@ $("#menu-trasporti-button").click(function() {
 function load_form_trasporti(){
   toggle_active_menu("#menu-trasporti-button");
   load_partial("partials/trasporti.html", "#form-container", function(){
-    from_trasporti();
+    form_trasporti();
   });
 }
 
@@ -349,7 +349,7 @@ function from_trasporti(){
     alimentazione = $("select[name=alimentazione]").val();
     get_auto_costi(classe, alimentazione, function (data) {
       //Valori di ritorno dal server JAJAJA
-      $("input[name=assicurazione").val(data.assicurazione);
+      $("input[name=assicurazione]").val(data.assicurazione);
     });
   });
 }
