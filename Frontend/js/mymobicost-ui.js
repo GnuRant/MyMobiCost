@@ -360,7 +360,7 @@ function form_trasporti(){
       $("input[name=costo_fisso]").val(data.costo_fisso_altro);
     });
   });
-
+  //Collego il bottone per salvare un auto
   $("#save-auto").click(function() {
     var data = {};
     $.each($("#auto-caller").serializeArray(), function (i, el){ 
@@ -373,6 +373,13 @@ function form_trasporti(){
     $("#aggiungi-auto").hide();
     //Aggiungo l'elemento all'array
     array_auto.push(data);
+    //Resetto il form per il prossimo inserimento
+    reset_form("#auto-caller");
+  });
+
+  $("#cancel-auto").click(function() {
+    $("#aggiungi-auto").hide();
+    reset_form("#auto-caller");
   });
 }
 
@@ -404,6 +411,12 @@ function add_automobile(auto){
        }
     });
   });
+}
+
+//Funzione per resettare il form auto
+function reset_form(id_element){
+  $(id_element)[0].reset();
+  //Imposto i dropdown al valore di default
 }
 
 //===============================================================
