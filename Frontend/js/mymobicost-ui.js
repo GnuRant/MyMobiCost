@@ -105,9 +105,7 @@ function form_famiglia(){
   $('label').tooltip();
 
   //Carico i dati dell'utente se sono in edit mode
-  if (edit_mode) {
-    load_famiglia_data();
-  };
+  load_famiglia_data();
 
   $("#famiglia-avanti").click(function() {
     var data = {};
@@ -168,9 +166,7 @@ function form_abitazione (){
     }).change(); //ensure visible state matches initially
   });
 
-  if (edit_mode) {
-    load_abitazione_data();
-  };
+  load_abitazione_data();
 
   //Imposto evento per il cabio di valore nel capo input 
   $("input[name=grandezza]").change(function() {
@@ -312,6 +308,10 @@ var classe = "";
 var alimentazione = "";
 var array_auto = [];
 var array_pubblici = [];
+//Variabile che tiene conto se sto aggiungendo 
+//Un mezzo da zero o lo sto editando
+var edit_mode = false;
+var old_auto_id = "";
 
 $("#menu-trasporti-button").click(function() {
   load_form_trasporti();
@@ -346,9 +346,7 @@ function form_trasporti(){
   });
 
   //Controllo se ci sono dati da caricare 
-  if (edit_mode) {
-    load_automobili_data();
-  };
+  load_automobili_data();
 
   //Carico i dati delle categorie delle auto
   get_auto_categorie(function (data){
@@ -386,19 +384,35 @@ function form_trasporti(){
     });
     //Genero l'id univoco per l'auto
     data.id_auto = generete_id();
+
+    if (edit_mode) {
+      //Elimino l'elemento dal DOM
+      $("#"+old_auto_id).remove();
+      //Aggiunta in edit, elimino l'elemento vecchio dall'array
+      $.each(array_auto, function(i, el) {
+        if (el.id_auto == old_auto_id){
+          array_auto.splice(array_auto.indexOf(el), 1);
+          //Elimino l'elemento della list sul DOM
+        }
+      });
+
+      edit_mode = false;
+    }
+
+    array_auto.push(data);
     add_automobile(data);
     //Chiuso la il form delle auto
     $("#aggiungi-auto").hide();
-    //Aggiungo l'elemento all'array, se non esiste un altra auto
-    //Con lo stesso nome
-    array_auto.push(data);
+    
     //Resetto il form per il prossimo inserimento
     reset_form("#auto-caller");
   });
 
   $("#cancel-auto").click(function() {
     $("#aggiungi-auto").hide();
-    reset_form("#auto-caller");
+    //Se sono in edit mode esco
+    edit_mode = false;
+    old_auto_id = "";
   });
 
 
@@ -446,6 +460,9 @@ function add_automobile(auto){
     $.each(array_auto, function(i, el) {
        if (el.id_auto == id_container){
           load_form_automobile_data(array_auto[array_auto.indexOf(el)]);
+          //Imposto l'id per la fase di edit
+          edit_mode = true;
+          old_auto_id = el.id_auto;
        }
     });
   });
@@ -461,6 +478,8 @@ function load_automobili_data(){
 }
 
 function load_form_automobile_data(auto){
+  //Resetto 
+  reset_form("#auto-caller");
   //Carico gli input
   $("input[name=abbonamento_parcheggio]").val(auto.abbonamento_parcheggio);
   $("input[name=auto_nome]").val(auto.auto_nome);
