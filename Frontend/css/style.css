@@ -209,6 +209,9 @@ input {
   filter: none;
   color: #fff;
 }
+.dropdown-menu li a span {
+  text-transform: capitalize;
+}
 #left-sidebar {
   position: absolute;
   height: 100%;

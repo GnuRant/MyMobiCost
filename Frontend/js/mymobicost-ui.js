@@ -310,6 +310,7 @@ function load_form_trasporti(){
 }
 
 function from_trasporti(){
+
   //attivo i tooltip
   $('label').tooltip();
 
