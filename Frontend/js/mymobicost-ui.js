@@ -348,7 +348,7 @@ function from_trasporti(){
     alimentazione = $("select[name=alimentazione]").val();
     get_auto_costi(classe, alimentazione, function (data) {
       //Valori di ritorno dal server JAJAJA
-      $("input[name=assicurazione").val(data.assicurazione);
+      $("input[name=assicurazione]").val(data.assicurazione);
     });
   });
 }
