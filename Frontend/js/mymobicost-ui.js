@@ -24,7 +24,7 @@ function increment_inpunt_value (){
     var input = button.parent().find('input');
     var old_value = input.val();
 
-    if (old_value == "") {
+    if (old_value === "") {
       old_value = 0;
     };
     //Incremento il valore e salvo
@@ -295,6 +295,9 @@ function load_abitazione_data(){
 //===============================================================
 //======================= form TRASPORTI ========================
 //===============================================================
+var classe = "";
+var alimentazione = "";
+
 $("#menu-trasporti-button").click(function() {
   load_form_trasporti();
 });
@@ -307,7 +310,6 @@ function load_form_trasporti(){
 }
 
 function from_trasporti(){
-
   //attivo i tooltip
   $('label').tooltip();
 
@@ -315,18 +317,9 @@ function from_trasporti(){
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
 
-  $('.btn').click(function(){
-    console.log("panino");
-  });
-
   //Tasto che rende visibile il form auto
   $('#bottone-aggiungi-auto').click(function () {
     $('#aggiungi-auto').show();
-  });
-
-  $('#cancel-auto').submit(function () {
-   sendContactForm();
-   return false;
   });
 
   //Tasto che rende visibile il form mezzi pubblici
@@ -334,6 +327,27 @@ function from_trasporti(){
     $('#aggiungi-mezzo').show();
   });
 
+  //Carico i dati delle categorie delle auto
+  get_auto_categorie(function (data){
+    $.each(data, function(i, el) {
+      $("select[name=classe]").append("<option>"+el+"</option>");
+    });
+  });
+
+  $("select[name=classe]").change(function() {
+    //Dopo aver selezionato un tipologia di auto carico le alimentazione
+    classe = $("select[name=classe]").val();
+    get_auto_alimentazione(classe, function (data) {
+      $.each(data, function(i, el) {
+         $("select[name=alimentazione]").append("<option>"+el+"</option>");
+      });
+    });
+  });
+
+  $("select[name=alimentazione]").change(function() {
+    alimentazione = $("select[name=alimentazione]").val();
+    
+  });
 }
 
 //===============================================================
