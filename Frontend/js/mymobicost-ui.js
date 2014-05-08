@@ -57,7 +57,7 @@ function reset_drop_down (id_element){
     .find('option')
     .remove()
     .end()
-    .append('<option value="">seleziona un\'opzione</option>')
+    .append('<option value="" disabled selected>seleziona un\'opzione</option>')
     .val('whatever');
 }
 
@@ -358,6 +358,8 @@ function form_trasporti(){
   $("select[name=classe]").change(function() {
     //Dopo aver selezionato un tipologia di auto carico le alimentazione
     classe = $("select[name=classe]").val();
+    //Resetto i dati nel caso ci siano gia delle cose caricate
+    reset_drop_down("select[name=alimentazione]");
     get_auto_alimentazione(classe, function (data) {
       $.each(data, function(i, el) {
          $("select[name=alimentazione]").append("<option>"+el+"</option>");
