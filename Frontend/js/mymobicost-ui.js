@@ -364,6 +364,8 @@ function form_trasporti(){
     //Aggiungo al DOM il nuovo elemento
     //Aggiungo l'elemento all'array
     add_automobili();
+    //Chiuso la il form delle auto
+    $("#aggiungi-auto").hide();
   });
 }
 
