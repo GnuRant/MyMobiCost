@@ -363,14 +363,11 @@ function form_trasporti(){
 
   $("#save-auto").click(function() {
     var data = {};
-    $.each($('#aggiungi-auto').serializeArray(), function (i, el){ 
+    $.each($("#auto-caller").serializeArray(), function (i, el){ 
       data[el.name] = el.value;
     });
-    console.log(data);
     //Genero l'id univoco per l'auto
     data.id_auto = generete_id();
-    //Aggiungo al DOM il nuovo elemento
-    //Aggiungo l'elemento all'array
     add_automobile(data);
     //Chiuso la il form delle auto
     $("#aggiungi-auto").hide();
@@ -378,11 +375,13 @@ function form_trasporti(){
 }
 
 function add_automobile(auto){
+  //Aggiungo l'elemento all'array
+  array_auto.push(auto);
   var id = auto.id_auto;
   var auto_template = "<div id='"+id+"' class='tabella-auto'> \
                         <div class='icon-auto'></div> \
-                        <h3 class='nome-auto'>"+id+"</h3> \
-                        <p>20.000 km annuali</p> \
+                        <h3 class='nome-auto'>"+auto.auto_nome+"</h3> \
+                        <p>"+auto.percorrenza_annua+" km annuali</p> \
                         <div class='modifica-auto'> \
                             <span class='fui-new'></span> \
                             <span class='fui-cross'></span> \
@@ -395,10 +394,14 @@ function add_automobile(auto){
   $(".fui-cross").click(function(event) {
     var button = $(this);
     var id_container = button.parents('.tabella-auto:first').attr('id');
-    console.log(id_container);
     //Elimino l'elemento
     $("#"+id_container).remove();
     //Elimino l'lemento dall'array
+    $.each(array_auto, function(i, el) {
+       if (el.id_auto == id_container){
+        array_auto.splice(array_auto.indexOf(el), 1);
+       }
+    });
   });
 }
 
