@@ -82,3 +82,18 @@ function get_auto_categorie(on_complete) {
 		}
 	});
 }
+
+function get_auto_alimentazione(categoria, on_complete) {
+	var data_array = [];
+	$.ajax({
+		url: API_SERVER_URL+"/auto/alimentazione/categoria="+categoria,
+		async: true,
+		type: 'GET',
+		success : function (data) {
+			for (var i = data.categorie.length - 1; i >= 0; i--) {
+				data_array[i] = data.categorie[i].alimentazioni;
+			};
+			on_complete(data_array);
+		}
+	});
+}

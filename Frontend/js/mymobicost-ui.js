@@ -295,6 +295,8 @@ function load_abitazione_data(){
 //===============================================================
 //======================= form TRASPORTI ========================
 //===============================================================
+var classe = "";
+
 $("#menu-trasporti-button").click(function() {
   load_form_trasporti();
 });
@@ -328,6 +330,16 @@ function from_trasporti(){
   get_auto_categorie(function (data){
     $.each(data, function(i, el) {
       $("select[name=classe]").append("<option>"+el+"</option>");
+    });
+  });
+
+  $("select[name=classe]").change(function(event) {
+    //Dopo aver selezionato un tipologia di auto carico le alimentazione
+    classe = $("select[name=classe]").val();
+    get_auto_alimentazione(classe, function (data) {
+      $.each(data, function(i, el) {
+         $("select[name=alimentazione]").append("<option>"+el+"</option>");
+      });
     });
   });
 }
