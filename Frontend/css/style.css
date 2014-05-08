@@ -554,6 +554,9 @@ input {
   margin-top: 20px;
   margin-bottom: 50px;
 }
+.conferma-trasporti div {
+  display: inline-block;
+}
 .tabella-auto,
 .tabella-mezzo {
   margin-right: 15px;

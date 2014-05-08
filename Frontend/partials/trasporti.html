@@ -5,13 +5,17 @@
         <form class="form-horizontal" role="form">
           
             <div class="form-group">
-                <div class="tabella-auto">
-                    <h3 class="nome-auto">Audi A1</h3>
-                    <p>20.000 km annuali</p>
+                <div id="auto-container">
+                    <div class="tabella-auto">
+                        <h3 class="nome-auto">Audi A1</h3>
+                        <p>20.000 km annuali</p>
+                    </div>
                 </div>
-                <div class="tabella-mezzo">
-                    <h3 class="nome-mezzo">Tram</h3>
-                    <p>25€ settimanale</p>
+                <div id="mezzi-container">
+                    <div class="tabella-mezzo">
+                        <h3 class="nome-mezzo">Tram</h3>
+                        <p>25€ settimanale</p>
+                    </div>
                 </div>
             </div>
 
@@ -134,14 +138,14 @@
                     </div>
                 </div>
 
-            <p class="text-center conferma-trasporti">
-                <button id="cancel-auto" class="btn btn-danger btn-wide">
-                    Cancel
-                </button>
-                <button class="btn btn-primary btn-wide">
-                    Save
-                </button>
-            </p>
+                <div class="text-center conferma-trasporti">
+                    <div id="cancel-auto" class="btn btn-danger btn-wide">
+                        Cancel
+                    </div>
+                    <div class="btn btn-primary btn-wide">
+                        Save
+                    </div>
+                </div>
             </div>
             
             <h2 id="titolo-mezzi">Mezzi pubblici <div id="bottone-aggiungi-mezzo" class="tagsinput-add"></div></h2>
@@ -178,14 +182,14 @@
                     </div>
                 </div>
             
-            <p class="text-center conferma-trasporti">
-                <button class="btn btn-danger btn-wide">
+            <div class="text-center conferma-trasporti">
+                <div class="btn btn-danger btn-wide">
                     Cancel
-                </button>
-                <button class="btn btn-primary btn-wide">
+                </div>
+                <div class="btn btn-primary btn-wide">
                     Save
-                </button>
-            </p>
+                </div>
+            </div>
             </div>
 
         </form>
