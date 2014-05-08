@@ -336,6 +336,8 @@ function form_trasporti(){
   //Tasto che rende visibile il form auto
   $('#bottone-aggiungi-auto').click(function () {
     $('#aggiungi-auto').show();
+    //Genero il nome dell'auto incrementale
+    $("input[name=auto_nome]").val("Auto "+ (array_auto.length+1));
   });
 
   //Tasto che rende visibile il form mezzi pubblici
