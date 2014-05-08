@@ -72,13 +72,13 @@ function get_auto_categorie(on_complete) {
 	var data_array = [];
 	$.ajax({
 		url: API_SERVER_URL+"/auto/categorie",
-		async; true,
+		async: true,
 		type: "GET",
 		success : function (data){
 			for (var i = data.categorie.length - 1; i >= 0; i--) {
 				data_array[i] = data.categorie[i].classe;
-				on_complete (data_array);
 			};
+			on_complete (data_array);
 		}
 	});
 }

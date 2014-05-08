@@ -307,7 +307,6 @@ function load_form_trasporti(){
 }
 
 function from_trasporti(){
-
   //attivo i tooltip
   $('label').tooltip();
 
@@ -315,18 +314,9 @@ function from_trasporti(){
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
 
-  $('.btn').click(function(){
-    console.log("panino");
-  });
-
   //Tasto che rende visibile il form auto
   $('#bottone-aggiungi-auto').click(function () {
     $('#aggiungi-auto').show();
-  });
-
-  $('#cancel-auto').submit(function () {
-   sendContactForm();
-   return false;
   });
 
   //Tasto che rende visibile il form mezzi pubblici
@@ -334,6 +324,12 @@ function from_trasporti(){
     $('#aggiungi-mezzo').show();
   });
 
+  //Carico i dati delle categorie delle auto
+  get_auto_categorie(function (data){
+    $.each(data, function(i, el) {
+      $("select[name=classe]").append("<option>"+el+"</option>");
+    });
+  });
 }
 
 //===============================================================
