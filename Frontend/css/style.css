@@ -209,7 +209,8 @@ input {
   filter: none;
   color: #fff;
 }
-.dropdown-menu li a span {
+.dropdown-menu li a span,
+.select button span {
   text-transform: capitalize;
 }
 #left-sidebar {
