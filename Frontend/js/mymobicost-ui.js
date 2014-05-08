@@ -376,7 +376,7 @@ function form_trasporti(){
 
 function add_automobile(auto){
   var id = auto.id_auto;
-  var auto_tempalte = "<div id='"+id+"' class='tabella-auto'> \
+  var auto_template = "<div id='"+id+"' class='tabella-auto'> \
                         <div class='icon-auto'></div> \
                         <h3 class='nome-auto'>"+id+"</h3> \
                         <p>20.000 km annuali</p> \
@@ -386,7 +386,7 @@ function add_automobile(auto){
                         </div> \
                       </div>"; 
 
-  $("#auto-container").append(auto_tempalte);
+  $("#auto-container").append(auto_template);
 
   //Gestisco i bottoni per eliminare ed edittare 
   $(".fui-cross").click(function(event) {
