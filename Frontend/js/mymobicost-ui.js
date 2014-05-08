@@ -370,9 +370,10 @@ function form_trasporti(){
 }
 
 function add_automobili(auto){
-  var auto_tempalte = "<div id='1'class='tabella-auto'> \
+  var id = Math.floor((Math.random() * 100) + 1);
+  var auto_tempalte = "<div id='"+id+"' class='tabella-auto'> \
                         <div class='icon-auto'></div> \
-                        <h3 class='nome-auto'>Audi A1</h3> \
+                        <h3 class='nome-auto'>"+id+"</h3> \
                         <p>20.000 km annuali</p> \
                         <div class='modifica-auto'> \
                             <span class='fui-new'></span> \
@@ -381,6 +382,16 @@ function add_automobili(auto){
                       </div>"; 
 
   $("#auto-container").append(auto_tempalte);
+
+  //Gestisco i bottoni per eliminare ed edittare 
+  $(".fui-cross").click(function(event) {
+    var button = $(this);
+    var id_container = button.parents('.tabella-auto:first').attr('id');
+    console.log(id_container);
+    //Elimino l'elemento
+    $("#"+id_container).remove();
+    //Elimino l'lemento dall'array
+  });
 }
 
 //===============================================================
