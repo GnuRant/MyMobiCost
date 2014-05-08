@@ -369,9 +369,10 @@ function form_trasporti(){
     //Genero l'id univoco per l'auto
     data.id_auto = generete_id();
     add_automobile(data);
-    array_auto.push(auto);
     //Chiuso la il form delle auto
     $("#aggiungi-auto").hide();
+    //Aggiungo l'elemento all'array
+    array_auto.push(data);
   });
 }
 
@@ -387,7 +388,7 @@ function add_automobile(auto){
                             <span class='fui-cross'></span> \
                         </div> \
                       </div>"; 
-
+  //Aggiungo l'elemento al DOM
   $("#auto-container").append(auto_template);
 
   //Gestisco i bottoni per eliminare ed edittare 
