@@ -297,6 +297,8 @@ function load_abitazione_data(){
 //===============================================================
 var classe = "";
 var alimentazione = "";
+var array_auto = [];
+var array_pubblici = [];
 
 $("#menu-trasporti-button").click(function() {
   load_form_trasporti();
@@ -354,6 +356,29 @@ function form_trasporti(){
       $("input[name=costo_fisso]").val(data.costo_fisso_altro);
     });
   });
+
+  $("#save-auto").click(function() {
+    var data;
+    //Prendo i dati dai form
+    //Genero l'id univoco per l'auto
+    //Aggiungo al DOM il nuovo elemento
+    //Aggiungo l'elemento all'array
+    add_automobili();
+  });
+}
+
+function add_automobili(auto){
+  var auto_tempalte = "<div id='1'class='tabella-auto'> \
+                        <div class='icon-auto'></div> \
+                        <h3 class='nome-auto'>Audi A1</h3> \
+                        <p>20.000 km annuali</p> \
+                        <div class='modifica-auto'> \
+                            <span class='fui-new'></span> \
+                            <span class='fui-cross'></span> \
+                        </div> \
+                      </div>"; 
+
+  $("#auto-container").append(auto_tempalte);
 }
 
 //===============================================================
