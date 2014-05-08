@@ -369,6 +369,7 @@ function form_trasporti(){
     //Genero l'id univoco per l'auto
     data.id_auto = generete_id();
     add_automobile(data);
+    array_auto.push(auto);
     //Chiuso la il form delle auto
     $("#aggiungi-auto").hide();
   });
@@ -376,7 +377,6 @@ function form_trasporti(){
 
 function add_automobile(auto){
   //Aggiungo l'elemento all'array
-  array_auto.push(auto);
   var id = auto.id_auto;
   var auto_template = "<div id='"+id+"' class='tabella-auto'> \
                         <div class='icon-auto'></div> \
