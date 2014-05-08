@@ -309,7 +309,7 @@ function load_form_trasporti(){
   });
 }
 
-function from_trasporti(){
+function form_trasporti(){
 
   //attivo i tooltip
   $('label').tooltip();
@@ -350,6 +350,8 @@ function from_trasporti(){
     get_auto_costi(classe, alimentazione, function (data) {
       //Valori di ritorno dal server JAJAJA
       $("input[name=assicurazione]").val(data.assicurazione);
+      $("input[name=costo_km]").val(data.costo_km);
+      $("input[name=costo_fisso]").val(data.costo_fisso_altro);
     });
   });
 }
