@@ -560,7 +560,16 @@ input {
 .tabella-auto,
 .tabella-mezzo {
   margin-right: 15px;
-  margin-left: 75px;
+  margin-left: 15px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  padding-left: 60px;
+  padding-bottom: 10px;
+  border-bottom: 2px #acacac solid;
+}
+.tabella-auto p,
+.tabella-mezzo p {
+  margin-bottom: 0;
 }
 .nome-auto,
 .nome-mezzo {
