@@ -423,6 +423,17 @@ function add_automobile(auto){
        }
     });
   });
+  //Collego il bottone edit
+  $(".fui-new").click(function(event) {
+    var button = $(this);
+    var id_container = button.parents('.tabella-auto:first').attr('id');
+    //Cerco nell'array i dati da caricare poi inflatto il form
+    $.each(array_auto, function(i, el) {
+       if (el.id_auto == id_container){
+          load_form_automobile_data(array_auto[array_auto.indexOf(el)]);
+       }
+    });
+  });
 }
 
 function load_automobili_data(){
@@ -432,6 +443,36 @@ function load_automobili_data(){
       add_automobile(el);
    });
   }; 
+}
+
+function load_form_automobile_data(auto){
+  //Carico gli input
+  $("input[name=abbonamento_parcheggio]").val(auto.abbonamento_parcheggio);
+  $("input[name=auto_nome]").val(auto.auto_nome);
+  $("input[name=percorrenza_annua]").val(auto.percorrenza_annua);
+  $("input[name=pedaggio_autostradale]").val(auto.pedaggio_autostradale);
+  $("input[name=assicurazione]").val(auto.assicurazione);
+  $("input[name=costo_km]").val(auto.costo_km);
+  $("input[name=costo_fisso]").val(auto.costo_fisso);
+  //Carico i drop_down
+  classe = auto.classe;  
+  get_auto_categorie(function (data){
+    $.each(data, function(i, el) {
+      $("select[name=classe]").append("<option>"+el+"</option>");
+    });
+    $("select[name=classe]").val(classe);
+  });
+
+  alimentazione = auto.alimentazione;
+  get_auto_alimentazione(classe, function (data) {
+    $.each(data, function(i, el) {
+      $("select[name=alimentazione]").append("<option>"+el+"</option>");
+    });
+    $("select[name=alimentazione]").val(alimentazione);
+  });
+
+  //rendo visibile il form
+  $("#aggiungi-auto").show();
 }
 
 //Funzione per resettare il form auto
