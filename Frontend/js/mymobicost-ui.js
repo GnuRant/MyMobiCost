@@ -48,6 +48,10 @@ function decrement_input_value (){
   });
 }
 
+function generete_id() {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    }
+
 //===============================================================
 //======================= NEW SESSION ===========================
 //===============================================================
@@ -358,19 +362,20 @@ function form_trasporti(){
   });
 
   $("#save-auto").click(function() {
-    var data;
+    var data = {};
     //Prendo i dati dai form
     //Genero l'id univoco per l'auto
+    data.id_auto = generete_id();
     //Aggiungo al DOM il nuovo elemento
     //Aggiungo l'elemento all'array
-    add_automobili();
+    add_automobile(data);
     //Chiuso la il form delle auto
     $("#aggiungi-auto").hide();
   });
 }
 
-function add_automobili(auto){
-  var id = Math.floor((Math.random() * 100) + 1);
+function add_automobile(auto){
+  var id = auto.id_auto;
   var auto_tempalte = "<div id='"+id+"' class='tabella-auto'> \
                         <div class='icon-auto'></div> \
                         <h3 class='nome-auto'>"+id+"</h3> \
