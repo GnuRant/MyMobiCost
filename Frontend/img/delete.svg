@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.1 (7597) - http://www.bohemiancoding.com/sketch -->
+    <title>delete</title>
+    <description>Created with Sketch.</description>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="20" height="20" rx="4"></rect>
+        <path d="M9.5,7.37867966 L10.5561364,6.32254331 C11.1429889,5.73569072 12.0961941,5.73223305 12.6819805,6.31801948 C13.2718509,6.90788992 13.2657416,7.85557877 12.6774567,8.44386365 L11.6213203,9.5 L12.6774567,10.5561364 C13.2657416,11.1444212 13.2718509,12.0921101 12.6819805,12.6819805 C12.0961941,13.267767 11.1429889,13.2643093 10.5561364,12.6774567 L9.5,11.6213203 L8.44386365,12.6774567 C7.85701107,13.2643093 6.90380592,13.267767 6.31801948,12.6819805 C5.72814905,12.0921101 5.73425843,11.1444212 6.32254331,10.5561364 L7.37867966,9.5 L6.32254331,8.44386365 C5.73425843,7.85557877 5.72814905,6.90788992 6.31801948,6.31801948 C6.90380592,5.73223305 7.85701107,5.73569072 8.44386365,6.32254331 L9.5,7.37867966 Z" id="path-2"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Medium-screen" sketch:type="MSArtboardGroup" transform="translate(-394.000000, -147.000000)">
+            <g id="Tabella" sketch:type="MSLayerGroup" transform="translate(113.000000, 85.000000)">
+                <g id="Autobus" transform="translate(0.000000, 47.000000)">
+                    <g id="Batmobile" transform="translate(33.000000, 0.000000)">
+                        <g id="delete" transform="translate(248.000000, 15.000000)">
+                            <g id="Rectangle-12">
+                                <use stroke="#E74C3C" stroke-width="2" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                                <use stroke="none" xlink:href="#path-1"></use>
+                            </g>
+                            <g id="checkmark">
+                                <use fill="#E74C3C" fill-rule="evenodd" sketch:type="MSShapeGroup" xlink:href="#path-2"></use>
+                                <use fill="none" xlink:href="#path-2"></use>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.1 (7597) - http://www.bohemiancoding.com/sketch -->
+    <title>delete 2</title>
+    <description>Created with Sketch.</description>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="20" height="20" rx="4"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Medium-screen" sketch:type="MSArtboardGroup" transform="translate(-371.000000, -100.000000)">
+            <g id="Tabella" sketch:type="MSLayerGroup" transform="translate(113.000000, 85.000000)">
+                <g id="Audi-a1">
+                    <g id="Batmobile" transform="translate(33.000000, 0.000000)">
+                        <g id="delete-2" transform="translate(225.000000, 15.000000)">
+                            <g id="Rectangle-12">
+                                <use stroke="#313131" stroke-width="2" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                                <use stroke="none" xlink:href="#path-1"></use>
+                            </g>
+                            <g id="Modifica" transform="translate(3.000000, 2.000000)" fill="#313131" sketch:type="MSShapeGroup">
+                                <rect id="Rectangle" x="1" y="5" width="14" height="2"></rect>
+                                <path d="M15.9995462,13.9994476 L2,14 L4.93718194,12.8958659 L6.08142362,12.0003683 L16,12 L15.9995462,13.9994476 Z" id="Shape-2"></path>
+                                <path d="M1.3445629,11.0187727 L0,14 L2.98102345,12.6554078 L3,12.6383417 L1.36289979,11 L1.3445629,11.0187727 Z" id="Shape-3"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
