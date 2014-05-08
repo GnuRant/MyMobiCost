@@ -363,7 +363,10 @@ function form_trasporti(){
 
   $("#save-auto").click(function() {
     var data = {};
-    //Prendo i dati dai form
+    $.each($('#aggiungi-auto').serializeArray(), function (i, el){ 
+      data[el.name] = el.value;
+    });
+    console.log(data);
     //Genero l'id univoco per l'auto
     data.id_auto = generete_id();
     //Aggiungo al DOM il nuovo elemento
