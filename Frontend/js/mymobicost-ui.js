@@ -49,8 +49,17 @@ function decrement_input_value (){
 }
 
 function generete_id() {
-        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-    }
+  return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+}
+
+function reset_drop_down (id_element){
+  $(id_element)
+    .find('option')
+    .remove()
+    .end()
+    .append('<option value="">seleziona un\'opzione</option>')
+    .val('whatever');
+}
 
 //===============================================================
 //======================= NEW SESSION ===========================
@@ -376,7 +385,8 @@ function form_trasporti(){
     add_automobile(data);
     //Chiuso la il form delle auto
     $("#aggiungi-auto").hide();
-    //Aggiungo l'elemento all'array
+    //Aggiungo l'elemento all'array, se non esiste un altra auto
+    //Con lo stesso nome
     array_auto.push(data);
     //Resetto il form per il prossimo inserimento
     reset_form("#auto-caller");
@@ -392,6 +402,7 @@ function form_trasporti(){
   //utente
   $("#trasporti-avanti").click(function() {
     user_new_data.automobili = array_auto;
+    load_form_spostamenti();
   });
 }
 
@@ -479,6 +490,7 @@ function load_form_automobile_data(auto){
 function reset_form(id_element){
   $(id_element)[0].reset();
   //Imposto i dropdown al valore di default
+  reset_drop_down("select");
 }
 
 //===============================================================
