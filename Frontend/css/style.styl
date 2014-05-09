@@ -145,11 +145,12 @@
 
 //barra sponsor
 #sponsor-sidebar
-  position absolute
+  position fixed
   right 0
   height 100%
   background light-grey
   padding-top .5em
+  z-index 256
 
   img
     padding 1em 0 0
@@ -347,16 +348,26 @@ left-tile = 0.8em
 
 #container-risultato
   position absolute
-  left 120px
-  top 20px
+  left 100px
+  top 1em
+  overflow-x scroll
+  overflow-y hidden
+  white-space nowrap
+  margin-right 130px
+  width calc(100% \- 221px)
 
 .tile-risultato
   background light-grey
   width 500px
   border-radius 10px
+  display inline-block
+  margin-left 1em
+  &:last-child
+    margin-right 1em
 
 .titolo-tile
   margin-bottom 0
+  margin-top 0
   padding left-tile
   background green
   color white
@@ -367,11 +378,18 @@ left-tile = 0.8em
   padding 0 left-tile
   margin-top .8em
   
-  p
+  .costo-sezione
     font-weight bold
     font-size 2em
     margin 0
     line-height 1.4em
+
+  .costo-auto-dettaglio
+    font-size 14px
+    font-weight 300
+    line-height 1em
+    margin-top 0
+    margin-bottom 1.5em
 
   .titolo-spostamenti, .titolo-residenza, .titolo-auto, .titolo-mezzi
     font-size 1em

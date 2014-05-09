@@ -406,11 +406,12 @@ input {
   z-index: 2;
 }
 #sponsor-sidebar {
-  position: absolute;
+  position: fixed;
   right: 0;
   height: 100%;
   background: #ecf0f1;
   padding-top: 0.5em;
+  z-index: 256;
 }
 #sponsor-sidebar img {
   padding: 1em 0 0;
@@ -637,17 +638,28 @@ input {
 }
 #container-risultato {
   position: absolute;
-  left: 120px;
-  top: 20px;
+  left: 100px;
+  top: 1em;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  margin-right: 130px;
+  width: calc(100% - 221px);
 }
 .tile-risultato {
   background: #ecf0f1;
   width: 500px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
+  display: inline-block;
+  margin-left: 1em;
+}
+.tile-risultato:last-child {
+  margin-right: 1em;
 }
 .titolo-tile {
   margin-bottom: 0;
+  margin-top: 0;
   padding: 0.8em;
   background: #79b31f;
   color: #fff;
@@ -662,14 +674,24 @@ input {
   padding: 0 0.8em;
   margin-top: 0.8em;
 }
-.categorie-residenza p,
-.categorie-spostamenti p,
-.categorie-auto p,
-.categorie-mezzi p {
+.categorie-residenza .costo-sezione,
+.categorie-spostamenti .costo-sezione,
+.categorie-auto .costo-sezione,
+.categorie-mezzi .costo-sezione {
   font-weight: bold;
   font-size: 2em;
   margin: 0;
   line-height: 1.4em;
+}
+.categorie-residenza .costo-auto-dettaglio,
+.categorie-spostamenti .costo-auto-dettaglio,
+.categorie-auto .costo-auto-dettaglio,
+.categorie-mezzi .costo-auto-dettaglio {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1em;
+  margin-top: 0;
+  margin-bottom: 1.5em;
 }
 .categorie-residenza .titolo-spostamenti,
 .categorie-spostamenti .titolo-spostamenti,
