@@ -347,6 +347,7 @@ function form_trasporti(){
 
   //Controllo se ci sono dati da caricare 
   load_automobili_data();
+  load_abbonamenti_data();
 
   //Carico i dati delle categorie delle auto
   get_auto_categorie(function (data){
@@ -435,7 +436,7 @@ function form_trasporti(){
   //utente
   $("#trasporti-avanti").click(function() {
     user_new_data.automobili = array_auto;
-    user_new_data = array_abbonamenti;
+    user_new_data.abbonamenti = array_abbonamenti;
     load_form_spostamenti();
   });
 }
@@ -558,6 +559,15 @@ function add_abbonamento(abbonamento) {
        }
     });
   });
+}
+
+function load_abbonamenti_data(){
+  if (!$.isEmptyObject(user_new_data.abbonamenti)) {
+    array_abbonamenti = user_new_data.abbonamenti;
+    $.each(array_abbonamenti, function(i, el) {
+      add_abbonamento(el);
+   });
+  }; 
 }
 
 function load_form_abbonamenti_data(abbonamento){
