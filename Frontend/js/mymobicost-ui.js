@@ -641,10 +641,30 @@ function form_spostamenti (){
   // selettori belli bellissimi
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
+  //Carico i mezzi nel dropdown
+  load_mezzi();
+}
 
-  //Carico i dati nel dropdown dei mezzi
+function load_mezzi() {
+  //Carico tutti i mezzi inseriti dall'utente nel dropdown menu
+  $.each(user_new_data.automobili, function(i, el) {
+    $("select[name=id_auto]").append("<option value='"+el.id_auto+"'>"+el.auto_nome+"</option>");
+  });
+  $.each(user_new_data.abbonamenti, function(i, el) {
+    $("select[name=id_auto]").append("<option value='"+el.id_abbonamento+"'>"+el.abbonamento_nome+"</option>");
+  });
+}
 
-  
+function add_spostamento(spostamento) {
+  var spostamento_tempalte = "<div id='1' class='tabella-attivita'> \
+                                <h3 class='"+spostamento.descrizione+"'>Ufficio</h3> \
+                                <p>"+spostamento.motivo+", "+spostamento.percorrenze+" volte a settimana</p> \
+                                <div class='modifica-attivita'> \
+                                    <span class='fui-new'></span> \
+                                    <span class='fui-cross'></span> \
+                                </div> \
+                              </div>"
 
+  $("#spostamenti-container").append(spostamento_tempalte);
 }
 

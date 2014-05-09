@@ -1,18 +1,10 @@
     <div id="spostamenti-form" class="form">
         <h1>Spostamenti</h1>
         <div class="form-campi">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" id="spostamenti-caller">
               
                 <div class="form-group">
-                    <div id="attivita-container">
-                        <div id="1" class="tabella-attivita">
-                            <h3 class="nome-attivita">Ufficio</h3>
-                            <p>Lavoro, 3 volte a settimana</p>
-                            <div class="modifica-attivita">
-                                <span class="fui-new"></span>
-                                <span class="fui-cross"></span>
-                            </div>                       
-                        </div>
+                    <div id="spostamenti-container">
                     </div>
                 </div>
 
@@ -83,6 +75,7 @@
                         <label for="Comune" class="col-sm-6 control-label">Mezzo</label>
                         <div class="col-sm-6">
                             <select name="id_auto">
+                                <option value="0" disabled selected="">Seleziona un'opzione</option>
                             </select>
                         </div>
                     </div>
