@@ -635,3 +635,22 @@ input {
 .icon-mezzo {
   content: url("../img/tabella_bus.svg");
 }
+#container-risultato {
+  position: absolute;
+  left: 120px;
+  top: 20px;
+}
+#container-risultato .tile-risultato {
+  background: #ecf0f1;
+  width: 400px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+#container-risultato .tile-risultato .titolo-tile {
+  padding: 0.5em;
+  background: #79b31f;
+  color: #fff;
+  font-size: 1em;
+  -webkit-border-radius: 10px 10px 0 0;
+  border-radius: 10px 10px 0 0;
+}
