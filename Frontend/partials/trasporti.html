@@ -128,16 +128,16 @@
             </div>
         </form>
           
-        <form class="form-horizontal" role="form" id="mezzi-caller">   
-            <h2 id="titolo-mezzi">Mezzi pubblici <div id="bottone-aggiungi-mezzo" class="tagsinput-add"></div></h2>
-            <div id="aggiungi-mezzo">
+        <form class="form-horizontal" role="form" id="abbonamenti-caller">   
+            <h2 id="titolo-mezzi">Mezzi pubblici <div id="bottone-aggiungi-abbonamento" class="tagsinput-add"></div></h2>
+            <div id="aggiungi-abbonamento">
                 <div class="form-group">
                     <label for="Comune" class="col-sm-6 control-label">Nome</label>
                     <div class="col-sm-6">
-                        <select>
+                        <select name="abbonamento_nome">
                           <option value="" disabled selected="">Seleziona un'opzione</option>
-                          <option value="0">Autobus</option>
-                          <option value="1">Treno</option>
+                          <option >Autobus</option>
+                          <option >Treno</option>
                         </select>
                     </div>
                 </div>
@@ -145,11 +145,11 @@
                 <div class="form-group">
                         <label for="Comune" class="col-sm-6 control-label">Tipo</label>
                         <div class="col-sm-6">
-                            <select>
+                            <select name="tipo">
                               <option value="" disabled selected="">Seleziona un'opzione</option>
-                              <option value="0">Abbonamento annuale</option>
-                              <option value="1">Abbonamento Mensile</option>
-                              <option value="2">Abbonamento Settimanale</option>
+                              <option >Abbonamento annuale</option>
+                              <option >Abbonamento Mensile</option>
+                              <option >Abbonamento Settimanale</option>
                             </select>
                         </div>
                     </div>
@@ -159,7 +159,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="0"/>
+                                <input type="text" class="form-control flat" placeholder="0" name="costo" />
                                 <span class="input-group-addon">€</span>
                             </div>
                         </div>
@@ -167,10 +167,10 @@
                 </div>
             
             <div class="text-center conferma-trasporti">
-                <div class="btn btn-danger btn-wide">
+                <div id="cancel-abbonamento" class="btn btn-danger btn-wide">
                     Cancel
                 </div>
-                <div class="btn btn-primary btn-wide">
+                <div id="save-abbonamento" class="btn btn-primary btn-wide">
                     Save
                 </div>
             </div>

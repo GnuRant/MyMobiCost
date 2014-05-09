@@ -307,7 +307,7 @@ function load_abitazione_data(){
 var classe = "";
 var alimentazione = "";
 var array_auto = [];
-var array_pubblici = [];
+var array_abbonamenti = [];
 //Variabile che tiene conto se sto aggiungendo 
 //Un mezzo da zero o lo sto editando
 var edit_mode = false;
@@ -341,8 +341,8 @@ function form_trasporti(){
   });
 
   //Tasto che rende visibile il form mezzi pubblici
-  $('#bottone-aggiungi-mezzo').click(function () {
-    $('#aggiungi-mezzo').show();
+  $('#bottone-aggiungi-abbonamento').click(function () {
+    $('#aggiungi-abbonamento').show();
   });
 
   //Controllo se ci sono dati da caricare 
@@ -415,11 +415,30 @@ function form_trasporti(){
     old_auto_id = "";
   });
 
+  $("#save-abbonamento").click(function() {
+    var data = {};
+    $.each($("#abbonamenti-caller").serializeArray(), function (i, el){ 
+      data[el.name] = el.value;
+    });
+    //Aggiungo un id univoco per identificare un abbonamenti
+    data.id_abbonamento = generete_id();
+    console.log(data);
+    //TODO:Aggiungere logica in fase di edit 
+    array_abbonamenti.push(data);
+    add_abbonamento(data);
+    //Chiuso la il form delle auto
+    $("#aggiungi-abbonamento").hide();
+    
+    //Resetto il form per il prossimo inserimento
+    reset_form("#abbonamenti-caller");
+  });
+
 
   //Collego il bottone per salvare tutti i dati inseriti dall
   //utente
   $("#trasporti-avanti").click(function() {
     user_new_data.automobili = array_auto;
+    user_new_data = array_abbonamenti;
     load_form_spostamenti();
   });
 }
@@ -514,6 +533,22 @@ function reset_form(id_element){
   $(id_element)[0].reset();
   //Imposto i dropdown al valore di default
   reset_drop_down("select");
+}
+
+
+function add_abbonamento(abbonamento) {
+  var abbonamento_template = "<div class='tabella-mezzo'> \
+                                <div class='icon-mezzo'></div> \
+                                  <h3 class='nome-mezzo'>"+abbonamento.abbonamento_nome+"</h3> \
+                                  <p>"+abbonamento.costo+"€ "+abbonamento.tipo+"</p> \
+                                  <div class='modifica-mezzo'> \
+                                    <span class='fui-new'></span> \
+                                    <span class='fui-cross'></span> \
+                                  </div> \
+                              </div>";
+  $("#mezzi-container").append(abbonamento_template);
+  //Collego i bottoni edit e elimina
+
 }
 
 //===============================================================
