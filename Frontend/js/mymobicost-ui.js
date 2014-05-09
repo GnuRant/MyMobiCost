@@ -642,5 +642,9 @@ function form_spostamenti (){
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
 
+  //Carico i dati nel dropdown dei mezzi
+
+  
+
 }
 
