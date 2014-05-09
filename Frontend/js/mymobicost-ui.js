@@ -425,11 +425,32 @@ function form_trasporti(){
     //Aggiungo un id univoco per identificare un abbonamenti
     data.id_abbonamento = generete_id();
 
+    if (edit_mode) {
+      //Elimino l'elemento dal DOM
+      $("#"+old_abbonamento_id).remove();
+      //Aggiunta in edit, elimino l'elemento vecchio dall'array
+      $.each(array_auto, function(i, el) {
+        if (el.id_abbonamento == old_abbonamento_id){
+          array_abbonamenti.splice(array_abbonamenti.indexOf(el), 1);
+          //Elimino l'elemento della list sul DOM
+        }
+      });
+
+      edit_mode = false;
+    }
+
     //TODO:Aggiungere logica in fase di edit 
     array_abbonamenti.push(data);
     add_abbonamento(data);
     //Chiuso la il form delle auto
     $("#aggiungi-abbonamento").hide();
+  });
+
+  $("#cancel-abbonamento").click(function() {
+    $("#aggiungi-abbonamento").hide();
+    //Se sono in edit mode esco
+    edit_mode = false;
+    old_abbonamento_id = "";
   });
 
 
