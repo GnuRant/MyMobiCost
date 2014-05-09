@@ -6,7 +6,7 @@
 //===============================================================
 //========================= UTILITY =============================
 //===============================================================
-
+"use strict"
 function toggle_active_menu(element){
   $(".active").toggleClass('active');
   $(element).toggleClass('active');
@@ -321,6 +321,7 @@ $("#menu-trasporti-button").click(function() {
 function load_form_trasporti(){
   toggle_active_menu("#menu-trasporti-button");
   load_partial("partials/trasporti.html", "#form-container", function(){
+    //Reset Array 
     form_trasporti();
   });
 }
@@ -603,12 +604,12 @@ function load_abbonamenti_data(){
 
 function load_form_abbonamento_data(abbonamento){
   //Carico i dati nel drop_down
+  $("#aggiungi-abbonamento").show();
+
   $("select[name=abbonamento_nome]").val(abbonamento.abbonamento_nome);
   $("select[name=tipo]").val(abbonamento.tipo);
   //Carico gli input
   $("input[name=costo]").val(abbonamento.costo);
-
-  $("#aggiungi-abbonamento").show();
 }
 
 //Funzione per resettare il form auto
