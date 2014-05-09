@@ -429,17 +429,16 @@ function form_trasporti(){
       //Elimino l'elemento dal DOM
       $("#"+old_abbonamento_id).remove();
       //Aggiunta in edit, elimino l'elemento vecchio dall'array
-      $.each(array_auto, function(i, el) {
+      console.log(old_abbonamento_id);
+      $.each(array_abbonamenti, function(i, el) {
         if (el.id_abbonamento == old_abbonamento_id){
           array_abbonamenti.splice(array_abbonamenti.indexOf(el), 1);
-          //Elimino l'elemento della list sul DOM
         }
       });
 
       edit_mode = false;
     }
 
-    //TODO:Aggiungere logica in fase di edit 
     array_abbonamenti.push(data);
     add_abbonamento(data);
     //Chiuso la il form delle auto
@@ -459,6 +458,7 @@ function form_trasporti(){
   $("#trasporti-avanti").click(function() {
     user_new_data.automobili = array_auto;
     user_new_data.abbonamenti = array_abbonamenti;
+    //Carico il prossimo form
     load_form_spostamenti();
   });
 }
@@ -583,12 +583,12 @@ function add_abbonamento(abbonamento) {
     //Cerco nell'array i dati da caricare poi inflatto il form
     $.each(array_abbonamenti, function(i, el) {
        if (el.id_abbonamento == id_container){
-          load_form_abbonamento_data(array_abbonamenti[array_abbonamenti.indexOf(el)]);
-          //Imposto l'id per la fase di edit
-          edit_mode = true;
           old_abbonamento_id = el.id_abbonamento;
+          load_form_abbonamento_data(array_abbonamenti[array_abbonamenti.indexOf(el)]);
        }
     });
+    //Imposto l'id per la fase di edit
+    edit_mode = true;
   });
 }
 
