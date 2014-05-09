@@ -2,13 +2,13 @@
 <div id="trasporti-form" class="form">
     <h1>Trasporti</h1>
     <div class="form-campi">
-        <form class="form-horizontal" role="form">  
+        <form class="form-horizontal" role="form" id="auto-caller">  
             <div class="form-group">
                 
                 <div id="auto-container">
                 </div>
                 
-                <div id="mezzi-container">
+                <div id="abbonamenti-container">
                 </div>
 
             </div>
@@ -31,7 +31,7 @@
                     <label for="Classe" class="col-sm-6 control-label">Classe</label>
                     <div class="col-sm-6">
                         <select name="classe">
-                          <option value="" disabled selected>Seleziona un opzione</option></option>
+                          <option value="" disabled selected>Seleziona un'opzione</option></option>
                         </select>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                     <label for="Alimentazione" class="col-sm-6 control-label">Alimentazione</label>
                     <div class="col-sm-6">
                         <select name="alimentazione">
-                          <option value="0" disabled selected="">Seleziona un opzione</option>
+                          <option value="0" disabled selected="">Seleziona un'opzione</option>
                         </select>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="0" name="pedaggi_autostradali" />
+                                <input type="text" class="form-control flat" placeholder="0" name="pedaggio_autostradale" />
                                 <span class="input-group-addon">€</span>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="molti soldi" name="costo_km" disabled/>
+                                <input type="text" class="form-control flat" placeholder="molti soldi" name="costo_km" />
                                 <span class="input-group-addon">€</span>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="millemila" name="costo_fisso" disabled/>
+                                <input type="text" class="form-control flat" placeholder="millemila" name="costo_fisso" />
                                 <span class="input-group-addon">€</span>
                             </div>
                         </div>
@@ -126,15 +126,18 @@
                     </div>
                 </div>
             </div>
-            
-            <h2 id="titolo-mezzi">Mezzi pubblici <div id="bottone-aggiungi-mezzo" class="tagsinput-add"></div></h2>
-            <div id="aggiungi-mezzo">
+        </form>
+          
+        <form class="form-horizontal" role="form" id="abbonamenti-caller">   
+            <h2 id="titolo-mezzi">Mezzi pubblici <div id="bottone-aggiungi-abbonamento" class="tagsinput-add"></div></h2>
+            <div id="aggiungi-abbonamento">
                 <div class="form-group">
                     <label for="Comune" class="col-sm-6 control-label">Nome</label>
                     <div class="col-sm-6">
-                        <select>
-                          <option value="0">Tram</option>
-                          <option value="1">Autobus</option>
+                        <select name="abbonamento_nome">
+                          <option value="" disabled selected="">Seleziona un'opzione</option>
+                          <option >Autobus</option>
+                          <option >Treno</option>
                         </select>
                     </div>
                 </div>
@@ -142,9 +145,12 @@
                 <div class="form-group">
                         <label for="Comune" class="col-sm-6 control-label">Tipo</label>
                         <div class="col-sm-6">
-                            <select>
-                              <option value="0">Abbonamento annuale</option>
-                              <option value="1">Mensile</option>
+                            <select name="tipo">
+                              <option value="" disabled selected="">Seleziona un'opzione</option>
+                              <option >annuale</option>
+                              <option >semestrale</option>
+                              <option >mensile</option>
+                              <option >settimanale</option>
                             </select>
                         </div>
                     </div>
@@ -154,23 +160,22 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="0"/>
+                                <input type="text" class="form-control flat" placeholder="0" name="costo" />
                                 <span class="input-group-addon">€</span>
                             </div>
                         </div>
                     </div>
                 </div>
             
-                <div class="text-center conferma-trasporti">
-                    <div class="btn btn-danger btn-wide">
-                        Annulla
-                    </div>
-                    <div class="btn btn-primary btn-wide">
-                        Salva
-                    </div>
+            <div class="text-center conferma-trasporti">
+                <div id="cancel-abbonamento" class="btn btn-danger btn-wide">
+                    Annulla
+                </div>
+                <div id="save-abbonamento" class="btn btn-primary btn-wide">
+                    Salva
                 </div>
             </div>
-
+            </div>
         </form>
     </div>
 

@@ -48,6 +48,19 @@ function decrement_input_value (){
   });
 }
 
+function generete_id() {
+  return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+}
+
+function reset_drop_down (id_element){
+  $(id_element)
+    .find('option')
+    .remove()
+    .end()
+    .append('<option value="" disabled selected>seleziona un\'opzione</option>')
+    .val('whatever');
+}
+
 //===============================================================
 //======================= NEW SESSION ===========================
 //===============================================================
@@ -92,9 +105,7 @@ function form_famiglia(){
   $('label').tooltip();
 
   //Carico i dati dell'utente se sono in edit mode
-  if (edit_mode) {
-    load_famiglia_data();
-  };
+  load_famiglia_data();
 
   $("#famiglia-avanti").click(function() {
     var data = {};
@@ -155,9 +166,7 @@ function form_abitazione (){
     }).change(); //ensure visible state matches initially
   });
 
-  if (edit_mode) {
-    load_abitazione_data();
-  };
+  load_abitazione_data();
 
   //Imposto evento per il cabio di valore nel capo input 
   $("input[name=grandezza]").change(function() {
@@ -191,8 +200,8 @@ function form_abitazione (){
       update_values_costi(data);
     });
     //Re-imposto il valore di default per i form sottostanti
-    $("select[name=zona_abitativa]").prop('selectedIndex',0);
-    $("select[name=categoria_edilizia]").prop('selectedIndex',0);
+    reset_drop_down("select[name=zona_abitativa]");
+    reset_drop_down("select[name=categoria_edilizia]");
   });
 
   //Dopo aver caricato le zone carico le categorie edilizie ed aggiorno 
@@ -204,7 +213,7 @@ function form_abitazione (){
         });
     });
     //Reset dei capi sottostanti
-    $("select[name=categoria_edilizia]").prop('selectedIndex',0);
+    reset_drop_down("select[name=categoria_edilizia]");
   });
 
   //Ecento al cambiamento della categoria edilizia
@@ -298,7 +307,12 @@ function load_abitazione_data(){
 var classe = "";
 var alimentazione = "";
 var array_auto = [];
-var array_pubblici = [];
+var array_abbonamenti = [];
+//Variabile che tiene conto se sto aggiungendo 
+//Un mezzo da zero o lo sto editando
+var edit_mode = false;
+var old_auto_id = "";
+var old_abbonamento_id = "";
 
 $("#menu-trasporti-button").click(function() {
   load_form_trasporti();
@@ -323,12 +337,18 @@ function form_trasporti(){
   //Tasto che rende visibile il form auto
   $('#bottone-aggiungi-auto').click(function () {
     $('#aggiungi-auto').show();
+    //Genero il nome dell'auto incrementale
+    $("input[name=auto_nome]").val("Auto "+ (array_auto.length+1));
   });
 
   //Tasto che rende visibile il form mezzi pubblici
-  $('#bottone-aggiungi-mezzo').click(function () {
-    $('#aggiungi-mezzo').show();
+  $('#bottone-aggiungi-abbonamento').click(function () {
+    $('#aggiungi-abbonamento').show();
   });
+
+  //Controllo se ci sono dati da caricare 
+  load_automobili_data();
+  load_abbonamenti_data();
 
   //Carico i dati delle categorie delle auto
   get_auto_categorie(function (data){
@@ -340,6 +360,8 @@ function form_trasporti(){
   $("select[name=classe]").change(function() {
     //Dopo aver selezionato un tipologia di auto carico le alimentazione
     classe = $("select[name=classe]").val();
+    //Resetto i dati nel caso ci siano gia delle cose caricate
+    reset_drop_down("select[name=alimentazione]");
     get_auto_alimentazione(classe, function (data) {
       $.each(data, function(i, el) {
          $("select[name=alimentazione]").append("<option>"+el+"</option>");
@@ -356,31 +378,244 @@ function form_trasporti(){
       $("input[name=costo_fisso]").val(data.costo_fisso_altro);
     });
   });
-
+  //Collego il bottone per salvare un auto
   $("#save-auto").click(function() {
-    var data;
-    //Prendo i dati dai form
+    var data = {};
+    $.each($("#auto-caller").serializeArray(), function (i, el){ 
+      data[el.name] = el.value;
+    });
     //Genero l'id univoco per l'auto
-    //Aggiungo al DOM il nuovo elemento
-    //Aggiungo l'elemento all'array
-    add_automobili();
+    data.id_auto = generete_id();
+
+    if (edit_mode) {
+      //Elimino l'elemento dal DOM
+      $("#"+old_auto_id).remove();
+      //Aggiunta in edit, elimino l'elemento vecchio dall'array
+      $.each(array_auto, function(i, el) {
+        if (el.id_auto == old_auto_id){
+          array_auto.splice(array_auto.indexOf(el), 1);
+          //Elimino l'elemento della list sul DOM
+        }
+      });
+
+      edit_mode = false;
+    }
+
+    array_auto.push(data);
+    add_automobile(data);
     //Chiuso la il form delle auto
     $("#aggiungi-auto").hide();
+    
+    //Resetto il form per il prossimo inserimento
+    reset_form("#auto-caller");
+  });
+
+  $("#cancel-auto").click(function() {
+    $("#aggiungi-auto").hide();
+    //Se sono in edit mode esco
+    edit_mode = false;
+    old_auto_id = "";
+  });
+
+  $("#save-abbonamento").click(function() {
+    var data = {};
+    $.each($("#abbonamenti-caller").serializeArray(), function (i, el){ 
+      data[el.name] = el.value;
+    });
+    //Aggiungo un id univoco per identificare un abbonamenti
+    data.id_abbonamento = generete_id();
+
+    if (edit_mode) {
+      //Elimino l'elemento dal DOM
+      $("#"+old_abbonamento_id).remove();
+      //Aggiunta in edit, elimino l'elemento vecchio dall'array
+      console.log(old_abbonamento_id);
+      $.each(array_abbonamenti, function(i, el) {
+        if (el.id_abbonamento == old_abbonamento_id){
+          array_abbonamenti.splice(array_abbonamenti.indexOf(el), 1);
+        }
+      });
+
+      edit_mode = false;
+    }
+
+    array_abbonamenti.push(data);
+    add_abbonamento(data);
+    //Chiuso la il form delle auto
+    $("#aggiungi-abbonamento").hide();
+  });
+
+  $("#cancel-abbonamento").click(function() {
+    $("#aggiungi-abbonamento").hide();
+    //Se sono in edit mode esco
+    edit_mode = false;
+    old_abbonamento_id = "";
+  });
+
+
+  //Collego il bottone per salvare tutti i dati inseriti dall
+  //utente
+  $("#trasporti-avanti").click(function() {
+    user_new_data.automobili = array_auto;
+    user_new_data.abbonamenti = array_abbonamenti;
+    //Carico il prossimo form
+    load_form_spostamenti();
   });
 }
 
-function add_automobili(auto){
-  var auto_tempalte = "<div id='1'class='tabella-auto'> \
+function add_automobile(auto){
+  //Aggiungo l'elemento all'array
+  var id = auto.id_auto;
+  var auto_template = "<div id='"+id+"' class='tabella-auto'> \
                         <div class='icon-auto'></div> \
-                        <h3 class='nome-auto'>Audi A1</h3> \
-                        <p>20.000 km annuali</p> \
+                        <h3 class='nome-auto'>"+auto.auto_nome+"</h3> \
+                        <p>"+auto.percorrenza_annua+" km annuali</p> \
                         <div class='modifica-auto'> \
                             <span class='fui-new'></span> \
                             <span class='fui-cross'></span> \
                         </div> \
                       </div>"; 
+  //Aggiungo l'elemento al DOM
+  $("#auto-container").append(auto_template);
 
-  $("#auto-container").append(auto_tempalte);
+  //Gestisco i bottoni per eliminare ed edittare 
+  $(".fui-cross").click(function(event) {
+    var button = $(this);
+    var id_container = button.parents('.tabella-auto:first').attr('id');
+    //Elimino l'elemento
+    $("#"+id_container).remove();
+    //Elimino l'lemento dall'array
+    $.each(array_auto, function(i, el) {
+       if (el.id_auto == id_container){
+        array_auto.splice(array_auto.indexOf(el), 1);
+       }
+    });
+  });
+  //Collego il bottone edit
+  $(".fui-new").click(function(event) {
+    var button = $(this);
+    var id_container = button.parents('.tabella-auto:first').attr('id');
+    //Cerco nell'array i dati da caricare poi inflatto il form
+    $.each(array_auto, function(i, el) {
+       if (el.id_auto == id_container){
+          load_form_automobile_data(array_auto[array_auto.indexOf(el)]);
+          //Imposto l'id per la fase di edit
+          edit_mode = true;
+          old_auto_id = el.id_auto;
+       }
+    });
+  });
+}
+
+function load_automobili_data(){
+  if (!$.isEmptyObject(user_new_data.automobili)) {
+    array_auto = user_new_data.automobili;
+    $.each(array_auto, function(i, el) {
+      add_automobile(el);
+   });
+  }; 
+}
+
+function load_form_automobile_data(auto){
+  //Resetto 
+  reset_form("#auto-caller");
+  //Carico gli input
+  $("input[name=abbonamento_parcheggio]").val(auto.abbonamento_parcheggio);
+  $("input[name=auto_nome]").val(auto.auto_nome);
+  $("input[name=percorrenza_annua]").val(auto.percorrenza_annua);
+  $("input[name=pedaggio_autostradale]").val(auto.pedaggio_autostradale);
+  $("input[name=assicurazione]").val(auto.assicurazione);
+  $("input[name=costo_km]").val(auto.costo_km);
+  $("input[name=costo_fisso]").val(auto.costo_fisso);
+  //Carico i drop_down
+  classe = auto.classe;  
+  get_auto_categorie(function (data){
+    $.each(data, function(i, el) {
+      $("select[name=classe]").append("<option>"+el+"</option>");
+    });
+    $("select[name=classe]").val(classe);
+  });
+
+  alimentazione = auto.alimentazione;
+  get_auto_alimentazione(classe, function (data) {
+    $.each(data, function(i, el) {
+      $("select[name=alimentazione]").append("<option>"+el+"</option>");
+    });
+    $("select[name=alimentazione]").val(alimentazione);
+  });
+
+  //rendo visibile il form
+  $("#aggiungi-auto").show();
+}
+
+function add_abbonamento(abbonamento) {
+  var abbonamento_template = "<div id='"+abbonamento.id_abbonamento+"' class='tabella-mezzo'> \
+                                <div class='icon-mezzo'></div> \
+                                  <h3 class='nome-mezzo'>"+abbonamento.abbonamento_nome+"</h3> \
+                                  <p>"+abbonamento.costo+"€ "+abbonamento.tipo+"</p> \
+                                  <div class='modifica-mezzo'> \
+                                    <span class='fui-new'></span> \
+                                    <span class='fui-cross'></span> \
+                                  </div> \
+                              </div>";
+  $("#abbonamenti-container").append(abbonamento_template);
+  //Collego i bottoni edit e elimina
+
+  //Gestisco i bottoni per eliminare ed edittare 
+  $(".fui-cross").click(function(event) {
+    var button = $(this);
+    console.log(button);
+    var id_container = button.parents('.tabella-mezzo:first').attr('id');
+    console.log(id_container);
+    //Elimino l'elemento
+    $("#"+id_container).remove();
+    //Elimino l'lemento dall'array
+    $.each(array_abbonamenti, function(i, el) {
+       if (el.id_abbonamento == id_container){
+        array_abbonamenti.splice(array_abbonamenti.indexOf(el), 1);
+       }
+    });
+  });
+
+  $(".fui-new").click(function(event) {
+    var button = $(this);
+    var id_container = button.parents('.tabella-mezzo:first').attr('id');
+    //Cerco nell'array i dati da caricare poi inflatto il form
+    $.each(array_abbonamenti, function(i, el) {
+       if (el.id_abbonamento == id_container){
+          old_abbonamento_id = el.id_abbonamento;
+          load_form_abbonamento_data(array_abbonamenti[array_abbonamenti.indexOf(el)]);
+       }
+    });
+    //Imposto l'id per la fase di edit
+    edit_mode = true;
+  });
+}
+
+function load_abbonamenti_data(){
+  if (!$.isEmptyObject(user_new_data.abbonamenti)) {
+    array_abbonamenti = user_new_data.abbonamenti;
+    $.each(array_abbonamenti, function(i, el) {
+      add_abbonamento(el);
+   });
+  }; 
+}
+
+function load_form_abbonamento_data(abbonamento){
+  //Carico i dati nel drop_down
+  $("select[name=abbonamento_nome]").val(abbonamento.abbonamento_nome);
+  $("select[name=tipo]").val(abbonamento.tipo);
+  //Carico gli input
+  $("input[name=costo]").val(abbonamento.costo);
+
+  $("#aggiungi-abbonamento").show();
+}
+
+//Funzione per resettare il form auto
+function reset_form(id_element){
+  $(id_element)[0].reset();
+  //Imposto i dropdown al valore di default
+  reset_drop_down("select");
 }
 
 //===============================================================
