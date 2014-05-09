@@ -606,10 +606,10 @@ function load_form_abbonamento_data(abbonamento){
   //Carico i dati nel drop_down
   $("#aggiungi-abbonamento").show();
 
-  $("select[name=abbonamento_nome]").val(abbonamento.abbonamento_nome);
-  $("select[name=tipo]").val(abbonamento.tipo);
+  $("select[name=abbonamento_nome]").val(abbonamento.abbonamento_nome).change();
+  $("select[name=tipo]").val(abbonamento.tipo).change();
   //Carico gli input
-  $("input[name=costo]").val(abbonamento.costo);
+  $("input[name=costo]").val(abbonamento.costo)
 }
 
 //Funzione per resettare il form auto
