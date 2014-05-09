@@ -581,7 +581,6 @@ function load_abbonamenti_data(){
 }
 
 function load_form_abbonamento_data(abbonamento){
-  reset_form("#abbonamenti-caller");
   //Carico i dati nel drop_down
   $("select[name=abbonamento_nome]").val(abbonamento.abbonamento_nome);
   $("select[name=tipo]").val(abbonamento.tipo);
