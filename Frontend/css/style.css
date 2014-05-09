@@ -576,8 +576,21 @@ input {
 .tabella-mezzo p {
   margin-bottom: 0;
 }
+.tabella-attivita {
+  position: relative;
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px #acacac solid;
+}
+.tabella-attivita p {
+  margin-bottom: 0;
+}
 .nome-auto,
-.nome-mezzo {
+.nome-mezzo,
+.nome-attivita {
   font-size: 1.1em;
   margin: 0;
   position: relative;
@@ -592,22 +605,26 @@ input {
   left: 0px;
 }
 .modifica-auto,
-.modifica-mezzo {
+.modifica-mezzo,
+.modifica-attivita {
   position: absolute;
   right: 15px;
   line-height: 52px;
   top: 0px;
 }
 .modifica-auto .fui-cross,
-.modifica-mezzo .fui-cross {
+.modifica-mezzo .fui-cross,
+.modifica-attivita .fui-cross {
   color: #c0392b;
 }
 .modifica-auto span,
-.modifica-mezzo span {
+.modifica-mezzo span,
+.modifica-attivita span {
   padding-left: 10px;
 }
 .modifica-auto span:hover,
-.modifica-mezzo span:hover {
+.modifica-mezzo span:hover,
+.modifica-attivita span:hover {
   opacity: 0.6;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
   filter: alpha(opacity=60);
