@@ -640,53 +640,53 @@ input {
   left: 120px;
   top: 20px;
 }
-#container-risultato .tile-risultato {
+.tile-risultato {
   background: #ecf0f1;
-  width: 400px;
+  width: 500px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
-#container-risultato .tile-risultato .titolo-tile {
+.titolo-tile {
   margin-bottom: 0;
-  padding: 0.5em;
+  padding: 0.8em;
   background: #79b31f;
   color: #fff;
   font-size: 1em;
   -webkit-border-radius: 10px 10px 0 0;
   border-radius: 10px 10px 0 0;
 }
-#container-risultato .tile-risultato .categorie-residenza,
-#container-risultato .tile-risultato .categorie-spostamenti,
-#container-risultato .tile-risultato .categorie-auto,
-#container-risultato .tile-risultato .categorie-mezzi {
-  padding: 0 0.5em;
+.categorie-residenza,
+.categorie-spostamenti,
+.categorie-auto,
+.categorie-mezzi {
+  padding: 0 0.8em;
   margin-top: 0.8em;
 }
-#container-risultato .tile-risultato .categorie-residenza p,
-#container-risultato .tile-risultato .categorie-spostamenti p,
-#container-risultato .tile-risultato .categorie-auto p,
-#container-risultato .tile-risultato .categorie-mezzi p {
+.categorie-residenza p,
+.categorie-spostamenti p,
+.categorie-auto p,
+.categorie-mezzi p {
   font-weight: bold;
   font-size: 2em;
   margin: 0;
   line-height: 1.4em;
 }
-#container-risultato .tile-risultato .categorie-residenza .titolo-spostamenti,
-#container-risultato .tile-risultato .categorie-spostamenti .titolo-spostamenti,
-#container-risultato .tile-risultato .categorie-auto .titolo-spostamenti,
-#container-risultato .tile-risultato .categorie-mezzi .titolo-spostamenti,
-#container-risultato .tile-risultato .categorie-residenza .titolo-residenza,
-#container-risultato .tile-risultato .categorie-spostamenti .titolo-residenza,
-#container-risultato .tile-risultato .categorie-auto .titolo-residenza,
-#container-risultato .tile-risultato .categorie-mezzi .titolo-residenza,
-#container-risultato .tile-risultato .categorie-residenza .titolo-auto,
-#container-risultato .tile-risultato .categorie-spostamenti .titolo-auto,
-#container-risultato .tile-risultato .categorie-auto .titolo-auto,
-#container-risultato .tile-risultato .categorie-mezzi .titolo-auto,
-#container-risultato .tile-risultato .categorie-residenza .titolo-mezzi,
-#container-risultato .tile-risultato .categorie-spostamenti .titolo-mezzi,
-#container-risultato .tile-risultato .categorie-auto .titolo-mezzi,
-#container-risultato .tile-risultato .categorie-mezzi .titolo-mezzi {
+.categorie-residenza .titolo-spostamenti,
+.categorie-spostamenti .titolo-spostamenti,
+.categorie-auto .titolo-spostamenti,
+.categorie-mezzi .titolo-spostamenti,
+.categorie-residenza .titolo-residenza,
+.categorie-spostamenti .titolo-residenza,
+.categorie-auto .titolo-residenza,
+.categorie-mezzi .titolo-residenza,
+.categorie-residenza .titolo-auto,
+.categorie-spostamenti .titolo-auto,
+.categorie-auto .titolo-auto,
+.categorie-mezzi .titolo-auto,
+.categorie-residenza .titolo-mezzi,
+.categorie-spostamenti .titolo-mezzi,
+.categorie-auto .titolo-mezzi,
+.categorie-mezzi .titolo-mezzi {
   font-size: 1em;
   font-weight: 300;
   margin: 0;
@@ -694,22 +694,22 @@ input {
   position: relative;
   margin-left: 1.1em;
 }
-#container-risultato .tile-risultato .categorie-residenza .titolo-spostamenti::before,
-#container-risultato .tile-risultato .categorie-spostamenti .titolo-spostamenti::before,
-#container-risultato .tile-risultato .categorie-auto .titolo-spostamenti::before,
-#container-risultato .tile-risultato .categorie-mezzi .titolo-spostamenti::before,
-#container-risultato .tile-risultato .categorie-residenza .titolo-residenza::before,
-#container-risultato .tile-risultato .categorie-spostamenti .titolo-residenza::before,
-#container-risultato .tile-risultato .categorie-auto .titolo-residenza::before,
-#container-risultato .tile-risultato .categorie-mezzi .titolo-residenza::before,
-#container-risultato .tile-risultato .categorie-residenza .titolo-auto::before,
-#container-risultato .tile-risultato .categorie-spostamenti .titolo-auto::before,
-#container-risultato .tile-risultato .categorie-auto .titolo-auto::before,
-#container-risultato .tile-risultato .categorie-mezzi .titolo-auto::before,
-#container-risultato .tile-risultato .categorie-residenza .titolo-mezzi::before,
-#container-risultato .tile-risultato .categorie-spostamenti .titolo-mezzi::before,
-#container-risultato .tile-risultato .categorie-auto .titolo-mezzi::before,
-#container-risultato .tile-risultato .categorie-mezzi .titolo-mezzi::before {
+.categorie-residenza .titolo-spostamenti::before,
+.categorie-spostamenti .titolo-spostamenti::before,
+.categorie-auto .titolo-spostamenti::before,
+.categorie-mezzi .titolo-spostamenti::before,
+.categorie-residenza .titolo-residenza::before,
+.categorie-spostamenti .titolo-residenza::before,
+.categorie-auto .titolo-residenza::before,
+.categorie-mezzi .titolo-residenza::before,
+.categorie-residenza .titolo-auto::before,
+.categorie-spostamenti .titolo-auto::before,
+.categorie-auto .titolo-auto::before,
+.categorie-mezzi .titolo-auto::before,
+.categorie-residenza .titolo-mezzi::before,
+.categorie-spostamenti .titolo-mezzi::before,
+.categorie-auto .titolo-mezzi::before,
+.categorie-mezzi .titolo-mezzi::before {
   height: 1em;
   width: 1em;
   -webkit-border-radius: 50%;
@@ -719,28 +719,16 @@ input {
   top: -0.3em;
   content: " ";
 }
-#container-risultato .tile-risultato .categorie-residenza .titolo-residenza::before,
-#container-risultato .tile-risultato .categorie-spostamenti .titolo-residenza::before,
-#container-risultato .tile-risultato .categorie-auto .titolo-residenza::before,
-#container-risultato .tile-risultato .categorie-mezzi .titolo-residenza::before {
+.titolo-residenza::before {
   background: #2c3e4e;
 }
-#container-risultato .tile-risultato .categorie-residenza .titolo-spostamenti::before,
-#container-risultato .tile-risultato .categorie-spostamenti .titolo-spostamenti::before,
-#container-risultato .tile-risultato .categorie-auto .titolo-spostamenti::before,
-#container-risultato .tile-risultato .categorie-mezzi .titolo-spostamenti::before {
+.titolo-spostamenti::before {
   background: #2980b9;
 }
-#container-risultato .tile-risultato .categorie-residenza .titolo-auto::before,
-#container-risultato .tile-risultato .categorie-spostamenti .titolo-auto::before,
-#container-risultato .tile-risultato .categorie-auto .titolo-auto::before,
-#container-risultato .tile-risultato .categorie-mezzi .titolo-auto::before {
+.titolo-auto::before {
   background: #9b59b6;
 }
-#container-risultato .tile-risultato .categorie-residenza .titolo-mezzi::before,
-#container-risultato .tile-risultato .categorie-spostamenti .titolo-mezzi::before,
-#container-risultato .tile-risultato .categorie-auto .titolo-mezzi::before,
-#container-risultato .tile-risultato .categorie-mezzi .titolo-mezzi::before {
+.titolo-mezzi::before {
   background: #36cc71;
 }
 .risultato-sum-up {
@@ -748,9 +736,18 @@ input {
   color: #fff;
   -webkit-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
-  padding: 0 0.5em;
+  padding: 0 0.8em;
 }
 .risultato-sum-up p {
   text-align: center;
   margin: 0;
+}
+.categorie-container {
+  float: left;
+  width: 200px;
+}
+.risultato-graph {
+  padding: 0.5em;
+  float: left;
+  width: 300px;
 }
