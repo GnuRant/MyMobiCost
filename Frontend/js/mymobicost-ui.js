@@ -422,15 +422,12 @@ function form_trasporti(){
     });
     //Aggiungo un id univoco per identificare un abbonamenti
     data.id_abbonamento = generete_id();
-    console.log(data);
+
     //TODO:Aggiungere logica in fase di edit 
     array_abbonamenti.push(data);
     add_abbonamento(data);
     //Chiuso la il form delle auto
     $("#aggiungi-abbonamento").hide();
-    
-    //Resetto il form per il prossimo inserimento
-    reset_form("#abbonamenti-caller");
   });
 
 
@@ -535,7 +532,6 @@ function reset_form(id_element){
   reset_drop_down("select");
 }
 
-
 function add_abbonamento(abbonamento) {
   var abbonamento_template = "<div class='tabella-mezzo'> \
                                 <div class='icon-mezzo'></div> \
@@ -546,9 +542,31 @@ function add_abbonamento(abbonamento) {
                                     <span class='fui-cross'></span> \
                                   </div> \
                               </div>";
-  $("#mezzi-container").append(abbonamento_template);
+  $("#abbonamenti-container").append(abbonamento_template);
   //Collego i bottoni edit e elimina
 
+  //Gestisco i bottoni per eliminare ed edittare 
+  $(".fui-cross").click(function(event) {
+    var button = $(this);
+    var id_container = button.parents('.tabella-mezzo:first').attr('id');
+    //Elimino l'elemento
+    $("#"+id_container).remove();
+    //Elimino l'lemento dall'array
+    $.each(array_abbonamenti, function(i, el) {
+       if (el.id_abbonamento == id_container){
+        array_abbonamenti.splice(array_abbonamenti.indexOf(el), 1);
+       }
+    });
+  });
+}
+
+function load_form_abbonamenti_data(abbonamento){
+  reset_form("#abbonamenti-caller");
+  //Carico i dati nel drop_down
+  $("select[name=abbonamento_nome]").val(abbonamento.abbonamento_nome);
+  $("select[name=tipo]").val(abbonamento.tipo);
+  //Carico gli input
+  $("input[name=costo]").val(abbonamento.costo);
 }
 
 //===============================================================
