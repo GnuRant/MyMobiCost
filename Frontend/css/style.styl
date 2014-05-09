@@ -355,8 +355,56 @@
     border-radius 10px
 
     .titolo-tile
+      margin-bottom 0
       padding .5em
       background green
       color white
       font-size 1em
       border-radius 10px 10px 0 0
+
+    .categorie-residenza, .categorie-spostamenti, .categorie-auto, .categorie-mezzi
+      padding 0 .5em
+      margin-top .8em
+      
+      p
+        font-weight bold
+        font-size 2em
+        margin 0
+        line-height 1.4em
+
+      .titolo-spostamenti, .titolo-residenza, .titolo-auto, .titolo-mezzi
+        font-size 1em
+        font-weight 300
+        margin 0
+        line-height .5em
+        position relative
+        margin-left 1.1em
+        &::before
+          height 1em
+          width 1em
+          border-radius 50%
+          position absolute
+          left -1.1em
+          top -.3em
+          content " "
+
+      .titolo-residenza::before
+        background darkblue
+    
+      .titolo-spostamenti::before
+        background blue
+
+      .titolo-auto::before
+        background purple
+
+      .titolo-mezzi::before
+        background green-graph
+
+.risultato-sum-up
+  background darkblue
+  color white
+  border-radius 0 0 10px 10px
+  padding 0 .5em
+  p
+    text-align center
+    margin 0
