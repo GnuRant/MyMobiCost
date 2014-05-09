@@ -526,15 +526,8 @@ function load_form_automobile_data(auto){
   $("#aggiungi-auto").show();
 }
 
-//Funzione per resettare il form auto
-function reset_form(id_element){
-  $(id_element)[0].reset();
-  //Imposto i dropdown al valore di default
-  reset_drop_down("select");
-}
-
 function add_abbonamento(abbonamento) {
-  var abbonamento_template = "<div class='tabella-mezzo'> \
+  var abbonamento_template = "<div id='"+abbonamento.id_abbonamento+"' class='tabella-mezzo'> \
                                 <div class='icon-mezzo'></div> \
                                   <h3 class='nome-mezzo'>"+abbonamento.abbonamento_nome+"</h3> \
                                   <p>"+abbonamento.costo+"€ "+abbonamento.tipo+"</p> \
@@ -549,7 +542,9 @@ function add_abbonamento(abbonamento) {
   //Gestisco i bottoni per eliminare ed edittare 
   $(".fui-cross").click(function(event) {
     var button = $(this);
+    console.log(button);
     var id_container = button.parents('.tabella-mezzo:first').attr('id');
+    console.log(id_container);
     //Elimino l'elemento
     $("#"+id_container).remove();
     //Elimino l'lemento dall'array
@@ -577,6 +572,13 @@ function load_form_abbonamenti_data(abbonamento){
   $("select[name=tipo]").val(abbonamento.tipo);
   //Carico gli input
   $("input[name=costo]").val(abbonamento.costo);
+}
+
+//Funzione per resettare il form auto
+function reset_form(id_element){
+  $(id_element)[0].reset();
+  //Imposto i dropdown al valore di default
+  reset_drop_down("select");
 }
 
 //===============================================================
