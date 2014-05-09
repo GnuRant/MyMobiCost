@@ -312,6 +312,7 @@ var array_abbonamenti = [];
 //Un mezzo da zero o lo sto editando
 var edit_mode = false;
 var old_auto_id = "";
+var old_abbonamento_id = "";
 
 $("#menu-trasporti-button").click(function() {
   load_form_trasporti();
@@ -554,6 +555,20 @@ function add_abbonamento(abbonamento) {
        }
     });
   });
+
+  $(".fui-new").click(function(event) {
+    var button = $(this);
+    var id_container = button.parents('.tabella-mezzo:first').attr('id');
+    //Cerco nell'array i dati da caricare poi inflatto il form
+    $.each(array_abbonamenti, function(i, el) {
+       if (el.id_abbonamento == id_container){
+          load_form_abbonamento_data(array_abbonamenti[array_abbonamenti.indexOf(el)]);
+          //Imposto l'id per la fase di edit
+          edit_mode = true;
+          old_abbonamento_id = el.id_abbonamento;
+       }
+    });
+  });
 }
 
 function load_abbonamenti_data(){
@@ -565,13 +580,15 @@ function load_abbonamenti_data(){
   }; 
 }
 
-function load_form_abbonamenti_data(abbonamento){
+function load_form_abbonamento_data(abbonamento){
   reset_form("#abbonamenti-caller");
   //Carico i dati nel drop_down
   $("select[name=abbonamento_nome]").val(abbonamento.abbonamento_nome);
   $("select[name=tipo]").val(abbonamento.tipo);
   //Carico gli input
   $("input[name=costo]").val(abbonamento.costo);
+
+  $("#aggiungi-abbonamento").show();
 }
 
 //Funzione per resettare il form auto
