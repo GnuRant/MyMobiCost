@@ -183,13 +183,13 @@ def calcolo_costi():
 	#calcolo e aggiungo i dati al json di ritorno
 	return_data["costo_residenza"] = calcolo_abitazione_costi(data)
 	#aggiungo il costo legato all'auto
-	#return_data["costo_auto"] = calcolo_spostamenti_auto_costi(data)
+	return_data["costo_auto"] = calcolo_spostamenti_auto_costi(data)
 	#aggiungo i costi fissi auto
-	#return_data["costi_fissi_suto"] = calcolo_costi_acessori_costo(data)
+	return_data["costi_fissi_suto"] = calcolo_costi_acessori_costo(data)
 	#aggiungo i costi legati al trasporto pubblico
-	#return_data["costo_trasporto_pubblico"] = calcolo_spostamento_mezzi_costi(data)	
+	return_data["costo_trasporto_pubblico"] = calcolo_spostamento_mezzi_costi(data)	
 	#aggiungo il tempo legato a tutti gli spostamenti
-	#return_data["tempo_speso"] = calcolo_tempo_spostamenti(data)
+	return_data["tempo_speso"] = calcolo_tempo_spostamenti(data)
 	data["risultati"] = return_data
 	
 	return jsonify(data=return_data)
