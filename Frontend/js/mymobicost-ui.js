@@ -310,7 +310,6 @@ var array_auto = [];
 var array_abbonamenti = [];
 //Variabile che tiene conto se sto aggiungendo 
 //Un mezzo da zero o lo sto editando
-var edit_mode = false;
 var old_auto_id = "";
 var old_abbonamento_id = "";
 
@@ -622,7 +621,8 @@ function reset_form(id_element){
 //===============================================================
 //===================== form SPOSTAMENTI ========================
 //===============================================================
-var arra_spostamenti = [];
+var array_spostamenti = [];
+var old_spostamento_id  = "";
 
 $("#menu-spostamenti-button").click(function (){
   load_form_spostamenti();
@@ -658,6 +658,9 @@ function form_spostamenti (){
     });
     //Aggiungo un id univoco per identificare un abbonamenti
     data.id_spostamento = generete_id();
+    console.log(data);
+    //Aggiungo lo spostamento all'array
+    array_spostamenti.push(data);
     //Carico i dati nel dom
     add_spostamento(data);
     //Chiudo il form e lo resetto per il prossimo inserimento
@@ -668,7 +671,7 @@ function form_spostamenti (){
 }
 
 function add_spostamento(spostamento) {
-  var spostamento_tempalte = "<div id='1' class='tabella-attivita'> \
+  var spostamento_tempalte = "<div id='"+spostamento.id_spostamento+"' class='tabella-attivita'> \
                                 <h3 class='nome-attivita'>"+spostamento.descrizione+"</h3> \
                                 <p>"+spostamento.motivo+", "+spostamento.percorrenze+" volte a settimana</p> \
                                 <div class='modifica-attivita'> \
@@ -678,6 +681,36 @@ function add_spostamento(spostamento) {
                               </div>"
 
   $("#spostamenti-container").append(spostamento_tempalte);
+
+  //Gestisco i bottoni per eliminare ed edittare 
+  $(".fui-cross").click(function(event) {
+    var button = $(this);
+    var id_container = button.parents('.tabella-attivita:first').attr('id');
+    console.log(id_container);
+    //Elimino l'elemento
+    $("#"+id_container).remove();
+    //Elimino l'lemento dall'array
+    $.each(array_spostamenti, function(i, el) {
+       if (el.id_spostamento == id_container){
+        array_spostamenti.splice(array_spostamenti.indexOf(el), 1);
+       }
+    });
+  });
+
+  $(".fui-new").click(function(event) {
+    var button = $(this);
+    var id_container = button.parents('.tabella-mezzo:first').attr('id');
+    //Cerco nell'array i dati da caricare poi inflatto il form
+    $.each(array_spostamenti, function(i, el) {
+       if (el.id_abbonamento == id_container){
+          //salvo il vecchio id che poi andrò ad eliminare
+          old_spostamento_id = el.id_abbonamento;
+          load_form_spostamenti_data(array_spostamenti[array_spostamenti.indexOf(el)]);
+       }
+    });
+    //Imposto l'id per la fase di edit
+    edit_mode = true;
+  });
 }
 
 
