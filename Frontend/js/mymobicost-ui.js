@@ -663,6 +663,7 @@ function form_spostamenti (){
     //Chiudo il form e lo resetto per il prossimo inserimento
     $("#aggiungi-spostamento").hide();
     $("#spostamenti-caller")[0].reset();
+    $("select[name=motivo]").val(0).change();
   });
 }
 
