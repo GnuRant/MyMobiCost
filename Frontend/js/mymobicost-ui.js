@@ -645,16 +645,6 @@ function form_spostamenti (){
   load_mezzi();
 }
 
-function load_mezzi() {
-  //Carico tutti i mezzi inseriti dall'utente nel dropdown menu
-  $.each(user_new_data.automobili, function(i, el) {
-    $("select[name=id_auto]").append("<option value='"+el.id_auto+"'>"+el.auto_nome+"</option>");
-  });
-  $.each(user_new_data.abbonamenti, function(i, el) {
-    $("select[name=id_auto]").append("<option value='"+el.id_abbonamento+"'>"+el.abbonamento_nome+"</option>");
-  });
-}
-
 function add_spostamento(spostamento) {
   var spostamento_tempalte = "<div id='1' class='tabella-attivita'> \
                                 <h3 class='"+spostamento.descrizione+"'>Ufficio</h3> \
@@ -667,4 +657,16 @@ function add_spostamento(spostamento) {
 
   $("#spostamenti-container").append(spostamento_tempalte);
 }
+
+
+function load_mezzi() {
+  //Carico tutti i mezzi inseriti dall'utente nel dropdown menu
+  $.each(user_new_data.automobili, function(i, el) {
+    $("select[name=id_auto]").append("<option value='"+el.id_auto+"'>"+el.auto_nome+"</option>");
+  });
+  $.each(user_new_data.abbonamenti, function(i, el) {
+    $("select[name=id_auto]").append("<option value='"+el.id_abbonamento+"'>"+el.abbonamento_nome+"</option>");
+  });
+}
+
 
