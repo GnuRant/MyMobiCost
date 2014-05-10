@@ -622,6 +622,8 @@ function reset_form(id_element){
 //===============================================================
 //===================== form SPOSTAMENTI ========================
 //===============================================================
+var arra_spostamenti = [];
+
 $("#menu-spostamenti-button").click(function (){
   load_form_spostamenti();
 });
@@ -643,11 +645,23 @@ function form_spostamenti (){
   $('.switch')['bootstrapSwitch']();
   //Carico i mezzi nel dropdown
   load_mezzi();
+
+  //Collego il bottone per aggiungere uno spostamento
+  $("#salva-spostamento").click(function() {
+    var data = {};
+    $.each($("#spostamenti-caller").serializeArray(), function (i, el){ 
+      data[el.name] = el.value;
+    });
+    //Aggiungo un id univoco per identificare un abbonamenti
+    data.id_spostamento = generete_id();
+    //Carico i dati nel dom
+    add_spostamento(data);
+  });
 }
 
 function add_spostamento(spostamento) {
   var spostamento_tempalte = "<div id='1' class='tabella-attivita'> \
-                                <h3 class='"+spostamento.descrizione+"'>Ufficio</h3> \
+                                <h3 class='nome-attivita'>"+spostamento.descrizione+"</h3> \
                                 <p>"+spostamento.motivo+", "+spostamento.percorrenze+" volte a settimana</p> \
                                 <div class='modifica-attivita'> \
                                     <span class='fui-new'></span> \
