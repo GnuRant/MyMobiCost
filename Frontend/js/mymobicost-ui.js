@@ -691,4 +691,12 @@ function load_mezzi() {
   });
 }
 
+function load_form_spostamenti_data(spostamenti) {
+  $("select[name=motivo]").val(spostamento.motivo).change();
+  $("input[name=descrizione]").val(spostamento.descrizione);
+  $("input[name=percorrenze]").val(spostamento.percorrenze);
+  $("input[name=tempo]").val(spostamento.tempo);
+  $("input[name=distanza]").val(spostamento.distanza);
+  $("select[name=id_auto]").val(spostamento.id_auto).change();
+}
 
