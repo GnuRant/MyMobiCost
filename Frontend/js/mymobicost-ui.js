@@ -685,12 +685,14 @@ function form_spostamenti (){
     user_new_data.spostamenti = array_spostamenti;
     //Invio la richiesta al server per elaborare i dati
     get_results_from_user_data(user_new_data, function (data) {
-      console.log(data);
+      user_new_data.risultati = data;
     });
     //Aggiungo all'array dei dati utente la location appena creta
     user_data.push(user_new_data);
     //Salvo i dati utente
     save_user_data(user_data);
+    //Chiudo il form di immissione
+    $("#form-container").hide();
   });
 }
 
