@@ -636,13 +636,13 @@ function load_form_spostamenti (){
 }
 
 function form_spostamenti (){
-
   //attivo i tooltip
   $('label').tooltip();
 
   // selettori belli bellissimi
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
+  laod_spostamenti_data();
   //Carico i mezzi nel dropdown
   load_mezzi();
 
@@ -678,6 +678,15 @@ function form_spostamenti (){
     $("#aggiungi-spostamento").hide();
     $("#spostamenti-caller")[0].reset();
     $("select[name=motivo]").val(0).change();
+  });
+
+  $("#spostamenti-avanti").click(function() {
+    //Salvo i dati nell'array temporameo e 
+    user_new_data.spostamenti = array_spostamenti;
+    //Aggiungo all'array dei dati utente la location appena creta
+    user_data.push(user_new_data);
+    //Salvo i dati utente
+    save_user_data(user_data);
   });
 }
 
@@ -724,6 +733,14 @@ function add_spostamento(spostamento) {
   });
 }
 
+function laod_spostamenti_data(){
+  if (!$.isEmptyObject(user_new_data.spostamenti)) {
+    array_spostamenti = user_new_data.spostamenti;
+    $.each(user_new_data.spostamenti, function(i, el) {
+      add_spostamento(el);
+    });
+  }; 
+}
 
 function load_mezzi() {
   //Carico tutti i mezzi inseriti dall'utente nel dropdown menu

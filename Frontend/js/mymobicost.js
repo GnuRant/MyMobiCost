@@ -1,6 +1,6 @@
 "use strict";
 
-var user_data;
+var user_data = [];
 var user_new_data = {};
 var edit_mode = false;
 
