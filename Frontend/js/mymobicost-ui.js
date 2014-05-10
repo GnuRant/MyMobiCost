@@ -646,6 +646,10 @@ function form_spostamenti (){
   //Carico i mezzi nel dropdown
   load_mezzi();
 
+  $("#bottone-aggiungi-auto").click(function() {
+    $("#aggiungi-spostamento").show();
+  });
+
   //Collego il bottone per aggiungere uno spostamento
   $("#salva-spostamento").click(function() {
     var data = {};
@@ -656,6 +660,9 @@ function form_spostamenti (){
     data.id_spostamento = generete_id();
     //Carico i dati nel dom
     add_spostamento(data);
+    //Chiudo il form e lo resetto per il prossimo inserimento
+    $("#aggiungi-spostamento").hide();
+    $("#spostamenti-caller")[0].reset();
   });
 }
 
