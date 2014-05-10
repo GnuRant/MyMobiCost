@@ -683,6 +683,10 @@ function form_spostamenti (){
   $("#spostamenti-avanti").click(function() {
     //Salvo i dati nell'array temporameo e 
     user_new_data.spostamenti = array_spostamenti;
+    //Invio la richiesta al server per elaborare i dati
+    get_results_from_user_data(user_new_data, function (data) {
+      console.log(data);
+    });
     //Aggiungo all'array dei dati utente la location appena creta
     user_data.push(user_new_data);
     //Salvo i dati utente
@@ -762,4 +766,9 @@ function load_form_spostamenti_data(spostamento) {
   //Mostro il form caricato
   $("#aggiungi-spostamento").show();
 }
+
+//===============================================================
+//=========================== BOX ===============================
+//===============================================================
+
 

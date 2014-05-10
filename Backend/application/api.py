@@ -176,24 +176,21 @@ def auto_costi(categoria, alimentazione):
 	return jsonify(costi=get_auto_costi(g.db, categoria, alimentazione))
 
 @app.route("/calcolocosti", methods=["POST"])
-@cross_origin(headers=['Content-Type'])	#abilito il passaggio di json
+@cross_origin(headers=['Content-Type']) # Send Access-Control-Allow-Headers
 def calcolo_costi():
-	#Passaggio oggetto data
-	#request_json = json.loads(request.data)
-	#data = request_json["data"]
-	#Passaggio diretto dell'oggetto
-	data = json.loads(request.data)
+	data = request.json
 	return_data = {}
 	#calcolo e aggiungo i dati al json di ritorno
 	return_data["costo_residenza"] = calcolo_abitazione_costi(data)
 	#aggiungo il costo legato all'auto
-	return_data["costo_auto"] = calcolo_spostamenti_auto_costi(data)
+	#return_data["costo_auto"] = calcolo_spostamenti_auto_costi(data)
 	#aggiungo i costi fissi auto
-	return_data["costi_fissi_suto"] = calcolo_costi_acessori_costo(data)
+	#return_data["costi_fissi_suto"] = calcolo_costi_acessori_costo(data)
 	#aggiungo i costi legati al trasporto pubblico
-	return_data["costo_trasporto_pubblico"] = calcolo_spostamento_mezzi_costi(data)	
+	#return_data["costo_trasporto_pubblico"] = calcolo_spostamento_mezzi_costi(data)	
 	#aggiungo il tempo legato a tutti gli spostamenti
-	return_data["tempo_speso"] = calcolo_tempo_spostamenti(data)
-
+	#return_data["tempo_speso"] = calcolo_tempo_spostamenti(data)
 	data["risultati"] = return_data
-	return jsonify(data=data)
+	
+	return jsonify(data=return_data)
+
