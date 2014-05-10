@@ -658,7 +658,18 @@ function form_spostamenti (){
     });
     //Aggiungo un id univoco per identificare un abbonamenti
     data.id_spostamento = generete_id();
-    console.log(data);
+    //Constrollo se sono in edit mode
+    if (edit_mode) {
+      //Elimino l'elemento dal DOM
+      $("#"+old_spostamento_id).remove();
+      //Aggiunta in edit, elimino l'elemento vecchio dall'array
+      $.each(array_spostamenti, function(i, el) {
+        if (el.id_spostamento == old_spostamento_id){
+          array_spostamenti.splice(array_spostamenti.indexOf(el), 1);
+        }
+      });
+      edit_mode = false;
+    }
     //Aggiungo lo spostamento all'array
     array_spostamenti.push(data);
     //Carico i dati nel dom
@@ -699,12 +710,12 @@ function add_spostamento(spostamento) {
 
   $(".fui-new").click(function(event) {
     var button = $(this);
-    var id_container = button.parents('.tabella-mezzo:first').attr('id');
+    var id_container = button.parents('.tabella-attivita:first').attr('id');
     //Cerco nell'array i dati da caricare poi inflatto il form
     $.each(array_spostamenti, function(i, el) {
-       if (el.id_abbonamento == id_container){
+       if (el.id_spostamento == id_container){
           //salvo il vecchio id che poi andrò ad eliminare
-          old_spostamento_id = el.id_abbonamento;
+          old_spostamento_id = el.id_spostamento;
           load_form_spostamenti_data(array_spostamenti[array_spostamenti.indexOf(el)]);
        }
     });
@@ -724,12 +735,14 @@ function load_mezzi() {
   });
 }
 
-function load_form_spostamenti_data(spostamenti) {
+function load_form_spostamenti_data(spostamento) {
   $("select[name=motivo]").val(spostamento.motivo).change();
   $("input[name=descrizione]").val(spostamento.descrizione);
   $("input[name=percorrenze]").val(spostamento.percorrenze);
   $("input[name=tempo]").val(spostamento.tempo);
   $("input[name=distanza]").val(spostamento.distanza);
   $("select[name=id_auto]").val(spostamento.id_auto).change();
+  //Mostro il form caricato
+  $("#aggiungi-spostamento").show();
 }
 
