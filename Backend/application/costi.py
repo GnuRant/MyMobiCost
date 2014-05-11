@@ -70,7 +70,7 @@ def calcolo_tempo_spostamenti(data):
 	#di solo andata lo mpltiplico per 2
 	for spostamento in spostamenti:
 		#calcolo in minuti
-		tempo += NUMERO_SETTIMANE*(2*float(spostamento["tempo"])*float(spostamento["percorrenze"]))
+		tempo += (2*float(spostamento["tempo"])*float(spostamento["percorrenze"]))
 	#converto nel formato hh:mm
 	return str(datetime.timedelta(minutes=tempo))
 	
