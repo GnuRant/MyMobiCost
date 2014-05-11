@@ -1,31 +1,26 @@
     <div id="spostamenti-form" class="form">
         <h1>Spostamenti</h1>
         <div class="form-campi">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" id="spostamenti-caller">
               
                 <div class="form-group">
-                    <div id="attivita-container">
-                        <div id="1" class="tabella-attivita">
-                            <h3 class="nome-attivita">Ufficio</h3>
-                            <p>Lavoro, 3 volte a settimana</p>
-                            <div class="modifica-attivita">
-                                <span class="fui-new"></span>
-                                <span class="fui-cross"></span>
-                            </div>                       
-                        </div>
+                    <div id="spostamenti-container">
                     </div>
                 </div>
 
 
                 <h2 id="titolo-spostamento">Spostamento <div id="bottone-aggiungi-auto" class="tagsinput-add"></div></h2>
-                <p>Inserisci i dati su base settimanale.</p>
                 <div id="aggiungi-spostamento">    
+                    <p>Inserisci i dati su base settimanale.</p>
                     <div class="form-group">
                         <label for="Comune" class="col-sm-6 control-label">Categoria</label>
                         <div class="col-sm-6">
-                            <select>
-                              <option value="0">Lavoro</option>
-                              <option value="1">Sport</option>
+                            <select name="motivo">
+                              <option value="0" disabled selected="">Seleziona un'opzione</option>
+                              <option >Lavoro</option>
+                              <option >Sport</option>
+                              <option >Tempo Libero</option>
+                              <option >Spese</option>
                             </select>
                         </div>
                     </div>
@@ -35,7 +30,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <div class="input">
-                                    <input type="text" placeholder="Rappresentanza" class="flat form-control" />
+                                    <input type="text" placeholder="Rappresentanza" class="flat form-control" name="descrizione" />
                                 </div>
                             </div>
                         </div>
@@ -46,7 +41,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input type="text" class="form-control flat" placeholder="0" />
+                                    <input type="text" class="form-control flat" placeholder="0" name="percorrenze" />
                                     <span class="input-group-addon">volte</span>
                                 </div>
                             </div>
@@ -58,7 +53,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input type="text" class="form-control flat" placeholder="0" />
+                                    <input type="text" class="form-control flat" placeholder="0" name="tempo" />
                                     <span class="input-group-addon">min</span>
                                 </div>
                             </div>
@@ -70,7 +65,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input type="text" class="form-control flat" placeholder="0" />
+                                    <input type="text" class="form-control flat" placeholder="0" name="distanza" />
                                     <span class="input-group-addon">km</span>
                                 </div>
                             </div>
@@ -80,20 +75,19 @@
                     <div class="form-group">
                         <label for="Comune" class="col-sm-6 control-label">Mezzo</label>
                         <div class="col-sm-6">
-                            <select>
-                              <option value="0">Auto</option>
-                              <option value="1">Treno</option>
+                            <select name="id_auto">
+                                <option value="0" disabled selected="">Seleziona un'opzione</option>
                             </select>
                         </div>
                     </div>
     
                     <p class="text-center conferma-trasporti">
-                        <button class="btn btn-danger btn-wide">
+                        <div id="cancel-spostamento" class="btn btn-danger btn-wide">
                             Annulla
-                        </button>
-                        <button class="btn btn-primary btn-wide">
+                        </div>
+                        <div id="salva-spostamento"class="btn btn-primary btn-wide">
                             Salva
-                        </button>
+                        </div>
                     </p>
                 </div>
             </form>

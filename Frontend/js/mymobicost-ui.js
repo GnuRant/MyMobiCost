@@ -6,10 +6,11 @@
 //===============================================================
 //========================= UTILITY =============================
 //===============================================================
+"use strict";
 
 function toggle_active_menu(element){
-  $(".active").toggleClass('active');
-  $(element).toggleClass('active');
+  $(".active").toggleClass("active");
+  $(element).toggleClass("active");
 }
 
 function load_partial(page, container_id, on_complete) {
@@ -21,12 +22,12 @@ function load_partial(page, container_id, on_complete) {
 function increment_inpunt_value (){
   $(".tagsinput-add").on("click", function(event) {
     var button = $(this);
-    var input = button.parent().find('input');
+    var input = button.parent().find("input");
     var old_value = input.val();
 
     if (old_value === "") {
       old_value = 0;
-    };
+    }
     //Incremento il valore e salvo
     input.val(++old_value);
   });
@@ -35,16 +36,16 @@ function increment_inpunt_value (){
 function decrement_input_value (){
   $(".tagsinput-remove").on("click", function(event) {
     var button = $(this);
-    var input = button.parent().find('input');
+    var input = button.parent().find("input");
     var old_value = input.val();
 
-    if (old_value == "") {
+    if (old_value === "") {
       old_value = 0;
-    };
+    }
     if (--old_value >= 0) {
       //Incremento il valore e salvo
       input.val(old_value);
-    };
+    }
   });
 }
 
@@ -54,11 +55,11 @@ function generete_id() {
 
 function reset_drop_down (id_element){
   $(id_element)
-    .find('option')
+    .find("option")
     .remove()
     .end()
-    .append('<option value="" disabled selected>seleziona un\'opzione</option>')
-    .val('whatever');
+    .append("<option value=\"\" disabled selected>seleziona un\'opzione</option>")
+    .val("whatever");
 }
 
 //===============================================================
@@ -102,14 +103,14 @@ function form_famiglia(){
   decrement_input_value();
 
   //attivo i tooltip
-  $('label').tooltip();
+  $("label").tooltip();
 
   //Carico i dati dell'utente se sono in edit mode
   load_famiglia_data();
 
   $("#famiglia-avanti").click(function() {
     var data = {};
-    $.each($('#famiglia-caller').serializeArray(), function (i, el){ 
+    $.each($("#famiglia-caller").serializeArray(), function (i, el){ 
       data[el.name] = el.value;
     });
     user_new_data.famiglia = data;
@@ -125,7 +126,7 @@ function load_famiglia_data() {
     //Se non ho dati vuol dire che sono in fase di aggiunta
     $("input[name=adulti]").val(famiglia.adulti);
     $("input[name=bambini]").val(famiglia.bambini);
-  };
+  }
 }
 
 //===============================================================
@@ -152,17 +153,17 @@ function load_form_abitazione (){
 function form_abitazione (){
 
   //attivo i tooltip
-  $('label').tooltip();
+  $("label").tooltip();
 
   // selettori belli bellissimi
-  $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
-  $('.switch')['bootstrapSwitch']();
+  $("select").selectpicker({style: "btn-hg btn-primary", menuStyle: "dropdown-inverse"});
+  $(".switch")["bootstrapSwitch"]();
 
   // toggle visibility of "costo mensile"
   $(function () {
-    $('#checkbox-abitazione').change(function () {
-       $('#costo-sconosciuto').toggle(!this.checked);
-       $('#costo-conosciuto').toggle(this.checked);
+    $("#checkbox-abitazione").change(function () {
+       $("#costo-sconosciuto").toggle(!this.checked);
+       $("#costo-conosciuto").toggle(this.checked);
     }).change(); //ensure visible state matches initially
   });
 
@@ -173,7 +174,7 @@ function form_abitazione (){
     //Controllo che il valore passato sia un numero
     if (!isNaN($("input[name=grandezza]").val())) {
       set_input_costi();
-    };
+    }
   });
 
   //Carico i dati del dropdown dei comuni
@@ -228,10 +229,10 @@ function form_abitazione (){
   //Bottone avanti, salvo i dati inseriti dall'utente
   $("#abitazione-avanti").click(function() {
     var data = {};
-    $.each($('#abitazione-caller').serializeArray(), function (i, el){ 
+    $.each($("#abitazione-caller").serializeArray(), function (i, el){ 
       data[el.name] = el.value;
     });
-    data.state = $("#checkbox-abitazione").is(':checked');
+    data.state = $("#checkbox-abitazione").is(":checked");
     //Elimino i dati vecchi
     user_new_data.abitazione = data;
     //Carica il prossimo form
@@ -261,7 +262,7 @@ function load_abitazione_data(){
     abitazione = user_new_data.abitazione;
     //Carico i dati utente, se vi è contenuta l'indicazione del comune
     //Carico il form completo altrimenti carico quello parziale
-    if (abitazione.state == false) {
+    if (abitazione.state === false) {
       //Carico tutti i dati e genero il form completo
       comune = abitazione.comune;
       zona = abitazione.zona_abitativa;
@@ -310,7 +311,6 @@ var array_auto = [];
 var array_abbonamenti = [];
 //Variabile che tiene conto se sto aggiungendo 
 //Un mezzo da zero o lo sto editando
-var edit_mode = false;
 var old_auto_id = "";
 var old_abbonamento_id = "";
 
@@ -321,6 +321,7 @@ $("#menu-trasporti-button").click(function() {
 function load_form_trasporti(){
   toggle_active_menu("#menu-trasporti-button");
   load_partial("partials/trasporti.html", "#form-container", function(){
+    //Reset Array 
     form_trasporti();
   });
 }
@@ -603,12 +604,12 @@ function load_abbonamenti_data(){
 
 function load_form_abbonamento_data(abbonamento){
   //Carico i dati nel drop_down
-  $("select[name=abbonamento_nome]").val(abbonamento.abbonamento_nome);
-  $("select[name=tipo]").val(abbonamento.tipo);
-  //Carico gli input
-  $("input[name=costo]").val(abbonamento.costo);
-
   $("#aggiungi-abbonamento").show();
+
+  $("select[name=abbonamento_nome]").val(abbonamento.abbonamento_nome).change();
+  $("select[name=tipo]").val(abbonamento.tipo).change();
+  //Carico gli input
+  $("input[name=costo]").val(abbonamento.costo)
 }
 
 //Funzione per resettare il form auto
@@ -621,6 +622,9 @@ function reset_form(id_element){
 //===============================================================
 //===================== form SPOSTAMENTI ========================
 //===============================================================
+var array_spostamenti = [];
+var old_spostamento_id  = "";
+
 $("#menu-spostamenti-button").click(function (){
   load_form_spostamenti();
 });
@@ -633,13 +637,142 @@ function load_form_spostamenti (){
 }
 
 function form_spostamenti (){
-
   //attivo i tooltip
   $('label').tooltip();
 
   // selettori belli bellissimi
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
+  laod_spostamenti_data();
+  //Carico i mezzi nel dropdown
+  load_mezzi();
 
+  $("#bottone-aggiungi-auto").click(function() {
+    $("#aggiungi-spostamento").show();
+  });
+
+  //Collego il bottone per aggiungere uno spostamento
+  $("#salva-spostamento").click(function() {
+    var data = {};
+    $.each($("#spostamenti-caller").serializeArray(), function (i, el){ 
+      data[el.name] = el.value;
+    });
+    //Aggiungo un id univoco per identificare un abbonamenti
+    data.id_spostamento = generete_id();
+    //Constrollo se sono in edit mode
+    if (edit_mode) {
+      //Elimino l'elemento dal DOM
+      $("#"+old_spostamento_id).remove();
+      //Aggiunta in edit, elimino l'elemento vecchio dall'array
+      $.each(array_spostamenti, function(i, el) {
+        if (el.id_spostamento == old_spostamento_id){
+          array_spostamenti.splice(array_spostamenti.indexOf(el), 1);
+        }
+      });
+      edit_mode = false;
+    }
+    //Aggiungo lo spostamento all'array
+    array_spostamenti.push(data);
+    //Carico i dati nel dom
+    add_spostamento(data);
+    //Chiudo il form e lo resetto per il prossimo inserimento
+    $("#aggiungi-spostamento").hide();
+    $("#spostamenti-caller")[0].reset();
+    $("select[name=motivo]").val(0).change();
+  });
+
+  $("#spostamenti-avanti").click(function() {
+    //Salvo i dati nell'array temporameo e 
+    user_new_data.spostamenti = array_spostamenti;
+    //Invio la richiesta al server per elaborare i dati
+    get_results_from_user_data(user_new_data, function (data) {
+      //Valvo i nuovi dati con i risultati in local storage
+      user_new_data.risultati = data;
+      //Aggiungo all'array dei dati utente la location appena creta
+      user_data.push(user_new_data);
+      //Salvo i dati utente
+      save_user_data(user_data);
+    });
+    //Chiudo il form di immissione
+    $("#form-container").hide();
+  });
 }
+
+function add_spostamento(spostamento) {
+  var spostamento_tempalte = "<div id='"+spostamento.id_spostamento+"' class='tabella-attivita'> \
+                                <h3 class='nome-attivita'>"+spostamento.descrizione+"</h3> \
+                                <p>"+spostamento.motivo+", "+spostamento.percorrenze+" volte a settimana</p> \
+                                <div class='modifica-attivita'> \
+                                    <span class='fui-new'></span> \
+                                    <span class='fui-cross'></span> \
+                                </div> \
+                              </div>"
+
+  $("#spostamenti-container").append(spostamento_tempalte);
+
+  //Gestisco i bottoni per eliminare ed edittare 
+  $(".fui-cross").click(function(event) {
+    var button = $(this);
+    var id_container = button.parents('.tabella-attivita:first').attr('id');
+    console.log(id_container);
+    //Elimino l'elemento
+    $("#"+id_container).remove();
+    //Elimino l'lemento dall'array
+    $.each(array_spostamenti, function(i, el) {
+       if (el.id_spostamento == id_container){
+        array_spostamenti.splice(array_spostamenti.indexOf(el), 1);
+       }
+    });
+  });
+
+  $(".fui-new").click(function(event) {
+    var button = $(this);
+    var id_container = button.parents('.tabella-attivita:first').attr('id');
+    //Cerco nell'array i dati da caricare poi inflatto il form
+    $.each(array_spostamenti, function(i, el) {
+       if (el.id_spostamento == id_container){
+          //salvo il vecchio id che poi andrò ad eliminare
+          old_spostamento_id = el.id_spostamento;
+          load_form_spostamenti_data(array_spostamenti[array_spostamenti.indexOf(el)]);
+       }
+    });
+    //Imposto l'id per la fase di edit
+    edit_mode = true;
+  });
+}
+
+function laod_spostamenti_data(){
+  if (!$.isEmptyObject(user_new_data.spostamenti)) {
+    array_spostamenti = user_new_data.spostamenti;
+    $.each(user_new_data.spostamenti, function(i, el) {
+      add_spostamento(el);
+    });
+  }; 
+}
+
+function load_mezzi() {
+  //Carico tutti i mezzi inseriti dall'utente nel dropdown menu
+  $.each(user_new_data.automobili, function(i, el) {
+    $("select[name=id_auto]").append("<option value='"+el.id_auto+"'>"+el.auto_nome+"</option>");
+  });
+  $.each(user_new_data.abbonamenti, function(i, el) {
+    $("select[name=id_auto]").append("<option value='"+el.id_abbonamento+"'>"+el.abbonamento_nome+"</option>");
+  });
+}
+
+function load_form_spostamenti_data(spostamento) {
+  $("select[name=motivo]").val(spostamento.motivo).change();
+  $("input[name=descrizione]").val(spostamento.descrizione);
+  $("input[name=percorrenze]").val(spostamento.percorrenze);
+  $("input[name=tempo]").val(spostamento.tempo);
+  $("input[name=distanza]").val(spostamento.distanza);
+  $("select[name=id_auto]").val(spostamento.id_auto).change();
+  //Mostro il form caricato
+  $("#aggiungi-spostamento").show();
+}
+
+//===============================================================
+//=========================== BOX ===============================
+//===============================================================
+
 

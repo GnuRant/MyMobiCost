@@ -1,6 +1,14 @@
 "use strict";
 var API_SERVER_URL = "http://127.0.0.1:5000";
 
+//===============================================================
+//========================= AJAX ================================
+//===============================================================
+
+$.ajaxSetup({
+	cache: false
+});
+
 function get_comuni (on_complete) {
 	var data_array = [];
 	$.ajax({
@@ -111,3 +119,26 @@ function get_auto_costi(categoria, alimentazione, on_complete){
 		}
 	});
 }
+
+function get_results_from_user_data(user_data, on_complete){
+	var data_object = {};
+	$.ajax({
+		url: API_SERVER_URL+"/calcolocosti",
+		type: "POST",
+		contentType: 'application/json',
+      	data: JSON.stringify(user_new_data),
+      	dataType: "json",
+      	async: true,
+      	success: function (data) {
+      		on_complete(data);
+      	}
+	});
+}
+
+
+
+
+
+
+
+

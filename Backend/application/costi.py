@@ -17,9 +17,9 @@ def calcolo_spostamenti_auto_costi(data):
 		id_auto = spostamento["id_auto"]
 		if id_auto != 0:
 			auto = trova_auto_id(automobili, id_auto)
-			costo_km = auto["costo_km"]
+			costo_km = float(auto["costo_km"])
 			#calcolo su base annua
-			costo += NUMERO_SETTIMANE*(2*(spostamento["distanza"]*spostamento["percorrenze"])*costo_km)
+			costo += NUMERO_SETTIMANE*(2*(float(spostamento["distanza"])*float(spostamento["percorrenze"])*costo_km))
 
 	return costo
 
@@ -28,10 +28,10 @@ def calcolo_costi_acessori_costo(data):
 	costo = 0
 	automobili = data["automobili"]
 	for auto in automobili:
-		costo += auto["abbonamento_parcheggio"]
-		costo += auto["pedaggio_autostradale"]
-		costo += auto["assicurazione"]
-		costo += auto["costo_fisso"]
+		costo += float(auto["abbonamento_parcheggio"])
+		costo += float(auto["pedaggio_autostradale"])
+		costo += float(auto["assicurazione"])
+		costo += float(auto["costo_fisso"])
 
 	return costo
 
@@ -53,13 +53,13 @@ def calcolo_spostamento_mezzi_costi(data):
 	#prendo tutti gli abbomanti e calcolo in costo portando il dato in forma mensile
 	for abbonamento in abbonamenti:
 		if abbonamento["tipo"] == "mensile":
-			costo += abbonamento["costo"]*12
+			costo += float(abbonamento["costo"])*12
 		elif abbonamento["tipo"] == "settimanale":
-			costo += abbonamento["costo"]*NUMERO_SETTIMANE
+			costo += float(abbonamento["costo"])*NUMERO_SETTIMANE
 		elif abbonamento["tipo"] == "semestrale":
-			costo += abbonamento["costo"]*2
+			costo += float(abbonamento["costo"])*2
 		elif abbonamento["tipo"] == "annuale":
-			costo += abbonamento["costo"]
+			costo += float(abbonamento["costo"])
 
 	return costo
 
@@ -70,6 +70,7 @@ def calcolo_tempo_spostamenti(data):
 	#di solo andata lo mpltiplico per 2
 	for spostamento in spostamenti:
 		#calcolo in minuti
-		tempo += NUMERO_SETTIMANE*(2*spostamento["tempo"]*spostamento["percorrenze"])
+		tempo += (2*float(spostamento["tempo"])*float(spostamento["percorrenze"]))
 	#converto nel formato hh:mm
 	return str(datetime.timedelta(minutes=tempo))
+	
