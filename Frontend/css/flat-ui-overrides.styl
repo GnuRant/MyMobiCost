@@ -77,5 +77,34 @@ hr
 .dropdown-menu li a span, .select button span
   text-transform capitalize
 
+.form-horizontal
+ .has-feedback .input-group .form-control-feedback
+      right 50px
+
+.glyphicon-ok::before
+  display none
+
+.has-error .input-group-addon
+  color: white;
+  border-color: red;
+  background-color: red;
+
+.has-success .input-group-addon {
+  color: white;
+  border-color: green;
+  background-color: green;
+}
+
+.has-error .form-control
+  color: red
+  border-color: red
+
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline
+  color inherit
+
+.has-success .help-block, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline {
+color: inherit;
+}
+
 .form-horizontal .has-feedback .form-control-feedback
-  right 45px
+  right 0

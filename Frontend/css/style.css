@@ -216,8 +216,44 @@ input {
 .select button span {
   text-transform: capitalize;
 }
+.form-horizontal .has-feedback .input-group .form-control-feedback {
+  right: 50px;
+}
+.glyphicon-ok::before {
+  display: none;
+}
+.has-error .input-group-addon {
+  color: #fff;
+  border-color: #c0392b;
+  background-color: #c0392b;
+}
+.has-success .input-group-addon {
+  color: #fff;
+  border-color: #79b31f;
+  background-color: #79b31f;
+}
+.has-error .form-control {
+  color: #c0392b;
+  border-color: #c0392b;
+}
+.has-error .help-block,
+.has-error .control-label,
+.has-error .radio,
+.has-error .checkbox,
+.has-error .radio-inline,
+.has-error .checkbox-inline {
+  color: inherit;
+}
+.has-success .help-block,
+.has-success .control-label,
+.has-success .radio,
+.has-success .checkbox,
+.has-success .radio-inline,
+.has-success .checkbox-inline {
+  color: inherit;
+}
 .form-horizontal .has-feedback .form-control-feedback {
-  right: 45px;
+  right: 0;
 }
 #left-sidebar {
   position: absolute;
