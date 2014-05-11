@@ -457,10 +457,13 @@ function form_trasporti(){
   //Collego il bottone per salvare tutti i dati inseriti dall
   //utente
   $("#trasporti-avanti").click(function() {
-    user_new_data.automobili = array_auto;
-    user_new_data.abbonamenti = array_abbonamenti;
-    //Carico il prossimo form
-    load_form_spostamenti();
+    if (array_auto.length > 0 || array_abbonamenti.length) {
+      //Obligo di iserire alemno un auto o un abboanmento
+      user_new_data.automobili = array_auto;
+      user_new_data.abbonamenti = array_abbonamenti;
+      //Carico il prossimo form
+      load_form_spostamenti();
+    };
   });
 }
 
@@ -694,6 +697,7 @@ function form_spostamenti (){
       save_user_data(user_data);
     });
     //Chiudo il form di immissione
+    //TODO: creare funzione per chiudere correttamente il i form
     $("#form-container").hide();
     $(".categoria").hide();
   });
@@ -781,4 +785,9 @@ function load_form_spostamenti_data(spostamento) {
 //=========================== BOX ===============================
 //===============================================================
 
+function add_box_riultati(risultati){
+  //Carico il box
+  load_partial("partials/risultato.html", "#risultato-container", function () {
 
+  });
+}
