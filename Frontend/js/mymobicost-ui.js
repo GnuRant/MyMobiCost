@@ -925,6 +925,8 @@ function form_spostamenti (){
   $("#spostamenti-avanti").click(function() {
     //Salvo i dati nell'array temporameo e 
     user_new_data.spostamenti = array_spostamenti;
+    //Aggiungo un id per identificare una location
+    user_new_data.id_location = generete_id();
     //Invio la richiesta al server per elaborare i dati
     get_results_from_user_data(user_new_data, function (data) {
       //Valvo i nuovi dati con i risultati in local storage
@@ -933,6 +935,8 @@ function form_spostamenti (){
       user_data.push(user_new_data);
       //Salvo i dati utente
       save_user_data(user_data);
+      //Resetto user_new_data in modo che possa accogliere una nuova location
+      user_new_data = {};
     });
     //Chiudo il form di immissione
     $("#form-container").hide();

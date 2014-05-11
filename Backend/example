@@ -37,7 +37,7 @@
         "adulti": 2,
         "bambini": 2
       },
-      "id": 12345,
+      "id_location": 12345,
       "risultati": {
         "costi_fissi_suto": 969.12,
         "costo_auto": 1248.0,
