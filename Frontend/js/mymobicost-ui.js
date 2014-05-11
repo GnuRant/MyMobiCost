@@ -788,6 +788,33 @@ function load_form_spostamenti_data(spostamento) {
 function add_box_riultati(risultati){
   //Carico il box
   load_partial("partials/risultato.html", "#container-risultato", function () {
-    //Genero il grafico
+    create_chart();
   });
+}
+
+function create_chart(chart_data) {
+  var ctx = $("#myChart")[0].getContext('2d');
+
+  var data = [
+        {
+          value: 10,
+          color: "#2C3E4E"
+        },
+        {
+          value : 20,
+          color : "#9B59B6"
+        },
+        {
+          value : 30,
+          color : "#36CC71"
+        }
+      ];
+
+  var options = {
+    animationSteps : 70,
+    animationEasing : "easeOutQuart",
+    animateScale : false,
+  }
+
+  new Chart(ctx).Doughnut(data,options);
 }
