@@ -1030,7 +1030,6 @@ function add_box_risultati(risultati){
   $.get("/partials/risultato.html", function (template){
     var rendered = Mustache.render(template, {id_location: "123"});
     $("#container-risultato").append(rendered);
-    create_chart();
   })
 }
 
