@@ -9,17 +9,20 @@ def calcolo_abitazione_costi(data):
 
 def calcolo_spostamenti_auto_costi(data):
 	costo = 0
-	automobili = data["automobili"]
-	#itero tu tutte su tutti gli spostamenti, se e' uno spostamento effettuato
-	#con l'auto allora calcolo il suo costo, altrimenti non lo considero
-	spostamenti = data["spostamenti"]
-	for spostamento in spostamenti:
-		id_auto = spostamento["id_auto"]
-		if id_auto != 0:
-			auto = trova_auto_id(automobili, id_auto)
-			costo_km = float(auto["costo_km"])
-			#calcolo su base annua
-			costo += NUMERO_SETTIMANE*(2*(float(spostamento["distanza"])*float(spostamento["percorrenze"])*costo_km))
+	try:
+		automobili = data["automobili"]
+		#itero tu tutte su tutti gli spostamenti, se e' uno spostamento effettuato
+		#con l'auto allora calcolo il suo costo, altrimenti non lo considero
+		spostamenti = data["spostamenti"]
+		for spostamento in spostamenti:
+			id_auto = spostamento["id_auto"]
+			if id_auto != 0:
+				auto = trova_auto_id(automobili, id_auto)
+				costo_km = float(auto["costo_km"])
+				#calcolo su base annua
+				costo += NUMERO_SETTIMANE*(2*(float(spostamento["distanza"])*float(spostamento["percorrenze"])*costo_km))
+	except Exception, e:
+		costo = 0
 
 	return costo
 
