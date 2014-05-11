@@ -933,6 +933,8 @@ function form_spostamenti (){
       //Aggiungo all'array dei dati utente la location appena creta
       user_current_data.risultati = data;
       user_data.push(user_current_data);
+      //Aggiunto il box con i risultati
+      add_box_risultati(user_current_data)
       //Salvo i dati utente
       //Resetto user_current_data in modo che possa accogliere una nuova location
       save_user_data(user_data);

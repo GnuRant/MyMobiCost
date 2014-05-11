@@ -19,6 +19,10 @@ $( document ).ready(function (){
         //$("#welcome").hide();
 		user_data = load_user_data();
         $("#welcome").hide();
+        //Carico i box già generati
+        $.each(user_data, function(i, el) {
+        	add_box_risultati(el);
+        });
 	}
 });
 
