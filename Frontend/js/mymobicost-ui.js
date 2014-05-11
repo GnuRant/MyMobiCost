@@ -897,6 +897,8 @@ function create_chart(chart_data) {
     animationSteps : 70,
     animationEasing : "easeOutQuart",
     animateScale : false,
+    segmentShowStroke: true,
+    segmentStrokeColor: "#ECF0F1"
   }
 
   new Chart(ctx).Doughnut(data,options);
