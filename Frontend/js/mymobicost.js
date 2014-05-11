@@ -1,7 +1,7 @@
 "use strict";
 
 var user_data = [];
-var user_new_data = {};
+var user_current_data = {};
 var edit_mode = false;
 
 $( document ).ready(function (){

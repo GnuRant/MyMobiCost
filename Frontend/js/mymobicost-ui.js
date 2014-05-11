@@ -154,7 +154,7 @@ function form_famiglia(){
       $.each($("#famiglia-caller").serializeArray(), function (i, el){ 
         data[el.name] = el.value;
       });
-      user_new_data.famiglia = data;
+      user_current_data.famiglia = data;
       //Carica il prossimo form
       load_form_abitazione();
     }else{
@@ -164,7 +164,7 @@ function form_famiglia(){
 }
 
 function load_famiglia_data() {
-  var famiglia = user_new_data.famiglia;
+  var famiglia = user_current_data.famiglia;
   //Controllo che i dati siano effettivamente presenti
   if (!$.isEmptyObject(famiglia)) {
     //Se non ho dati vuol dire che sono in fase di aggiunta
@@ -325,7 +325,7 @@ function form_abitazione (){
     });
     data.state = $("#checkbox-abitazione").is(":checked");
     //Elimino i dati vecchi
-    user_new_data.abitazione = data;
+    user_current_data.abitazione = data;
     //Carica il prossimo form
     load_form_trasporti();
   });
@@ -349,8 +349,8 @@ function set_input_costi (){
 
 function load_abitazione_data(){
   var abitazione;
-  if(!$.isEmptyObject(user_new_data.abitazione)){
-    abitazione = user_new_data.abitazione;
+  if(!$.isEmptyObject(user_current_data.abitazione)){
+    abitazione = user_current_data.abitazione;
     //Carico i dati utente, se vi è contenuta l'indicazione del comune
     //Carico il form completo altrimenti carico quello parziale
     if (abitazione.state === false) {
@@ -629,8 +629,8 @@ function form_trasporti(){
   //Collego il bottone per salvare tutti i dati inseriti dall
   //utente
   $("#trasporti-avanti").click(function() {
-    user_new_data.automobili = array_auto;
-    user_new_data.abbonamenti = array_abbonamenti;
+    user_current_data.automobili = array_auto;
+    user_current_data.abbonamenti = array_abbonamenti;
     //Carico il prossimo form
     load_form_spostamenti();
   });
@@ -681,8 +681,8 @@ function add_automobile(auto){
 }
 
 function load_automobili_data(){
-  if (!$.isEmptyObject(user_new_data.automobili)) {
-    array_auto = user_new_data.automobili;
+  if (!$.isEmptyObject(user_current_data.automobili)) {
+    array_auto = user_current_data.automobili;
     $.each(array_auto, function(i, el) {
       add_automobile(el);
    });
@@ -766,8 +766,8 @@ function add_abbonamento(abbonamento) {
 }
 
 function load_abbonamenti_data(){
-  if (!$.isEmptyObject(user_new_data.abbonamenti)) {
-    array_abbonamenti = user_new_data.abbonamenti;
+  if (!$.isEmptyObject(user_current_data.abbonamenti)) {
+    array_abbonamenti = user_current_data.abbonamenti;
     $.each(array_abbonamenti, function(i, el) {
       add_abbonamento(el);
    });
@@ -925,18 +925,18 @@ function form_spostamenti (){
   $("#spostamenti-avanti").click(function() {
     //Salvo i dati nell'array temporameo e 
     //Aggiungo un id per identificare una location
-    user_new_data.spostamenti = array_spostamenti;
-    user_new_data.id_location = generete_id();
+    user_current_data.spostamenti = array_spostamenti;
+    user_current_data.id_location = generete_id();
     
-    get_results_from_user_data(user_new_data, function (data) {
+    get_results_from_user_data(user_current_data, function (data) {
       //Valvo i nuovi dati con i risultati in local storage
       //Aggiungo all'array dei dati utente la location appena creta
-      user_new_data.risultati = data;
-      user_data.push(user_new_data);
+      user_current_data.risultati = data;
+      user_data.push(user_current_data);
       //Salvo i dati utente
-      //Resetto user_new_data in modo che possa accogliere una nuova location
+      //Resetto user_current_data in modo che possa accogliere una nuova location
       save_user_data(user_data);
-      user_new_data = {};
+      user_current_data = {};
     });
     //Chiudo il form di immissione
     $("#form-container").hide();
@@ -988,24 +988,24 @@ function add_spostamento(spostamento) {
 }
 
 function laod_spostamenti_data(){
-  if (!$.isEmptyObject(user_new_data.spostamenti)) {
-    array_spostamenti = user_new_data.spostamenti;
-    $.each(user_new_data.spostamenti, function(i, el) {
+  if (!$.isEmptyObject(user_current_data.spostamenti)) {
+    array_spostamenti = user_current_data.spostamenti;
+    $.each(user_current_data.spostamenti, function(i, el) {
       add_spostamento(el);
     });
   }; 
 }
 
 function load_mezzi() {
-  if (!$.isEmptyObject(user_new_data.automobili) ) {
+  if (!$.isEmptyObject(user_current_data.automobili) ) {
     //Carico tutti i mezzi inseriti dall'utente nel dropdown menu
-    $.each(user_new_data.automobili, function(i, el) {
+    $.each(user_current_data.automobili, function(i, el) {
       $("select[name=id_auto]").append("<option value='"+el.id_auto+"'>"+el.auto_nome+"</option>");
     });
   }
 
-  if (!$.isEmptyObject(user_new_data.abbonamenti)) {
-    $.each(user_new_data.abbonamenti, function(i, el) {
+  if (!$.isEmptyObject(user_current_data.abbonamenti)) {
+    $.each(user_current_data.abbonamenti, function(i, el) {
       $("select[name=id_auto]").append("<option value='"+el.id_abbonamento+"'>"+el.abbonamento_nome+"</option>");
     });
   }
