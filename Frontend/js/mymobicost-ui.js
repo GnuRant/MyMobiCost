@@ -787,7 +787,7 @@ function load_form_spostamenti_data(spostamento) {
 
 function add_box_riultati(risultati){
   //Carico il box
-  load_partial("partials/risultato.html", "#risultato-container", function () {
-
+  load_partial("partials/risultato.html", "#container-risultato", function () {
+    //Genero il grafico
   });
 }
