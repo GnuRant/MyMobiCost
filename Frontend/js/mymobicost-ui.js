@@ -6,10 +6,11 @@
 //===============================================================
 //========================= UTILITY =============================
 //===============================================================
-"use strict"
+"use strict";
+
 function toggle_active_menu(element){
-  $(".active").toggleClass('active');
-  $(element).toggleClass('active');
+  $(".active").toggleClass("active");
+  $(element).toggleClass("active");
 }
 
 function load_partial(page, container_id, on_complete) {
@@ -21,12 +22,12 @@ function load_partial(page, container_id, on_complete) {
 function increment_inpunt_value (){
   $(".tagsinput-add").on("click", function(event) {
     var button = $(this);
-    var input = button.parent().find('input');
+    var input = button.parent().find("input");
     var old_value = input.val();
 
     if (old_value === "") {
       old_value = 0;
-    };
+    }
     //Incremento il valore e salvo
     input.val(++old_value);
   });
@@ -35,16 +36,16 @@ function increment_inpunt_value (){
 function decrement_input_value (){
   $(".tagsinput-remove").on("click", function(event) {
     var button = $(this);
-    var input = button.parent().find('input');
+    var input = button.parent().find("input");
     var old_value = input.val();
 
-    if (old_value == "") {
+    if (old_value === "") {
       old_value = 0;
-    };
+    }
     if (--old_value >= 0) {
       //Incremento il valore e salvo
       input.val(old_value);
-    };
+    }
   });
 }
 
@@ -54,11 +55,11 @@ function generete_id() {
 
 function reset_drop_down (id_element){
   $(id_element)
-    .find('option')
+    .find("option")
     .remove()
     .end()
-    .append('<option value="" disabled selected>seleziona un\'opzione</option>')
-    .val('whatever');
+    .append("<option value=\"\" disabled selected>seleziona un\'opzione</option>")
+    .val("whatever");
 }
 
 //===============================================================
@@ -102,14 +103,14 @@ function form_famiglia(){
   decrement_input_value();
 
   //attivo i tooltip
-  $('label').tooltip();
+  $("label").tooltip();
 
   //Carico i dati dell'utente se sono in edit mode
   load_famiglia_data();
 
   $("#famiglia-avanti").click(function() {
     var data = {};
-    $.each($('#famiglia-caller').serializeArray(), function (i, el){ 
+    $.each($("#famiglia-caller").serializeArray(), function (i, el){ 
       data[el.name] = el.value;
     });
     user_new_data.famiglia = data;
@@ -125,7 +126,7 @@ function load_famiglia_data() {
     //Se non ho dati vuol dire che sono in fase di aggiunta
     $("input[name=adulti]").val(famiglia.adulti);
     $("input[name=bambini]").val(famiglia.bambini);
-  };
+  }
 }
 
 //===============================================================
@@ -152,17 +153,17 @@ function load_form_abitazione (){
 function form_abitazione (){
 
   //attivo i tooltip
-  $('label').tooltip();
+  $("label").tooltip();
 
   // selettori belli bellissimi
-  $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
-  $('.switch')['bootstrapSwitch']();
+  $("select").selectpicker({style: "btn-hg btn-primary", menuStyle: "dropdown-inverse"});
+  $(".switch")["bootstrapSwitch"]();
 
   // toggle visibility of "costo mensile"
   $(function () {
-    $('#checkbox-abitazione').change(function () {
-       $('#costo-sconosciuto').toggle(!this.checked);
-       $('#costo-conosciuto').toggle(this.checked);
+    $("#checkbox-abitazione").change(function () {
+       $("#costo-sconosciuto").toggle(!this.checked);
+       $("#costo-conosciuto").toggle(this.checked);
     }).change(); //ensure visible state matches initially
   });
 
@@ -173,7 +174,7 @@ function form_abitazione (){
     //Controllo che il valore passato sia un numero
     if (!isNaN($("input[name=grandezza]").val())) {
       set_input_costi();
-    };
+    }
   });
 
   //Carico i dati del dropdown dei comuni
@@ -228,10 +229,10 @@ function form_abitazione (){
   //Bottone avanti, salvo i dati inseriti dall'utente
   $("#abitazione-avanti").click(function() {
     var data = {};
-    $.each($('#abitazione-caller').serializeArray(), function (i, el){ 
+    $.each($("#abitazione-caller").serializeArray(), function (i, el){ 
       data[el.name] = el.value;
     });
-    data.state = $("#checkbox-abitazione").is(':checked');
+    data.state = $("#checkbox-abitazione").is(":checked");
     //Elimino i dati vecchi
     user_new_data.abitazione = data;
     //Carica il prossimo form
@@ -261,7 +262,7 @@ function load_abitazione_data(){
     abitazione = user_new_data.abitazione;
     //Carico i dati utente, se vi è contenuta l'indicazione del comune
     //Carico il form completo altrimenti carico quello parziale
-    if (abitazione.state == false) {
+    if (abitazione.state === false) {
       //Carico tutti i dati e genero il form completo
       comune = abitazione.comune;
       zona = abitazione.zona_abitativa;
