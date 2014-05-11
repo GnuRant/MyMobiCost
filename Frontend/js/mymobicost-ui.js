@@ -540,10 +540,13 @@ function form_trasporti(){
   //Collego il bottone per salvare tutti i dati inseriti dall
   //utente
   $("#trasporti-avanti").click(function() {
-    user_new_data.automobili = array_auto;
-    user_new_data.abbonamenti = array_abbonamenti;
-    //Carico il prossimo form
-    load_form_spostamenti();
+    if (array_auto.length > 0 || array_abbonamenti.length) {
+      //Obligo di iserire alemno un auto o un abboanmento
+      user_new_data.automobili = array_auto;
+      user_new_data.abbonamenti = array_abbonamenti;
+      //Carico il prossimo form
+      load_form_spostamenti();
+    };
   });
 }
 
@@ -777,6 +780,7 @@ function form_spostamenti (){
       save_user_data(user_data);
     });
     //Chiudo il form di immissione
+    //TODO: creare funzione per chiudere correttamente il i form
     $("#form-container").hide();
     $(".categoria").hide();
   });
@@ -864,4 +868,36 @@ function load_form_spostamenti_data(spostamento) {
 //=========================== BOX ===============================
 //===============================================================
 
+function add_box_riultati(risultati){
+  //Carico il box
+  load_partial("partials/risultato.html", "#container-risultato", function () {
+    create_chart();
+  });
+}
 
+function create_chart(chart_data) {
+  var ctx = $("#myChart")[0].getContext('2d');
+
+  var data = [
+        {
+          value: 10,
+          color: "#2C3E4E"
+        },
+        {
+          value : 20,
+          color : "#9B59B6"
+        },
+        {
+          value : 30,
+          color : "#36CC71"
+        }
+      ];
+
+  var options = {
+    animationSteps : 70,
+    animationEasing : "easeOutQuart",
+    animateScale : false,
+  }
+
+  new Chart(ctx).Doughnut(data,options);
+}
