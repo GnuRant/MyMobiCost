@@ -145,13 +145,21 @@ function form_famiglia(){
   load_famiglia_data();
 
   $("#famiglia-avanti").click(function() {
-    var data = {};
-    $.each($("#famiglia-caller").serializeArray(), function (i, el){ 
-      data[el.name] = el.value;
-    });
-    user_new_data.famiglia = data;
-    //Carica il prossimo form
-    load_form_abitazione();
+    //Lacio la validazione dei campi
+    $(".form-campi").data("bootstrapValidator").validate();
+    //Se la validazione è andata a buon fine abilito il passaggio al prossimo
+    //Form
+    if($(".form-campi").data("bootstrapValidator").isValid()){
+      var data = {};
+      $.each($("#famiglia-caller").serializeArray(), function (i, el){ 
+        data[el.name] = el.value;
+      });
+      user_new_data.famiglia = data;
+      //Carica il prossimo form
+      load_form_abitazione();
+    }else{
+      //Messaggio d'errore per l'utente
+    }
   });
 }
 
