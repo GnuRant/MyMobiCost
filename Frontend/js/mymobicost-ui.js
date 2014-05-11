@@ -1025,5 +1025,39 @@ function load_form_spostamenti_data(spostamento) {
 //===============================================================
 //=========================== BOX ===============================
 //===============================================================
+function add_box_risultati(risultati){
+  //Carico il box
+  load_partial("partials/risultato.html", "#container-risultato", function () {
+    create_chart();
+  });
+}
 
+function create_chart(chart_data) {
+  var ctx = $("#myChart")[0].getContext('2d');
+
+  var data = [
+        {
+          value: 10,
+          color: "#2C3E4E"
+        },
+        {
+          value : 20,
+          color : "#9B59B6"
+        },
+        {
+          value : 30,
+          color : "#36CC71"
+        }
+      ];
+
+  var options = {
+    animationSteps : 70,
+    animationEasing : "easeOutQuart",
+    animateScale : false,
+    segmentShowStroke: true,
+    segmentStrokeColor: "#ECF0F1"
+  }
+
+  new Chart(ctx).Doughnut(data,options);
+}
 
