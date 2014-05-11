@@ -695,6 +695,7 @@ function form_spostamenti (){
     });
     //Chiudo il form di immissione
     $("#form-container").hide();
+    $(".categoria").hide();
   });
 }
 
@@ -751,13 +752,18 @@ function laod_spostamenti_data(){
 }
 
 function load_mezzi() {
-  //Carico tutti i mezzi inseriti dall'utente nel dropdown menu
-  $.each(user_new_data.automobili, function(i, el) {
-    $("select[name=id_auto]").append("<option value='"+el.id_auto+"'>"+el.auto_nome+"</option>");
-  });
-  $.each(user_new_data.abbonamenti, function(i, el) {
-    $("select[name=id_auto]").append("<option value='"+el.id_abbonamento+"'>"+el.abbonamento_nome+"</option>");
-  });
+  if (!$.isEmptyObject(user_new_data.automobili) ) {
+    //Carico tutti i mezzi inseriti dall'utente nel dropdown menu
+    $.each(user_new_data.automobili, function(i, el) {
+      $("select[name=id_auto]").append("<option value='"+el.id_auto+"'>"+el.auto_nome+"</option>");
+    });
+  }
+
+  if (!$.isEmptyObject(user_new_data.abbonamenti)) {
+    $.each(user_new_data.abbonamenti, function(i, el) {
+      $("select[name=id_auto]").append("<option value='"+el.id_abbonamento+"'>"+el.abbonamento_nome+"</option>");
+    });
+  }
 }
 
 function load_form_spostamenti_data(spostamento) {
