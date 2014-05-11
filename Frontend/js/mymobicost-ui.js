@@ -1036,27 +1036,29 @@ function add_box_risultati(data){
     tempo_speso : data.risultati.tempo_speso
   };
 
-  console.log(template_data);
   $.get("/partials/risultato.html", function (template){
     var rendered = Mustache.render(template, template_data);
     $("#container-risultato").append(rendered);
+    //Renderizzo il grafico
+    create_chart(template_data)
   });
 }
 
-function create_chart(chart_data) {
-  var ctx = $(".chart")[0].getContext('2d');
+function create_chart(data) {
+  var canvas_container = $("#"+data.id_location+" .chart");
+  var ctx = $(canvas_container)[0].getContext('2d');
 
   var data = [
         {
-          value: 10,
+          value: parseFloat(data.costo_residenza),
           color: "#2C3E4E"
         },
         {
-          value : 20,
+          value : parseFloat(data.costo_auto),
           color : "#9B59B6"
         },
         {
-          value : 30,
+          value : parseFloat(data.costo_trasporto_pubblico),
           color : "#36CC71"
         }
       ];
