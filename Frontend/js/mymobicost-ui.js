@@ -868,7 +868,7 @@ function load_form_spostamenti_data(spostamento) {
 //=========================== BOX ===============================
 //===============================================================
 
-function add_box_riultati(risultati){
+function add_box_risultati(risultati){
   //Carico il box
   load_partial("partials/risultato.html", "#container-risultato", function () {
     create_chart();
