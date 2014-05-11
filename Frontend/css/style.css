@@ -217,7 +217,7 @@ input {
   text-transform: capitalize;
 }
 .form-horizontal .has-feedback .form-control-feedback {
-  right: 45px !important;
+  right: 45px;
 }
 #left-sidebar {
   position: absolute;
@@ -535,6 +535,9 @@ input {
 .form .form-campi label {
   font-size: 16px;
   font-weight: bold;
+}
+#famiglia-caller .form-group .col-sm-6 .form-control-feedback {
+  right: 112px;
 }
 .famiglia-input {
   width: 100px;
