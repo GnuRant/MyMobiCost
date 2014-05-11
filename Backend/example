@@ -39,7 +39,7 @@
       },
       "id_location": 12345,
       "risultati": {
-        "costi_fissi_suto": 969.12,
+        "costi_fissi_auto": 969.12,
         "costo_auto": 1248.0,
         "costo_residenza": 600,
         "costo_trasporto_pubblico": 200,

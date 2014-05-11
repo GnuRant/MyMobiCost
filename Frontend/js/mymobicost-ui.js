@@ -1026,11 +1026,20 @@ function load_form_spostamenti_data(spostamento) {
 //=========================== BOX ===============================
 //===============================================================
 function add_box_risultati(risultati){
-  //Carico il box
+  var template_data = {
+    id_location : risultati.id_location,
+    costo_residenza : risultati.costo_residenza,
+    costo_auto : risultati.costo_auto,
+    costi_fissi_auto : risultati.costi_fissi_auto,
+    costo_trasporto_pubblico : risultati.costo_trasporto_pubblico,
+    costo_abitazione_annuale : parseFloat(risultati.costo_residenza)*12,
+    tempo_speso : risultati.tempo_speso
+  };
+  console.log(template_data);
   $.get("/partials/risultato.html", function (template){
-    var rendered = Mustache.render(template, {id_location: "123"});
+    var rendered = Mustache.render(template, template_data);
     $("#container-risultato").append(rendered);
-  })
+  });
 }
 
 function create_chart(chart_data) {
