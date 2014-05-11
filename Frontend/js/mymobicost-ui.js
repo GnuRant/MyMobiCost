@@ -102,7 +102,7 @@ function form_famiglia(){
   $('.form-campi').bootstrapValidator({
       message: 'This value is not valid',
       feedbackIcons: {
-          valid: 'glyphicon glyphicon-ok',
+          valid: ' ',
           invalid: 'glyphicon glyphicon-remove',
           validating: 'glyphicon glyphicon-refresh'
       },
@@ -844,18 +844,6 @@ function form_spostamenti (){
               }
           },
           distanza: {
-              message: 'Inserire un numero',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  },
-                  regexp: {
-                      regexp: /^[0-9_]+$/,
-                      message: 'Inserire un numero'
-                  }
-              }
-          },
-          assicurazione: {
               message: 'Inserire un numero',
               validators: {
                   notEmpty: {
