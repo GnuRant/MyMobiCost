@@ -126,7 +126,7 @@ function get_results_from_user_data(user_data, on_complete){
 		url: API_SERVER_URL+"/calcolocosti",
 		type: "POST",
 		contentType: 'application/json',
-      	data: JSON.stringify(user_new_data),
+      	data: JSON.stringify(user_data),
       	dataType: "json",
       	async: true,
       	success: function (data) {

@@ -1025,16 +1025,17 @@ function load_form_spostamenti_data(spostamento) {
 //===============================================================
 //=========================== BOX ===============================
 //===============================================================
-function add_box_risultati(risultati){
+function add_box_risultati(data){
   var template_data = {
-    id_location : risultati.id_location,
-    costo_residenza : risultati.costo_residenza,
-    costo_auto : risultati.costo_auto,
-    costi_fissi_auto : risultati.costi_fissi_auto,
-    costo_trasporto_pubblico : risultati.costo_trasporto_pubblico,
-    costo_abitazione_annuale : parseFloat(risultati.costo_residenza)*12,
-    tempo_speso : risultati.tempo_speso
+    id_location : data.id_location,
+    costo_residenza : data.risultati.costo_residenza,
+    costo_auto : data.risultati.costo_auto,
+    costi_fissi_auto : data.risultati.costi_fissi_auto,
+    costo_trasporto_pubblico : data.risultati.costo_trasporto_pubblico,
+    costo_abitazione_annuale : parseFloat(data.risultati.costo_residenza)*12,
+    tempo_speso : data.risultati.tempo_speso
   };
+
   console.log(template_data);
   $.get("/partials/risultato.html", function (template){
     var rendered = Mustache.render(template, template_data);
@@ -1043,7 +1044,7 @@ function add_box_risultati(risultati){
 }
 
 function create_chart(chart_data) {
-  var ctx = $("#myChart")[0].getContext('2d');
+  var ctx = $(".chart")[0].getContext('2d');
 
   var data = [
         {
