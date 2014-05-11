@@ -192,5 +192,5 @@ def calcolo_costi():
 	return_data["tempo_speso"] = calcolo_tempo_spostamenti(data)
 	data["risultati"] = return_data
 	
-	return jsonify(data=return_data)
+	return jsonify(**return_data)
 
