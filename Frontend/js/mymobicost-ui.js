@@ -927,7 +927,7 @@ function form_spostamenti (){
     //Aggiungo un id per identificare una location
     user_current_data.spostamenti = array_spostamenti;
     user_current_data.id_location = generete_id();
-    
+
     get_results_from_user_data(user_current_data, function (data) {
       //Valvo i nuovi dati con i risultati in local storage
       //Aggiungo all'array dei dati utente la location appena creta
@@ -1027,9 +1027,11 @@ function load_form_spostamenti_data(spostamento) {
 //===============================================================
 function add_box_risultati(risultati){
   //Carico il box
-  load_partial("partials/risultato.html", "#container-risultato", function () {
+  $.get("/partials/risultato.html", function (template){
+    var rendered = Mustache.render(template, {id_location: "123"});
+    $("#container-risultato").append(rendered);
     create_chart();
-  });
+  })
 }
 
 function create_chart(chart_data) {
