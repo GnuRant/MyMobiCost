@@ -411,6 +411,87 @@ function load_form_trasporti(){
 
 function form_trasporti(){
 
+  //validator
+  $('.form-campi').bootstrapValidator({
+      message: 'This value is not valid',
+      feedbackIcons: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+      },
+      fields: {
+          auto_nome: {
+              message: 'Campo obbligatorio',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  }
+              }
+          },
+          percorrenza_annua: {
+              message: 'Inserire un numero',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  },
+                  regexp: {
+                      regexp: /^[0-9_]+$/,
+                      message: 'Inserire un numero'
+                  }
+              }
+          },
+          abbonamento_parcheggio: {
+              message: 'Inserire un numero',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  },
+                  regexp: {
+                      regexp: /^[0-9_]+$/,
+                      message: 'Inserire un numero'
+                  }
+              }
+          },
+          pedaggio_autostradale: {
+              message: 'Inserire un numero',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  },
+                  regexp: {
+                      regexp: /^[0-9_]+$/,
+                      message: 'Inserire un numero'
+                  }
+              }
+          },
+          assicurazione: {
+              message: 'Inserire un numero',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  },
+                  regexp: {
+                      regexp: /^[0-9_]+$/,
+                      message: 'Inserire un numero'
+                  }
+              }
+          },
+          costo: {
+              message: 'Inserire un numero',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  },
+                  regexp: {
+                      regexp: /^[0-9_]+$/,
+                      message: 'Inserire un numero'
+                  }
+              }
+          }
+      }
+  });
+
+
   //attivo i tooltip
   $('label').tooltip();
 
@@ -540,13 +621,10 @@ function form_trasporti(){
   //Collego il bottone per salvare tutti i dati inseriti dall
   //utente
   $("#trasporti-avanti").click(function() {
-    if (array_auto.length > 0 || array_abbonamenti.length) {
-      //Obligo di iserire alemno un auto o un abboanmento
-      user_new_data.automobili = array_auto;
-      user_new_data.abbonamenti = array_abbonamenti;
-      //Carico il prossimo form
-      load_form_spostamenti();
-    };
+    user_new_data.automobili = array_auto;
+    user_new_data.abbonamenti = array_abbonamenti;
+    //Carico il prossimo form
+    load_form_spostamenti();
   });
 }
 
@@ -723,6 +801,87 @@ function load_form_spostamenti (){
 }
 
 function form_spostamenti (){
+  
+  //validator
+  $('.form-campi').bootstrapValidator({
+      message: 'This value is not valid',
+      feedbackIcons: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+      },
+      fields: {
+          descrizione: {
+              message: 'Campo obbligatorio',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  }
+              }
+          },
+          percorrenze: {
+              message: 'Inserire un numero',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  },
+                  regexp: {
+                      regexp: /^[0-9_]+$/,
+                      message: 'Inserire un numero'
+                  }
+              }
+          },
+          tempo: {
+              message: 'Inserire un numero',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  },
+                  regexp: {
+                      regexp: /^[0-9_]+$/,
+                      message: 'Inserire un numero'
+                  }
+              }
+          },
+          distanza: {
+              message: 'Inserire un numero',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  },
+                  regexp: {
+                      regexp: /^[0-9_]+$/,
+                      message: 'Inserire un numero'
+                  }
+              }
+          },
+          assicurazione: {
+              message: 'Inserire un numero',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  },
+                  regexp: {
+                      regexp: /^[0-9_]+$/,
+                      message: 'Inserire un numero'
+                  }
+              }
+          },
+          costo: {
+              message: 'Inserire un numero',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  },
+                  regexp: {
+                      regexp: /^[0-9_]+$/,
+                      message: 'Inserire un numero'
+                  }
+              }
+          }
+      }
+  });
+
   //attivo i tooltip
   $('label').tooltip();
 
@@ -780,7 +939,6 @@ function form_spostamenti (){
       save_user_data(user_data);
     });
     //Chiudo il form di immissione
-    //TODO: creare funzione per chiudere correttamente il i form
     $("#form-container").hide();
     $(".categoria").hide();
   });
@@ -868,38 +1026,4 @@ function load_form_spostamenti_data(spostamento) {
 //=========================== BOX ===============================
 //===============================================================
 
-function add_box_risultati(risultati){
-  //Carico il box
-  load_partial("partials/risultato.html", "#container-risultato", function () {
-    create_chart();
-  });
-}
 
-function create_chart(chart_data) {
-  var ctx = $("#myChart")[0].getContext('2d');
-
-  var data = [
-        {
-          value: 10,
-          color: "#2C3E4E"
-        },
-        {
-          value : 20,
-          color : "#9B59B6"
-        },
-        {
-          value : 30,
-          color : "#36CC71"
-        }
-      ];
-
-  var options = {
-    animationSteps : 70,
-    animationEasing : "easeOutQuart",
-    animateScale : false,
-    segmentShowStroke: true,
-    segmentStrokeColor: "#ECF0F1"
-  }
-
-  new Chart(ctx).Doughnut(data,options);
-}
