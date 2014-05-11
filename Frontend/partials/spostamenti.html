@@ -8,87 +8,89 @@
                     </div>
                 </div>
 
-
+                <p>Aggiungi i tuoi spostamenti abituali.</p>
                 <h2 id="titolo-spostamento">Spostamento <div id="bottone-aggiungi-auto" class="tagsinput-add"></div></h2>
                 <div id="aggiungi-spostamento">    
                     <p>Inserisci i dati su base settimanale.</p>
-                    <div class="form-group">
-                        <label for="Comune" class="col-sm-6 control-label">Categoria</label>
-                        <div class="col-sm-6">
-                            <select name="motivo">
-                              <option value="0" disabled selected="">Seleziona un'opzione</option>
-                              <option >Lavoro</option>
-                              <option >Sport</option>
-                              <option >Tempo Libero</option>
-                              <option >Spese</option>
-                            </select>
+                    <div id="add-spostament0">
+                        <div class="form-group">
+                            <label for="Comune" class="col-sm-6 control-label">Categoria</label>
+                            <div class="col-sm-6">
+                                <select name="motivo">
+                                  <option value="0" disabled selected="">Seleziona un'opzione</option>
+                                  <option >Lavoro</option>
+                                  <option >Sport</option>
+                                  <option >Tempo Libero</option>
+                                  <option >Spese</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="Metri quadri" class="col-sm-6 control-label">Descrizione</label>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <div class="input">
-                                    <input type="text" placeholder="Rappresentanza" class="flat form-control" name="descrizione" />
+                        <div class="form-group">
+                            <label for="Metri quadri" class="col-sm-6 control-label">Descrizione</label>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="input">
+                                        <input type="text" placeholder="Rappresentanza" class="flat form-control" name="descrizione" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="Metri quadri" class="col-sm-6 control-label">Frequenza</label>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <input type="text" class="form-control flat" placeholder="0" name="percorrenze" />
-                                    <span class="input-group-addon">volte</span>
+                        <div class="form-group">
+                            <label for="Metri quadri" class="col-sm-6 control-label">Frequenza</label>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control flat" placeholder="0" name="percorrenze" />
+                                        <span class="input-group-addon">volte</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="Metri quadri" class="col-sm-6 control-label">Tempo stimato</label>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <input type="text" class="form-control flat" placeholder="0" name="tempo" />
-                                    <span class="input-group-addon">min</span>
+        
+                        <div class="form-group">
+                            <label for="Metri quadri" class="col-sm-6 control-label">Tempo stimato</label>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control flat" placeholder="0" name="tempo" />
+                                        <span class="input-group-addon">min</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="Metri quadri" class="col-sm-6 control-label">Distanza</label>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <input type="text" class="form-control flat" placeholder="0" name="distanza" />
-                                    <span class="input-group-addon">km</span>
+                        <div class="form-group">
+                            <label for="Metri quadri" class="col-sm-6 control-label">Distanza</label>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control flat" placeholder="0" name="distanza" />
+                                        <span class="input-group-addon">km</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="Comune" class="col-sm-6 control-label">Mezzo</label>
-                        <div class="col-sm-6">
-                            <select name="id_auto">
-                                <option value="0" disabled selected="">Seleziona un'opzione</option>
-                            </select>
+                        <div class="form-group">
+                            <label for="Comune" class="col-sm-6 control-label">Mezzo</label>
+                            <div class="col-sm-6">
+                                <select name="id_auto">
+                                    <option value="0" disabled selected="">Seleziona un'opzione</option>
+                                </select>
+                            </div>
+                        </div>
+        
+                        <div class="text-center conferma-trasporti">
+                            <div id="cancel-spostamento" class="btn btn-danger btn-wide">
+                                Annulla
+                            </div>
+                            <div id="salva-spostamento"class="btn btn-primary btn-wide">
+                                Salva
+                            </div>
                         </div>
                     </div>
-    
-                    <p class="text-center conferma-trasporti">
-                        <div id="cancel-spostamento" class="btn btn-danger btn-wide">
-                            Annulla
-                        </div>
-                        <div id="salva-spostamento"class="btn btn-primary btn-wide">
-                            Salva
-                        </div>
-                    </p>
                 </div>
             </form>
         </div>

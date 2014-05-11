@@ -98,6 +98,42 @@ function load_form_famiglia() {
 }
 
 function form_famiglia(){
+  //validator
+  $('.form-campi').bootstrapValidator({
+      message: 'This value is not valid',
+      feedbackIcons: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+      },
+      fields: {
+          adulti: {
+              message: 'Inserire un numero',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  },
+                  regexp: {
+                      regexp: /^[0-9_]+$/,
+                      message: 'Inserire un numero'
+                  }
+              }
+          },
+          bambini: {
+              message: 'Inserire un numero',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  },
+                  regexp: {
+                      regexp: /^[0-9_]+$/,
+                      message: 'Inserire un numero'
+                  }
+              }
+          }
+      }
+  });
+
   //Collego i bottoni +,-
   increment_inpunt_value();
   decrement_input_value();
@@ -151,6 +187,53 @@ function load_form_abitazione (){
 }
 
 function form_abitazione (){
+  //validator
+  $('.form-campi').bootstrapValidator({
+      message: 'This value is not valid',
+      feedbackIcons: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+      },
+      fields: {
+          grandezza: {
+              message: 'Inserire un numero',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  },
+                  regexp: {
+                      regexp: /^[0-9_]+$/,
+                      message: 'Inserire un numero'
+                  }
+              }
+          },
+          cost_med: {
+              message: 'Inserire un numero',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  },
+                  regexp: {
+                      regexp: /^[0-9_]+$/,
+                      message: 'Inserire un numero'
+                  }
+              }
+          },
+          comune: {
+              message: 'Inserire un numero',
+              validators: {
+                  notEmpty: {
+                      message: 'Campo richiesto, non può essere vuoto.'
+                  },
+                  regexp: {
+                      regexp: /^[0-9_]+$/,
+                      message: 'Inserire un numero'
+                  }
+              }
+          }
+      }
+  });
 
   //attivo i tooltip
   $("label").tooltip();
