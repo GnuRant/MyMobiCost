@@ -242,8 +242,8 @@ function form_abitazione (){
       update_values_costi(data);
     });
     //Re-imposto il valore di default per i form sottostanti
-    reset_drop_down("select[name=zona_abitativa]");
-    reset_drop_down("select[name=categoria_edilizia]");
+    reset_drop_down_hard("select[name=zona_abitativa]");
+    reset_drop_down_hard("select[name=categoria_edilizia]");
   });
 
   //Dopo aver caricato le zone carico le categorie edilizie ed aggiorno 
@@ -269,25 +269,31 @@ function form_abitazione (){
 
   //Bottone avanti, salvo i dati inseriti dall'utente
   $("#abitazione-avanti").click(function() {
-    var data = {};
-    $.each($("#abitazione-caller").serializeArray(), function (i, el){ 
-      data[el.name] = el.value;
-    });
-    //Salvo il nome della zona e del tipo d'abitazione esplicitamente
-    if (data.state === true) {
-      var comune = data.comune;
-      var zona = $("select[name=zona_abitativa]").find(":selected").text();
-      var categoria = $("select[name=categoria_edilizia]").find(":selected").text();
-      data.indirizzo = comune + ", " + zona + " - " + categoria;
-    }else{
-      data.indirizzo = "Abitazione Propria";
-    }    
-    
-    data.state = $("#checkbox-abitazione").is(":checked");
-    //Elimino i dati vecchi
-    user_current_data.abitazione = data;
-    //Carica il prossimo form
-    load_form_trasporti();
+    //Lacio la validazione dei campi
+    $(".form-campi").data("bootstrapValidator").validate();
+    //Se la validazione è andata a buon fine abilito il passaggio al prossimo
+    //Form
+    if($(".form-campi").data("bootstrapValidator").isValid()){
+      var data = {};
+      $.each($("#abitazione-caller").serializeArray(), function (i, el){ 
+        data[el.name] = el.value;
+      });
+      //Salvo il nome della zona e del tipo d'abitazione esplicitamente
+      if (data.state === true) {
+        var comune = data.comune;
+        var zona = $("select[name=zona_abitativa]").find(":selected").text();
+        var categoria = $("select[name=categoria_edilizia]").find(":selected").text();
+        data.indirizzo = comune + ", " + zona + " - " + categoria;
+      }else{
+        data.indirizzo = "Abitazione Propria";
+      }    
+      
+      data.state = $("#checkbox-abitazione").is(":checked");
+      //Elimino i dati vecchi
+      user_current_data.abitazione = data;
+      //Carica il prossimo form
+      load_form_trasporti();
+    }
   });
 }
 
@@ -379,7 +385,14 @@ function load_form_trasporti(){
 
 function form_trasporti(){
   //validator
-  $('.form-campi').bootstrapValidator({
+  $('#auto-caller').bootstrapValidator({
+    feedbackIcons: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    }
+  });
+  $('#abbonamenti-caller').bootstrapValidator({
     feedbackIcons: {
         valid: 'glyphicon glyphicon-ok',
         invalid: 'glyphicon glyphicon-remove',
@@ -446,33 +459,39 @@ function form_trasporti(){
   });
   //Collego il bottone per salvare un auto
   $("#save-auto").click(function() {
-    var data = {};
-    $.each($("#auto-caller").serializeArray(), function (i, el){ 
-      data[el.name] = el.value;
-    });
-    //Genero l'id univoco per l'auto
-    data.id_auto = generete_id();
-
-    if (edit_mode) {
-      //Elimino l'elemento dal DOM
-      $("#"+old_auto_id).remove();
-      //Aggiunta in edit, elimino l'elemento vecchio dall'array
-      $.each(array_auto, function(i, el) {
-        if (el.id_auto == old_auto_id){
-          array_auto.splice(array_auto.indexOf(el), 1);
-          //Elimino l'elemento della list sul DOM
-        }
+    //Lacio la validazione dei campi
+    $("#auto-caller").data("bootstrapValidator").validate();
+    //Se la validazione è andata a buon fine abilito il passaggio al prossimo
+    //Form
+    if($("#auto-caller").data("bootstrapValidator").isValid()){
+      var data = {};
+      $.each($("#auto-caller").serializeArray(), function (i, el){ 
+        data[el.name] = el.value;
       });
-
-      edit_mode = false;
+      //Genero l'id univoco per l'auto
+      data.id_auto = generete_id();
+  
+      if (edit_mode) {
+        //Elimino l'elemento dal DOM
+        $("#"+old_auto_id).remove();
+        //Aggiunta in edit, elimino l'elemento vecchio dall'array
+        $.each(array_auto, function(i, el) {
+          if (el.id_auto == old_auto_id){
+            array_auto.splice(array_auto.indexOf(el), 1);
+            //Elimino l'elemento della list sul DOM
+          }
+        });
+  
+        edit_mode = false;
+      }
+  
+      array_auto.push(data);
+      add_automobile(data);
+      //Chiuso la il form delle auto
+      $("#aggiungi-auto").hide();
+      //Resetto il form per il prossimo inserimento
+      reset_form("#auto-caller");
     }
-
-    array_auto.push(data);
-    add_automobile(data);
-    //Chiuso la il form delle auto
-    $("#aggiungi-auto").hide();
-    //Resetto il form per il prossimo inserimento
-    reset_form("#auto-caller");
   });
 
   $("#cancel-auto").click(function() {
@@ -484,32 +503,38 @@ function form_trasporti(){
   });
 
   $("#save-abbonamento").click(function() {
-    var data = {};
-    $.each($("#abbonamenti-caller").serializeArray(), function (i, el){ 
-      data[el.name] = el.value;
-    });
-    //Aggiungo un id univoco per identificare un abbonamenti
-    data.id_abbonamento = generete_id();
-
-    if (edit_mode) {
-      //Elimino l'elemento dal DOM
-      $("#"+old_abbonamento_id).remove();
-      //Aggiunta in edit, elimino l'elemento vecchio dall'array
-      console.log(old_abbonamento_id);
-      $.each(array_abbonamenti, function(i, el) {
-        if (el.id_abbonamento == old_abbonamento_id){
-          array_abbonamenti.splice(array_abbonamenti.indexOf(el), 1);
-        }
+    //Lacio la validazione dei campi
+    $("#abbonamenti-caller").data("bootstrapValidator").validate();
+    //Se la validazione è andata a buon fine abilito il passaggio al prossimo
+    //Form
+    if($("#abbonamenti-caller").data("bootstrapValidator").isValid()){
+      var data = {};
+      $.each($("#abbonamenti-caller").serializeArray(), function (i, el){ 
+        data[el.name] = el.value;
       });
+      //Aggiungo un id univoco per identificare un abbonamenti
+      data.id_abbonamento = generete_id();
+  
+      if (edit_mode) {
+        //Elimino l'elemento dal DOM
+        $("#"+old_abbonamento_id).remove();
+        //Aggiunta in edit, elimino l'elemento vecchio dall'array
+        console.log(old_abbonamento_id);
+        $.each(array_abbonamenti, function(i, el) {
+          if (el.id_abbonamento == old_abbonamento_id){
+            array_abbonamenti.splice(array_abbonamenti.indexOf(el), 1);
+          }
+        });
+  
+        edit_mode = false;
+      }
 
-      edit_mode = false;
+      array_abbonamenti.push(data);
+      add_abbonamento(data);
+      //Chiuso la il form abbonamento
+      $("#aggiungi-abbonamento").hide();
+      reset_form("#abbonamenti-caller");
     }
-
-    array_abbonamenti.push(data);
-    add_abbonamento(data);
-    //Chiuso la il form abbonamento
-    $("#aggiungi-abbonamento").hide();
-    reset_form("#abbonamenti-caller");
   });
 
   $("#cancel-abbonamento").click(function() {
@@ -718,31 +743,36 @@ function form_spostamenti (){
 
   //Collego il bottone per aggiungere uno spostamento
   $("#salva-spostamento").click(function() {
-    var data = {};
-    $.each($("#spostamenti-caller").serializeArray(), function (i, el){ 
-      data[el.name] = el.value;
-    });
-    //Aggiungo un id univoco per identificare un abbonamenti
-    data.id_spostamento = generete_id();
-    //Constrollo se sono in edit mode
-    if (edit_mode) {
-      //Elimino l'elemento dal DOM
-      $("#"+old_spostamento_id).remove();
-      //Aggiunta in edit, elimino l'elemento vecchio dall'array
-      $.each(array_spostamenti, function(i, el) {
-        if (el.id_spostamento == old_spostamento_id){
-          array_spostamenti.splice(array_spostamenti.indexOf(el), 1);
-        }
+    $(".form-campi").data("bootstrapValidator").validate();
+    //Se la validazione è andata a buon fine abilito il passaggio al prossimo
+    //Form
+    if($(".form-campi").data("bootstrapValidator").isValid()){
+      var data = {};
+      $.each($("#spostamenti-caller").serializeArray(), function (i, el){ 
+        data[el.name] = el.value;
       });
-      edit_mode = false;
+      //Aggiungo un id univoco per identificare un abbonamenti
+      data.id_spostamento = generete_id();
+      //Constrollo se sono in edit mode
+      if (edit_mode) {
+        //Elimino l'elemento dal DOM
+        $("#"+old_spostamento_id).remove();
+        //Aggiunta in edit, elimino l'elemento vecchio dall'array
+        $.each(array_spostamenti, function(i, el) {
+          if (el.id_spostamento == old_spostamento_id){
+            array_spostamenti.splice(array_spostamenti.indexOf(el), 1);
+          }
+        });
+        edit_mode = false;
+      }
+      //Aggiungo lo spostamento all'array
+      array_spostamenti.push(data);
+      //Carico i dati nel dom
+      add_spostamento(data);
+      //Chiudo il form e lo resetto per il prossimo inserimento
+      reset_form("#spostamenti-caller");
+      $("#aggiungi-spostamento").hide();
     }
-    //Aggiungo lo spostamento all'array
-    array_spostamenti.push(data);
-    //Carico i dati nel dom
-    add_spostamento(data);
-    //Chiudo il form e lo resetto per il prossimo inserimento
-    reset_form("#spostamenti-caller");
-    $("#aggiungi-spostamento").hide();
   });
 
   $("#cancel-spostamento").click(function() {
