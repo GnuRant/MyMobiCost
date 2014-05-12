@@ -382,6 +382,10 @@ function form_trasporti(){
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
 
+  //Coolego gli arrai in modo da non dover dare avanti per salvare mezzi ed abbonamenti
+  user_current_data.automobili = array_auto;
+  user_current_data.abbonamenti = array_abbonamenti;
+
   //Tasto che rende visibile il form auto
   $('#bottone-aggiungi-auto').click(function () {
     $('#aggiungi-auto').show();
@@ -500,12 +504,7 @@ function form_trasporti(){
     old_abbonamento_id = "";
   });
 
-
-  //Collego il bottone per salvare tutti i dati inseriti dall
-  //utente
   $("#trasporti-avanti").click(function() {
-    user_current_data.automobili = array_auto;
-    user_current_data.abbonamenti = array_abbonamenti;
     //Carico il prossimo form
     load_form_spostamenti();
   });
@@ -700,6 +699,9 @@ function form_spostamenti (){
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
   laod_spostamenti_data();
+
+  //Collego l'array che contiene gli spostamenti ai dati correnti dell'utente
+  user_current_data.spostamenti = array_spostamenti;
   //Carico i mezzi nel dropdown
   load_mezzi();
 
@@ -738,13 +740,10 @@ function form_spostamenti (){
   });
 
   $("#spostamenti-avanti").click(function() {
-    //Salvo i dati nell'array temporameo e 
     //Aggiungo un id per identificare una location
-    user_current_data.spostamenti = array_spostamenti;
     user_current_data.id_location = generete_id();
-
     get_results_from_user_data(user_current_data, function (data) {
-      //Valvo i nuovi dati con i risultati in local storage
+      //Salvo i nuovi dati con i risultati in local storage
       //Aggiungo all'array dei dati utente la location appena creta
       user_current_data.risultati = data;
       user_data.push(user_current_data);
