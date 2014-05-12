@@ -99,7 +99,13 @@ function load_form_famiglia() {
 
 function form_famiglia(){
   //validator
-  $('.form-campi').bootstrapValidator();
+  $('.form-campi').bootstrapValidator({
+    feedbackIcons: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    }
+  });
 
   //Collego i bottoni +,-
   increment_inpunt_value();
@@ -163,7 +169,13 @@ function load_form_abitazione (){
 
 function form_abitazione (){
   //validator
-  $('.form-campi').bootstrapValidator();
+  $('.form-campi').bootstrapValidator({
+    feedbackIcons: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    }
+  });
 
   //attivo i tooltip
   $("label").tooltip();
@@ -350,9 +362,14 @@ function load_form_trasporti(){
 }
 
 function form_trasporti(){
-
   //validator
-  $('.form-campi').bootstrapValidator();
+  $('.form-campi').bootstrapValidator({
+    feedbackIcons: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    }
+  });
 
   //attivo i tooltip
   $('label').tooltip();
@@ -664,7 +681,13 @@ function load_form_spostamenti (){
 
 function form_spostamenti (){
   //validator
-  $('.form-campi').bootstrapValidator();
+  $('.form-campi').bootstrapValidator({
+    feedbackIcons: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    }
+  });
 
   //attivo i tooltip
   $('label').tooltip();
