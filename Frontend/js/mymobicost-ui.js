@@ -69,6 +69,15 @@ function reset_drop_down (id_element){
   $(id_element).val(0).change();
 }
 
+function reset_drop_down_hard (id_element){
+  $(id_element)
+    .find("option")
+    .remove()
+    .end()
+    .append("<option value=\"0\" disabled selected>seleziona un\'opzione</option>")
+    .val("whatever");
+}
+
 //===============================================================
 //======================= NEW SESSION ===========================
 //===============================================================
@@ -394,6 +403,7 @@ function form_trasporti(){
     $('#aggiungi-auto').show();
     //Genero il nome dell'auto incrementale
     $("input[name=auto_nome]").val("Auto "+ (array_auto.length+1));
+    reset_form("#auto-container");
   });
 
   //Tasto che rende visibile il form mezzi pubblici
@@ -416,7 +426,8 @@ function form_trasporti(){
     //Dopo aver selezionato un tipologia di auto carico le alimentazione
     classe = $("select[name=classe]").val();
     //Resetto i dati nel caso ci siano gia delle cose caricate
-    reset_drop_down("select[name=alimentazione]");
+    //reset_drop_down("select[name=alimentazione]");
+    reset_drop_down_hard("select[name=alimentazione]");
     get_auto_alimentazione(classe, function (data) {
       $.each(data, function(i, el) {
          $("select[name=alimentazione]").append("<option>"+el+"</option>");
@@ -460,13 +471,13 @@ function form_trasporti(){
     add_automobile(data);
     //Chiuso la il form delle auto
     $("#aggiungi-auto").hide();
-    
     //Resetto il form per il prossimo inserimento
     reset_form("#auto-caller");
   });
 
   $("#cancel-auto").click(function() {
     $("#aggiungi-auto").hide();
+    reset_form("#auto-caller");
     //Se sono in edit mode esco
     edit_mode = false;
     old_auto_id = "";
@@ -498,6 +509,7 @@ function form_trasporti(){
     add_abbonamento(data);
     //Chiuso la il form abbonamento
     $("#aggiungi-abbonamento").hide();
+    reset_form("#abbonamenti-caller");
   });
 
   $("#cancel-abbonamento").click(function() {
@@ -505,6 +517,7 @@ function form_trasporti(){
     //Se sono in edit mode esco
     edit_mode = false;
     old_abbonamento_id = "";
+    reset_form("#abbonamenti-caller");
   });
 
   $("#trasporti-avanti").click(function() {
@@ -567,16 +580,14 @@ function load_automobili_data(){
 }
 
 function load_form_automobile_data(auto){
-  //Resetto 
-  reset_form("#auto-caller");
   //Carico gli input
-  $("input[name=abbonamento_parcheggio]").val(auto.abbonamento_parcheggio);
-  $("input[name=auto_nome]").val(auto.auto_nome);
-  $("input[name=percorrenza_annua]").val(auto.percorrenza_annua);
-  $("input[name=pedaggio_autostradale]").val(auto.pedaggio_autostradale);
-  $("input[name=assicurazione]").val(auto.assicurazione);
-  $("input[name=costo_km]").val(auto.costo_km);
-  $("input[name=costo_fisso]").val(auto.costo_fisso);
+  $("input[name=abbonamento_parcheggio]").val(auto.abbonamento_parcheggio).change();
+  $("input[name=auto_nome]").val(auto.auto_nome).change();
+  $("input[name=percorrenza_annua]").val(auto.percorrenza_annua).change();
+  $("input[name=pedaggio_autostradale]").val(auto.pedaggio_autostradale).change();
+  $("input[name=assicurazione]").val(auto.assicurazione).change();
+  $("input[name=costo_km]").val(auto.costo_km).change()
+  $("input[name=costo_fisso]").val(auto.costo_fisso).change();
   //Carico i drop_down
   classe = auto.classe;  
   get_auto_categorie(function (data){
@@ -736,6 +747,8 @@ function form_spostamenti (){
 
   $("#cancel-spostamento").click(function() {
     //resetto il form e lo chiudo
+    edit_mode = false;
+    id_spostamento = "";
     reset_form("#spostamenti-caller");
     $("#aggiungi-spostamento").hide();
   });
