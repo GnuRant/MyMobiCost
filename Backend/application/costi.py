@@ -5,7 +5,7 @@ NUMERO_SETTIMANE = 52
 def calcolo_abitazione_costi(data):
 	#il dato puo' essere quello inserito dall'utente come
 	#costo dell'affitto, o quello calcolato come costo m^2*numero_m^2
-	return data["abitazione"]["cost_med"]
+	return float(data["abitazione"]["cost_med"])*12
 
 def calcolo_spostamenti_auto_costi(data):
 	costo = 0
@@ -17,10 +17,15 @@ def calcolo_spostamenti_auto_costi(data):
 		for spostamento in spostamenti:
 			id_auto = spostamento["id_auto"]
 			if id_auto != 0:
-				auto = trova_auto_id(automobili, id_auto)
-				costo_km = float(auto["costo_km"])
-				#calcolo su base annua
-				costo += NUMERO_SETTIMANE*(2*(float(spostamento["distanza"])*float(spostamento["percorrenze"])*costo_km))
+				#Controllo che non sia un'abbonamento
+				if trova_auto_id(automobili, id_auto) is None:
+					#se e' un abbonamento non lo conto
+					continue
+				elif trova_auto_id(automobili, id_auto) is not None:
+					auto = trova_auto_id(automobili, id_auto)
+					costo_km = float(auto["costo_km"])
+					#calcolo su base mensile
+					costo += (2*(float(spostamento["distanza"])*float(spostamento["percorrenze"])*costo_km))
 	except Exception, e:
 		costo = 0
 
