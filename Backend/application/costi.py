@@ -5,7 +5,7 @@ NUMERO_SETTIMANE = 52
 def calcolo_abitazione_costi(data):
 	#il dato puo' essere quello inserito dall'utente come
 	#costo dell'affitto, o quello calcolato come costo m^2*numero_m^2
-	return data["abitazione"]["cost_med"]
+	return float(data["abitazione"]["cost_med"])
 
 def calcolo_spostamenti_auto_costi(data):
 	costo = 0
@@ -15,12 +15,17 @@ def calcolo_spostamenti_auto_costi(data):
 		#con l'auto allora calcolo il suo costo, altrimenti non lo considero
 		spostamenti = data["spostamenti"]
 		for spostamento in spostamenti:
-			id_auto = spostamento["id_auto"]
-			if id_auto != 0:
-				auto = trova_auto_id(automobili, id_auto)
-				costo_km = float(auto["costo_km"])
-				#calcolo su base annua
-				costo += NUMERO_SETTIMANE*(2*(float(spostamento["distanza"])*float(spostamento["percorrenze"])*costo_km))
+			id_mezzo = spostamento["id_mezzo"]
+			if id_mezzo != 0:
+				#Controllo che non sia un'abbonamento
+				if trova_auto_id(automobili, id_mezzo) is None:
+					#se e' un abbonamento non lo conto
+					continue
+				elif trova_auto_id(automobili, id_mezzo) is not None:
+					auto = trova_auto_id(automobili, id_mezzo)
+					costo_km = float(auto["costo_km"])
+					#calcolo su base mensile
+					costo += 4*(2*(float(spostamento["distanza"])*float(spostamento["percorrenze"])*costo_km))
 	except Exception, e:
 		costo = 0
 
@@ -56,13 +61,13 @@ def calcolo_spostamento_mezzi_costi(data):
 	#prendo tutti gli abbomanti e calcolo in costo portando il dato in forma mensile
 	for abbonamento in abbonamenti:
 		if abbonamento["tipo"] == "mensile":
-			costo += float(abbonamento["costo"])*12
-		elif abbonamento["tipo"] == "settimanale":
-			costo += float(abbonamento["costo"])*NUMERO_SETTIMANE
-		elif abbonamento["tipo"] == "semestrale":
-			costo += float(abbonamento["costo"])*2
-		elif abbonamento["tipo"] == "annuale":
 			costo += float(abbonamento["costo"])
+		elif abbonamento["tipo"] == "settimanale":
+			costo += float(abbonamento["costo"])*4
+		elif abbonamento["tipo"] == "semestrale":
+			costo += float(abbonamento["costo"])/6
+		elif abbonamento["tipo"] == "annuale":
+			costo += float(abbonamento["costo"])/12
 
 	return costo
 
