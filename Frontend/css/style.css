@@ -229,8 +229,8 @@ input {
 }
 .has-success .input-group-addon {
   color: #fff;
-  border-color: #79b31f;
-  background-color: #79b31f;
+  border-color: #313131;
+  background-color: #313131;
 }
 .has-error .form-control {
   color: #c0392b;
@@ -254,6 +254,15 @@ input {
 }
 .form-horizontal .has-feedback .form-control-feedback {
   right: 0;
+}
+.has-success .form-control,
+.has-success .form-control:focus,
+.form-control.flat:focus {
+  color: inherit;
+  border-color: transparent;
+  -webkit-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 #left-sidebar {
   position: absolute;

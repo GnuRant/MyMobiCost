@@ -91,8 +91,8 @@ hr
 
 .has-success .input-group-addon {
   color: white;
-  border-color: green;
-  background-color: green;
+  border-color: black;
+  background-color: black;
 }
 
 .has-error .form-control
@@ -108,3 +108,9 @@ color: inherit;
 
 .form-horizontal .has-feedback .form-control-feedback
   right 0
+
+.has-success .form-control, .has-success .form-control:focus, .form-control.flat:focus
+  color: inherit
+  border-color transparent
+  -webkit-box-shadow: none;
+  box-shadow: none;
