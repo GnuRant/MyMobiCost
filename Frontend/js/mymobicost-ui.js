@@ -30,6 +30,8 @@ function increment_inpunt_value (){
     }
     //Incremento il valore e salvo
     input.val(++old_value);
+    //non funzionante
+    $(".form-campi").data("bootstrapValidator").validate();
   });
 }
 
@@ -46,6 +48,8 @@ function decrement_input_value (){
       //Incremento il valore e salvo
       input.val(old_value);
     }
+    //non funzionante
+    $(".form-campi").data("bootstrapValidator").validate();
   });
 }
 
