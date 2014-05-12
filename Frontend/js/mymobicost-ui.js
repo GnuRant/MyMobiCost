@@ -57,13 +57,16 @@ function generete_id() {
   return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
 }
 
+//Funzione per resettare il form auto
+function reset_form(id_element){
+  //Prendo tutti gli input e resetto il risultato
+  $(id_element)[0].reset();
+  //Imposto i dropdown al valore di default
+  reset_drop_down("select");
+}
+
 function reset_drop_down (id_element){
-  $(id_element)
-    .find("option")
-    .remove()
-    .end()
-    .append("<option value=\"\" disabled selected>seleziona un\'opzione</option>")
-    .val("whatever");
+  $(id_element).val(0).change();
 }
 
 //===============================================================
@@ -459,7 +462,7 @@ function form_trasporti(){
     $("#aggiungi-auto").hide();
     
     //Resetto il form per il prossimo inserimento
-    //reset_form("#auto-caller");
+    reset_form("#auto-caller");
   });
 
   $("#cancel-auto").click(function() {
@@ -658,13 +661,6 @@ function load_form_abbonamento_data(abbonamento){
   $("input[name=costo]").val(abbonamento.costo)
 }
 
-//Funzione per resettare il form auto
-function reset_form(id_element){
-  $(id_element)[0].reset();
-  //Imposto i dropdown al valore di default
-  reset_drop_down("select");
-}
-
 //===============================================================
 //===================== form SPOSTAMENTI ========================
 //===============================================================
@@ -705,7 +701,7 @@ function form_spostamenti (){
   //Carico i mezzi nel dropdown
   load_mezzi();
 
-  $("#bottone-aggiungi-auto").click(function() {
+  $("#bottone-aggiungi-spostamento").click(function() {
     $("#aggiungi-spostamento").show();
   });
 
@@ -734,9 +730,14 @@ function form_spostamenti (){
     //Carico i dati nel dom
     add_spostamento(data);
     //Chiudo il form e lo resetto per il prossimo inserimento
+    reset_form("#spostamenti-caller");
     $("#aggiungi-spostamento").hide();
-    $("#spostamenti-caller")[0].reset();
-    $("select[name=motivo]").val(0).change();
+  });
+
+  $("#cancel-spostamento").click(function() {
+    //resetto il form e lo chiudo
+    reset_form("#spostamenti-caller");
+    $("#aggiungi-spostamento").hide();
   });
 
   $("#spostamenti-avanti").click(function() {
