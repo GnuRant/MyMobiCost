@@ -779,7 +779,7 @@ function form_spostamenti (){
   $("#cancel-spostamento").click(function() {
     //resetto il form e lo chiudo
     edit_mode = false;
-    id_spostamento = "";
+    old_spostamento_id = "";
     reset_form("#spostamenti-caller");
     $("#aggiungi-spostamento").hide();
   });
