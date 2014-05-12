@@ -845,12 +845,12 @@ function load_form_spostamenti_data(spostamento) {
 function add_box_risultati(data){
   var template_data = {
     id_location : data.id_location,
-    costo_residenza : data.risultati.costo_residenza,
+    costo_residenza : parseFloat(data.risultati.costo_residenza).toFixed(2),
     indirizzo : data.abitazione.indirizzo,
-    costo_auto : data.risultati.costo_auto,
-    costi_fissi_auto : data.risultati.costi_fissi_auto,
-    costo_trasporto_pubblico : data.risultati.costo_trasporto_pubblico,
-    costo_abitazione_annuale : parseFloat(data.risultati.costo_residenza)*12,
+    costo_auto : parseFloat(data.risultati.costo_auto).toFixed(2),
+    costi_fissi_auto : parseFloat(data.risultati.costi_fissi_auto).toFixed(2),
+    costo_trasporto_pubblico : parseFloat(data.risultati.costo_trasporto_pubblico).toFixed(2),
+    costo_abitazione_annuale : (parseFloat(data.risultati.costo_residenza)*12).toFixed(2),
     tempo_speso : data.risultati.tempo_speso
   };
 
