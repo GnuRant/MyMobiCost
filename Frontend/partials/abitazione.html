@@ -23,7 +23,12 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="200" value="200" name="grandezza" />
+                                <input type="text" class="form-control flat" placeholder="200" value="200" name="grandezza" 
+                                data-bv-notempty 
+                                data-bv-notempty-message="Campo richiesto."
+                                data-bv-regexp="true"
+                                data-bv-regexp-regexp="[0-9_]+$"
+                                data-bv-regexp-message="Inserisci un numero"/>
                                 <span class="input-group-addon">mq</span>
                             </div>
                         </div>
@@ -97,7 +102,12 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="0" name="cost_med" />
+                                <input type="text" class="form-control flat" placeholder="0" name="cost_med" 
+                                data-bv-notempty 
+                                data-bv-notempty-message="Campo richiesto."
+                                data-bv-numeric
+                                data-bv-numeric-message="Inserisci un numero. <em>Esempio:</em> 12 o 20.5"
+                                />
                                 <span class="input-group-addon">€</span>
                             </div>
                         </div>
@@ -111,7 +121,12 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="0" name="cost_med" />
+                                <input type="text" class="form-control flat"placeholder="0" name="cost_med" 
+                                data-bv-notempty 
+                                data-bv-notempty-message="Campo richiesto."
+                                data-bv-numeric
+                                data-bv-numeric-message="Inserisci un numero. <em>Esempio:</em> 12 o 20.5"
+                                />
                                 <span class="input-group-addon">€</span>
                             </div>
                         </div>

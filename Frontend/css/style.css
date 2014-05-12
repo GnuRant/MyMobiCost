@@ -236,20 +236,11 @@ input {
   color: #c0392b;
   border-color: #c0392b;
 }
-.has-error .help-block,
-.has-error .control-label,
-.has-error .radio,
-.has-error .checkbox,
-.has-error .radio-inline,
-.has-error .checkbox-inline {
+.has-error .control-label {
   color: inherit;
 }
 .has-success .help-block,
-.has-success .control-label,
-.has-success .radio,
-.has-success .checkbox,
-.has-success .radio-inline,
-.has-success .checkbox-inline {
+.has-success .control-label {
   color: inherit;
 }
 .form-horizontal .has-feedback .form-control-feedback {

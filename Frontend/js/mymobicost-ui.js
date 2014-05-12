@@ -99,40 +99,7 @@ function load_form_famiglia() {
 
 function form_famiglia(){
   //validator
-  $('.form-campi').bootstrapValidator({
-      message: 'This value is not valid',
-      feedbackIcons: {
-          valid: ' ',
-          invalid: 'glyphicon glyphicon-remove',
-          validating: 'glyphicon glyphicon-refresh'
-      },
-      fields: {
-          adulti: {
-              message: 'Inserire un numero',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  },
-                  regexp: {
-                      regexp: /^[0-9_]+$/,
-                      message: 'Inserire un numero'
-                  }
-              }
-          },
-          bambini: {
-              message: 'Inserire un numero',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  },
-                  regexp: {
-                      regexp: /^[0-9_]+$/,
-                      message: 'Inserire un numero'
-                  }
-              }
-          }
-      }
-  });
+  $('.form-campi').bootstrapValidator();
 
   //Collego i bottoni +,-
   increment_inpunt_value();
@@ -196,52 +163,7 @@ function load_form_abitazione (){
 
 function form_abitazione (){
   //validator
-  $('.form-campi').bootstrapValidator({
-      message: 'This value is not valid',
-      feedbackIcons: {
-          valid: 'glyphicon glyphicon-ok',
-          invalid: 'glyphicon glyphicon-remove',
-          validating: 'glyphicon glyphicon-refresh'
-      },
-      fields: {
-          grandezza: {
-              message: 'Inserire un numero',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  },
-                  regexp: {
-                      regexp: /^[0-9_]+$/,
-                      message: 'Inserire un numero'
-                  }
-              }
-          },
-          cost_med: {
-              message: 'Inserire un numero',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  },
-                  regexp: {
-                      regexp: /^[0-9_]+$/,
-                      message: 'Inserire un numero'
-                  }
-              }
-          },
-          comune: {
-              message: 'Inserire un numero',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  },
-                  regexp: {
-                      regexp: /^[0-9_]+$/,
-                      message: 'Inserire un numero'
-                  }
-              }
-          }
-      }
-  });
+  $('.form-campi').bootstrapValidator();
 
   //attivo i tooltip
   $("label").tooltip();
@@ -420,85 +342,7 @@ function load_form_trasporti(){
 function form_trasporti(){
 
   //validator
-  $('.form-campi').bootstrapValidator({
-      message: 'This value is not valid',
-      feedbackIcons: {
-          valid: 'glyphicon glyphicon-ok',
-          invalid: 'glyphicon glyphicon-remove',
-          validating: 'glyphicon glyphicon-refresh'
-      },
-      fields: {
-          auto_nome: {
-              message: 'Campo obbligatorio',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  }
-              }
-          },
-          percorrenza_annua: {
-              message: 'Inserire un numero',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  },
-                  regexp: {
-                      regexp: /^[0-9_]+$/,
-                      message: 'Inserire un numero'
-                  }
-              }
-          },
-          abbonamento_parcheggio: {
-              message: 'Inserire un numero',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  },
-                  regexp: {
-                      regexp: /^[0-9_]+$/,
-                      message: 'Inserire un numero'
-                  }
-              }
-          },
-          pedaggio_autostradale: {
-              message: 'Inserire un numero',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  },
-                  regexp: {
-                      regexp: /^[0-9_]+$/,
-                      message: 'Inserire un numero'
-                  }
-              }
-          },
-          assicurazione: {
-              message: 'Inserire un numero',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  },
-                  regexp: {
-                      regexp: /^[0-9_]+$/,
-                      message: 'Inserire un numero'
-                  }
-              }
-          },
-          costo: {
-              message: 'Inserire un numero',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  },
-                  regexp: {
-                      regexp: /^[0-9_]+$/,
-                      message: 'Inserire un numero'
-                  }
-              }
-          }
-      }
-  });
-
+  $('.form-campi').bootstrapValidator();
 
   //attivo i tooltip
   $('label').tooltip();
@@ -809,74 +653,8 @@ function load_form_spostamenti (){
 }
 
 function form_spostamenti (){
-  
   //validator
-  $('.form-campi').bootstrapValidator({
-      message: 'This value is not valid',
-      feedbackIcons: {
-          valid: 'glyphicon glyphicon-ok',
-          invalid: 'glyphicon glyphicon-remove',
-          validating: 'glyphicon glyphicon-refresh'
-      },
-      fields: {
-          descrizione: {
-              message: 'Campo obbligatorio',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  }
-              }
-          },
-          percorrenze: {
-              message: 'Inserire un numero',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  },
-                  regexp: {
-                      regexp: /^[0-9_]+$/,
-                      message: 'Inserire un numero'
-                  }
-              }
-          },
-          tempo: {
-              message: 'Inserire un numero',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  },
-                  regexp: {
-                      regexp: /^[0-9_]+$/,
-                      message: 'Inserire un numero'
-                  }
-              }
-          },
-          distanza: {
-              message: 'Inserire un numero',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  },
-                  regexp: {
-                      regexp: /^[0-9_]+$/,
-                      message: 'Inserire un numero'
-                  }
-              }
-          },
-          costo: {
-              message: 'Inserire un numero',
-              validators: {
-                  notEmpty: {
-                      message: 'Campo richiesto, non può essere vuoto.'
-                  },
-                  regexp: {
-                      regexp: /^[0-9_]+$/,
-                      message: 'Inserire un numero'
-                  }
-              }
-          }
-      }
-  });
+  $('.form-campi').bootstrapValidator();
 
   //attivo i tooltip
   $('label').tooltip();

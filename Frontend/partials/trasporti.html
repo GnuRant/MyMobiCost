@@ -22,7 +22,12 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input">
-                                <input type="text" placeholder="Alfa" name="auto_nome" class="flat form-control" />
+                                <input type="text" placeholder="Alfa" name="auto_nome" class="flat form-control" 
+                                data-bv-notempty 
+                                data-bv-notempty-message="Campo richiesto."
+                                maxlength="20"
+                                data-bv-stringlength-min="0"
+                                data-bv-stringlength-message="Nome troppo lungo."/>
                             </div>
                         </div>
                     </div>
@@ -51,7 +56,12 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="0" name="percorrenza_annua" />
+                                <input type="text" class="form-control flat" placeholder="0" name="percorrenza_annua" 
+                                data-bv-notempty 
+                                data-bv-notempty-message="Campo richiesto."
+                                data-bv-digits="true"
+                                data-bv-digits-message="Inserisci un numero"
+                                />
                                 <span class="input-group-addon">km</span>
                             </div>
                         </div>
@@ -63,7 +73,12 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="0" name="abbonamento_parcheggio" />
+                                <input type="text" class="form-control flat" placeholder="0" name="abbonamento_parcheggio" 
+                                data-bv-notempty 
+                                data-bv-notempty-message="Campo richiesto."
+                                data-bv-numeric
+                                data-bv-numeric-message="Inserisci un numero. <em>Esempio:</em> 12 o 20.5"
+                                />
                                 <span class="input-group-addon">€</span>
                             </div>
                         </div>
@@ -75,7 +90,12 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="0" name="pedaggio_autostradale" />
+                                <input type="text" class="form-control flat" placeholder="0" name="pedaggio_autostradale" 
+                                data-bv-notempty 
+                                data-bv-notempty-message="Campo richiesto."
+                                data-bv-numeric
+                                data-bv-numeric-message="Inserisci un numero. <em>Esempio:</em> 12 o 20.5"
+                                />
                                 <span class="input-group-addon">€</span>
                             </div>
                         </div>
@@ -87,7 +107,12 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="0" name="assicurazione" />
+                                <input type="text" class="form-control flat" placeholder="0" name="assicurazione"
+                                data-bv-notempty 
+                                data-bv-notempty-message="Campo richiesto."
+                                data-bv-numeric
+                                data-bv-numeric-message="Inserisci un numero. <em>Esempio:</em> 12 o 20.5"
+                                />
                                 <span class="input-group-addon">€</span>
                             </div>
                         </div>
@@ -99,7 +124,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="molti soldi" name="costo_km" />
+                                <input type="text" class="form-control flat" placeholder="0.0" name="costo_km" />
                                 <span class="input-group-addon">€</span>
                             </div>
                         </div>
@@ -111,7 +136,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="millemila" name="costo_fisso" />
+                                <input type="text" class="form-control flat" placeholder="0.0" name="costo_fisso" />
                                 <span class="input-group-addon">€</span>
                             </div>
                         </div>
@@ -161,7 +186,11 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control flat" placeholder="0" name="costo" />
+                                <input type="text" class="form-control flat" placeholder="0" name="costo" 
+                                data-bv-notempty 
+                                data-bv-notempty-message="Campo richiesto."
+                                data-bv-numeric
+                                data-bv-numeric-message="Inserisci un numero. <em>Esempio:</em> 12 o 20.5"/>
                                 <span class="input-group-addon">€</span>
                             </div>
                         </div>
