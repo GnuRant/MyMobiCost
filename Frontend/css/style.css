@@ -715,16 +715,23 @@ input {
   border-radius: 10px 10px 0 0;
   position: relative;
 }
-.titolo-tile .fui-gear {
+.titolo-tile .edit-tile {
   position: absolute;
   right: 0.8em;
+  font-weight: 300;
 }
-.titolo-tile .fui-gear:hover {
+.titolo-tile .edit-tile .modifica,
+.titolo-tile .edit-tile .elimina {
+  margin-left: 0.5em;
+}
+.titolo-tile .edit-tile .modifica:hover,
+.titolo-tile .edit-tile .elimina:hover {
   opacity: 0.8;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
   filter: alpha(opacity=80);
 }
-.titolo-tile .fui-gear:active {
+.titolo-tile .edit-tile .modifica:active,
+.titolo-tile .edit-tile .elimina:active {
   opacity: 1;
   -ms-filter: none;
   filter: none;
