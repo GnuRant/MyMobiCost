@@ -817,13 +817,13 @@ function load_mezzi() {
   if (!$.isEmptyObject(user_current_data.automobili) ) {
     //Carico tutti i mezzi inseriti dall'utente nel dropdown menu
     $.each(user_current_data.automobili, function(i, el) {
-      $("select[name=id_auto]").append("<option value='"+el.id_auto+"'>"+el.auto_nome+"</option>");
+      $("select[name=id_mezzo]").append("<option value='"+el.id_auto+"'>"+el.auto_nome+"</option>");
     });
   }
 
   if (!$.isEmptyObject(user_current_data.abbonamenti)) {
     $.each(user_current_data.abbonamenti, function(i, el) {
-      $("select[name=id_auto]").append("<option value='"+el.id_abbonamento+"'>"+el.abbonamento_nome+"</option>");
+      $("select[name=id_mezzo]").append("<option value='"+el.id_abbonamento+"'>"+el.abbonamento_nome+"</option>");
     });
   }
 }

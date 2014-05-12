@@ -15,14 +15,14 @@ def calcolo_spostamenti_auto_costi(data):
 		#con l'auto allora calcolo il suo costo, altrimenti non lo considero
 		spostamenti = data["spostamenti"]
 		for spostamento in spostamenti:
-			id_auto = spostamento["id_auto"]
-			if id_auto != 0:
+			id_mezzo = spostamento["id_mezzo"]
+			if id_mezzo != 0:
 				#Controllo che non sia un'abbonamento
-				if trova_auto_id(automobili, id_auto) is None:
+				if trova_auto_id(automobili, id_mezzo) is None:
 					#se e' un abbonamento non lo conto
 					continue
-				elif trova_auto_id(automobili, id_auto) is not None:
-					auto = trova_auto_id(automobili, id_auto)
+				elif trova_auto_id(automobili, id_mezzo) is not None:
+					auto = trova_auto_id(automobili, id_mezzo)
 					costo_km = float(auto["costo_km"])
 					#calcolo su base mensile
 					costo += 4*(2*(float(spostamento["distanza"])*float(spostamento["percorrenze"])*costo_km))
