@@ -151,6 +151,7 @@
   background light-grey
   padding-top .5em
   z-index 256
+  width 100px
 
   img
     padding 1em 0 0
@@ -365,11 +366,19 @@ left-tile = 0.8em
 .titolo-tile
   margin-bottom 0
   margin-top 0
-  padding left-tile
+  padding .3em left-tile
   background green
   color white
   font-size 1em
   border-radius 10px 10px 0 0
+  position relative
+  .fui-gear
+    position absolute
+    right left-tile
+    &:hover
+      opacity .8
+    &:active
+      opacity 1
 
 .categorie-residenza, .categorie-spostamenti, .categorie-auto, .categorie-mezzi
   padding 0 left-tile
@@ -428,8 +437,21 @@ left-tile = 0.8em
 .categorie-container
   float left
   width 200px
+  margin .8em 0
+  border-right 2px solid bordino
 
 .risultato-graph
   padding .5em
   float left
   width 300px
+  text-align center
+  p
+    margin-bottom 0
+
+#costo-annuale
+  font-size 1.5em
+  line-height 1em
+  padding .4em 0 .1em
+
+.green
+  color green

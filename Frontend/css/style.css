@@ -454,6 +454,7 @@ input {
   background: #ecf0f1;
   padding-top: 0.5em;
   z-index: 256;
+  width: 100px;
 }
 #sponsor-sidebar img {
   padding: 1em 0 0;
@@ -706,12 +707,27 @@ input {
 .titolo-tile {
   margin-bottom: 0;
   margin-top: 0;
-  padding: 0.8em;
+  padding: 0.3em 0.8em;
   background: #79b31f;
   color: #fff;
   font-size: 1em;
   -webkit-border-radius: 10px 10px 0 0;
   border-radius: 10px 10px 0 0;
+  position: relative;
+}
+.titolo-tile .fui-gear {
+  position: absolute;
+  right: 0.8em;
+}
+.titolo-tile .fui-gear:hover {
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+}
+.titolo-tile .fui-gear:active {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
 }
 .categorie-residenza,
 .categorie-spostamenti,
@@ -813,9 +829,23 @@ input {
 .categorie-container {
   float: left;
   width: 200px;
+  margin: 0.8em 0;
+  border-right: 2px solid #acacac;
 }
 .risultato-graph {
   padding: 0.5em;
   float: left;
   width: 300px;
+  text-align: center;
+}
+.risultato-graph p {
+  margin-bottom: 0;
+}
+#costo-annuale {
+  font-size: 1.5em;
+  line-height: 1em;
+  padding: 0.4em 0 0.1em;
+}
+.green {
+  color: #79b31f;
 }

@@ -1,5 +1,5 @@
     <div id="{{id_location}}" class="tile-risultato">
-        <h3 class="titolo-tile">{{indirizzo}}</h3>
+        <h3 class="titolo-tile">{{indirizzo}}<span class="fui-gear"></span></h3>
         <div class="clearfix">
             <div class="categorie-container">
                 <div class="categorie-tile">
@@ -24,11 +24,11 @@
             </div>
             <div class="risultato-graph">
                 <p class="text-center">Spese abitazione annuali</p>
-                <canvas class="chart" width="260" height="260"></canvas>
+                <canvas class="chart" width="220" height="220"></canvas>
             </div>
         </div>
         <div class="risultato-sum-up">
-            <p>Costo annuale stimato: {{costo_abitazione_annuale}}€</p>
-            <p>Tempo speso per trasporti: {{tempo_speso}} ore a settimana.</p>
+            <p id="costo-annuale">Costo annuale stimato: <span class="green">{{costo_abitazione_annuale}}€</p></span>
+            <p>Tempo speso per trasporti: <span class="green">{{tempo_speso}} ore</span> a settimana.</p>
         </div>
     </div>
