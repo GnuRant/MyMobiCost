@@ -323,6 +323,10 @@ function form_abitazione (){
     $.each($("#abitazione-caller").serializeArray(), function (i, el){ 
       data[el.name] = el.value;
     });
+    //Salvo il nome della zona e del tipo d'abitazione esplicitamente
+    data.zona_abitativa_nome = $("select[name=zona_abitativa]").find(":selected").text();
+    data.categoria_edilizia_nome = $("select[name=categoria_edilizia]").find(":selected").text();
+    
     data.state = $("#checkbox-abitazione").is(":checked");
     //Elimino i dati vecchi
     user_current_data.abitazione = data;
@@ -1031,6 +1035,9 @@ function add_box_risultati(data){
   var template_data = {
     id_location : data.id_location,
     costo_residenza : data.risultati.costo_residenza,
+    comune : data.abitazione.comune,
+    zona : data.abitazione.zona_abitativa_nome,
+    categoria_edilizia : data.abitazione.categoria_edilizia_nome,
     costo_auto : data.risultati.costo_auto,
     costi_fissi_auto : data.risultati.costi_fissi_auto,
     costo_trasporto_pubblico : data.risultati.costo_trasporto_pubblico,
