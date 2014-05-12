@@ -695,7 +695,7 @@ input {
 }
 .tile-risultato {
   background: #ecf0f1;
-  width: 500px;
+  width: 450px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
   display: inline-block;
@@ -771,7 +771,7 @@ input {
 .categorie-spostamenti .titolo-mezzi,
 .categorie-auto .titolo-mezzi,
 .categorie-mezzi .titolo-mezzi {
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: 300;
   margin: 0;
   line-height: 0.5em;
@@ -835,7 +835,7 @@ input {
 .risultato-graph {
   padding: 0.5em;
   float: left;
-  width: 300px;
+  width: 250px;
   text-align: center;
 }
 .risultato-graph p {
