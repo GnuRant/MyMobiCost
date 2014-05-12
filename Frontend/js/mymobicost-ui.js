@@ -324,8 +324,14 @@ function form_abitazione (){
       data[el.name] = el.value;
     });
     //Salvo il nome della zona e del tipo d'abitazione esplicitamente
-    data.zona_abitativa_nome = $("select[name=zona_abitativa]").find(":selected").text();
-    data.categoria_edilizia_nome = $("select[name=categoria_edilizia]").find(":selected").text();
+    if (data.state === true) {
+      var comune = data.comune;
+      var zona = $("select[name=zona_abitativa]").find(":selected").text();
+      var categoria = $("select[name=categoria_edilizia]").find(":selected").text();
+      data.indirizzo = comune + ", " + zona + " - " + categoria;
+    }else{
+      data.indirizzo = "Abitazione Propria";
+    }    
     
     data.state = $("#checkbox-abitazione").is(":checked");
     //Elimino i dati vecchi
@@ -584,7 +590,7 @@ function form_trasporti(){
     $("#aggiungi-auto").hide();
     
     //Resetto il form per il prossimo inserimento
-    reset_form("#auto-caller");
+    //reset_form("#auto-caller");
   });
 
   $("#cancel-auto").click(function() {
@@ -618,7 +624,7 @@ function form_trasporti(){
 
     array_abbonamenti.push(data);
     add_abbonamento(data);
-    //Chiuso la il form delle auto
+    //Chiuso la il form abbonamento
     $("#aggiungi-abbonamento").hide();
   });
 
@@ -1035,9 +1041,7 @@ function add_box_risultati(data){
   var template_data = {
     id_location : data.id_location,
     costo_residenza : data.risultati.costo_residenza,
-    comune : data.abitazione.comune,
-    zona : data.abitazione.zona_abitativa_nome,
-    categoria_edilizia : data.abitazione.categoria_edilizia_nome,
+    indirizzo : data.abitazione.indirizzo,
     costo_auto : data.risultati.costo_auto,
     costi_fissi_auto : data.risultati.costi_fissi_auto,
     costo_trasporto_pubblico : data.risultati.costo_trasporto_pubblico,
