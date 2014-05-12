@@ -1067,7 +1067,7 @@ function create_chart(data) {
 
   var options = {
     animationSteps : 70,
-    animationEasing : "easeOutBounce",
+    animationEasing : "easeInOutQuart",
     animateScale : false,
     segmentShowStroke: true,
     segmentStrokeColor: "#ECF0F1"
