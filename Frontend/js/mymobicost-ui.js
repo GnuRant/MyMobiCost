@@ -547,7 +547,9 @@ function form_trasporti(){
 
   $("#trasporti-avanti").click(function() {
     //Carico il prossimo form
-    load_form_spostamenti();
+    if (array_auto.length > 0 || array_abbonamenti.length > 0) {
+      load_form_spostamenti();
+    };
   });
 }
 
@@ -650,7 +652,6 @@ function add_abbonamento(abbonamento) {
   //Gestisco i bottoni per eliminare ed edittare 
   $(".fui-cross").click(function(event) {
     var button = $(this);
-    console.log(button);
     var id_container = button.parents('.tabella-mezzo:first').attr('id');
     console.log(id_container);
     //Elimino l'elemento
@@ -784,23 +785,25 @@ function form_spostamenti (){
   });
 
   $("#spostamenti-avanti").click(function() {
-    //Aggiungo un id per identificare una location
-    user_current_data.id_location = generete_id();
-    get_results_from_user_data(user_current_data, function (data) {
-      //Salvo i nuovi dati con i risultati in local storage
-      //Aggiungo all'array dei dati utente la location appena creta
-      user_current_data.risultati = data;
-      user_data.push(user_current_data);
-      //Aggiunto il box con i risultati
-      add_box_risultati(user_current_data)
-      //Salvo i dati utente
-      //Resetto user_current_data in modo che possa accogliere una nuova location
-      save_user_data(user_data);
-      user_current_data = {};
-    });
-    //Chiudo il form di immissione
-    $("#form-container").hide();
-    $(".categoria").hide();
+    if (array_spostamenti.length > 0) {
+      //Aggiungo un id per identificare una location
+      user_current_data.id_location = generete_id();
+      get_results_from_user_data(user_current_data, function (data) {
+        //Salvo i nuovi dati con i risultati in local storage
+        //Aggiungo all'array dei dati utente la location appena creta
+        user_current_data.risultati = data;
+        user_data.push(user_current_data);
+        //Aggiunto il box con i risultati
+        add_box_risultati(user_current_data)
+        //Salvo i dati utente
+        //Resetto user_current_data in modo che possa accogliere una nuova location
+        save_user_data(user_data);
+        user_current_data = {};
+      });
+      //Chiudo il form di immissione
+      $("#form-container").hide();
+      $(".categoria").hide();
+      };
   });
 }
 
