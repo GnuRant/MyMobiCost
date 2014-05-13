@@ -80,5 +80,7 @@ def calcolo_tempo_spostamenti(data):
 		#calcolo in minuti
 		tempo += (2*float(spostamento["tempo"])*float(spostamento["percorrenze"]))
 	#converto nel formato hh:mm
-	return str(datetime.timedelta(minutes=tempo))
+	time = datetime.timedelta(minutes=tempo)
+	hours, seconds = divmod(time.seconds, 3600)
+	return str(time.days)+":"+str(hours)
 	

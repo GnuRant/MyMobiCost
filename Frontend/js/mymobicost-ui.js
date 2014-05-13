@@ -278,8 +278,11 @@ function form_abitazione (){
       $.each($("#abitazione-caller").serializeArray(), function (i, el){ 
         data[el.name] = el.value;
       });
+      //Salvo la tipolgia di form utilizzata, semplice o compelta
+      data.state = $("#checkbox-abitazione").is(":checked");
+
       //Salvo il nome della zona e del tipo d'abitazione esplicitamente
-      if (data.state === true) {
+      if (data.state === false) {
         var comune = data.comune;
         var zona = $("select[name=zona_abitativa]").find(":selected").text();
         var categoria = $("select[name=categoria_edilizia]").find(":selected").text();
@@ -288,7 +291,6 @@ function form_abitazione (){
         data.indirizzo = "Abitazione Propria";
       }    
       
-      data.state = $("#checkbox-abitazione").is(":checked");
       //Elimino i dati vecchi
       user_current_data.abitazione = data;
       //Carica il prossimo form
