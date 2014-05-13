@@ -78,6 +78,22 @@ function reset_drop_down_hard (id_element){
     .val("whatever");
 }
 
+function open_form_sidebar(){
+  $(".categoria").show();
+  $("#logo").addClass("logo-deactive");
+  $("#new-session").addClass("new-session-active");
+  $("#form-container").show();
+  //Carico anche il primo form
+  load_form_famiglia();
+}
+
+function close_form_sidebar(){
+  $(".categoria").hide();
+  $("#logo").removeClass("logo-deactive");
+  $("#new-session").removeClass("new-session-active"); 
+  $("#form-container").hide();
+}
+
 //===============================================================
 //======================= NEW SESSION ===========================
 //===============================================================
@@ -91,11 +107,8 @@ $("#welcome-avanti").click(function() {
 
 function new_session (){
   $("#welcome").hide();
-  $(".categoria").show();
-  $("#logo").addClass('logo-deactive');
-  $("#new-session").addClass('new-session-active');
-  load_form_famiglia();
-  edit_mode = true;
+  open_form_sidebar();
+  //edit_mode = true;
 }
 
 //===============================================================
@@ -790,12 +803,22 @@ function form_spostamenti (){
     if (array_spostamenti.length > 0) {
       //Aggiungo un id per identificare una location
       user_current_data.id_location = generete_id();
+      //Invio i dati al server per carlcolare i costi
       get_results_from_user_data(user_current_data, function (data) {
         //Salvo i nuovi dati con i risultati in local storage
-        //Aggiungo all'array dei dati utente la location appena creta
         user_current_data.risultati = data;
-        user_data.push(user_current_data);
-        //Aggiunto il box con i risultati
+        if (tile_edit_mode == true) {
+          //Elimino l'elemento dal DOM per aggiornarlo
+          $("#"+tile_old_id).remove();
+          //Salvo i dati in localstorage
+          tile_edit_mode = false;
+        }else{
+          //Aggiungo all'array dei dati utente la location appena creta
+          user_data.push(user_current_data);
+          //Aggiunto il box con i risultati
+          add_box_risultati(user_current_data)
+        }
+
         add_box_risultati(user_current_data)
         //Salvo i dati utente
         //Resetto user_current_data in modo che possa accogliere una nuova location
@@ -803,8 +826,7 @@ function form_spostamenti (){
         user_current_data = {};
       });
       //Chiudo il form di immissione
-      $("#form-container").hide();
-      $(".categoria").hide();
+      close_form_sidebar();
       };
   });
 }
@@ -918,6 +940,17 @@ function add_box_risultati(data){
       //Salvo in local storage i cambiamenti
       save_user_data(user_data);
     });
+    $(".fui-new").click(function(event) {
+      var button = $(this);
+      var tile = button.parents('.tile-risultato:first').attr('id');
+      //Apro il menu di edit, imposto che sono in modalità editing
+      //Al prossimo salvataggio sovrascrivo la tile
+      tile_edit_mode = true;
+      //Carico i dati nel form
+      user_current_data = find_user_data_with_id(tile);
+      tile_old_id = user_current_data.id_location;
+      open_form_sidebar();
+    });
   });
 }
 
@@ -949,6 +982,17 @@ function create_chart(data) {
   }
 
   new Chart(ctx).Doughnut(data,options);
+}
+
+function find_user_data_with_id(id){
+  var data  = {};
+  $.each(user_data, function(i, el) {
+    if (el.id_location == id) {
+      data = el;
+    };
+  });
+
+  return data;
 }
 
 function remove_tile_with_id(id){

@@ -3,6 +3,8 @@
 var user_data = [];
 var user_current_data = {};
 var edit_mode = false;
+var tile_edit_mode = false;
+var tile_old_id = ""
 
 $( document ).ready(function (){
 	/*
