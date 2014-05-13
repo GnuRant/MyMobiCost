@@ -655,7 +655,6 @@ function add_abbonamento(abbonamento) {
   $(".fui-cross").click(function(event) {
     var button = $(this);
     var id_container = button.parents('.tabella-mezzo:first').attr('id');
-    console.log(id_container);
     //Elimino l'elemento
     $("#"+id_container).remove();
     //Elimino l'lemento dall'array
@@ -733,6 +732,7 @@ function form_spostamenti (){
   // selettori belli bellissimi
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
+  //Se ho già dati gli carico nella tabella
   laod_spostamenti_data();
 
   //Collego l'array che contiene gli spostamenti ai dati correnti dell'utente
@@ -907,6 +907,17 @@ function add_box_risultati(data){
     $("#container-risultato").append(rendered);
     //Renderizzo il grafico
     create_chart(template_data)
+    //Collego i bottoni per eliminare e editare i box
+    $(".fui-cross").click(function(event) {
+      var button = $(this);
+      var tile = button.parents('.tile-risultato:first').attr('id');
+      //Elimino la tile dall'array e poi dall'array
+      remove_tile_with_id(tile);
+      $("#"+tile).remove();
+
+      //Salvo in local storage i cambiamenti
+      save_user_data(user_data);
+    });
   });
 }
 
@@ -940,3 +951,10 @@ function create_chart(data) {
   new Chart(ctx).Doughnut(data,options);
 }
 
+function remove_tile_with_id(id){
+  $.each(user_data, function(i, el) {
+    if (el.id_location == id) {
+      user_data.splice(user_data.indexOf(el), 1);
+    };
+  });
+}
