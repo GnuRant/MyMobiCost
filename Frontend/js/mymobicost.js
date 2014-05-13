@@ -40,7 +40,7 @@ var userKey = {
 	@return true ci sono dati, false altrimenti
 */
 function check_user_local_storage () {
-	if (localStorage[userKey.key] != null) {
+	if (localStorage[userKey.key] != null && JSON.parse(localStorage["MMCUserData"]).length > 0){
 		return true;
 	}else{
 		return false;
