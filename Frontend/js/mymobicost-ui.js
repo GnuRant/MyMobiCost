@@ -409,7 +409,11 @@ function form_trasporti(){
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
 
-  //Coolego gli arrai in modo da non dover dare avanti per salvare mezzi ed abbonamenti
+  //Controllo se ci sono dati da caricare 
+  load_automobili_data();
+  load_abbonamenti_data();
+
+  //Coolego gli array in modo da non dover dare avanti per salvare mezzi ed abbonamenti
   user_current_data.automobili = array_auto;
   user_current_data.abbonamenti = array_abbonamenti;
 
@@ -425,10 +429,6 @@ function form_trasporti(){
   $('#bottone-aggiungi-abbonamento').click(function () {
     $('#aggiungi-abbonamento').show();
   });
-
-  //Controllo se ci sono dati da caricare 
-  load_automobili_data();
-  load_abbonamenti_data();
 
   //Carico i dati delle categorie delle auto
   get_auto_categorie(function (data){
