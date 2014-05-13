@@ -808,22 +808,27 @@ function form_spostamenti (){
         //Salvo i nuovi dati con i risultati in local storage
         user_current_data.risultati = data;
         if (tile_edit_mode == true) {
+          //Non serve che rimuova l'oggetto dall'array in quanto
+          //é passato per rederenza quindi lo modifico e basta
           //Elimino l'elemento dal DOM per aggiornarlo
           $("#"+tile_old_id).remove();
           //Salvo i dati in localstorage
           tile_edit_mode = false;
+          tile_old_id = "";
         }else{
           //Aggiungo all'array dei dati utente la location appena creta
           user_data.push(user_current_data);
-          //Aggiunto il box con i risultati
-          add_box_risultati(user_current_data)
         }
-
+        //Aggiunto il box con i risultati
         add_box_risultati(user_current_data)
         //Salvo i dati utente
         //Resetto user_current_data in modo che possa accogliere una nuova location
         save_user_data(user_data);
+        //Reset delle variabili locali
         user_current_data = {};
+        array_auto = [];
+        array_spostamenti = [];
+        array_abbonamenti = [];
       });
       //Chiudo il form di immissione
       close_form_sidebar();
