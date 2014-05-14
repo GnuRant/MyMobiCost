@@ -82,7 +82,10 @@ function open_form_sidebar(){
   $(".categoria").show();
   $("#logo").addClass("logo-deactive");
   $("#new-session").addClass("new-session-active");
-  $("#form-container").show();
+  $("#form-container").addClass( "form-container-open" );
+  $("#content-pusher").addClass( "pusher-open" );
+  $(".overlay").css("opacity", "0.7");
+
   //Carico anche il primo form
   load_form_famiglia();
 }
