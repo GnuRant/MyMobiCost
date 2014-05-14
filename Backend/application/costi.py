@@ -5,7 +5,7 @@ NUMERO_SETTIMANE = 52
 def calcolo_abitazione_costi(data):
 	#il dato puo' essere quello inserito dall'utente come
 	#costo dell'affitto, o quello calcolato come costo m^2*numero_m^2
-	return float(data["abitazione"]["cost_med"])
+	return float(data["abitazione"]["cost_med"])*12
 
 def calcolo_spostamenti_auto_costi(data):
 	costo = 0
@@ -24,7 +24,7 @@ def calcolo_spostamenti_auto_costi(data):
 					auto = trova_auto_id(automobili, id_mezzo)
 					costo_km = float(auto["costo_km"])
 					#calcolo su base mensile
-					costo += 4*(2*(float(spostamento["distanza"])*float(spostamento["percorrenze"])*costo_km))
+					costo += NUMERO_SETTIMANE*4*(2*(float(spostamento["distanza"])*float(spostamento["percorrenze"])*costo_km))
 	except Exception, e:
 		costo = 0
 
@@ -65,13 +65,13 @@ def calcolo_spostamento_mezzi_costi(data):
 	#prendo tutti gli abbomanti e calcolo in costo portando il dato in forma mensile
 	for abbonamento in abbonamenti:
 		if abbonamento["tipo"] == "mensile":
-			costo += float(abbonamento["costo"])
+			costo += float(abbonamento["costo"])*12
 		elif abbonamento["tipo"] == "settimanale":
-			costo += float(abbonamento["costo"])*4
+			costo += float(abbonamento["costo"])*NUMERO_SETTIMANE
 		elif abbonamento["tipo"] == "semestrale":
-			costo += float(abbonamento["costo"])/6
+			costo += float(abbonamento["costo"])*2
 		elif abbonamento["tipo"] == "annuale":
-			costo += float(abbonamento["costo"])/12
+			costo += float(abbonamento["costo"])
 
 	return costo
 

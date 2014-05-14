@@ -925,7 +925,8 @@ function add_box_risultati(data){
     costo_auto : parseFloat(data.risultati.costo_auto).toFixed(2),
     costi_fissi_auto : parseFloat(data.risultati.costi_fissi_auto).toFixed(2),
     costo_trasporto_pubblico : parseFloat(data.risultati.costo_trasporto_pubblico).toFixed(2),
-    costo_abitazione_annuale : (parseFloat(data.risultati.costo_residenza)*12).toFixed(2),
+    costo_totale_annuale : (parseFloat(data.risultati.costo_residenza)+parseFloat(data.risultati.costo_auto)+
+                            parseFloat(data.risultati.costi_fissi_auto)+parseFloat(data.risultati.costo_trasporto_pubblico)).toFixed(2),
     tempo_speso : data.risultati.tempo_speso
   };
 
