@@ -958,6 +958,12 @@ function add_box_risultati(data){
       open_form_sidebar();
     });
   });
+  //Aggiungo il contenitore dei risultati se non prsente poi
+  //carico il grafo
+  if (!$('#form-container').children().length > 0) {
+    //Aggiungo il contenitore poi aggungo il grafico
+    load_partial("partials/confronto.html","#container-confronto");
+  };
 }
 
 function create_chart(data) {
