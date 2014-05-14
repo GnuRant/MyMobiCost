@@ -963,7 +963,28 @@ function add_box_risultati(data){
   if (!$('#form-container').children().length > 0) {
     //Aggiungo il contenitore poi aggungo il grafico
     load_partial("partials/confronto.html","#container-confronto");
+    creare_comparison_chart(template_data);
   };
+}
+
+function creare_comparison_chart(data) {
+  var template_data = {
+    id_grafico_confronto : (data.id_location+"-grafico-confronto")
+  };
+  //Carico il partial e lo aggiungo
+  $.get("/partials/grafico-confronto.html", function (template){
+    var rendered = Mustache.render(template, template_data);
+    $("#confronto-grafici-container").append(rendered);
+    //Imposto le altezze corrette degl elementi
+    var costo_totale_annuale = data.costo_totale_annuale;
+    var percentuale_casa = (data.costo_residenza / costo_totale_annuale)*100;
+    var percentuale_auto = (data.costo_auto / costo_totale_annuale)*100;
+    var percentuale_abbonamenti = (data.costo_trasporto_pubblico / costo_totale_annuale)*100;
+    //Imposto il css per le altezze
+    $(template_data.id_grafico_confronto).children(".residenza-grafico").css("height", percentuale_casa+"%");
+    $(template_data.id_grafico_confronto).children(".auto-grafico").css("height", percentuale_auto+"%");
+    $(template_data.id_grafico_confronto).children(".trasporti-grafico").css("height", percentuale_abbonamenti+"%");
+  });
 }
 
 function create_chart(data) {
