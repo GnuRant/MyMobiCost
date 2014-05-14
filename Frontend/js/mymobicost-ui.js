@@ -962,9 +962,13 @@ function add_box_risultati(data){
   //carico il grafo
   if (!$('#form-container').children().length > 0) {
     //Aggiungo il contenitore poi aggungo il grafico
-    load_partial("partials/confronto.html","#container-confronto");
+    load_partial("partials/confronto.html","#container-confronto", function(){
+      creare_comparison_chart(template_data);
+    });
+  }else{
     creare_comparison_chart(template_data);
-  };
+  }
+  
 }
 
 function creare_comparison_chart(data) {
@@ -976,14 +980,18 @@ function creare_comparison_chart(data) {
     var rendered = Mustache.render(template, template_data);
     $("#confronto-grafici-container").append(rendered);
     //Imposto le altezze corrette degl elementi
-    var costo_totale_annuale = data.costo_totale_annuale;
+    var costo_totale_annuale = parseFloat(data.costo_auto)+parseFloat(data.costo_residenza)+parseFloat(data.costo_trasporto_pubblico)
+
     var percentuale_casa = (data.costo_residenza / costo_totale_annuale)*100;
-    var percentuale_auto = (data.costo_auto / costo_totale_annuale)*100;
+    var percentuale_auto = (data.costo_auto/ costo_totale_annuale)*100;
     var percentuale_abbonamenti = (data.costo_trasporto_pubblico / costo_totale_annuale)*100;
     //Imposto il css per le altezze
-    $(template_data.id_grafico_confronto).children(".residenza-grafico").css("height", percentuale_casa+"%");
-    $(template_data.id_grafico_confronto).children(".auto-grafico").css("height", percentuale_auto+"%");
-    $(template_data.id_grafico_confronto).children(".trasporti-grafico").css("height", percentuale_abbonamenti+"%");
+    console.log(data.id_location);
+    $("#"+data.id_location+"-grafico-confronto").children(".residenza-grafico").css("height", percentuale_casa+"%");
+    $("#"+data.id_location+"-grafico-confronto").children(".auto-grafico").css("height", percentuale_auto+"%");
+    $("#"+data.id_location+"-grafico-confronto").children(".trasporti-grafico").css("height", percentuale_abbonamenti+"%");
+    //Aggiungo la didascalia
+    $("#confronto-grafici-testo").append("<div id=\""+data.id_location+"-didascalia\" class=\"confronto-didascalia\">"+data.indirizzo+"</div>");
   });
 }
 
