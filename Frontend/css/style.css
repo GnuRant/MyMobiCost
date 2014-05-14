@@ -271,6 +271,7 @@ input {
   transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
 }
 .overlay {
+  display: none;
   background: #000;
   position: absolute;
   width: 100%;

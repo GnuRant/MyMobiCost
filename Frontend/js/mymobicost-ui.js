@@ -84,6 +84,7 @@ function open_form_sidebar(){
   $("#new-session").addClass("new-session-active");
   $("#form-container").addClass( "form-container-open" );
   $("#content-pusher").addClass( "pusher-open" );
+  $(".overlay").show();
   $(".overlay").css("opacity", "0.7");
 
   //Carico anche il primo form
@@ -97,6 +98,7 @@ function close_form_sidebar(){
   $("#form-container").removeClass( "form-container-open" );
   $("#content-pusher").removeClass( "pusher-open" );
   $(".overlay").css("opacity", "0");
+  $(".overlay").hide();
 }
 
 //===============================================================
