@@ -812,6 +812,7 @@ function form_spostamenti (){
           //é passato per rederenza quindi lo modifico e basta
           //Elimino l'elemento dal DOM per aggiornarlo
           $("#"+tile_old_id).remove();
+          remove_comparison_chart(tile_old_id);
           //Salvo i dati in localstorage
           tile_edit_mode = false;
           tile_old_id = "";
@@ -942,7 +943,8 @@ function add_box_risultati(data){
       //Elimino la tile dall'array e poi dall'array
       remove_tile_with_id(tile);
       $("#"+tile).remove();
-
+      //Rimuovo il grafico in confronto
+      remove_comparison_chart(tile);
       //Salvo in local storage i cambiamenti
       save_user_data(user_data);
     });
@@ -960,13 +962,14 @@ function add_box_risultati(data){
   });
   //Aggiungo il contenitore dei risultati se non prsente poi
   //carico il grafo
-  if (!$('#form-container').children().length > 0) {
+  if (!($('#form-container').children().length > 0)) {
     //Aggiungo il contenitore poi aggungo il grafico
     load_partial("partials/confronto.html","#container-confronto", function(){
       creare_comparison_chart(template_data);
     });
   }else{
     creare_comparison_chart(template_data);
+    $('#form-container').show();
   }
   
 }
@@ -993,6 +996,17 @@ function creare_comparison_chart(data) {
     //Aggiungo la didascalia
     $("#confronto-grafici-testo").append("<div id=\""+data.id_location+"-didascalia\" class=\"confronto-didascalia\">"+data.indirizzo+"</div>");
   });
+}
+
+function remove_comparison_chart(id){
+  //Rimuovo il grafico a barre
+  $("#"+id+"-grafico-confronto").remove();
+  //Rimuovo la didascalia
+  $("#"+id+"-didascalia").remove();
+  //Se il contenitore dei grafici non ha figli allora lo nascondo
+  if(!($('#form-container').children().length > 0)){
+    $('#container-confronto').hide();
+  }
 }
 
 function create_chart(data) {
