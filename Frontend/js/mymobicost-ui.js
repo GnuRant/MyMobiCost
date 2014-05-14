@@ -94,7 +94,9 @@ function close_form_sidebar(){
   $(".categoria").hide();
   $("#logo").removeClass("logo-deactive");
   $("#new-session").removeClass("new-session-active"); 
-  $("#form-container").hide();
+  $("#form-container").removeClass( "form-container-open" );
+  $("#content-pusher").removeClass( "pusher-open" );
+  $(".overlay").css("opacity", "0");
 }
 
 //===============================================================
