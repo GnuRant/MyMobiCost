@@ -3,6 +3,8 @@
 var user_data = [];
 var user_current_data = {};
 var edit_mode = false;
+var tile_edit_mode = false;
+var tile_old_id = ""
 
 $( document ).ready(function (){
 	/*
@@ -40,7 +42,7 @@ var userKey = {
 	@return true ci sono dati, false altrimenti
 */
 function check_user_local_storage () {
-	if (localStorage[userKey.key] != null) {
+	if (localStorage[userKey.key] != null && JSON.parse(localStorage["MMCUserData"]).length > 0){
 		return true;
 	}else{
 		return false;

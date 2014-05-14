@@ -78,6 +78,22 @@ function reset_drop_down_hard (id_element){
     .val("whatever");
 }
 
+function open_form_sidebar(){
+  $(".categoria").show();
+  $("#logo").addClass("logo-deactive");
+  $("#new-session").addClass("new-session-active");
+  $("#form-container").show();
+  //Carico anche il primo form
+  load_form_famiglia();
+}
+
+function close_form_sidebar(){
+  $(".categoria").hide();
+  $("#logo").removeClass("logo-deactive");
+  $("#new-session").removeClass("new-session-active"); 
+  $("#form-container").hide();
+}
+
 //===============================================================
 //======================= NEW SESSION ===========================
 //===============================================================
@@ -91,11 +107,8 @@ $("#welcome-avanti").click(function() {
 
 function new_session (){
   $("#welcome").hide();
-  $(".categoria").show();
-  $("#logo").addClass('logo-deactive');
-  $("#new-session").addClass('new-session-active');
-  load_form_famiglia();
-  edit_mode = true;
+  open_form_sidebar();
+  //edit_mode = true;
 }
 
 //===============================================================
@@ -278,8 +291,11 @@ function form_abitazione (){
       $.each($("#abitazione-caller").serializeArray(), function (i, el){ 
         data[el.name] = el.value;
       });
+      //Salvo la tipolgia di form utilizzata, semplice o compelta
+      data.state = $("#checkbox-abitazione").is(":checked");
+
       //Salvo il nome della zona e del tipo d'abitazione esplicitamente
-      if (data.state === true) {
+      if (data.state === false) {
         var comune = data.comune;
         var zona = $("select[name=zona_abitativa]").find(":selected").text();
         var categoria = $("select[name=categoria_edilizia]").find(":selected").text();
@@ -288,7 +304,6 @@ function form_abitazione (){
         data.indirizzo = "Abitazione Propria";
       }    
       
-      data.state = $("#checkbox-abitazione").is(":checked");
       //Elimino i dati vecchi
       user_current_data.abitazione = data;
       //Carica il prossimo form
@@ -407,7 +422,11 @@ function form_trasporti(){
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
 
-  //Coolego gli arrai in modo da non dover dare avanti per salvare mezzi ed abbonamenti
+  //Controllo se ci sono dati da caricare 
+  load_automobili_data();
+  load_abbonamenti_data();
+
+  //Coolego gli array in modo da non dover dare avanti per salvare mezzi ed abbonamenti
   user_current_data.automobili = array_auto;
   user_current_data.abbonamenti = array_abbonamenti;
 
@@ -423,10 +442,6 @@ function form_trasporti(){
   $('#bottone-aggiungi-abbonamento').click(function () {
     $('#aggiungi-abbonamento').show();
   });
-
-  //Controllo se ci sono dati da caricare 
-  load_automobili_data();
-  load_abbonamenti_data();
 
   //Carico i dati delle categorie delle auto
   get_auto_categorie(function (data){
@@ -653,7 +668,6 @@ function add_abbonamento(abbonamento) {
   $(".fui-cross").click(function(event) {
     var button = $(this);
     var id_container = button.parents('.tabella-mezzo:first').attr('id');
-    console.log(id_container);
     //Elimino l'elemento
     $("#"+id_container).remove();
     //Elimino l'lemento dall'array
@@ -731,6 +745,7 @@ function form_spostamenti (){
   // selettori belli bellissimi
   $("select").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
   $('.switch')['bootstrapSwitch']();
+  //Se ho già dati gli carico nella tabella
   laod_spostamenti_data();
 
   //Collego l'array che contiene gli spostamenti ai dati correnti dell'utente
@@ -788,21 +803,35 @@ function form_spostamenti (){
     if (array_spostamenti.length > 0) {
       //Aggiungo un id per identificare una location
       user_current_data.id_location = generete_id();
+      //Invio i dati al server per carlcolare i costi
       get_results_from_user_data(user_current_data, function (data) {
         //Salvo i nuovi dati con i risultati in local storage
-        //Aggiungo all'array dei dati utente la location appena creta
         user_current_data.risultati = data;
-        user_data.push(user_current_data);
+        if (tile_edit_mode == true) {
+          //Non serve che rimuova l'oggetto dall'array in quanto
+          //é passato per rederenza quindi lo modifico e basta
+          //Elimino l'elemento dal DOM per aggiornarlo
+          $("#"+tile_old_id).remove();
+          //Salvo i dati in localstorage
+          tile_edit_mode = false;
+          tile_old_id = "";
+        }else{
+          //Aggiungo all'array dei dati utente la location appena creta
+          user_data.push(user_current_data);
+        }
         //Aggiunto il box con i risultati
         add_box_risultati(user_current_data)
         //Salvo i dati utente
         //Resetto user_current_data in modo che possa accogliere una nuova location
         save_user_data(user_data);
+        //Reset delle variabili locali
         user_current_data = {};
+        array_auto = [];
+        array_spostamenti = [];
+        array_abbonamenti = [];
       });
       //Chiudo il form di immissione
-      $("#form-container").hide();
-      $(".categoria").hide();
+      close_form_sidebar();
       };
   });
 }
@@ -896,7 +925,8 @@ function add_box_risultati(data){
     costo_auto : parseFloat(data.risultati.costo_auto).toFixed(2),
     costi_fissi_auto : parseFloat(data.risultati.costi_fissi_auto).toFixed(2),
     costo_trasporto_pubblico : parseFloat(data.risultati.costo_trasporto_pubblico).toFixed(2),
-    costo_abitazione_annuale : (parseFloat(data.risultati.costo_residenza)*12).toFixed(2),
+    costo_totale_annuale : (parseFloat(data.risultati.costo_residenza)+parseFloat(data.risultati.costo_auto)+
+                            parseFloat(data.risultati.costi_fissi_auto)+parseFloat(data.risultati.costo_trasporto_pubblico)).toFixed(2),
     tempo_speso : data.risultati.tempo_speso
   };
 
@@ -905,6 +935,28 @@ function add_box_risultati(data){
     $("#container-risultato").append(rendered);
     //Renderizzo il grafico
     create_chart(template_data)
+    //Collego i bottoni per eliminare e editare i box
+    $(".fui-cross").click(function(event) {
+      var button = $(this);
+      var tile = button.parents('.tile-risultato:first').attr('id');
+      //Elimino la tile dall'array e poi dall'array
+      remove_tile_with_id(tile);
+      $("#"+tile).remove();
+
+      //Salvo in local storage i cambiamenti
+      save_user_data(user_data);
+    });
+    $(".fui-new").click(function(event) {
+      var button = $(this);
+      var tile = button.parents('.tile-risultato:first').attr('id');
+      //Apro il menu di edit, imposto che sono in modalità editing
+      //Al prossimo salvataggio sovrascrivo la tile
+      tile_edit_mode = true;
+      //Carico i dati nel form
+      user_current_data = find_user_data_with_id(tile);
+      tile_old_id = user_current_data.id_location;
+      open_form_sidebar();
+    });
   });
 }
 
@@ -938,3 +990,21 @@ function create_chart(data) {
   new Chart(ctx).Doughnut(data,options);
 }
 
+function find_user_data_with_id(id){
+  var data  = {};
+  $.each(user_data, function(i, el) {
+    if (el.id_location == id) {
+      data = el;
+    };
+  });
+
+  return data;
+}
+
+function remove_tile_with_id(id){
+  $.each(user_data, function(i, el) {
+    if (el.id_location == id) {
+      user_data.splice(user_data.indexOf(el), 1);
+    };
+  });
+}
