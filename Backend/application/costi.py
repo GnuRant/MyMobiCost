@@ -11,17 +11,16 @@ def calcolo_spostamenti_auto_costi(data):
 	costo = 0
 	try:
 		automobili = data["automobili"]
+		print len(automobili)
 		#itero tu tutte su tutti gli spostamenti, se e' uno spostamento effettuato
 		#con l'auto allora calcolo il suo costo, altrimenti non lo considero
 		spostamenti = data["spostamenti"]
 		for spostamento in spostamenti:
 			id_mezzo = spostamento["id_mezzo"]
+			print "ID da trovare "+id_mezzo
 			if id_mezzo != 0:
 				#Controllo che non sia un'abbonamento
-				if trova_auto_id(automobili, id_mezzo) is None:
-					#se e' un abbonamento non lo conto
-					continue
-				elif trova_auto_id(automobili, id_mezzo) is not None:
+				if trova_auto_id(automobili, id_mezzo) is not None:
 					auto = trova_auto_id(automobili, id_mezzo)
 					costo_km = float(auto["costo_km"])
 					#calcolo su base mensile
@@ -45,15 +44,20 @@ def calcolo_costi_acessori_costo(data):
 
 
 def trova_auto_id(automobili, id):
+	return_auto = ""
 	""" 
 		Data la lista delle auto, ritorna il dizionario per l'auto
 		con un determianto indice 
 	"""
 	for auto in automobili:
 		if auto["id_auto"] == id:
-			return auto
+			return_auto = auto
+			print "auto trovata"
+			break
 		else:
-			return None
+			return_auto = None
+			print "auto non trovata"
+	return return_auto
 
 def calcolo_spostamento_mezzi_costi(data):
 	costo  = 0
