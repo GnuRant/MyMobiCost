@@ -962,14 +962,14 @@ function add_box_risultati(data){
   });
   //Aggiungo il contenitore dei risultati se non prsente poi
   //carico il grafo
-  if (!($('#form-container').children().length > 0)) {
+  if (!($('#container-confronto').children().length > 0)) {
     //Aggiungo il contenitore poi aggungo il grafico
     load_partial("partials/confronto.html","#container-confronto", function(){
       creare_comparison_chart(template_data);
     });
   }else{
     creare_comparison_chart(template_data);
-    $('#form-container').show();
+    $('#container-confronto').show();
   }
   
 }
@@ -1004,7 +1004,7 @@ function remove_comparison_chart(id){
   //Rimuovo la didascalia
   $("#"+id+"-didascalia").remove();
   //Se il contenitore dei grafici non ha figli allora lo nascondo
-  if(!($('#form-container').children().length > 0)){
+  if(!($('#confronto-grafici-container').children().length > 0)){
     $('#container-confronto').hide();
   }
 }
