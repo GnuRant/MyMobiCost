@@ -815,6 +815,7 @@ function form_spostamenti (){
           //é passato per rederenza quindi lo modifico e basta
           //Elimino l'elemento dal DOM per aggiornarlo
           $("#"+tile_old_id).remove();
+          remove_comparison_chart(tile_old_id);
           //Salvo i dati in localstorage
           tile_edit_mode = false;
           tile_old_id = "";
@@ -832,9 +833,9 @@ function form_spostamenti (){
         array_auto = [];
         array_spostamenti = [];
         array_abbonamenti = [];
-      });
-      //Chiudo il form di immissione
+        //Chiudo il form di immissione
       close_form_sidebar();
+      });
       };
   });
 }
@@ -945,7 +946,8 @@ function add_box_risultati(data){
       //Elimino la tile dall'array e poi dall'array
       remove_tile_with_id(tile);
       $("#"+tile).remove();
-
+      //Rimuovo il grafico in confronto
+      remove_comparison_chart(tile);
       //Salvo in local storage i cambiamenti
       save_user_data(user_data);
     });
@@ -961,6 +963,53 @@ function add_box_risultati(data){
       open_form_sidebar();
     });
   });
+  //Aggiungo il contenitore dei risultati se non prsente poi
+  //carico il grafo
+  if (!($('#container-confronto').children().length > 0)) {
+    //Aggiungo il contenitore poi aggungo il grafico
+    load_partial("partials/confronto.html","#container-confronto", function(){
+      creare_comparison_chart(template_data);
+    });
+  }else{
+    creare_comparison_chart(template_data);
+    $('#container-confronto').show();
+  }
+  
+}
+
+function creare_comparison_chart(data) {
+  var template_data = {
+    id_grafico_confronto : (data.id_location+"-grafico-confronto")
+  };
+  //Carico il partial e lo aggiungo
+  $.get("/partials/grafico-confronto.html", function (template){
+    var rendered = Mustache.render(template, template_data);
+    $("#confronto-grafici-container").append(rendered);
+    //Imposto le altezze corrette degl elementi
+    var costo_totale_annuale = parseFloat(data.costo_auto)+parseFloat(data.costo_residenza)+parseFloat(data.costo_trasporto_pubblico)
+
+    var percentuale_casa = (data.costo_residenza / costo_totale_annuale)*100;
+    var percentuale_auto = (data.costo_auto/ costo_totale_annuale)*100;
+    var percentuale_abbonamenti = (data.costo_trasporto_pubblico / costo_totale_annuale)*100;
+    //Imposto il css per le altezze
+    console.log(data.id_location);
+    $("#"+data.id_location+"-grafico-confronto").children(".residenza-grafico").css("height", percentuale_casa+"%");
+    $("#"+data.id_location+"-grafico-confronto").children(".auto-grafico").css("height", percentuale_auto+"%");
+    $("#"+data.id_location+"-grafico-confronto").children(".trasporti-grafico").css("height", percentuale_abbonamenti+"%");
+    //Aggiungo la didascalia
+    $("#confronto-grafici-testo").append("<div id=\""+data.id_location+"-didascalia\" class=\"confronto-didascalia\">"+data.indirizzo+"</div>");
+  });
+}
+
+function remove_comparison_chart(id){
+  //Rimuovo il grafico a barre
+  $("#"+id+"-grafico-confronto").remove();
+  //Rimuovo la didascalia
+  $("#"+id+"-didascalia").remove();
+  //Se il contenitore dei grafici non ha figli allora lo nascondo
+  if(!($('#confronto-grafici-container').children().length > 0)){
+    $('#container-confronto').hide();
+  }
 }
 
 function create_chart(data) {
