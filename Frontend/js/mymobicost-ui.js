@@ -830,9 +830,9 @@ function form_spostamenti (){
         array_auto = [];
         array_spostamenti = [];
         array_abbonamenti = [];
-      });
-      //Chiudo il form di immissione
+        //Chiudo il form di immissione
       close_form_sidebar();
+      });
       };
   });
 }
