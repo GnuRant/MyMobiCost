@@ -22,8 +22,8 @@
   display: block;
   -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
   transition:         all 600ms cubic-bezier(0.77, 0, 0.175, 1);
-  transform: translate3d(0, 0, 0)
-  
+  transform: translateZ(0)
+
 .overlay
   display none
   background #000
@@ -148,7 +148,6 @@
 
 //titolo fermo
 #trasporti-form, #abitazione-form, #famiglia-form, #spostamenti-form
-  // transition 1s ease-in-out;
   padding-top 50px
   h1
     position fixed
@@ -226,7 +225,7 @@
   margin-left 0 !important
   -webkit-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition:         all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transform: translate3d(0, 0, 0);
+  // transform: translateZ(0);
 
 .form-horizontal .control-label
   text-align: left;
