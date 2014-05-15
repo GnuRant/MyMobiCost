@@ -440,6 +440,11 @@ input {
   -ms-transition: 0.3s;
   transition: 0.3s;
 }
+#left-sidebar .categoria .deactive {
+  opacity: 0.3;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+  filter: alpha(opacity=30);
+}
 #left-sidebar .categoria:hover {
   background: #404040;
   -webkit-transition: 0.3s;
