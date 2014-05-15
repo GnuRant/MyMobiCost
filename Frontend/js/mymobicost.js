@@ -79,7 +79,8 @@ function save_user_data (data) {
 function magic(){
 	var easter_egg = new Konami();
 	easter_egg.code = function() {
-		alert("Costa metal!!!!");
+		$("#container-risultato").children().remove();
+		$("#container-risultato").append('<iframe width="420" height="315" src="//www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>')
 	}
 	easter_egg.load();
 }
