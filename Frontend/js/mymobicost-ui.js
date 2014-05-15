@@ -930,8 +930,9 @@ function add_box_risultati(data){
     id_location : data.id_location,
     costo_residenza : parseFloat(data.risultati.costo_residenza).toFixed(2),
     indirizzo : data.abitazione.indirizzo,
-    costo_auto : parseFloat(data.risultati.costo_auto).toFixed(2),
+    costo_auto : (parseFloat(data.risultati.costo_auto)+parseFloat(data.risultati.costi_fissi_auto)).toFixed(2),
     costi_fissi_auto : parseFloat(data.risultati.costi_fissi_auto).toFixed(2),
+    costi_spostamenti_auto : parseFloat(data.risultati.costo_auto).toFixed(2),
     costo_trasporto_pubblico : parseFloat(data.risultati.costo_trasporto_pubblico).toFixed(2),
     costo_totale_annuale : (parseFloat(data.risultati.costo_residenza)+parseFloat(data.risultati.costo_auto)+
                             parseFloat(data.risultati.costi_fissi_auto)+parseFloat(data.risultati.costo_trasporto_pubblico)).toFixed(2),
