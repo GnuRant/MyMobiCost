@@ -1003,6 +1003,9 @@ function creare_comparison_chart(data) {
     $("#"+data.id_location+"-grafico-confronto").children(".trasporti-grafico").css("height", percentuale_abbonamenti+"%");
     //Aggiungo la didascalia
     $("#confronto-grafici-testo").append("<div id=\""+data.id_location+"-didascalia\" class=\"confronto-didascalia\">"+data.indirizzo+"</div>");
+    //Animo i grafici
+    $("#"+data.id_location+"-grafico-confronto").css("padding-top", "50%");
+    $("#"+data.id_location+"-grafico-confronto").animate({"padding-top" : "0%"}, 1000, "easeInOutQuart");
   });
 }
 
