@@ -545,7 +545,7 @@ input {
   margin: 1em auto 0;
 }
 #form-container {
-  margin-left: -500px;
+  margin-left: -600px;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
   -o-transition: 0.5s;
@@ -927,12 +927,12 @@ input {
   bottom: 0;
   left: 120px;
   right: 120px;
-  height: 220px;
+  height: 250px;
   margin-bottom: 0;
 }
 #confronto-content {
   background: #ecf0f1;
-  height: 190px;
+  height: 220px;
 }
 #confronto-legenda {
   padding-top: 1em;
@@ -1002,7 +1002,7 @@ input {
 }
 #confronto-grafici-testo {
   position: absolute;
-  bottom: 0px;
+  bottom: 1.5em;
   left: 225px;
 }
 .confronto-didascalia {
