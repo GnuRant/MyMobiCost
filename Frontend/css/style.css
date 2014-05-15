@@ -806,7 +806,8 @@ input {
 .categorie-auto,
 .categorie-mezzi {
   padding: 0 0.8em;
-  margin-top: 0.8em;
+  margin-top: 1em;
+  margin-bottom: 0.7em;
 }
 .categorie-residenza .costo-sezione,
 .categorie-spostamenti .costo-sezione,
@@ -815,7 +816,7 @@ input {
   font-weight: bold;
   font-size: 2em;
   margin: 0;
-  line-height: 1.4em;
+  line-height: 1.3em;
 }
 .categorie-residenza .costo-auto-dettaglio,
 .categorie-spostamenti .costo-auto-dettaglio,
@@ -825,7 +826,7 @@ input {
   font-weight: 300;
   line-height: 1em;
   margin-top: 0;
-  margin-bottom: 1.5em;
+  margin-bottom: 0.4em;
 }
 .categorie-residenza .titolo-spostamenti,
 .categorie-spostamenti .titolo-spostamenti,
@@ -1053,4 +1054,15 @@ input {
 }
 #confirm p .annulla {
   color: #313131;
+}
+#big-overlay {
+  background: #313131;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  z-index: 256;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: none;
 }
