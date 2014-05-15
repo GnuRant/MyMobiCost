@@ -712,8 +712,8 @@ function load_abbonamenti_data(){
 function load_form_abbonamento_data(abbonamento){
   //Carico i dati nel drop_down
   $("#aggiungi-abbonamento").show();
-
-  $("select[name=abbonamento_nome]").val(abbonamento.abbonamento_nome).change();
+  $("input[name=abbonamento_nome]").val(abbonamento.abbonamento_nome)
+  $("select[name=abbonamento_categoria]").val(abbonamento.abbonamento_categoria).change();
   $("select[name=tipo]").val(abbonamento.tipo).change();
   //Carico gli input
   $("input[name=costo]").val(abbonamento.costo)

@@ -52,11 +52,9 @@ def trova_auto_id(automobili, id):
 	for auto in automobili:
 		if auto["id_auto"] == id:
 			return_auto = auto
-			print "auto trovata"
 			break
 		else:
 			return_auto = None
-			print "auto non trovata"
 	return return_auto
 
 def calcolo_spostamento_mezzi_costi(data):
