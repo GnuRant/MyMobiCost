@@ -80,7 +80,8 @@ function magic(){
 	var easter_egg = new Konami();
 	easter_egg.code = function() {
 		$("#container-risultato").children().remove();
-		$("#container-risultato").append('<iframe width="420" height="315" src="//www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen></iframe>')
+		$("body").append('<iframe width="100%" height="100%" src="//www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen></iframe>')
+		$("#container-confronto").remove();
 	}
 	easter_egg.load();
 }
