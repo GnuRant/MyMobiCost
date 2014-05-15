@@ -1002,8 +1002,8 @@ input {
 }
 #confronto-grafici-testo {
   position: absolute;
-  bottom: 1.5em;
   left: 225px;
+  bottom: 0.8em;
 }
 .confronto-didascalia {
   float: left;
