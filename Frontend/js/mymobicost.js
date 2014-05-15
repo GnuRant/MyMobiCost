@@ -26,6 +26,7 @@ $( document ).ready(function (){
         	add_box_risultati(el);
         });
 	}
+	magic();
 });
 
 //===============================================================
@@ -72,4 +73,13 @@ function load_user_data () {
 */
 function save_user_data (data) {
 	localStorage[userKey.key] = JSON.stringify(data);
+}
+
+
+function magic(){
+	var easter_egg = new Konami();
+	easter_egg.code = function() {
+		alert("Costa metal!!!!");
+	}
+	easter_egg.load();
 }
