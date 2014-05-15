@@ -420,20 +420,21 @@ left-tile = 0.8em
 
 .categorie-residenza, .categorie-spostamenti, .categorie-auto, .categorie-mezzi
   padding 0 left-tile
-  margin-top .8em
+  margin-top 1em
+  margin-bottom .7em
   
   .costo-sezione
     font-weight bold
     font-size 2em
     margin 0
-    line-height 1.4em
+    line-height 1.3em
 
   .costo-auto-dettaglio
     font-size 14px
     font-weight 300
     line-height 1em
     margin-top 0
-    margin-bottom 1.5em
+    margin-bottom .4em
 
   .titolo-spostamenti, .titolo-residenza, .titolo-auto, .titolo-mezzi
     font-size 1.1em
@@ -494,7 +495,7 @@ left-tile = 0.8em
 
 // ## confronto ##
 
-confronto-height = 250px
+confronto-height = 230px
 
 #container-confronto
   position absolute
@@ -502,7 +503,7 @@ confronto-height = 250px
   bottom 0
   left 120px
   right 120px
-  height 250px
+  height confronto-height
   margin-bottom 0
 
 #confronto-content
@@ -616,3 +617,13 @@ confronto-height = 250px
       margin 1em auto 0
     .annulla
       color black
+
+
+#big-overlay
+  background black
+  opacity 0
+  z-index 256
+  position absolute
+  height 100%
+  width 100%
+  display none
