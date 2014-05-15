@@ -74,6 +74,7 @@ def calcolo_spostamento_mezzi_costi(data):
 	return costo
 
 def calcolo_tempo_spostamenti(data):
+	time_txt = ""
 	spostamenti = data["spostamenti"]
 	tempo  = 0
 	#prendo tutti gli spostamenti, visto che il tempo e'
@@ -84,5 +85,8 @@ def calcolo_tempo_spostamenti(data):
 	#converto nel formato hh:mm
 	time = datetime.timedelta(minutes=tempo)
 	hours, seconds = divmod(time.seconds, 3600)
-	return str(time.days)+":"+str(hours)
+	if time.days > 0:
+		time_txt = str(time.days)+" giorni "
+	time_txt = time_txt+str(hours)+" ore"
+	return time_txt
 	
