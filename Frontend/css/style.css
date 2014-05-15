@@ -264,7 +264,6 @@ input {
   margin-left: 500px;
   display: block;
   -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
-  -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
   -moz-transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
   -o-transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
   -ms-transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
@@ -551,7 +550,6 @@ input {
 .form-container-open {
   display: block;
   margin-left: 0 !important;
-  -webkit-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -webkit-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -moz-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -o-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
