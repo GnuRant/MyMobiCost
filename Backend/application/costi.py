@@ -24,7 +24,7 @@ def calcolo_spostamenti_auto_costi(data):
 					auto = trova_auto_id(automobili, id_mezzo)
 					costo_km = float(auto["costo_km"])
 					#calcolo su base mensile
-					costo += NUMERO_SETTIMANE*4*(2*(float(spostamento["distanza"])*float(spostamento["percorrenze"])*costo_km))
+					costo += NUMERO_SETTIMANE*(2*(float(spostamento["distanza"])*float(spostamento["percorrenze"])*costo_km))
 	except Exception, e:
 		costo = 0
 
