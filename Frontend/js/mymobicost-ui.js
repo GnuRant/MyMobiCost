@@ -123,7 +123,6 @@ $("#logo").click(function() {
 function new_session (){
   $("#welcome").hide();
   open_form_sidebar();
-  //edit_mode = true;
 }
 
 //===============================================================
