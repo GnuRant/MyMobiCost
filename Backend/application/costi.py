@@ -11,13 +11,11 @@ def calcolo_spostamenti_auto_costi(data):
 	costo = 0
 	try:
 		automobili = data["automobili"]
-		print len(automobili)
 		#itero tu tutte su tutti gli spostamenti, se e' uno spostamento effettuato
 		#con l'auto allora calcolo il suo costo, altrimenti non lo considero
 		spostamenti = data["spostamenti"]
 		for spostamento in spostamenti:
 			id_mezzo = spostamento["id_mezzo"]
-			print "ID da trovare "+id_mezzo
 			if id_mezzo != 0:
 				#Controllo che non sia un'abbonamento
 				if trova_auto_id(automobili, id_mezzo) is not None:
