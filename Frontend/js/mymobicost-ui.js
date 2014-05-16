@@ -112,6 +112,12 @@ $("#welcome-avanti").click(function() {
   new_session();
 });
 
+$("#logo").click(function() {
+  //Se il campo form è aperto lo chiudo
+  close_form_sidebar();
+  user_current_data = {};
+});
+
 function new_session (){
   $("#welcome").hide();
   open_form_sidebar();
