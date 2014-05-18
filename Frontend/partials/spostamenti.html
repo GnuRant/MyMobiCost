@@ -31,7 +31,8 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="input">
-                                        <input type="text" placeholder="Gite fuoriporta" class="flat form-control" name="descrizione" />
+                                        <input type="text" placeholder="Gite fuoriporta" class="flat form-control" name="descrizione" data-bv-notempty 
+                                        data-bv-notempty-message="Campo richiesto."/>
                                     </div>
                                 </div>
                             </div>
@@ -44,8 +45,8 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control flat" placeholder="0" name="percorrenze"data-bv-notempty 
                                         data-bv-notempty-message="Campo richiesto."
-                                        data-bv-digits="true"
-                                        data-bv-digits-message="Inserisci un numero" 
+                                        data-bv-integer="true"
+                                        data-bv-integer-message="Inserisci un numero" 
                                         />
                                         <span class="input-group-addon">volte</span>
                                     </div>
@@ -61,8 +62,8 @@
                                         <input type="text" class="form-control flat" placeholder="0" name="tempo" 
                                         data-bv-notempty 
                                         data-bv-notempty-message="Campo richiesto."
-                                        data-bv-digits="true"
-                                        data-bv-digits-message="Inserisci un numero"/>
+                                        data-bv-integer="true"
+                                        data-bv-integer-message="Inserisci un numero"/>
                                         <span class="input-group-addon">min</span>
                                     </div>
                                 </div>
@@ -77,8 +78,8 @@
                                         <input type="text" class="form-control flat" placeholder="0" name="distanza" 
                                         data-bv-notempty 
                                         data-bv-notempty-message="Campo richiesto."
-                                        data-bv-digits="true"
-                                        data-bv-digits-message="Inserisci un numero"/>
+                                        data-bv-integer="true"
+                                        data-bv-integer-message="Inserisci un numero"/>
                                         <span class="input-group-addon">km</span>
                                     </div>
                                 </div>
@@ -110,7 +111,7 @@
 
         <div id="spostamenti-avanti">
             <button class="btn btn-primary btn-wide">
-                Avanti
+                Salva
             </button>
         </div> 
 

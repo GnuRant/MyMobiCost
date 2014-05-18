@@ -1,5 +1,6 @@
 "use strict";
-var API_SERVER_URL = "http://127.0.0.1:5000";
+//Iserire ip del server di riferimento
+var API_SERVER_URL = "http://localhost:5000";
 
 //===============================================================
 //========================= AJAX ================================
