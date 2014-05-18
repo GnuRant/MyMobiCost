@@ -80,6 +80,7 @@ function reset_drop_down_hard (id_element){
 
 function open_form_sidebar(){
   $("#moreco-caption").html("indietro");
+  $("#moreco-caption").addClass("indietro")
   $(".categoria").show();
   $("#logo").addClass("logo-deactive");
   $("#new-session").addClass("new-session-active");
@@ -94,6 +95,7 @@ function open_form_sidebar(){
 
 function close_form_sidebar(){
   $("#moreco-caption").html("moreco");
+  $("#moreco-caption").removeClass("indietro")
   $(".categoria").hide();
   $("#logo").removeClass("logo-deactive");
   $("#new-session").removeClass("new-session-active"); 

@@ -317,8 +317,22 @@ input {
 #left-sidebar #logo #moreco-caption {
   color: #fff;
   text-align: center;
-  margin-top: 0;
   margin-bottom: 0;
+  margin-top: 8px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+#left-sidebar #logo .indietro {
+  background: #fff;
+  color: #313131 !important;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
 }
 #left-sidebar .new-session-active {
   background: #404040;
