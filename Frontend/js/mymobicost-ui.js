@@ -80,6 +80,7 @@ function reset_drop_down_hard (id_element){
 
 function open_form_sidebar(){
   $("#moreco-caption").html("indietro");
+  $("#moreco-caption").addClass("indietro")
   $(".categoria").show();
   $("#logo").addClass("logo-deactive");
   $("#new-session").addClass("new-session-active");
@@ -94,6 +95,7 @@ function open_form_sidebar(){
 
 function close_form_sidebar(){
   $("#moreco-caption").html("moreco");
+  $("#moreco-caption").removeClass("indietro")
   $(".categoria").hide();
   $("#logo").removeClass("logo-deactive");
   $("#new-session").removeClass("new-session-active"); 
@@ -103,10 +105,19 @@ function close_form_sidebar(){
   $(".overlay").hide();
 }
 
+function ellipse_string(str){
+  var length = 42;
+  if (str.length > length) {
+    return str.substring(0,length) + "...";
+  }else{
+    return str;
+  }
+}
+
 //===============================================================
 //======================= NEW SESSION ===========================
 //===============================================================
-$('#new-session').click(function () {
+$("#new-session").click(function () {
   new_session();
 });
 
@@ -311,9 +322,9 @@ function form_abitazione (){
       //Salvo il nome della zona e del tipo d'abitazione esplicitamente
       if (data.state === false) {
         var comune = data.comune;
-        var zona = $("select[name=zona_abitativa]").find(":selected").text();
-        var categoria = $("select[name=categoria_edilizia]").find(":selected").text();
-        data.indirizzo = comune + ", " + zona + " - " + categoria;
+        var zona = ($("select[name=zona_abitativa]").val() !== null ? ", "+$("select[name=zona_abitativa]").find(":selected").text() : "");
+        var categoria = ($("select[name=categoria_edilizia]").val() !== null ? " - "+$("select[name=categoria_edilizia]").find(":selected").text() : "");
+        data.indirizzo = ellipse_string(comune + zona + categoria);
       }else{
         data.indirizzo = "Abitazione Propria";
       }    
@@ -382,7 +393,7 @@ function load_abitazione_data(){
       $("input[name=costo_min]").val(abitazione.costo_min);
       $("input[name=costo_max]").val(abitazione.costo_max);
     }else{
-      $(".switch").bootstrapSwitch('setState' , true);
+      $(".switch").bootstrapSwitch("setState" , true);
       $("input[name=cost_med]").val(abitazione.cost_med);
     }
   };
@@ -414,7 +425,7 @@ function load_form_trasporti(){
 
 function form_trasporti(){
   //validator
-  $('#auto-caller').bootstrapValidator({
+  $("#auto-caller").bootstrapValidator({
     feedbackIcons: {
         valid: 'glyphicon glyphicon-ok',
         invalid: 'glyphicon glyphicon-remove',
@@ -946,7 +957,7 @@ function add_box_risultati(data){
     tempo_speso : data.risultati.tempo_speso
   };
 
-  $.get("/partials/risultato.html", function (template){
+  $.get("partials/risultato.html", function (template){
     var rendered = Mustache.render(template, template_data);
     $("#container-risultato").append(rendered);
     //Renderizzo il grafico
@@ -994,7 +1005,7 @@ function creare_comparison_chart(data) {
     id_grafico_confronto : (data.id_location+"-grafico-confronto")
   };
   //Carico il partial e lo aggiungo
-  $.get("/partials/grafico-confronto.html", function (template){
+  $.get("partials/grafico-confronto.html", function (template){
     var rendered = Mustache.render(template, template_data);
     $("#confronto-grafici-container").append(rendered);
     //Imposto le altezze corrette degl elementi
