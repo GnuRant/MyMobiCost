@@ -333,6 +333,11 @@ input {
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s;
+  cursor: pointer;
+}
+#left-sidebar #logo .indietro:hover {
+  background: #79b31f;
+  color: #fff !important;
 }
 #left-sidebar .new-session-active {
   background: #404040;
