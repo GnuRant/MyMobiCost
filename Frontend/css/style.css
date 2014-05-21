@@ -333,6 +333,12 @@ input {
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s;
+  cursor: pointer;
+}
+#left-sidebar #logo .indietro:hover {
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
 }
 #left-sidebar .new-session-active {
   background: #404040;
