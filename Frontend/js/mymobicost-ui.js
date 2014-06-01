@@ -781,6 +781,7 @@ function form_spostamenti (){
 
   $("#bottone-aggiungi-spostamento").click(function() {
     $("#aggiungi-spostamento").show();
+    $("input[name=descrizione]").val("Spostamento "+ (array_spostamenti.length+1));
   });
 
   //Collego il bottone per aggiungere uno spostamento
