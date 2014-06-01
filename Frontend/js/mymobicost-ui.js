@@ -466,6 +466,7 @@ function form_trasporti(){
   //Tasto che rende visibile il form mezzi pubblici
   $('#bottone-aggiungi-abbonamento').click(function () {
     $('#aggiungi-abbonamento').show();
+    $("input[name=abbonamento_nome]").val("Abbonamento "+ (array_abbonamenti.length+1));
   });
 
   //Carico i dati delle categorie delle auto
