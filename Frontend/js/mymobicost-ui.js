@@ -493,7 +493,7 @@ function form_trasporti(){
     get_auto_costi(classe, alimentazione, function (data) {
       //Valori di ritorno dal server JAJAJA
       $("input[name=assicurazione]").val(data.assicurazione);
-      $("input[name=costo_km]").val(data.costo_km);
+      $("input[name=costo_km]").val(data.costo_km.toFixed(2));
       $("input[name=costo_fisso]").val(data.costo_fisso_altro);
     });
   });
