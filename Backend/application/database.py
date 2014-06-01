@@ -142,7 +142,8 @@ def get_auto_alimentazioni(connection, categoria):
 	data = []
 	query = ("""SELECT DISTINCT costi_auto.alimentazione
 				FROM costi_auto
-				WHERE costi_auto.cl_auto = %s""")
+				WHERE costi_auto.cl_auto = %s
+				ORDER BY costi_auto.alimentazione ASC""")
 
 	cursor = connection.cursor()
 	cursor.execute(SCHEMA)
