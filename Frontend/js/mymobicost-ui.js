@@ -494,7 +494,7 @@ function form_trasporti(){
       //Valori di ritorno dal server JAJAJA
       $("input[name=assicurazione]").val(data.assicurazione);
       $("input[name=costo_km]").val(data.costo_km.toFixed(2));
-      $("input[name=costo_fisso]").val(data.costo_fisso_altro);
+      $("input[name=costo_fisso]").val(data.costo_fisso_altro.toFixed(2));
     });
   });
   //Collego il bottone per salvare un auto
