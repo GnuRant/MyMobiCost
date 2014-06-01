@@ -466,6 +466,7 @@ function form_trasporti(){
   //Tasto che rende visibile il form mezzi pubblici
   $('#bottone-aggiungi-abbonamento').click(function () {
     $('#aggiungi-abbonamento').show();
+    $("input[name=abbonamento_nome]").val("Abbonamento "+ (array_abbonamenti.length+1));
   });
 
   //Carico i dati delle categorie delle auto
@@ -493,8 +494,8 @@ function form_trasporti(){
     get_auto_costi(classe, alimentazione, function (data) {
       //Valori di ritorno dal server JAJAJA
       $("input[name=assicurazione]").val(data.assicurazione);
-      $("input[name=costo_km]").val(data.costo_km);
-      $("input[name=costo_fisso]").val(data.costo_fisso_altro);
+      $("input[name=costo_km]").val(data.costo_km.toFixed(2));
+      $("input[name=costo_fisso]").val(data.costo_fisso_altro.toFixed(2));
     });
   });
   //Collego il bottone per salvare un auto
@@ -780,6 +781,7 @@ function form_spostamenti (){
 
   $("#bottone-aggiungi-spostamento").click(function() {
     $("#aggiungi-spostamento").show();
+    $("input[name=descrizione]").val("Spostamento "+ (array_spostamenti.length+1));
   });
 
   //Collego il bottone per aggiungere uno spostamento
